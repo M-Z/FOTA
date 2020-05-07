@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import './_includes/initials';
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  background: $primary-1;
+  color: $primary-1;
+  font-family: 'Oswald', 'Montserrat', sans-serif;
+  height: 100%;
+  margin: 0;
+  opacity: 1;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  user-select: none;
+  width: 100%;
+  width: 100vw;
+  height: 100%;
+  height: 100vh;
+}
+
+.page {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+
+  & > main {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+}

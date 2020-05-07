@@ -1,0 +1,92 @@
+<div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+<div class="container mt-2">
+  <div class="jumbotron bg-dark page" *ngIf="team">
+    <simple-notifications></simple-notifications>
+
+    <div class="row">
+      <div class="col-4">
+        <img src="static/img/teams/{{ team.logo }}" class="img-fluid" alt="Team image">
+      </div>
+      <div class="col">
+        <h1 class="display-4">{{ team.teamName }}</h1>
+        <p class="lead">{{ team.description }}</p>
+        <p>
+          <span class="badge badge-info badge-pill">{{ team.members?.length }}</span>
+          team member{{ team.members?.length > 1 ? 's' : '' }}.
+        </p>
+        <p>
+          Working on
+          <span class="badge badge-info badge-pill">{{ team.firmware?.length }}</span>
+          firmware{{ team.firmware?.length > 1 ? 's' : '' }}.
+        </p>
+      </div>
+    </div>
+    <hr class="my-4">
+    <div class="row">
+      <div class="col-4">
+        <ul class="list-group">
+          <button [class.active]="activeTab=='members'" (click)="activeTab='members'" class="btn btn-secondary mb-2">
+            Members <span class="ml-2 badge badge-info badge-pill">{{ team.members?.length }}</span>
+          </button>
+          <button [class.active]="activeTab=='firmwares'" (click)="activeTab='firmwares'" class="btn btn-secondary">
+            Firmwares <span class="ml-2 badge badge-info badge-pill">{{ team.firmware?.length }}</span>
+          </button>
+        </ul>
+      </div>
+      <div class="col-8">
+        <div *ngIf="this.activeTab=='members'">
+          <app-add-modal *ngIf="this.authService.isAdmin" (memberChange)="newMember($event)" ModalType="user"></app-add-modal>
+
+          <div class="mb-3" *ngFor="let member of team?.members">
+            <div class="card bg-secondary">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img width="200" height="200" src="static/img/users/{{ member.name ? member.image : 'newUser.svg' }}" class="card-img h-100" alt="User image">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      {{ member.role }}:
+                      <span class="text-monospace">
+                        {{ member.name ? member.name.firstName + ' ' + member.name.lastName : member.email }}
+                      </span>
+                      <span *ngIf="!member.name" class='text-warning'>(Pending)</span>
+                    </h5>
+                    <p class="card-text">
+                      <span>Uploaded {{ member.uploads }} time{{ member.uploads > 1 ? 's': '' }}.</span>
+                    </p>
+                    <button *ngIf="this.authService.isAdmin" type="button" class="d-block btn btn-sm btn-danger" (click)="deleteUser(member._id)">Delete</button>
+                    <p class="card-text">
+                      <small class="text-dark text-uppercased">
+                        Joined the team on {{ member.joinDate | date }}
+                      </small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-secondary d-flex justify-content-center p-5" *ngIf="team.members?.length == 0">
+            <h4>No Members yet.</h4>
+          </div>
+        </div>
+        <div *ngIf="this.activeTab=='firmwares'">
+          <ul class="list-group" *ngIf="team.firmware?.length > 0">
+            <li *ngFor="let firmware of team.firmware" class="list-group-item bg-secondary d-flex justify-content-between align-items-center">
+              {{ firmware.name }}
+            </li>
+          </ul>
+
+          <div class="bg-secondary d-flex justify-content-center p-5" *ngIf="team.firmware?.length == 0">
+            <h4>No Firmwares yet.</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-dark p-5" *ngIf="!team">
+    <h4>No team found.</h4>
+  </div>
+</div>

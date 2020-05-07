@@ -1,0 +1,31 @@
+/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+readers do not read off random characters that represent icons */
+
+.#{$fa-css-prefix}-sync:before { content: fa-content($fa-var-sync); }
+.#{$fa-css-prefix}-terminal:before { content: fa-content($fa-var-terminal); }
+.#{$fa-css-prefix}-chart-pie:before { content: fa-content($fa-var-chart-pie); }
+.#{$fa-css-prefix}-cloud-upload-alt:before { content: fa-content($fa-var-cloud-upload-alt); }
+.#{$fa-css-prefix}-cloud:before { content: fa-content($fa-var-cloud); }
+.#{$fa-css-prefix}-cloud-download-alt:before { content: fa-content($fa-var-cloud-download-alt); }
+.#{$fa-css-prefix}-spinner:before { content: fa-content($fa-var-spinner); }
+.#{$fa-css-prefix}-file-code:before { content: fa-content($fa-var-file-code); }
+.#{$fa-css-prefix}-terminal:before { content: fa-content($fa-var-terminal); }
+.#{$fa-css-prefix}-fingerprint:before { content: fa-content($fa-var-fingerprint); }
+.#{$fa-css-prefix}-file-signature:before { content: fa-content($fa-var-file-signature); }
+.#{$fa-css-prefix}-server:before { content: fa-content($fa-var-server); }
+.#{$fa-css-prefix}-chart-line:before { content: fa-content($fa-var-chart-line); }
+.#{$fa-css-prefix}-shield-alt:before { content: fa-content($fa-var-shield-alt); }
+.#{$fa-css-prefix}-user-shield:before { content: fa-content($fa-var-user-shield); }
+.#{$fa-css-prefix}-user-secret:before { content: fa-content($fa-var-user-secret); }
+.#{$fa-css-prefix}-bug:before { content: fa-content($fa-var-bug); }
+.#{$fa-css-prefix}-th-large:before { content: fa-content($fa-var-th-large); }
+.#{$fa-css-prefix}-wifi:before { content: fa-content($fa-var-wifi); }
+.#{$fa-css-prefix}-random:before { content: fa-content($fa-var-random); }
+.#{$fa-css-prefix}-code-branch:before { content: fa-content($fa-var-code-branch); }
+.#{$fa-css-prefix}-user-tie:before { content: fa-content($fa-var-user-tie); }
+.#{$fa-css-prefix}-key:before { content: fa-content($fa-var-key); }
+.#{$fa-css-prefix}-sign-in-alt:before { content: fa-content($fa-var-sign-in-alt); }
+.#{$fa-css-prefix}-sign-out-alt:before { content: fa-content($fa-var-sign-out-alt); }
+.#{$fa-css-prefix}-undo-alt:before { content: fa-content($fa-var-undo-alt); }
+.#{$fa-css-prefix}-trash-alt:before { content: fa-content($fa-var-trash-alt); }
+.#{$fa-css-prefix}-users-cog:before { content: fa-content($fa-var-users-cog); }

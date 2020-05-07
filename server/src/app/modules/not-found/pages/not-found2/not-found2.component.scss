@@ -1,0 +1,22 @@
+.code-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #081421;
+  color: #d3d7de;
+  font-family: "Courier new";
+  font-size: 18px;
+  line-height: 1.5em;
+  width: 100%;
+  height: 100%;
+
+  & > span {
+    display: block;
+    width: 400px;
+
+    a {
+      color: #fff;
+    }
+  }
+}

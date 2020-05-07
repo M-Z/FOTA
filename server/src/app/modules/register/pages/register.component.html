@@ -1,0 +1,62 @@
+<div class="align-items-center bg-dark d-flex flex-column h-100" *ngIf="valid && !registered">
+  <h1>Join the {{ user.team.teamName }} team!</h1>
+  <form class="container w-50 m-4" novalidate [formGroup]="newUserForm" (submit)="onSubmit()" enctype="multipart/form-data" action="javascript:void(0)" method="POST">
+    <div class="form-group">
+      <label>Email</label>
+      <input type="text" formControlName="email" readonly class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input formControlName="password" [ngClass]="
+      {'is-invalid': newUserForm.controls.password.touched &&
+      newUserForm.controls.password.invalid}" type="password" formControlName="password" class="form-control" placeholder="xxxx xxxx xxxx">
+      <password-strength-meter [minPasswordLength]=12 [enableFeedback]="true" [password]="newUserForm.controls.password.value"></password-strength-meter>
+      <small class="form-text text-muted">
+        Your password must be more than 12 characters long, contain letters and numbers, special characters, or emojis.
+      </small>
+      <show-errors [control]="newUserForm.controls.password"></show-errors>
+    </div>
+    <div class="form-group">
+      <label>{{ user.role }}'s Fullname</label>
+      <div class="row" formGroupName="fullname">
+        <div class="col">
+          <input formControlName="firstName" [ngClass]="
+          {'is-invalid': newUserForm.controls.fullname['controls'].firstName.touched &&
+          newUserForm.controls.fullname['controls'].firstName.invalid}" type="text" class="form-control" placeholder="First name">
+          <show-errors [control]="newUserForm.controls.fullname['controls'].firstName"></show-errors>
+        </div>
+        <div class="col">
+          <input formControlName="lastName" [ngClass]="
+          {'is-invalid': newUserForm.controls.fullname['controls'].lastName.touched &&
+          newUserForm.controls.fullname['controls'].lastName.invalid}" type="text" class="form-control" placeholder="Last name">
+
+          <show-errors [control]="newUserForm.controls.fullname['controls'].lastName"></show-errors>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="customFile">Your image</label>
+      <div class="custom-file">
+        <input appUploadItem (onSelectFiles)="addFile($event)" formControlName="userImage" type="file" accept="image/png, image/jpeg, image/jpg" class="custom-file-input">
+        <label #fileLabel class="custom-file-label" for="userImage">Choose Your Image</label>
+        <show-errors [control]="newUserForm.controls.userImage"></show-errors>
+      </div>
+    </div>
+    <button [disabled]="newUserForm.pristine || newUserForm.invalid" type="submit" class="btn btn-info mr-2">Begin</button>
+  </form>
+  <simple-notifications></simple-notifications>
+</div>
+<div class="jumbotron bg-dark container mt-4" *ngIf="!valid">
+  <h1 class="display-4">Why are you here?</h1>
+  <p class="lead">Oops, looks like an invalid or expired token.</p>
+  <hr class="my-4">
+  <p>If there has been a mistake, please contact the administrator.</p>
+</div>
+<div class="jumbotron bg-dark container mt-4" *ngIf="registered">
+  <h1 class="display-4">Welcome to FOTA platorm!</h1>
+  <p class="lead">Please open up your Authenticator app and scan this QR code so you can upload your firmwares later on.</p>
+  <hr class="my-4">
+  <div class="d-flex justify-content-center">
+    <qrcode [size]="400" [level]="1" [qrvalue]="this.secret"></qrcode>
+  </div>
+</div>

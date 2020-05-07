@@ -1,0 +1,92 @@
+<div class="row pt-3 container-fluid">
+  <div class="col-md-3 col-sm-12">
+    <app-available-firmwares page="statistics" (firmwareID)="loadChart($event)"></app-available-firmwares>
+  </div>
+  <div class="col-md-9 col-sm-12">
+    <div class="row" class="right-content">
+      <div class="col-12 h-100 align-items-center d-flex flex-column justify-content-center" *ngIf="this.error">
+        <p class="lead">
+          {{ error }}
+        </p>
+        <hr class="my-4 w-100">
+      </div>
+      <div class="stats col-md-7 col-sm-12" [ngClass]="error ? 'invisible' : 'visible'">
+        <canvas id="downloadChart"></canvas>
+      </div>
+      <div class="graphics col-md-5 col-sm-12" [ngClass]="error ? 'invisible' : 'visible'">
+        <canvas id="versionChart"></canvas>
+      </div>
+    </div>
+    <div class="city">
+      <div class='highscraper'>
+        <div class='wall-one'>
+          <div></div>
+        </div>
+        <div class='wall-two'>
+          <div></div>
+        </div>
+        <div class='roof'>
+          <div>
+            <div></div>
+            <div></div>
+          </div>
+          <div>
+            <div></div>
+            <div></div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+
+      <div class='brickhouse'>
+        <div class='wall-one'>
+          <div></div>
+        </div>
+        <div class='wall-two'>
+          <div></div>
+        </div>
+        <div class='roof'>
+          <div>
+            <div></div>
+            <div></div>
+          </div>
+          <div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class='leaves'>
+        <div></div>
+      </div>
+      <div class='wood'></div>
+
+      <div class='ground-cropped'>
+        <div class='shadow-brickhouse'></div>
+        <div class='shadow-highscraper'></div>
+
+        <div class='car car-one red'></div>
+        <div class='car car-one blue'></div>
+        <div class='car car-two black'></div>
+
+      </div>
+
+      <div class='water'></div>
+      <div class='water-drops'>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <div class='road'></div>
+      <div class='ground'>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+</div>

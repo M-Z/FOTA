@@ -1,0 +1,21 @@
+<button *ngIf="page==='upload' && this.authService.isLeader" class="btn btn-lg bg-dark btn-outline-info w-100" (click)="setActiveID( 'update', 'newFirmware' )" [ngClass]="selectedFirmwareID==='newFirmware' ? 'active': ''">
+  New firmware
+</button>
+<div class="scrollable">
+  <ul class="list-group h-100" *ngIf="firmwares?.length > 0">
+    <li *ngFor="let firmware of firmwares; index as i;" class="list-group-item bg-transparent" [ngClass]="selectedFirmwareID == firmware._id ? 'active': ''">
+      <a (click)="setActiveID( 'update', firmware )" class="btn btn-outline-info">
+        {{ firmware.name || firmware._id }}
+      </a>
+      <span *ngIf="page==='upload' && this.authService.isLeader" (click)="setActiveID( 'delete', firmware )" class="delete bg-dark text-light">
+        <i class="fa fa-trash-alt"></i>
+      </span>
+      <span *ngIf="firmware.comment" class="comment text-muted">
+        {{ firmware.comment }}
+      </span>
+    </li>
+  </ul>
+  <div class="alert alert-info" *ngIf="firmwares?.length == 0">
+    No firmwares for your team.
+  </div>
+</div>

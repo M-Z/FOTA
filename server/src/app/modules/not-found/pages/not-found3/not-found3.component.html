@@ -1,0 +1,24 @@
+<div class="error404page">
+  <h4>
+    404 - Not Found... We're working on it!
+    <a *ngIf="suggestedPath; else goHome" href="javascript:void(0)" [routerLink]="suggestedPath" class="btn-go-home">DID YOU MEAN "{{ suggestedPath }}" ?</a>
+    <ng-template #goHome>
+      <a href="javascript:void(0)" routerLink="/" class="btn-go-home" target="_self">GO BACK HOME</a>
+    </ng-template>
+  </h4>
+  <div class="newcharacter404">
+    <div class="chair404"></div>
+    <div class="leftshoe404"></div>
+    <div class="rightshoe404"></div>
+    <div class="legs404"></div>
+    <div class="torso404">
+      <div class="body404"></div>
+      <div class="leftarm404"></div>
+      <div class="rightarm404"></div>
+      <div class="head404">
+        <div class="eyes404"></div>
+      </div>
+    </div>
+    <div class="laptop404"></div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="page">
+
+  <header>
+    <app-header></app-header>
+  </header>
+
+  <main [@routeAnimations]="prepareRoute(outlet)">
+    <app-transition-screen></app-transition-screen>
+
+    <router-outlet #outlet="outlet"></router-outlet>
+  </main>
+
+  <footer>
+    <app-footer></app-footer>
+  </footer>
+</div>

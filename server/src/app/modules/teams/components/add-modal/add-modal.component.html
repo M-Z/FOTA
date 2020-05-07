@@ -1,0 +1,44 @@
+<div class="addNew">
+
+  <div class="addUser" *ngIf="ModalType=='user'">
+    <input id="addUserModal" type="checkbox">
+    <label class="m-2 btn btn-success" for="addUserModal">
+      <div class="button">
+        New member
+      </div>
+    </label>
+    <div class="popup">
+      <div class="bg-light container dialog p-4 text-dark">
+        <div class="modal-header">
+          <h3>Add new Member</h3>
+          <label for="addUserModal">x</label>
+        </div>
+        <div class="modal-body">
+          <app-new-user-form (notifyUser)="notifyUser($event)"></app-new-user-form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="addTeam" *ngIf="ModalType=='team'">
+    <input id="addTeamModal" type="checkbox">
+    <label class="m-2 btn btn-success" for="addTeamModal">
+      <div class="button">
+        New Team
+      </div>
+    </label>
+    <div class="popup">
+      <div class="bg-light container dialog p-4 text-dark">
+        <div class="modal-header">
+          <h3>Add new Team</h3>
+          <label for="addTeamModal">x</label>
+        </div>
+        <div class="modal-body">
+          <app-new-team-form (notifyUser)="notifyUser($event)"></app-new-team-form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<simple-notifications></simple-notifications>

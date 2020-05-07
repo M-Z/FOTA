@@ -1,0 +1,11 @@
+{
+  "/static/*": {
+    "target": {
+      "host": "localhost",
+      "protocol": "https:",
+      "port": 4000
+    },
+    "secure": false,
+    "changeOrigin": true
+  }
+}

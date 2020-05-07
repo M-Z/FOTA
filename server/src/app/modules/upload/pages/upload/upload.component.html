@@ -1,0 +1,180 @@
+<div class="uploadPage container-fluid pt-3 pb-3">
+  <div class="row h-100">
+    <div class="col-md-3 col-sm-12">
+      <app-available-firmwares [updateMenu]="actionTaken.asObservable()" page="upload" (firmwareID)="loadForm($event)"></app-available-firmwares>
+    </div>
+    <div class="col-md-9 col-sm-12">
+      <form novalidate [formGroup]="firmwareUploadForm" (submit)="onSubmit()" enctype="multipart/form-data" action="javascript:void(0)" method="POST">
+        <div class="form-group">
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="name">Firmware Name</label>
+                <input [ngClass]="
+                {'is-invalid': firmwareUploadForm.controls.name.touched &&
+                firmwareUploadForm.controls.name.invalid}" class="form-control" formControlName="name" name="name" placeholder="e.g. GSM firmware">
+                <show-errors [control]="firmwareUploadForm.controls.name"></show-errors>
+              </div>
+            </div>
+            <div [ngClass]="{'d-none' : firmwareID==='newFirmware'}" class="col-6">
+              <div class="form-group">
+                <label for="firmwareID">Firmware ID</label>
+                <input class="form-control" formControlName="firmwareID" name="firmwareID" placeholder="e.g. 5e83fa4d483b37e543b05c08">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <label>Firmware Version</label>
+                <div formGroupName="newVersion">
+                  <input #major name="major" formControlName="major" [ngClass]="{'is-invalid': firmwareUploadForm.controls.newVersion['controls'].major.touched &&
+                  firmwareUploadForm.controls.newVersion['controls'].major.invalid}" (keyup)="onVersionChange('major', $event)" class="versionNum form-control" inputmode="numeric" type="number" placeholder="XX" />
+                  <input #minor name="minor" formControlName="minor" [ngClass]="{'is-invalid': firmwareUploadForm.controls.newVersion['controls'].minor.touched &&
+                  firmwareUploadForm.controls.newVersion['controls'].minor.invalid}" (keyup)="onVersionChange('minor', $event)" class="versionNum form-control" inputmode="numeric" type="number" placeholder="YY">
+                  <input #patch name="patch" formControlName="patch" [ngClass]="{'is-invalid': firmwareUploadForm.controls.newVersion['controls'].patch.touched &&
+                  firmwareUploadForm.controls.newVersion['controls'].patch.invalid}" (keyup)="onVersionChange('patch', $event)" class="versionNum form-control" inputmode="numeric" type="number" placeholder="ZZ">
+                </div>
+                <small class="form-text text-muted">Semantic Versioning format.</small>
+                <show-errors [control]="firmwareUploadForm.controls.newVersion"></show-errors>
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="form-group">
+                <label for="customFile">Firmware Hex file</label>
+                <div class="custom-file">
+                  <input appUploadItem (onSelectFiles)="addFile($event)" formControlName="hexFile" name="hexFile" type="file" accept=".hex" class="custom-file-input">
+                  <label #fileLabel class="custom-file-label" for="hexFile">Choose firmware</label>
+                  <show-errors [control]="firmwareUploadForm.controls.hexFile"></show-errors>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Comment</label>
+          <input formControlName="comment" name="comment" class="form-control" [ngClass]="{'is-invalid': firmwareUploadForm.controls.comment.touched &&
+            firmwareUploadForm.controls.comment.invalid}" type="text" placeholder="Optional">
+          <show-errors [control]="firmwareUploadForm.controls.comment"></show-errors>
+        </div>
+        <div class="form-group">
+          <label>OTP</label>
+          <div formGroupName="otp">
+            <input #one name="one" formControlName="one" [ngClass]="{'is-invalid': firmwareUploadForm.controls.otp['controls'].one.touched &&
+            firmwareUploadForm.controls.otp['controls'].one.invalid}" (keyup)="onOTPChange(1, $event)" class="versionNum form-control" inputmode="numeric" type="number" placeholder="X" />
+            <input #two name="two" formControlName="two" [ngClass]="{'is-invalid': firmwareUploadForm.controls.otp['controls'].two.touched &&
+            firmwareUploadForm.controls.otp['controls'].two.invalid}" (keyup)="onOTPChange(2, $event)" class="versionNum form-control" inputmode="numeric" type="number" placeholder="X">
+            <input #three name="three" formControlName="three" [ngClass]="{'is-invalid': firmwareUploadForm.controls.otp['controls'].three.touched &&
+            firmwareUploadForm.controls.otp['controls'].three.invalid}" (keyup)="onOTPChange(3, $event)" class="versionNum form-control" inputmode="numeric" type="number" placeholder="X">
+            <input #four name="four" formControlName="four" [ngClass]="{'is-invalid': firmwareUploadForm.controls.otp['controls'].four.touched &&
+            firmwareUploadForm.controls.otp['controls'].four.invalid}" (keyup)="onOTPChange(4, $event)" class="versionNum form-control" inputmode="numeric" type="number" placeholder="X">
+            <input #five name="five" formControlName="five" [ngClass]="{'is-invalid': firmwareUploadForm.controls.otp['controls'].five.touched &&
+            firmwareUploadForm.controls.otp['controls'].five.invalid}" (keyup)="onOTPChange(5, $event)" class="versionNum form-control" inputmode="numeric" type="number" placeholder="X">
+            <input #six name="six" formControlName="six" [ngClass]="{'is-invalid': firmwareUploadForm.controls.otp['controls'].six.touched &&
+            firmwareUploadForm.controls.otp['controls'].six.invalid}" (keyup)="onOTPChange(6, $event)" class="versionNum form-control" inputmode="numeric" type="number" placeholder="X">
+          </div>
+          <small class="form-text text-muted">Please check your authenticator.</small>
+          <show-errors [control]="firmwareUploadForm.controls.otp"></show-errors>
+        </div>
+        <button [disabled]="firmwareUploadForm.pristine || firmwareUploadForm.invalid" type="submit" class="btn btn-primary">Upload!</button>
+      </form>
+    </div>
+  </div>
+  <div class="grid-wrapper">
+    <div class="grid">
+      <div class="vertical">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <div class="dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div class="horizontal">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="cyberTruck">
+      <div class="truck">
+        <div class="truck__body">
+          <div class="truck__body truck__body--top">
+            <div class="truck__window">
+              <div class="truck__window-glass"></div>
+            </div>
+          </div>
+          <div class="truck__body truck__body--mid">
+            <div class="truck__mid-body"></div>
+          </div>
+          <div class="truck__body truck__body--bottom">
+            <div class="truck__underpanel"></div>
+            <div class="truck__rear-bumper"></div>
+            <div class="truck__side-skirt"></div>
+          </div>
+        </div>
+        <div class="truck__wheel truck__wheel--front">
+          <div class="truck__wheel-arch"></div>
+          <div class="truck__wheel-arch-trim truck__wheel-arch-trim--top"></div>
+          <div class="truck__wheel-arch-trim truck__wheel-arch-trim--left"></div>
+          <div class="truck__wheel-arch-trim truck__wheel-arch-trim--right"></div>
+          <div class="truck-wheel">
+            <div class="truck-wheel__rim">
+              <div class="truck-wheel__spoke" style="--index: 0;"></div>
+              <div class="truck-wheel__spoke" style="--index: 1;"></div>
+              <div class="truck-wheel__spoke" style="--index: 2;"></div>
+              <div class="truck-wheel__spoke" style="--index: 3;"></div>
+              <div class="truck-wheel__spoke" style="--index: 4;"></div>
+              <div class="truck-wheel__spoke" style="--index: 5;"></div>
+              <div class="truck-wheel__spoke" style="--index: 6;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="truck__wheel truck__wheel--rear">
+          <div class="truck__wheel-arch"></div>
+          <div class="truck__wheel-arch-trim truck__wheel-arch-trim--top"></div>
+          <div class="truck__wheel-arch-trim truck__wheel-arch-trim--left"></div>
+          <div class="truck__wheel-arch-trim truck__wheel-arch-trim--right"></div>
+          <div class="truck-wheel">
+            <div class="truck-wheel__rim">
+              <div class="truck-wheel__spoke" style="--index: 0;"></div>
+              <div class="truck-wheel__spoke" style="--index: 1;"></div>
+              <div class="truck-wheel__spoke" style="--index: 2;"></div>
+              <div class="truck-wheel__spoke" style="--index: 3;"></div>
+              <div class="truck-wheel__spoke" style="--index: 4;"></div>
+              <div class="truck-wheel__spoke" style="--index: 5;"></div>
+              <div class="truck-wheel__spoke" style="--index: 6;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="truck__headlight"></div>
+        <div class="truck__taillight"></div>
+        <div class="truck__indicator"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<simple-notifications></simple-notifications>

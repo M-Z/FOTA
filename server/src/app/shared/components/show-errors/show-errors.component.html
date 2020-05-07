@@ -1,0 +1,5 @@
+<div *ngIf="shouldShowErrors()">
+  <div class="invalid-feedback d-block" *ngFor="let error of listOfErrors()">
+    {{error}}
+  </div>
+</div>

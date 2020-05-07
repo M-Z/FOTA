@@ -1,0 +1,24 @@
+<section class="page_404">
+  <div class="container">
+    <div class="row">
+      <div class="screen">
+        <div class="four_zero_four_bg">
+          <h1 class="text-center ">404</h1>
+        </div>
+
+        <div class="contant_box_404">
+          <h3 class="h2">
+            Look like you're lost
+          </h3>
+
+          <p>the page you are looking for not avaible!</p>
+
+          <a *ngIf="suggestedPath; else goHome" href="javascript:void(0)" [routerLink]="suggestedPath" class="link_404">Did You Mean "{{ suggestedPath }}" ?</a>
+          <ng-template #goHome>
+            <a href="javascript:void(0)" routerLink="/" class="link_404" target="_self">Go Back Home</a>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

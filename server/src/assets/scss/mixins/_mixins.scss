@@ -1,0 +1,296 @@
+// Breakpoints
+$tiny: 360px;
+$small: 576px;
+$medium: 768px;
+$large: 992px;
+$giant: 1200px;
+$xlarge: 1200px;
+$enormous: 1920px;
+
+$tablet: "(min-width: 768px) and (max-width: 1023px)";
+$desktop: "(min-width: 1024px)";
+$tablet-width: 768px;
+$tablet-mid-width: 800px;
+$desktop-width: 1024px;
+$super-desktop-width: 1400px;
+$mobile-width: 680px;
+$small-mobile-width: 350px;
+
+
+/* Mixins
+=============================================*/
+@mixin box-shadow($var...){
+	-webkit-box-shadow: $var;
+	-sand-box-shadow: $var;
+	-moz-box-shadow: $var;
+	-ms-box-shadow: $var;
+	-o-box-shadow: $var;
+	box-shadow: $var;
+}
+@mixin text-shadow($var...){
+	-webkit-text-shadow: $var;
+	-sand-text-shadow: $var;
+	-moz-text-shadow: $var;
+	-ms-text-shadow: $var;
+	-o-text-shadow: $var;
+	text-shadow: $var;
+}
+@mixin transform($var...){
+	-webkit-transform: $var;
+	-sand-transform: $var;
+	-moz-transform: $var;
+	-ms-transform: $var;
+	-o-transform: $var;
+	transform: $var;
+}
+@mixin transform-origin($var...){
+	-webkit-transform-origin: $var;
+	-sand-transform-origin: $var;
+	-moz-transform-origin: $var;
+	-ms-transform-origin: $var;
+	-o-transform-origin: $var;
+	transform-origin: $var;
+}
+@mixin transition($var...){
+	-webkit-transition: $var;
+	-sand-transition: $var;
+	-moz-transition: $var;
+	-ms-transition: $var;
+	-o-transition: $var;
+	transition: $var;
+}
+@mixin border-radius($var){
+	-webkit-border-radius: $var;
+	-sand-border-radius: $var;
+	-moz-border-radius: $var;
+	-ms-border-radius: $var;
+	-o-border-radius: $var;
+	border-radius: $var;
+}
+@mixin box-sizing($var){
+	-webkit-box-sizing: $var;
+	-sand-box-sizing: $var;
+	-moz-box-sizing: $var;
+	-ms-box-sizing: $var;
+	-o-box-sizing: $var;
+	box-sizing: $var;
+}
+@mixin backface-visibility($var){
+	-webkit-backface-visibility: $var;
+	-sand-backface-visibility: $var;
+	-moz-backface-visibility: $var;
+	-ms-backface-visibility: $var;
+	-o-backface-visibility: $var;
+	backface-visibility: $var;
+}
+@mixin user-select($var){
+	-webkit-touch-callout: $var;
+	-webkit-user-select: $var;
+	-khtml-user-select: $var;
+	-moz-user-select: $var;
+	-ms-user-select: $var;
+	user-select: $var;
+}
+@mixin perspective($var){
+	-webkit-perspective: $var;
+	-moz-perspective: $var;
+	-ms-perspective: $var;
+	perspective: $var;
+}
+@mixin transform-style($var){
+	-webkit-transform-style: $var;
+	-sand-transform-style: $var;
+	-moz-transform-style: $var;
+	-ms-transform-style: $var;
+	-o-transform-style: $var;
+	transform-style: $var;
+}
+@mixin transition-delay($var){
+	-webkit-transition-delay: $var;
+	-sand-transition-delay: $var;
+	-moz-transition-delay: $var;
+	-ms-transition-delay: $var;
+	-o-transition-delay: $var;
+	transition-delay: $var;
+}
+@mixin animation-delay($var){
+	-webkit-animation-delay: $var;
+	-sand-animation-delay: $var;
+	-moz-animation-delay: $var;
+	-ms-animation-delay: $var;
+	-o-animation-delay: $var;
+	animation-delay: $var;
+}
+@mixin gradient($var...){
+	background: -webkit-linear-gradient($var);
+	background: -moz-linear-gradient($var);
+	background: -ms-linear-gradient($var);
+	background: -o-linear-gradient($var);
+	background: linear-gradient($var);
+}
+@mixin animation($var...){
+	-webkit-animation: $var;
+	-sand-animation: $var;
+	-moz-animation: $var;
+	-ms-animation: $var;
+	-o-animation: $var;
+	animation: $var;
+}
+
+@mixin background-size($var){
+	-webkit-background-size: $var;
+	-moz-background-size: $var;
+	-ms-background-size: $var;
+	-o-background-size: $var;
+	background-size: $var;
+}
+
+@mixin column-count($var){
+	-webkit-column-count: $var; /* Chrome, Safari, Opera */
+	-moz-column-count: $var; /* Firefox */
+	column-count: $var;
+}
+
+
+@mixin animation-play-state($var...){
+	-webkit-animation-play-state: $var;
+	-sand-animation-play-state: $var;
+	-moz-animation-play-state: $var;
+	-ms-animation-play-state: $var;
+	-o-animation-play-state: $var;
+	animation-play-state: $var;
+}
+
+@mixin keyframes($name) {
+	@-webkit-keyframes #{$name} {
+		@content;
+	}
+	@-moz-keyframes #{$name} {
+		@content;
+	}
+	@-ms-keyframes #{$name} {
+		@content;
+	}
+	@keyframes #{$name} {
+		@content;
+	}
+}
+
+@mixin vertical-align { // @include vertical-align;
+	top: 50%;
+	@include transform(translateY(-50%));
+}
+
+@mixin horizontal-align {
+	left: 50%;
+	@include transform(translateX(-50%));
+}
+
+@mixin both-align {
+	top: 50%;
+	left: 50%;
+	@include transform(translate(-50%, -50%));
+}
+
+// Media Query mixins
+@mixin tablet {
+	@media (min-width: #{$mobile-width + 1px}) and (max-width: #{$desktop-width - 1px}) {
+	@content;
+	}
+}
+@mixin tablet-portrait {
+	@media only screen
+		and (min-device-width: 768px)
+		and (max-device-width: 1024px)
+		and (-webkit-min-device-pixel-ratio: 1) {
+			@content;
+	}
+}
+@mixin tablet-landscape {
+	@media only screen
+		and (min-device-width: 768px)
+		and (max-device-width: 1024px)
+		and (orientation: landscape)
+		and (-webkit-min-device-pixel-ratio: 1) {
+			@content;
+	}
+}
+
+@mixin small-mobile {
+	@media (max-width: #{$small-mobile-width - 1px}) {
+	@content;
+	}
+}
+
+
+@mixin mobile {
+	@media (max-width: #{$mobile-width - 1px}) {
+	@content;
+	}
+}
+@mixin mobile-height {
+	@media (max-height: #{500px}) {
+	@content;
+	}
+}
+
+@mixin mobile-landscape {
+	@media (max-width: #{$mobile-width - 1px})
+		and (orientation: landscape) {
+			@content;
+	}
+}
+
+@mixin mobile-portrait {
+	@media (max-width: #{$mobile-width - 1px})
+		and (orientation: portrait) {
+			@content;
+	}
+}
+
+@mixin phablet-landscape {
+	@media only screen
+		and (min-device-width: 414px)
+		and (max-device-width: 736px)
+		and (orientation: landscape)
+		and (-webkit-min-device-pixel-ratio: 3) {
+			@content;
+	}
+}
+
+
+@mixin desktop {
+	@media (min-width: #{$desktop-width}) {
+	@content;
+	}
+}
+@mixin super_desktop {
+	@media (min-width: #{$super-desktop-width}) {
+	@content;
+	}
+}
+@mixin retina {
+	@media
+	only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and (min--moz-device-pixel-ratio: 2),
+	only screen and (-o-min-device-pixel-ratio: 2/1),
+	only screen and (min-device-pixel-ratio: 2),
+	only screen and (min-resolution: 192dpi),
+	only screen and (min-resolution: 2dppx) {
+	@content;
+	}
+}
+@mixin placeholder {
+	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		@content;
+	}
+	&::-moz-placeholder { /* Firefox 19+ */
+		@content;
+	}
+	&:-ms-input-placeholder { /* IE 10+ */
+		@content;
+	}
+	&:-moz-placeholder { /* Firefox 18- */
+		@content;
+	}
+}

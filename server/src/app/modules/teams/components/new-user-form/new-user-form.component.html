@@ -1,0 +1,29 @@
+<form novalidate [formGroup]="newUserForm" (submit)="onSubmit()" action="javascript:void(0)" method="POST">
+  <div class="form-group">
+    <label for="email">E-mail</label>
+    <input [ngClass]="
+      {'is-invalid': newUserForm.controls.email.touched &&
+      newUserForm.controls.email.invalid}" formControlName="email" type="text" class="form-control" placeholder="e.g. new@valeo.com">
+    <show-errors [control]="newUserForm.controls.email"></show-errors>
+  </div>
+  <div class="form-group">
+    <label>Role</label>
+    <div class="form-group">
+      <div class="custom-control custom-radio custom-control-inline">
+        <input formControlName="role" id="developerRole" checked value="Developer" type="radio" name="role" class="custom-control-input">
+        <label class="custom-control-label" for="developerRole">
+          Developer
+        </label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input formControlName="role" id="leaderRole" value="Leader" type="radio" name="role" class="custom-control-input">
+        <label class="custom-control-label" for="leaderRole">
+          Leader
+        </label>
+      </div>
+      <show-errors [control]="newUserForm.controls.role"></show-errors>
+    </div>
+  </div>
+
+  <button [disabled]="newUserForm.pristine || newUserForm.invalid" type="submit" class="btn btn-success mr-2">Send Invitation</button>
+</form>

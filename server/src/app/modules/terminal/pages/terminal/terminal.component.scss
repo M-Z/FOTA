@@ -1,0 +1,96 @@
+@import '../../../../../assets/scss/_includes/colorPalette';
+
+.terminal-window {
+  text-align: left;
+  height: 100%;
+  border-radius: 10px;
+  position: relative;
+
+  header {
+    background: #E0E8F0;
+    height: 30px;
+    border-radius: 8px 8px 0 0;
+    padding-left: 10px;
+
+    .button {
+      width: 12px;
+      height: 12px;
+      margin: 10px 4px 0 0;
+      display: inline-block;
+      border-radius: 8px;
+
+      &.green {
+        background: #3BB662;
+      }
+
+      &.yellow {
+        background: #E5C30F;
+      }
+
+      &.red {
+        background: #E75448;
+      }
+    }
+  }
+
+  section {
+    &.terminal {
+      color: white;
+      font-family: Menlo, Monaco, "Consolas", "Courier New", "Courier";
+      font-size: 11pt;
+      background: #30353A;
+      padding: 10px;
+      box-sizing: border-box;
+      position: absolute;
+      width: 100%;
+      top: 30px;
+      bottom: 0;
+      overflow: auto;
+
+      span {
+        display: block;
+      }
+
+      .newCommand {
+        display: flex;
+        align-items: center;
+
+        .typed-cursor {
+          display: inline-block;
+          background: $primary-1;
+          opacity: 1;
+          animation: blink 0.7s infinite;
+          height: 15px;
+          width: 2px;
+          background: white;
+          margin: auto 10px;
+        }
+        @keyframes blink {
+          0% {
+            opacity: 1;
+          }
+
+          50% {
+            opacity: 0;
+          }
+
+          100% {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .terminal-data {
+    display: none;
+  }
+
+  .gray {
+    color: gray;
+  }
+
+  .green {
+    color: green;
+  }
+}

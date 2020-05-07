@@ -1,0 +1,17 @@
+<div class="screen">
+  <div class="mars"></div>
+  <img src="assets/img/not-found/not-found5/404.svg" class="logo-404" />
+  <img src="assets/img/not-found/not-found5/meteor.svg" class="meteor" />
+  <p class="title">Oh no!!</p>
+  <p class="subtitle">
+    You’re either misspelling the URL <br /> or requesting a page that's no longer here.
+  </p>
+  <div align="center">
+    <a *ngIf="suggestedPath; else goHome" href="javascript:void(0)" [routerLink]="suggestedPath" class="btn-back">Did You Mean "{{ suggestedPath }}" ?</a>
+    <ng-template #goHome>
+      <a href="javascript:void(0)" routerLink="/" class="btn-back" target="_self">Go Back Home</a>
+    </ng-template>
+  </div>
+  <img src="assets/img/not-found/not-found5/astronaut.svg" class="astronaut" />
+  <img src="assets/img/not-found/not-found5/spaceship.svg" class="spaceship" />
+</div>

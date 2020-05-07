@@ -1,0 +1,20 @@
+.navbar {
+  .navbar-nav {
+    .nav-item {
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .nav-link {
+      margin-right: 1rem;
+      margin-left: 1rem;
+
+      i {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}

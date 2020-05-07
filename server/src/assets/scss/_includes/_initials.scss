@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald|Montserrat|Source+Code+Pro');
+@import '../icons/font-awesome/fontawesome.scss';
+@import '../icons/font-awesome/fa-brands.scss';
+@import '../icons/font-awesome/fa-regular.scss';
+@import '../icons/font-awesome/fa-solid.scss';
+
+@import '../mixins/mixins';
+
+@import 'colorPalette';
+$breakpoints: (
+  phone: 320px,
+  tablet: 768px,
+  desktop: 1024px
+);

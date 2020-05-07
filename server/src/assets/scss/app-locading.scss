@@ -1,0 +1,24 @@
+.app-loading {
+  // Gets resolved by webpack
+
+  .spinner {
+    height: 300px !important;
+    width: 300px !important;
+    animation:rotate 1.5s linear infinite !important;
+
+    .path {
+      animation:dash 1s linear infinite !important;
+    }
+  }
+  
+  .logo {
+    &:before {
+      content: '  Welcome to FOTA \A      Almost There!';
+      font-size: 32px;
+      white-space: pre;
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+}

@@ -1,0 +1,231 @@
+<article id="lightingAnimation" class="h-100 {{currentScene}}">
+
+  <div class="h-100 content-left">
+    <div class=" tab d-flex flex-column justify-content-center align-items-center" [class.active]="currentScene=='animationStage1'" (click)="currentScene='animationStage1';currentClock='07:00AM'">
+      <i class="fas fa-cloud"></i>
+      <span class="mt-2 text-uppercase">Solution</span>
+    </div>
+    <div class=" tab d-flex flex-column justify-content-center align-items-center" [class.active]="currentScene=='animationStage2'" (click)="currentScene='animationStage2';currentClock='09:00AM'">
+      <i class="fas fa-user-shield"></i>
+      <span class="mt-2 text-uppercase">Safe</span>
+    </div>
+    <div class=" tab d-flex flex-column justify-content-center align-items-center" [class.active]="currentScene=='animationStage3'" (click)="currentScene='animationStage3';currentClock='11:00AM'">
+      <i class="fas fa-file-code"></i>
+      <span class="mt-2 text-uppercase">Compile</span>
+    </div>
+    <div class=" tab d-flex flex-column justify-content-center align-items-center" [class.active]="currentScene=='animationStage4'" (click)="currentScene='animationStage4';currentClock='13:00PM'">
+      <i class="fas fa-chart-pie"></i>
+      <span class="mt-2 text-uppercase">Monitor</span>
+    </div>
+    <div class=" tab d-flex flex-column justify-content-center align-items-center" [class.active]="currentScene=='animationStage5'" (click)="currentScene='animationStage5';currentClock='15:00PM'">
+      <i class="fas fa-fingerprint"></i>
+      <span class="mt-2 text-uppercase">Personalized</span>
+    </div>
+    <div class=" tab d-flex flex-column justify-content-center align-items-center" [class.active]="currentScene=='animationStage6'" (click)="currentScene='animationStage6';currentClock='17:00PM'">
+      <i class="fas fa-th-large"></i>
+      <span class="mt-2 text-uppercase">Features</span>
+    </div>
+  </div>
+
+  <div class="h-100 content-right">
+    <div class="animation-slide">
+      <div class="animation-item main-building">
+        <img src="/assets/img/home/main_iso-01.png" alt="#">
+      </div>
+
+      <div class="animation-item street-lights">
+        <img src="/assets/img/home/street_lights-01.png" alt="#">
+      </div>
+
+      <div class="animation-item interior-lights">
+        <img src="/assets/img/home/bathroom_lights-01.png" alt="#">
+      </div>
+
+      <div class="animation-item interior-lights">
+        <img src="/assets/img/home/front_left_lights-01.png" alt="#">
+      </div>
+
+      <div class="animation-item interior-lights">
+        <img src="/assets/img/home/front_right_lights-01.png" alt="#">
+      </div>
+
+      <div class="animation-item conference-lights">
+        <img src="/assets/img/home/conference_lights-01.png" alt="#">
+      </div>
+
+      <div class="animation-item bathroom-lights">
+        <img src="/assets/img/home/bathroom_lights-01.png" alt="#">
+      </div>
+
+      <div class="animation-item interior-light-fixtures">
+        <img src="/assets/img/home/light_fixtures-01.png" alt="#">
+      </div>
+
+      <div class="animation-item conference-room">
+        <img src="/assets/img/home/conference_brightness-01.png" alt="#">
+      </div>
+
+      <div class="animation-item bathroom">
+        <img src="/assets/img/home/bathroom_brightness-01.png" alt="#">
+      </div>
+
+      <div class="animation-item person">
+        <img src="/assets/img/home/bathroom_guy-01.png" alt="#">
+      </div>
+
+      <div class="animation-item desk-shadows">
+        <img src="/assets/img/home/desk_shadows-01.png" alt="#">
+      </div>
+
+      <div class="animation-item lighter-walls">
+        <img src="/assets/img/home/lighter_walls-01.png" alt="#">
+      </div>
+
+      <div class="animation-item sunbeam">
+        <img src="/assets/img/home/sunbeam-01.png" alt="#">
+      </div>
+
+      <div class="animation-item building-lights">
+        <img src="/assets/img/home/building_lights-01.png" alt="#">
+      </div>
+
+      <div class="animation-item interior-brightness">
+        <img src="/assets/img/home/interior_brightness-01.png" alt="#">
+      </div>
+
+      <div class="animation-item exterior-brightness">
+        <img src="/assets/img/home/exterior_brightness-01.png" alt="#">
+      </div>
+
+      <div class="animation-item daylight-icons">
+        <img src="/assets/img/home/daylight-icons-01.png" alt="#">
+      </div>
+
+      <div class="animation-item dimming-icons">
+        <img src="/assets/img/home/dimming-icon-01.png" alt="#">
+      </div>
+
+      <div class="animation-item development-icons">
+        <img src="/assets/img/home/development-icon-01.png" alt="#">
+      </div>
+
+      <div class="animation-item car">
+        <img src="/assets/img/home/car-01.png" alt="#">
+      </div>
+
+      <div class="animation-item flag">
+        <img src="/assets/img/home/flag-01.png" alt="#">
+      </div>
+
+      <div class="info-text" [class.active]="currentScene=='animationStage1'">
+        <h3>
+          <i class="fas fa-server"></i>
+          Firmware Over The Air
+        </h3>
+        <p>
+          You can now ensure that vehicles are always state of the art.
+          <br>
+          By allowing the innovative technology to simply and reliably optimize the vehicle without requiring a visit to the repair shop.
+        </p>
+      </div>
+
+      <div class="info-text" [class.active]="currentScene=='animationStage2'">
+        <h3>
+          <i class="fas fa-shield-alt"></i>
+          Security at all levels
+        </h3>
+        <p>
+          The data transfer is shielded by a complex security architecture with end-to-end encryption.
+          <br>
+          For maximum security against <i class="fas fa-user-secret text-black-50"></i> attackers, a unique encryption is made for each consumer;
+        </p>
+      </div>
+
+      <div class="info-text" [class.active]="currentScene=='animationStage3'">
+        <h3>
+          <i class="fas fa-terminal"></i>
+          print('New firmware')
+        </h3>
+        <p>
+          Found a <i class="fas fa-bug text-black-50"></i> bug? No Problem!
+          <br>
+          Developers can work remotely and roll their codes directly to the
+          vehicles OTA.
+        </p>
+        <a class="btn btn-light" routerLink="/Upload">
+          <i class="fas fa-cloud-upload-alt"></i>
+          Upload
+        </a>
+      </div>
+
+      <div class="info-text" [class.active]="currentScene=='animationStage4'">
+        <h3>
+          <i class="fas fa-chart-line"></i>
+          See your impact
+        </h3>
+        <p>
+          With live tracking statistics, you see the impact of your firmware, and
+          how many vehicle recalls you saved.
+        </p>
+        <a class="btn btn-light" routerLink="/Statistics">
+          <i class="fas fa-chart-pie"></i>
+          Go to Statistics
+        </a>
+      </div>
+
+      <div class="info-text" [class.active]="currentScene=='animationStage5'">
+        <h3>
+          <i class="fas fa-file-signature"></i>
+          Right there with you.
+        </h3>
+        <p>
+          Unique custom updates for each and every consumer, with each ECU
+          having its own custom security stack.
+        </p>
+      </div>
+
+      <div class="info-text w-25" [class.active]="currentScene=='animationStage6'">
+        <h3>
+          <i class="fas fa-wifi"></i>
+          Cellular connection
+        </h3>
+        <p>Your car will be online. Anytime, anywhere.</p>
+        <h3>
+          <i class="fas fa-random"></i>
+          Seamless FOTA
+        </h3>
+        <p>Updates occur while the system is running, without interrupting the user.</p>
+        <h3>
+          <i class="fas fa-code-branch"></i>
+          Delta file
+        </h3>
+        <p>
+          All downloads are optimized.
+          <br>
+          Only the new changed will be downloaded.
+        </p>
+        <h3>
+          <i class="fas fa-undo-alt"></i>
+          Roll-back feature
+        </h3>
+        <p>
+          Cars can go back to a previous firmware version if problems found.
+        </p>
+      </div>
+
+      <h2 id="clock-time">
+        {{currentClock}}
+      </h2>
+
+      <div class="relative-phone">
+        <div class="phone-inner-container">
+          <img src="/assets/img/home/phone_screens.png" alt="#">
+        </div>
+        <div class="phone">
+          <img src="/assets/img/home/phone.png" alt="#">
+        </div>
+      </div>
+    </div>
+    <!--Close slide -->
+  </div>
+</article>

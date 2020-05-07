@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <i class="fas fa-file-code mr-2 text-white"></i>
+  <a class="navbar-brand" routerLink="/">FOTA</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" routerLink="/Home" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link">
+          <i class="fas fa-sync"></i>
+          Home
+        </a>
+      </li>
+      <li *ngIf="this.authService.isLeader" class="nav-item" routerLink="/Terminal" [routerLinkActive]="['active']">
+        <a class="nav-link" tabindex="-1">
+          <i class="fas fa-terminal"></i>
+          Terminal
+        </a>
+      </li>
+      <li *ngIf="this.authService.isAdmin" class="nav-item" routerLink="/Team" [routerLinkActive]="['active']">
+        <a class="nav-link" tabindex="-1">
+          <i class="fas fa-users-cog"></i>
+          Teams
+        </a>
+      </li>
+      <li *ngIf="this.authService.isLoggedIn && (this.authService.isLeader || this.authService.isDeveloper)" class="nav-item" routerLink="/Team/{{ this.authService.currentUser.team?._id || '404' }}" [routerLinkActive]="['active']">
+        <a class="nav-link" tabindex="-1">
+          <i class="fas fa-users-cog"></i>
+          My Team
+        </a>
+      </li>
+      <li *ngIf="this.authService.isAdmin || this.authService.isLeader" class="nav-item" routerLink="/Statistics" [routerLinkActive]="['active']">
+        <a class="nav-link" tabindex="-1">
+          <i class="fas fa-chart-pie"></i>
+          Statistics
+        </a>
+      </li>
+      <li *ngIf="this.authService.isLoggedIn && (this.authService.isLeader || this.authService.isDeveloper)" class="nav-item" routerLink="/Upload" [routerLinkActive]="['active']">
+        <a class="nav-link" tabindex="-1">
+          <i class="fas fa-cloud-upload-alt"></i>
+          Upload
+        </a>
+      </li>
+      <li *ngIf="!this.authService.isLoggedIn" class="nav-item" routerLink="/Login" [routerLinkActive]="['active']">
+        <a class="nav-link" tabindex="-1">
+          <i class="fas fa-sign-in-alt"></i>
+          Login
+        </a>
+      </li>
+      <li *ngIf="this.authService.isLoggedIn" class="nav-item" (click)="this.authService.doLogout()">
+        <a class="nav-link" tabindex="-1">
+          <i class="fas fa-sign-out-alt"></i>
+          Logout
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,25 @@
+<form novalidate [formGroup]="newTeamForm" (submit)="onSubmit()" action="javascript:void(0)" method="POST">
+  <div class="form-group">
+    <label for="email">Name</label>
+    <input [ngClass]="
+      {'is-invalid': newTeamForm.controls.teamName.touched &&
+      newTeamForm.controls.teamName.invalid}" formControlName="teamName" type="text" class="form-control" name="team" placeholder="e.g. FOTA">
+    <show-errors [control]="newTeamForm.controls.teamName"></show-errors>
+  </div>
+  <div class="form-group">
+    <label for="email">Description</label>
+    <input [ngClass]="
+      {'is-invalid': newTeamForm.controls.teamDescription.touched &&
+      newTeamForm.controls.teamDescription.invalid}" formControlName="teamDescription" type="text" class="form-control" name="team" placeholder="e.g. Team responsible for OTA updates">
+    <show-errors [control]="newTeamForm.controls.teamDescription"></show-errors>
+  </div>
+  <div class="form-group">
+    <label for="customFile">Team logo image</label>
+    <div class="custom-file">
+      <input appUploadItem (onSelectFiles)="addFile($event)" formControlName="teamLogo" name="teamLogo" type="file" accept="image/png, image/jpeg, image/jpg" class="custom-file-input">
+      <label #fileLabel class="custom-file-label" for="teamLogo">Choose Team logo</label>
+      <show-errors [control]="newTeamForm.controls.teamLogo"></show-errors>
+    </div>
+  </div>
+  <button [disabled]="newTeamForm.pristine || newTeamForm.invalid" type="submit" class="btn btn-success mr-2">Add Team</button>
+</form>

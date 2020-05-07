@@ -1,0 +1,28 @@
+<div class="bg-purple">
+  <div class="stars">
+    <div class="central-body">
+      <img class="image-404" src="/assets/img/not-found/not-found1/404.svg" width="300px">
+      <a *ngIf="suggestedPath; else goHome" href="javascript:void(0)" [routerLink]="suggestedPath" class="btn-go-home">Did You Mean "{{ suggestedPath }}" ?</a>
+      <ng-template #goHome>
+        <a href="javascript:void(0)" routerLink="/" class="btn-go-home" target="_self">Go Back Home</a>
+      </ng-template>
+    </div>
+    <div class="objects">
+      <img class="object_rocket" src="/assets/img/not-found/not-found1/rocket.svg" width="40px">
+      <div class="earth-moon">
+        <img class="object_earth" src="/assets/img/not-found/not-found1/earth.svg" width="100px">
+        <img class="object_moon" src="/assets/img/not-found/not-found1/moon.svg" width="80px">
+      </div>
+      <div class="box_astronaut">
+        <img class="object_astronaut" src="/assets/img/not-found/not-found1/astronaut.svg" width="140px">
+      </div>
+    </div>
+    <div class="glowing_stars">
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+    </div>
+  </div>
+</div>

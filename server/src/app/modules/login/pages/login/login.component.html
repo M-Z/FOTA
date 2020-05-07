@@ -1,0 +1,22 @@
+<div class="loginWrapper">
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser()" class='login-form' action="javascript:void(0)" method="POST">
+    <div class="flex-row">
+      <label class="lf--label" for="username">
+        <i class="fas fa-user-tie"></i>
+      </label>
+      <input formControlName="username" class='lf--input' placeholder='Username' type='text'>
+    </div>
+    <show-errors [control]="loginForm.controls.username"></show-errors>
+    <div class="flex-row">
+      <label class="lf--label" for="password">
+        <i class="fas fa-key"></i>
+      </label>
+      <input formControlName="password" class='lf--input' placeholder='Password' type='password'>
+    </div>
+    <show-errors [control]="loginForm.controls.password"></show-errors>
+    <button [disabled]="loginForm.pristine || loginForm.invalid" type="submit" name="button" class='btn btn-secondary w-100 mt-3 btn-lg' >
+      LOGIN
+    </button>
+  </form>
+</div>
+<simple-notifications></simple-notifications>
