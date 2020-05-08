@@ -156,6 +156,7 @@ main(int argc, char* argv[])
 							{
 								HexArrayLine[countertest] = CAN_RxMsg[rxcount].data[u8Counter];
 								countertest++;
+								CANHANDLER_vidSend(CANHANDLER_u8NEXTMSGREQUEST,CAN_u8REMOTEFRAME,(void*)0,0);
 							}
 							break;
 						}

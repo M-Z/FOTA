@@ -1,37 +1,37 @@
 Archive member included to satisfy reference by file (symbol)
 
-c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
+e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
                               ./system/src/newlib/_sbrk.o (__errno)
-c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
-                              c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o) (_impure_ptr)
-c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
+e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
+                              e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o) (_impure_ptr)
+e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
                               ./src/main.o (memset)
-c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-strlen.o)
+e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-strlen.o)
                               ./system/src/diag/Trace.o (strlen)
-c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
+e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
                               ./system/src/diag/Trace.o (vsnprintf)
-c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                              c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o) (_svfprintf_r)
-c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                              c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o) (_printf_i)
-c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
-                              c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o) (memchr)
-c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
-                              c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o) (memcpy)
-c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
-                              c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o) (memmove)
-c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
-                              c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o) (_free_r)
-c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
-                              c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o) (_malloc_r)
-c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
-                              c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o) (_realloc_r)
-c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
-                              c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o) (_sbrk_r)
-c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
-                              c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o) (__malloc_lock)
-c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
-                              c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o) (_malloc_usable_size_r)
+e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                              e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o) (_svfprintf_r)
+e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                              e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o) (_printf_i)
+e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
+                              e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o) (memchr)
+e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                              e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o) (memcpy)
+e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
+                              e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o) (memmove)
+e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
+                              e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o) (_free_r)
+e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                              e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o) (_malloc_r)
+e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
+                              e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o) (_realloc_r)
+e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
+                              e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o) (_sbrk_r)
+e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
+                              e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o) (__malloc_lock)
+e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
+                              e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o) (_malloc_usable_size_r)
 
 Allocating common symbols
 Common symbol       size              file
@@ -131,8 +131,8 @@ Discarded input sections
  .debug_macro   0x00000000       0x34 ./system/src/stm32f1-stdperiph/misc.o
  .debug_macro   0x00000000       0x35 ./system/src/stm32f1-stdperiph/misc.o
  .debug_macro   0x00000000       0x85 ./system/src/stm32f1-stdperiph/misc.o
- .debug_line    0x00000000      0x424 ./system/src/stm32f1-stdperiph/misc.o
- .debug_str     0x00000000    0x4e9d5 ./system/src/stm32f1-stdperiph/misc.o
+ .debug_line    0x00000000      0x41e ./system/src/stm32f1-stdperiph/misc.o
+ .debug_str     0x00000000    0x4e9c9 ./system/src/stm32f1-stdperiph/misc.o
  .comment       0x00000000       0x7f ./system/src/stm32f1-stdperiph/misc.o
  .debug_frame   0x00000000       0x90 ./system/src/stm32f1-stdperiph/misc.o
  .ARM.attributes
@@ -245,8 +245,8 @@ Discarded input sections
  .debug_macro   0x00000000       0x8b ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
  .debug_macro   0x00000000       0x35 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
  .debug_macro   0x00000000      0x2a6 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
- .debug_line    0x00000000      0x90c ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
- .debug_str     0x00000000    0x4ed53 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
+ .debug_line    0x00000000      0x906 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
+ .debug_str     0x00000000    0x4ed47 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
  .comment       0x00000000       0x7f ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
  .debug_frame   0x00000000      0x1e8 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
  .ARM.attributes
@@ -391,8 +391,8 @@ Discarded input sections
  .debug_macro   0x00000000       0x8b ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .debug_macro   0x00000000       0x35 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .debug_macro   0x00000000      0x3dc ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
- .debug_line    0x00000000      0x885 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
- .debug_str     0x00000000    0x4f322 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+ .debug_line    0x00000000      0x87f ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+ .debug_str     0x00000000    0x4f316 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .comment       0x00000000       0x7f ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .debug_frame   0x00000000      0x320 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .ARM.attributes
@@ -490,8 +490,8 @@ Discarded input sections
  .debug_macro   0x00000000       0x16 ./system/src/newlib/_cxx.o
  .debug_macro   0x00000000       0x35 ./system/src/newlib/_cxx.o
  .debug_macro   0x00000000      0x51a ./system/src/newlib/_cxx.o
- .debug_line    0x00000000      0x543 ./system/src/newlib/_cxx.o
- .debug_str     0x00000000     0x9b7f ./system/src/newlib/_cxx.o
+ .debug_line    0x00000000      0x519 ./system/src/newlib/_cxx.o
+ .debug_str     0x00000000     0x9b73 ./system/src/newlib/_cxx.o
  .comment       0x00000000       0x7f ./system/src/newlib/_cxx.o
  .debug_frame   0x00000000       0x40 ./system/src/newlib/_cxx.o
  .ARM.attributes
@@ -835,8 +835,8 @@ Discarded input sections
  .debug_macro   0x00000000       0x1c ./system/src/newlib/assert.o
  .debug_macro   0x00000000       0x3d ./system/src/newlib/assert.o
  .debug_macro   0x00000000      0x51a ./system/src/newlib/assert.o
- .debug_line    0x00000000      0x3ce ./system/src/newlib/assert.o
- .debug_str     0x00000000     0x89f3 ./system/src/newlib/assert.o
+ .debug_line    0x00000000      0x3b6 ./system/src/newlib/assert.o
+ .debug_str     0x00000000     0x89e7 ./system/src/newlib/assert.o
  .comment       0x00000000       0x7f ./system/src/newlib/assert.o
  .debug_frame   0x00000000       0x40 ./system/src/newlib/assert.o
  .ARM.attributes
@@ -1165,8 +1165,8 @@ Discarded input sections
  .debug_macro   0x00000000       0x34 ./system/src/cortexm/_reset_hardware.o
  .debug_macro   0x00000000       0x8b ./system/src/cortexm/_reset_hardware.o
  .debug_macro   0x00000000       0x35 ./system/src/cortexm/_reset_hardware.o
- .debug_line    0x00000000      0x37f ./system/src/cortexm/_reset_hardware.o
- .debug_str     0x00000000    0x4e803 ./system/src/cortexm/_reset_hardware.o
+ .debug_line    0x00000000      0x379 ./system/src/cortexm/_reset_hardware.o
+ .debug_str     0x00000000    0x4e7f7 ./system/src/cortexm/_reset_hardware.o
  .comment       0x00000000       0x7f ./system/src/cortexm/_reset_hardware.o
  .debug_frame   0x00000000       0x20 ./system/src/cortexm/_reset_hardware.o
  .ARM.attributes
@@ -1410,6 +1410,8 @@ Discarded input sections
  .text          0x00000000        0x0 ./src/CAN.o
  .data          0x00000000        0x0 ./src/CAN.o
  .bss           0x00000000        0x0 ./src/CAN.o
+ .text.CAN_wrMsg
+                0x00000000       0xb8 ./src/CAN.o
  .text.CAN_u8GetNumberOfPendingMessage
                 0x00000000       0x10 ./src/CAN.o
  .debug_macro   0x00000000      0xa6c ./src/CAN.o
@@ -1456,10 +1458,26 @@ Discarded input sections
  .text          0x00000000        0x0 ./src/CANHANDLER_prog.o
  .data          0x00000000        0x0 ./src/CANHANDLER_prog.o
  .bss           0x00000000        0x0 ./src/CANHANDLER_prog.o
+ .text.CANHANDLER_vidSend
+                0x00000000       0x8c ./src/CANHANDLER_prog.o
+ .debug_info    0x00000000      0x211 ./src/CANHANDLER_prog.o
+ .debug_abbrev  0x00000000      0x100 ./src/CANHANDLER_prog.o
+ .debug_loc     0x00000000      0x160 ./src/CANHANDLER_prog.o
+ .debug_aranges
+                0x00000000       0x20 ./src/CANHANDLER_prog.o
+ .debug_ranges  0x00000000       0x10 ./src/CANHANDLER_prog.o
+ .debug_macro   0x00000000       0x35 ./src/CANHANDLER_prog.o
  .debug_macro   0x00000000      0xa6c ./src/CANHANDLER_prog.o
  .debug_macro   0x00000000       0x76 ./src/CANHANDLER_prog.o
  .debug_macro   0x00000000       0x22 ./src/CANHANDLER_prog.o
  .debug_macro   0x00000000       0x22 ./src/CANHANDLER_prog.o
+ .debug_macro   0x00000000       0x16 ./src/CANHANDLER_prog.o
+ .debug_line    0x00000000       0xbd ./src/CANHANDLER_prog.o
+ .debug_str     0x00000000     0x321d ./src/CANHANDLER_prog.o
+ .comment       0x00000000       0x7f ./src/CANHANDLER_prog.o
+ .debug_frame   0x00000000       0x30 ./src/CANHANDLER_prog.o
+ .ARM.attributes
+                0x00000000       0x33 ./src/CANHANDLER_prog.o
  .group         0x00000000        0xc ./src/DIO_prog.o
  .group         0x00000000        0xc ./src/DIO_prog.o
  .group         0x00000000        0xc ./src/DIO_prog.o
@@ -1486,7 +1504,6 @@ Discarded input sections
  .group         0x00000000        0xc ./src/FLASH_prog.o
  .group         0x00000000        0xc ./src/FLASH_prog.o
  .group         0x00000000        0xc ./src/FLASH_prog.o
- .group         0x00000000        0xc ./src/FLASH_prog.o
  .text          0x00000000        0x0 ./src/FLASH_prog.o
  .data          0x00000000        0x0 ./src/FLASH_prog.o
  .bss           0x00000000        0x0 ./src/FLASH_prog.o
@@ -1499,7 +1516,6 @@ Discarded input sections
  .debug_macro   0x00000000      0xa6c ./src/FLASH_prog.o
  .debug_macro   0x00000000       0x76 ./src/FLASH_prog.o
  .debug_macro   0x00000000       0x22 ./src/FLASH_prog.o
- .group         0x00000000        0xc ./src/HexDataProcessor_prog.o
  .group         0x00000000        0xc ./src/HexDataProcessor_prog.o
  .group         0x00000000        0xc ./src/HexDataProcessor_prog.o
  .group         0x00000000        0xc ./src/HexDataProcessor_prog.o
@@ -1571,7 +1587,6 @@ Discarded input sections
  .debug_macro   0x00000000      0x16f ./src/HexDataProcessor_prog.o
  .debug_macro   0x00000000       0x76 ./src/HexDataProcessor_prog.o
  .debug_macro   0x00000000       0x22 ./src/HexDataProcessor_prog.o
- .debug_macro   0x00000000       0x16 ./src/HexDataProcessor_prog.o
  .group         0x00000000        0xc ./src/NVIC_prog.o
  .group         0x00000000        0xc ./src/NVIC_prog.o
  .group         0x00000000        0xc ./src/NVIC_prog.o
@@ -1633,7 +1648,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x76 ./src/SCB_prog.o
  .debug_macro   0x00000000       0x34 ./src/SCB_prog.o
  .debug_line    0x00000000       0x92 ./src/SCB_prog.o
- .debug_str     0x00000000     0x3213 ./src/SCB_prog.o
+ .debug_str     0x00000000     0x3207 ./src/SCB_prog.o
  .comment       0x00000000       0x7f ./src/SCB_prog.o
  .debug_frame   0x00000000       0x30 ./src/SCB_prog.o
  .ARM.attributes
@@ -1649,11 +1664,10 @@ Discarded input sections
  .debug_macro   0x00000000       0x11 ./src/_write.o
  .debug_macro   0x00000000      0xa6c ./src/_write.o
  .debug_line    0x00000000       0x30 ./src/_write.o
- .debug_str     0x00000000     0x2d38 ./src/_write.o
+ .debug_str     0x00000000     0x2d2c ./src/_write.o
  .comment       0x00000000       0x7f ./src/_write.o
  .ARM.attributes
                 0x00000000       0x33 ./src/_write.o
- .group         0x00000000        0xc ./src/main.o
  .group         0x00000000        0xc ./src/main.o
  .group         0x00000000        0xc ./src/main.o
  .group         0x00000000        0xc ./src/main.o
@@ -1745,69 +1759,68 @@ Discarded input sections
  .debug_macro   0x00000000      0x172 ./src/main.o
  .debug_macro   0x00000000       0x22 ./src/main.o
  .debug_macro   0x00000000       0x16 ./src/main.o
- .debug_macro   0x00000000       0x16 ./src/main.o
  .debug_macro   0x00000000       0x10 ./src/main.o
- .text          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
- .data          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
- .bss           0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
- .text          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
- .data          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
- .bss           0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
+ .text          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
+ .data          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
+ .bss           0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
+ .text          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
+ .data          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
+ .bss           0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
  .rodata._global_impure_ptr
-                0x00000000        0x4 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
- .text          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
- .data          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
- .bss           0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
- .text          0x00000000       0x10 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-strlen.o)
- .data          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-strlen.o)
- .bss           0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-strlen.o)
+                0x00000000        0x4 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
+ .text          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
+ .data          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
+ .bss           0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
+ .text          0x00000000       0x10 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-strlen.o)
+ .data          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-strlen.o)
+ .bss           0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-strlen.o)
  .ARM.attributes
-                0x00000000       0x17 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-strlen.o)
- .text          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
- .data          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
- .bss           0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
- .text          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
- .data          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
- .bss           0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x00000000       0x17 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-strlen.o)
+ .text          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
+ .data          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
+ .bss           0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
+ .text          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+ .data          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+ .bss           0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
  .text.__ssprint_r
-                0x00000000       0xf0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
- .text          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
- .data          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
- .bss           0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
- .text          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
- .data          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
- .bss           0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
- .text          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
- .data          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
- .bss           0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
- .text          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
- .data          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
- .bss           0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
- .text          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
- .data          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
- .bss           0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
- .text          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
- .data          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
- .bss           0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
- .text          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
- .data          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
- .bss           0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
- .text          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
- .data          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
- .bss           0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
- .text          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
- .data          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
- .bss           0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
- .text          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
- .data          0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
- .bss           0x00000000        0x0 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
+                0x00000000       0xf0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+ .text          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .data          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .bss           0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .text          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
+ .data          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
+ .bss           0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
+ .text          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .data          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .bss           0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .text          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
+ .data          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
+ .bss           0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
+ .text          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
+ .data          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
+ .bss           0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
+ .text          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
+ .data          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
+ .bss           0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
+ .text          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
+ .data          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
+ .bss           0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
+ .text          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
+ .data          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
+ .bss           0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
+ .text          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
+ .data          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
+ .bss           0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
+ .text          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
+ .data          0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
+ .bss           0x00000000        0x0 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
 
 Memory Configuration
 
 Name             Origin             Length             Attributes
 RAM              0x20000000         0x00005000         xrw
 CCMRAM           0x00000000         0x00000000         xrw
-FLASH            0x08000000         0x00002800         xr
+FLASH            0x08000000         0x00002000         xr
 FLASHB1          0x00000000         0x00000000         xr
 EXTMEMB0         0x00000000         0x00000000         xr
 EXTMEMB1         0x00000000         0x00000000         xr
@@ -1844,16 +1857,16 @@ LOAD ./src/RCC_prog.o
 LOAD ./src/SCB_prog.o
 LOAD ./src/_write.o
 LOAD ./src/main.o
-LOAD c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++_nano.a
-LOAD c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a
+LOAD e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++_nano.a
+LOAD e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a
 START GROUP
-LOAD c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a
-LOAD c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a
-LOAD c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a
+LOAD e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a
+LOAD e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a
+LOAD e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a
 END GROUP
 START GROUP
-LOAD c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a
-LOAD c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a
+LOAD e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a
+LOAD e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a
 END GROUP
                 0x20005000                __stack = (ORIGIN (RAM) + LENGTH (RAM))
                 0x20005000                _estack = __stack
@@ -1982,10 +1995,10 @@ END GROUP
 
 .inits          0x08000350       0x28
                 0x08000350                __data_regions_array_start = .
-                0x08000350        0x4 LONG 0x8001e74 LOADADDR (.data)
+                0x08000350        0x4 LONG 0x8001bb8 LOADADDR (.data)
                 0x08000354        0x4 LONG 0x20000000 ADDR (.data)
                 0x08000358        0x4 LONG 0x2000009c (ADDR (.data) + SIZEOF (.data))
-                0x0800035c        0x4 LONG 0x8001e74 LOADADDR (.data_CCMRAM)
+                0x0800035c        0x4 LONG 0x8001bb8 LOADADDR (.data_CCMRAM)
                 0x08000360        0x4 LONG 0x0 ADDR (.data_CCMRAM)
                 0x08000364        0x4 LONG 0x0 (ADDR (.data_CCMRAM) + SIZEOF (.data_CCMRAM))
                 0x08000368                __data_regions_array_end = .
@@ -2017,7 +2030,7 @@ END GROUP
 .flashtext
  *(.flashtext .flashtext.*)
 
-.text           0x08000378     0x1afa
+.text           0x08000378     0x183e
  *(.text .text.*)
  .text._exit    0x08000378        0x2 ./system/src/newlib/_exit.o
                 0x08000378                _exit
@@ -2069,186 +2082,174 @@ END GROUP
  .text.CAN_waitReady
                 0x080007dc       0x2c ./src/CAN.o
                 0x080007dc                CAN_waitReady
- .text.CAN_wrMsg
-                0x08000808       0xb8 ./src/CAN.o
-                0x08000808                CAN_wrMsg
  .text.CAN_wrFilter
-                0x080008c0       0x80 ./src/CAN.o
-                0x080008c0                CAN_wrFilter
+                0x08000808       0x80 ./src/CAN.o
+                0x08000808                CAN_wrFilter
  .text.CAN_vidReleaseMessage
-                0x08000940       0x10 ./src/CAN.o
-                0x08000940                CAN_vidReleaseMessage
+                0x08000888       0x10 ./src/CAN.o
+                0x08000888                CAN_vidReleaseMessage
  .text.CAN_rdMsg_0
-                0x08000950       0x90 ./src/CAN.o
-                0x08000950                CAN_rdMsg_0
+                0x08000898       0x90 ./src/CAN.o
+                0x08000898                CAN_rdMsg_0
  .text.CAN_vid_filter_list
-                0x080009e0       0x50 ./src/CAN.o
-                0x080009e0                CAN_vid_filter_list
+                0x08000928       0x50 ./src/CAN.o
+                0x08000928                CAN_vid_filter_list
  .text.USB_HP_CAN1_TX_IRQHandler
-                0x08000a30       0x6c ./src/CAN.o
-                0x08000a30                USB_HP_CAN1_TX_IRQHandler
+                0x08000978       0x6c ./src/CAN.o
+                0x08000978                USB_HP_CAN1_TX_IRQHandler
  .text.USB_LP_CAN1_RX0_IRQHandler
-                0x08000a9c       0x5c ./src/CAN.o
-                0x08000a9c                USB_LP_CAN1_RX0_IRQHandler
- .text.CANHANDLER_vidSend
-                0x08000af8       0x8c ./src/CANHANDLER_prog.o
-                0x08000af8                CANHANDLER_vidSend
+                0x080009e4       0x5c ./src/CAN.o
+                0x080009e4                USB_LP_CAN1_RX0_IRQHandler
  .text.DIO_vidInit
-                0x08000b84      0x13c ./src/DIO_prog.o
-                0x08000b84                DIO_vidInit
+                0x08000a40      0x13c ./src/DIO_prog.o
+                0x08000a40                DIO_vidInit
  .text.FLASH_vidWriteArray
-                0x08000cc0       0x74 ./src/FLASH_prog.o
-                0x08000cc0                FLASH_vidWriteArray
+                0x08000b7c       0x74 ./src/FLASH_prog.o
+                0x08000b7c                FLASH_vidWriteArray
  .text.FLASH_vidErasePage
-                0x08000d34       0x68 ./src/FLASH_prog.o
-                0x08000d34                FLASH_vidErasePage
+                0x08000bf0       0x68 ./src/FLASH_prog.o
+                0x08000bf0                FLASH_vidErasePage
  .text.FLASH_u32ReadWord
-                0x08000d9c        0x4 ./src/FLASH_prog.o
-                0x08000d9c                FLASH_u32ReadWord
- .text.FLASH_vidWriteOptionByteData
-                0x08000da0      0x118 ./src/FLASH_prog.o
-                0x08000da0                FLASH_vidWriteOptionByteData
- .text.FLASH_u8GetOptionByteData
-                0x08000eb8       0x24 ./src/FLASH_prog.o
-                0x08000eb8                FLASH_u8GetOptionByteData
+                0x08000c58        0x4 ./src/FLASH_prog.o
+                0x08000c58                FLASH_u32ReadWord
  .text.enuCheckLineValidation
-                0x08000edc       0x3e ./src/HexDataProcessor_prog.o
-                0x08000edc                enuCheckLineValidation
+                0x08000c5c       0x3e ./src/HexDataProcessor_prog.o
+                0x08000c5c                enuCheckLineValidation
  .text.enuParseLine
-                0x08000f1a       0xe2 ./src/HexDataProcessor_prog.o
-                0x08000f1a                enuParseLine
+                0x08000c9a       0xe2 ./src/HexDataProcessor_prog.o
+                0x08000c9a                enuParseLine
  .text.enuWriteDataInFlash
-                0x08000ffc       0x68 ./src/HexDataProcessor_prog.o
-                0x08000ffc                enuWriteDataInFlash
+                0x08000d7c       0x68 ./src/HexDataProcessor_prog.o
+                0x08000d7c                enuWriteDataInFlash
  .text.u8CharacterToHex
-                0x08001064       0x22 ./src/HexDataProcessor_prog.o
-                0x08001064                u8CharacterToHex
+                0x08000de4       0x22 ./src/HexDataProcessor_prog.o
+                0x08000de4                u8CharacterToHex
  .text.enuConvertLineToHex
-                0x08001086       0x4e ./src/HexDataProcessor_prog.o
-                0x08001086                enuConvertLineToHex
+                0x08000e06       0x4e ./src/HexDataProcessor_prog.o
+                0x08000e06                enuConvertLineToHex
  .text.HexDataProcessor_u32StoreHexInFlash
-                0x080010d4       0x94 ./src/HexDataProcessor_prog.o
-                0x080010d4                HexDataProcessor_u32StoreHexInFlash
+                0x08000e54       0x94 ./src/HexDataProcessor_prog.o
+                0x08000e54                HexDataProcessor_u32StoreHexInFlash
  .text.NVIC_vidInit
-                0x08001168       0x10 ./src/NVIC_prog.o
-                0x08001168                NVIC_vidInit
+                0x08000ee8       0x10 ./src/NVIC_prog.o
+                0x08000ee8                NVIC_vidInit
  .text.NVIC_vidEnableInterrupt
-                0x08001178       0x28 ./src/NVIC_prog.o
-                0x08001178                NVIC_vidEnableInterrupt
+                0x08000ef8       0x28 ./src/NVIC_prog.o
+                0x08000ef8                NVIC_vidEnableInterrupt
  .text.RCC_vidInit
-                0x080011a0       0xc4 ./src/RCC_prog.o
-                0x080011a0                RCC_vidInit
+                0x08000f20       0xc4 ./src/RCC_prog.o
+                0x08000f20                RCC_vidInit
  .text.RCC_vidEnablePeripheral
-                0x08001264       0x54 ./src/RCC_prog.o
-                0x08001264                RCC_vidEnablePeripheral
+                0x08000fe4       0x54 ./src/RCC_prog.o
+                0x08000fe4                RCC_vidEnablePeripheral
  .text.RCC_vidResetResetFlags
-                0x080012b8       0x10 ./src/RCC_prog.o
-                0x080012b8                RCC_vidResetResetFlags
+                0x08001038       0x10 ./src/RCC_prog.o
+                0x08001038                RCC_vidResetResetFlags
  .text.RCC_u8GetResetFlag
-                0x080012c8       0x30 ./src/RCC_prog.o
-                0x080012c8                RCC_u8GetResetFlag
- .text.main     0x080012f8      0x16c ./src/main.o
-                0x080012f8                main
- .text.__errno  0x08001464        0xc c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
-                0x08001464                __errno
- .text.memset   0x08001470       0x10 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
-                0x08001470                memset
+                0x08001048       0x30 ./src/RCC_prog.o
+                0x08001048                RCC_u8GetResetFlag
+ .text.main     0x08001078      0x130 ./src/main.o
+                0x08001078                main
+ .text.__errno  0x080011a8        0xc e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
+                0x080011a8                __errno
+ .text.memset   0x080011b4       0x10 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
+                0x080011b4                memset
  .text._vsnprintf_r
-                0x08001480       0x58 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
-                0x08001480                _vsniprintf_r
-                0x08001480                _vsnprintf_r
+                0x080011c4       0x58 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
+                0x080011c4                _vsniprintf_r
+                0x080011c4                _vsnprintf_r
  .text.vsnprintf
-                0x080014d8       0x1c c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
-                0x080014d8                vsniprintf
-                0x080014d8                vsnprintf
+                0x0800121c       0x1c e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
+                0x0800121c                vsniprintf
+                0x0800121c                vsnprintf
  .text.__ssputs_r
-                0x080014f4       0xb4 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x080014f4                __ssputs_r
+                0x08001238       0xb4 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x08001238                __ssputs_r
  .text._svfprintf_r
-                0x080015a8      0x1ec c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x080015a8                _svfiprintf_r
-                0x080015a8                _svfprintf_r
+                0x080012ec      0x1ec e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x080012ec                _svfiprintf_r
+                0x080012ec                _svfprintf_r
  .text._printf_common
-                0x08001794       0xec c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x08001794                _printf_common
+                0x080014d8       0xec e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x080014d8                _printf_common
  .text._printf_i
-                0x08001880      0x224 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x08001880                _printf_i
- .text.memchr   0x08001aa4       0x1c c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
-                0x08001aa4                memchr
- .text.memcpy   0x08001ac0       0x16 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
-                0x08001ac0                memcpy
- .text.memmove  0x08001ad6       0x32 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
-                0x08001ad6                memmove
- .text._free_r  0x08001b08       0x98 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
-                0x08001b08                _free_r
+                0x080015c4      0x224 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x080015c4                _printf_i
+ .text.memchr   0x080017e8       0x1c e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
+                0x080017e8                memchr
+ .text.memcpy   0x08001804       0x16 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x08001804                memcpy
+ .text.memmove  0x0800181a       0x32 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
+                0x0800181a                memmove
+ .text._free_r  0x0800184c       0x98 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
+                0x0800184c                _free_r
  .text._malloc_r
-                0x08001ba0       0xb4 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x08001ba0                _malloc_r
+                0x080018e4       0xb4 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x080018e4                _malloc_r
  .text._realloc_r
-                0x08001c54       0x4c c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
-                0x08001c54                _realloc_r
- .text._sbrk_r  0x08001ca0       0x20 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
-                0x08001ca0                _sbrk_r
+                0x08001998       0x4c e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
+                0x08001998                _realloc_r
+ .text._sbrk_r  0x080019e4       0x20 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
+                0x080019e4                _sbrk_r
  .text.__malloc_lock
-                0x08001cc0        0x2 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
-                0x08001cc0                __malloc_lock
+                0x08001a04        0x2 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
+                0x08001a04                __malloc_lock
  .text.__malloc_unlock
-                0x08001cc2        0x2 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
-                0x08001cc2                __malloc_unlock
+                0x08001a06        0x2 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
+                0x08001a06                __malloc_unlock
  .text._malloc_usable_size_r
-                0x08001cc4       0x10 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
-                0x08001cc4                _malloc_usable_size_r
+                0x08001a08       0x10 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
+                0x08001a08                _malloc_usable_size_r
  *(.rodata .rodata.* .constdata .constdata.*)
  .rodata.dumpExceptionStack.str1.4
-                0x08001cd4      0x11a ./system/src/cortexm/exception_handlers.o
- *fill*         0x08001dee        0x2 
+                0x08001a18      0x11a ./system/src/cortexm/exception_handlers.o
+ *fill*         0x08001b32        0x2 
  .rodata.str1.4
-                0x08001df0       0x2c ./system/src/cortexm/exception_handlers.o
+                0x08001b34       0x2c ./system/src/cortexm/exception_handlers.o
                                  0x2a (size before relaxing)
- .rodata        0x08001e1c       0x23 ./src/DIO_prog.o
+ .rodata        0x08001b60       0x23 ./src/DIO_prog.o
  .rodata._svfprintf_r.str1.1
-                0x08001e3f       0x11 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x08001b83       0x11 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
  .rodata._printf_i.str1.1
-                0x08001e50       0x22 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x08001b94       0x22 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
  *(vtable)
  *(.eh_frame*)
  *(.glue_7)
- .glue_7        0x08001e72        0x0 linker stubs
+ .glue_7        0x08001bb6        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x08001e72        0x0 linker stubs
+ .glue_7t       0x08001bb6        0x0 linker stubs
 
-.vfp11_veneer   0x08001e74        0x0
- .vfp11_veneer  0x08001e74        0x0 linker stubs
+.vfp11_veneer   0x08001bb8        0x0
+ .vfp11_veneer  0x08001bb8        0x0 linker stubs
 
-.v4_bx          0x08001e74        0x0
- .v4_bx         0x08001e74        0x0 linker stubs
+.v4_bx          0x08001bb8        0x0
+ .v4_bx         0x08001bb8        0x0 linker stubs
 
-.iplt           0x08001e74        0x0
- .iplt          0x08001e74        0x0 ./system/src/newlib/_exit.o
+.iplt           0x08001bb8        0x0
+ .iplt          0x08001bb8        0x0 ./system/src/newlib/_exit.o
 
-.rel.dyn        0x08001e74        0x0
- .rel.iplt      0x08001e74        0x0 ./system/src/newlib/_exit.o
+.rel.dyn        0x08001bb8        0x0
+ .rel.iplt      0x08001bb8        0x0 ./system/src/newlib/_exit.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x08001e74                . = ALIGN (0x4)
-                0x08001e74                __exidx_start = .
+                0x08001bb8                . = ALIGN (0x4)
+                0x08001bb8                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x08001e74                __exidx_end = .
-                0x08001e74                . = ALIGN (0x4)
-                0x08001e74                _etext = .
-                0x08001e74                __etext = .
+                0x08001bb8                __exidx_end = .
+                0x08001bb8                . = ALIGN (0x4)
+                0x08001bb8                _etext = .
+                0x08001bb8                __etext = .
 
-.data_CCMRAM    0x00000000        0x0 load address 0x08001e74
+.data_CCMRAM    0x00000000        0x0 load address 0x08001bb8
  FILL mask 0xff
  *(.data.CCMRAM .data.CCMRAM.*)
                 0x00000000                . = ALIGN (0x4)
-                0x08001e74                _sidata = LOADADDR (.data)
+                0x08001bb8                _sidata = LOADADDR (.data)
 
-.data           0x20000000       0x9c load address 0x08001e74
+.data           0x20000000       0x9c load address 0x08001bb8
  FILL mask 0xff
                 0x20000000                _sdata = .
                 0x20000000                __data_start__ = .
@@ -2273,17 +2274,17 @@ END GROUP
                 0x20000028        0xc ./src/DIO_prog.o
                 0x20000028                DIO_apgpioRegisters
  .data._impure_ptr
-                0x20000034        0x4 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
+                0x20000034        0x4 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
                 0x20000034                _impure_ptr
  .data.impure_data
-                0x20000038       0x60 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
+                0x20000038       0x60 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
  *(.data_end .data_end.*)
  .data_end      0x20000098        0x4 ./system/src/newlib/_startup.o
                 0x2000009c                . = ALIGN (0x4)
                 0x2000009c                _edata = .
                 0x2000009c                __data_end__ = .
 
-.igot.plt       0x2000009c        0x0 load address 0x08001f10
+.igot.plt       0x2000009c        0x0 load address 0x08001c54
  .igot.plt      0x2000009c        0x0 ./system/src/newlib/_exit.o
 
 .bss_CCMRAM     0x00000000        0x0
@@ -2314,14 +2315,14 @@ END GROUP
  .bss.u8RxMsgIndex.5623
                 0x20000132        0x1 ./src/CAN.o
  *fill*         0x20000133        0x1 
- .bss.u16AddressOffset.4811
+ .bss.u16AddressOffset.4806
                 0x20000134        0x2 ./src/HexDataProcessor_prog.o
  *fill*         0x20000136        0x2 
  .bss.__malloc_free_list
-                0x20000138        0x4 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x20000138        0x4 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
                 0x20000138                __malloc_free_list
  .bss.__malloc_sbrk_start
-                0x2000013c        0x4 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x2000013c        0x4 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
                 0x2000013c                __malloc_sbrk_start
  *(COMMON)
  COMMON         0x20000140        0x4 ./system/src/newlib/_syscalls.o
@@ -2416,7 +2417,6 @@ END GROUP
  .comment       0x0000007e       0x7f ./system/src/cmsis/system_stm32f10x.o
  .comment       0x0000007e       0x7f ./system/src/cmsis/vectors_stm32f10x.o
  .comment       0x0000007e       0x7f ./src/CAN.o
- .comment       0x0000007e       0x7f ./src/CANHANDLER_prog.o
  .comment       0x0000007e       0x7f ./src/DIO_prog.o
  .comment       0x0000007e       0x7f ./src/FLASH_prog.o
  .comment       0x0000007e       0x7f ./src/HexDataProcessor_prog.o
@@ -2449,49 +2449,47 @@ END GROUP
  .ARM.attributes
                 0x000001fe       0x33 ./src/CAN.o
  .ARM.attributes
-                0x00000231       0x33 ./src/CANHANDLER_prog.o
+                0x00000231       0x33 ./src/DIO_prog.o
  .ARM.attributes
-                0x00000264       0x33 ./src/DIO_prog.o
+                0x00000264       0x33 ./src/FLASH_prog.o
  .ARM.attributes
-                0x00000297       0x33 ./src/FLASH_prog.o
+                0x00000297       0x33 ./src/HexDataProcessor_prog.o
  .ARM.attributes
-                0x000002ca       0x33 ./src/HexDataProcessor_prog.o
+                0x000002ca       0x33 ./src/NVIC_prog.o
  .ARM.attributes
-                0x000002fd       0x33 ./src/NVIC_prog.o
+                0x000002fd       0x33 ./src/RCC_prog.o
  .ARM.attributes
-                0x00000330       0x33 ./src/RCC_prog.o
+                0x00000330       0x33 ./src/main.o
  .ARM.attributes
-                0x00000363       0x33 ./src/main.o
+                0x00000363       0x2d e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
  .ARM.attributes
-                0x00000396       0x2d c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
+                0x00000390       0x2d e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
  .ARM.attributes
-                0x000003c3       0x2d c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
+                0x000003bd       0x2d e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
  .ARM.attributes
-                0x000003f0       0x2d c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
+                0x000003ea       0x2d e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
  .ARM.attributes
-                0x0000041d       0x2d c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
+                0x00000417       0x2d e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
  .ARM.attributes
-                0x0000044a       0x2d c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x00000444       0x2d e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
  .ARM.attributes
-                0x00000477       0x2d c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x00000471       0x2d e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
  .ARM.attributes
-                0x000004a4       0x2d c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
+                0x0000049e       0x2d e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
  .ARM.attributes
-                0x000004d1       0x2d c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x000004cb       0x2d e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
  .ARM.attributes
-                0x000004fe       0x2d c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
+                0x000004f8       0x2d e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
  .ARM.attributes
-                0x0000052b       0x2d c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
+                0x00000525       0x2d e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
  .ARM.attributes
-                0x00000558       0x2d c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x00000552       0x2d e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
  .ARM.attributes
-                0x00000585       0x2d c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
+                0x0000057f       0x2d e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
  .ARM.attributes
-                0x000005b2       0x2d c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
+                0x000005ac       0x2d e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
  .ARM.attributes
-                0x000005df       0x2d c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
- .ARM.attributes
-                0x0000060c       0x2d c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
+                0x000005d9       0x2d e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
 
 .debug
  *(.debug)
@@ -2505,7 +2503,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x448
+.debug_aranges  0x00000000      0x418
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x28 ./system/src/newlib/_exit.o
@@ -2530,24 +2528,22 @@ END GROUP
  .debug_aranges
                 0x00000230       0x78 ./src/CAN.o
  .debug_aranges
-                0x000002a8       0x20 ./src/CANHANDLER_prog.o
+                0x000002a8       0x30 ./src/DIO_prog.o
  .debug_aranges
-                0x000002c8       0x30 ./src/DIO_prog.o
+                0x000002d8       0x40 ./src/FLASH_prog.o
  .debug_aranges
-                0x000002f8       0x50 ./src/FLASH_prog.o
+                0x00000318       0x50 ./src/HexDataProcessor_prog.o
  .debug_aranges
-                0x00000348       0x50 ./src/HexDataProcessor_prog.o
+                0x00000368       0x50 ./src/NVIC_prog.o
  .debug_aranges
-                0x00000398       0x50 ./src/NVIC_prog.o
+                0x000003b8       0x40 ./src/RCC_prog.o
  .debug_aranges
-                0x000003e8       0x40 ./src/RCC_prog.o
- .debug_aranges
-                0x00000428       0x20 ./src/main.o
+                0x000003f8       0x20 ./src/main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x7caa
+.debug_info     0x00000000     0x7946
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x956 ./system/src/newlib/_exit.o
  .debug_info    0x00000956      0x942 ./system/src/newlib/_sbrk.o
@@ -2560,15 +2556,14 @@ END GROUP
  .debug_info    0x00004361      0x494 ./system/src/cmsis/system_stm32f10x.o
  .debug_info    0x000047f5       0xca ./system/src/cmsis/vectors_stm32f10x.o
  .debug_info    0x000048bf      0xfca ./src/CAN.o
- .debug_info    0x00005889      0x211 ./src/CANHANDLER_prog.o
- .debug_info    0x00005a9a      0x223 ./src/DIO_prog.o
- .debug_info    0x00005cbd      0x299 ./src/FLASH_prog.o
- .debug_info    0x00005f56      0xc9a ./src/HexDataProcessor_prog.o
- .debug_info    0x00006bf0      0x18b ./src/NVIC_prog.o
- .debug_info    0x00006d7b      0x12a ./src/RCC_prog.o
- .debug_info    0x00006ea5      0xe05 ./src/main.o
+ .debug_info    0x00005889      0x223 ./src/DIO_prog.o
+ .debug_info    0x00005aac      0x1ff ./src/FLASH_prog.o
+ .debug_info    0x00005cab      0xc9a ./src/HexDataProcessor_prog.o
+ .debug_info    0x00006945      0x18b ./src/NVIC_prog.o
+ .debug_info    0x00006ad0      0x12a ./src/RCC_prog.o
+ .debug_info    0x00006bfa      0xd4c ./src/main.o
 
-.debug_abbrev   0x00000000     0x1f48
+.debug_abbrev   0x00000000     0x1e0d
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x1f3 ./system/src/newlib/_exit.o
  .debug_abbrev  0x000001f3      0x1fc ./system/src/newlib/_sbrk.o
@@ -2581,36 +2576,34 @@ END GROUP
  .debug_abbrev  0x00001043      0x177 ./system/src/cmsis/system_stm32f10x.o
  .debug_abbrev  0x000011ba       0x9d ./system/src/cmsis/vectors_stm32f10x.o
  .debug_abbrev  0x00001257      0x300 ./src/CAN.o
- .debug_abbrev  0x00001557      0x100 ./src/CANHANDLER_prog.o
- .debug_abbrev  0x00001657       0xfd ./src/DIO_prog.o
- .debug_abbrev  0x00001754      0x135 ./src/FLASH_prog.o
- .debug_abbrev  0x00001889      0x2b7 ./src/HexDataProcessor_prog.o
- .debug_abbrev  0x00001b40       0xc4 ./src/NVIC_prog.o
- .debug_abbrev  0x00001c04       0x9b ./src/RCC_prog.o
- .debug_abbrev  0x00001c9f      0x2a9 ./src/main.o
+ .debug_abbrev  0x00001557       0xfd ./src/DIO_prog.o
+ .debug_abbrev  0x00001654       0xfb ./src/FLASH_prog.o
+ .debug_abbrev  0x0000174f      0x2b7 ./src/HexDataProcessor_prog.o
+ .debug_abbrev  0x00001a06       0xc4 ./src/NVIC_prog.o
+ .debug_abbrev  0x00001aca       0x9b ./src/RCC_prog.o
+ .debug_abbrev  0x00001b65      0x2a8 ./src/main.o
 
-.debug_line     0x00000000     0x3edd
+.debug_line     0x00000000     0x3c92
  *(.debug_line)
- .debug_line    0x00000000      0x393 ./system/src/newlib/_exit.o
- .debug_line    0x00000393      0x347 ./system/src/newlib/_sbrk.o
- .debug_line    0x000006da      0x401 ./system/src/newlib/_startup.o
- .debug_line    0x00000adb      0x46e ./system/src/newlib/_syscalls.o
- .debug_line    0x00000f49      0x40f ./system/src/diag/Trace.o
- .debug_line    0x00001358      0x67c ./system/src/diag/trace_impl.o
- .debug_line    0x000019d4      0x385 ./system/src/cortexm/_initialize_hardware.o
- .debug_line    0x00001d59      0x73e ./system/src/cortexm/exception_handlers.o
- .debug_line    0x00002497      0x3f8 ./system/src/cmsis/system_stm32f10x.o
- .debug_line    0x0000288f      0x111 ./system/src/cmsis/vectors_stm32f10x.o
- .debug_line    0x000029a0      0x560 ./src/CAN.o
- .debug_line    0x00002f00       0xbd ./src/CANHANDLER_prog.o
- .debug_line    0x00002fbd      0x146 ./src/DIO_prog.o
- .debug_line    0x00003103      0x19e ./src/FLASH_prog.o
- .debug_line    0x000032a1      0x549 ./src/HexDataProcessor_prog.o
- .debug_line    0x000037ea      0x107 ./src/NVIC_prog.o
- .debug_line    0x000038f1      0x119 ./src/RCC_prog.o
- .debug_line    0x00003a0a      0x4d3 ./src/main.o
+ .debug_line    0x00000000      0x37b ./system/src/newlib/_exit.o
+ .debug_line    0x0000037b      0x32f ./system/src/newlib/_sbrk.o
+ .debug_line    0x000006aa      0x3e9 ./system/src/newlib/_startup.o
+ .debug_line    0x00000a93      0x450 ./system/src/newlib/_syscalls.o
+ .debug_line    0x00000ee3      0x3f7 ./system/src/diag/Trace.o
+ .debug_line    0x000012da      0x664 ./system/src/diag/trace_impl.o
+ .debug_line    0x0000193e      0x37f ./system/src/cortexm/_initialize_hardware.o
+ .debug_line    0x00001cbd      0x726 ./system/src/cortexm/exception_handlers.o
+ .debug_line    0x000023e3      0x3f2 ./system/src/cmsis/system_stm32f10x.o
+ .debug_line    0x000027d5      0x10b ./system/src/cmsis/vectors_stm32f10x.o
+ .debug_line    0x000028e0      0x548 ./src/CAN.o
+ .debug_line    0x00002e28      0x146 ./src/DIO_prog.o
+ .debug_line    0x00002f6e      0x12a ./src/FLASH_prog.o
+ .debug_line    0x00003098      0x531 ./src/HexDataProcessor_prog.o
+ .debug_line    0x000035c9      0x107 ./src/NVIC_prog.o
+ .debug_line    0x000036d0      0x119 ./src/RCC_prog.o
+ .debug_line    0x000037e9      0x4a9 ./src/main.o
 
-.debug_frame    0x00000000      0xb78
+.debug_frame    0x00000000      0xb0c
  *(.debug_frame)
  .debug_frame   0x00000000       0x38 ./system/src/newlib/_exit.o
  .debug_frame   0x00000038       0x28 ./system/src/newlib/_sbrk.o
@@ -2623,68 +2616,65 @@ END GROUP
  .debug_frame   0x000003bc       0x6c ./system/src/cmsis/system_stm32f10x.o
  .debug_frame   0x00000428       0x20 ./system/src/cmsis/vectors_stm32f10x.o
  .debug_frame   0x00000448      0x11c ./src/CAN.o
- .debug_frame   0x00000564       0x30 ./src/CANHANDLER_prog.o
- .debug_frame   0x00000594       0x54 ./src/DIO_prog.o
- .debug_frame   0x000005e8       0xac ./src/FLASH_prog.o
- .debug_frame   0x00000694       0xbc ./src/HexDataProcessor_prog.o
- .debug_frame   0x00000750       0x80 ./src/NVIC_prog.o
- .debug_frame   0x000007d0       0x60 ./src/RCC_prog.o
- .debug_frame   0x00000830       0x38 ./src/main.o
- .debug_frame   0x00000868       0x20 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
- .debug_frame   0x00000888       0x20 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
- .debug_frame   0x000008a8       0x4c c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
- .debug_frame   0x000008f4       0x90 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
- .debug_frame   0x00000984       0x60 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
- .debug_frame   0x000009e4       0x28 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
- .debug_frame   0x00000a0c       0x28 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
- .debug_frame   0x00000a34       0x28 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
- .debug_frame   0x00000a5c       0x38 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
- .debug_frame   0x00000a94       0x2c c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
- .debug_frame   0x00000ac0       0x3c c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
- .debug_frame   0x00000afc       0x2c c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
- .debug_frame   0x00000b28       0x30 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
- .debug_frame   0x00000b58       0x20 c:/users/sondos97/documents/arm/arm tools/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
+ .debug_frame   0x00000564       0x54 ./src/DIO_prog.o
+ .debug_frame   0x000005b8       0x78 ./src/FLASH_prog.o
+ .debug_frame   0x00000630       0xbc ./src/HexDataProcessor_prog.o
+ .debug_frame   0x000006ec       0x80 ./src/NVIC_prog.o
+ .debug_frame   0x0000076c       0x60 ./src/RCC_prog.o
+ .debug_frame   0x000007cc       0x30 ./src/main.o
+ .debug_frame   0x000007fc       0x20 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x0000081c       0x20 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
+ .debug_frame   0x0000083c       0x4c e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
+ .debug_frame   0x00000888       0x90 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+ .debug_frame   0x00000918       0x60 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .debug_frame   0x00000978       0x28 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
+ .debug_frame   0x000009a0       0x28 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x000009c8       0x28 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
+ .debug_frame   0x000009f0       0x38 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
+ .debug_frame   0x00000a28       0x2c e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
+ .debug_frame   0x00000a54       0x3c e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
+ .debug_frame   0x00000a90       0x2c e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
+ .debug_frame   0x00000abc       0x30 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
+ .debug_frame   0x00000aec       0x20 e:/arm course/arm tools/01- imt sdk/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
 
-.debug_str      0x00000000    0x596d0
+.debug_str      0x00000000    0x59364
  *(.debug_str)
- .debug_str     0x00000000     0x7d1b ./system/src/newlib/_exit.o
-                               0x7eee (size before relaxing)
- .debug_str     0x00007d1b      0x4f5 ./system/src/newlib/_sbrk.o
-                               0x72a0 (size before relaxing)
- .debug_str     0x00008210      0xbbd ./system/src/newlib/_startup.o
-                               0x69db (size before relaxing)
- .debug_str     0x00008dcd      0xe8b ./system/src/newlib/_syscalls.o
-                               0x817b (size before relaxing)
- .debug_str     0x00009c58      0x826 ./system/src/diag/Trace.o
-                               0x8666 (size before relaxing)
- .debug_str     0x0000a47e    0x4b2b9 ./system/src/diag/trace_impl.o
-                              0x52a4c (size before relaxing)
- .debug_str     0x00055737       0xc4 ./system/src/cortexm/_initialize_hardware.o
-                              0x4e83d (size before relaxing)
- .debug_str     0x000557fb      0x1a6 ./system/src/cortexm/exception_handlers.o
-                              0x53c71 (size before relaxing)
- .debug_str     0x000559a1      0x114 ./system/src/cmsis/system_stm32f10x.o
-                              0x4e8d7 (size before relaxing)
- .debug_str     0x00055ab5       0x57 ./system/src/cmsis/vectors_stm32f10x.o
-                               0x387c (size before relaxing)
- .debug_str     0x00055b0c     0x1c03 ./src/CAN.o
-                               0xa18b (size before relaxing)
- .debug_str     0x0005770f       0xa3 ./src/CANHANDLER_prog.o
-                               0x3229 (size before relaxing)
- .debug_str     0x000577b2      0x438 ./src/DIO_prog.o
-                               0x3ce1 (size before relaxing)
- .debug_str     0x00057bea      0x611 ./src/FLASH_prog.o
-                               0x3720 (size before relaxing)
- .debug_str     0x000581fb      0x49f ./src/HexDataProcessor_prog.o
-                               0x7ce3 (size before relaxing)
- .debug_str     0x0005869a      0x1cd ./src/NVIC_prog.o
-                               0x36dc (size before relaxing)
- .debug_str     0x00058867      0xcfe ./src/RCC_prog.o
-                               0x42c4 (size before relaxing)
- .debug_str     0x00059565      0x16b ./src/main.o
-                               0x9663 (size before relaxing)
+ .debug_str     0x00000000     0x7d0f ./system/src/newlib/_exit.o
+                               0x7ee2 (size before relaxing)
+ .debug_str     0x00007d0f      0x4f5 ./system/src/newlib/_sbrk.o
+                               0x7294 (size before relaxing)
+ .debug_str     0x00008204      0xbbd ./system/src/newlib/_startup.o
+                               0x69cf (size before relaxing)
+ .debug_str     0x00008dc1      0xe8b ./system/src/newlib/_syscalls.o
+                               0x816f (size before relaxing)
+ .debug_str     0x00009c4c      0x826 ./system/src/diag/Trace.o
+                               0x865a (size before relaxing)
+ .debug_str     0x0000a472    0x4b2b9 ./system/src/diag/trace_impl.o
+                              0x52a40 (size before relaxing)
+ .debug_str     0x0005572b       0xc4 ./system/src/cortexm/_initialize_hardware.o
+                              0x4e831 (size before relaxing)
+ .debug_str     0x000557ef      0x1a6 ./system/src/cortexm/exception_handlers.o
+                              0x53c65 (size before relaxing)
+ .debug_str     0x00055995      0x114 ./system/src/cmsis/system_stm32f10x.o
+                              0x4e8cb (size before relaxing)
+ .debug_str     0x00055aa9       0x57 ./system/src/cmsis/vectors_stm32f10x.o
+                               0x3870 (size before relaxing)
+ .debug_str     0x00055b00     0x1c03 ./src/CAN.o
+                               0xa17f (size before relaxing)
+ .debug_str     0x00057703      0x438 ./src/DIO_prog.o
+                               0x3cd5 (size before relaxing)
+ .debug_str     0x00057b3b      0x39c ./src/FLASH_prog.o
+                               0x347c (size before relaxing)
+ .debug_str     0x00057ed7      0x4ac ./src/HexDataProcessor_prog.o
+                               0x7cb1 (size before relaxing)
+ .debug_str     0x00058383      0x1cd ./src/NVIC_prog.o
+                               0x36d0 (size before relaxing)
+ .debug_str     0x00058550      0xcfe ./src/RCC_prog.o
+                               0x42b8 (size before relaxing)
+ .debug_str     0x0005924e      0x116 ./src/main.o
+                               0x9559 (size before relaxing)
 
-.debug_loc      0x00000000     0x18af
+.debug_loc      0x00000000     0x15ac
  *(.debug_loc)
  .debug_loc     0x00000000       0x85 ./system/src/newlib/_sbrk.o
  .debug_loc     0x00000085      0x1a9 ./system/src/newlib/_startup.o
@@ -2694,13 +2684,12 @@ END GROUP
  .debug_loc     0x000004a8      0x291 ./system/src/cortexm/exception_handlers.o
  .debug_loc     0x00000739       0xdf ./system/src/cmsis/system_stm32f10x.o
  .debug_loc     0x00000818      0x184 ./src/CAN.o
- .debug_loc     0x0000099c      0x160 ./src/CANHANDLER_prog.o
- .debug_loc     0x00000afc      0x1b6 ./src/DIO_prog.o
- .debug_loc     0x00000cb2      0x1ea ./src/FLASH_prog.o
- .debug_loc     0x00000e9c      0x581 ./src/HexDataProcessor_prog.o
- .debug_loc     0x0000141d      0x15f ./src/NVIC_prog.o
- .debug_loc     0x0000157c      0x130 ./src/RCC_prog.o
- .debug_loc     0x000016ac      0x203 ./src/main.o
+ .debug_loc     0x0000099c      0x1b6 ./src/DIO_prog.o
+ .debug_loc     0x00000b52       0xd8 ./src/FLASH_prog.o
+ .debug_loc     0x00000c2a      0x581 ./src/HexDataProcessor_prog.o
+ .debug_loc     0x000011ab      0x15f ./src/NVIC_prog.o
+ .debug_loc     0x0000130a      0x130 ./src/RCC_prog.o
+ .debug_loc     0x0000143a      0x172 ./src/main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -2716,9 +2705,9 @@ END GROUP
 
 .debug_varnames
  *(.debug_varnames)
-OUTPUT(APP_Bootloader2.elf elf32-littlearm)
+OUTPUT(Project_APPBootloader.elf elf32-littlearm)
 
-.debug_ranges   0x00000000      0x3a0
+.debug_ranges   0x00000000      0x380
  .debug_ranges  0x00000000       0x18 ./system/src/newlib/_exit.o
  .debug_ranges  0x00000018       0x10 ./system/src/newlib/_sbrk.o
  .debug_ranges  0x00000028       0x78 ./system/src/newlib/_startup.o
@@ -2730,15 +2719,14 @@ OUTPUT(APP_Bootloader2.elf elf32-littlearm)
  .debug_ranges  0x000001d0       0x28 ./system/src/cmsis/system_stm32f10x.o
  .debug_ranges  0x000001f8       0x10 ./system/src/cmsis/vectors_stm32f10x.o
  .debug_ranges  0x00000208       0x68 ./src/CAN.o
- .debug_ranges  0x00000270       0x10 ./src/CANHANDLER_prog.o
- .debug_ranges  0x00000280       0x20 ./src/DIO_prog.o
- .debug_ranges  0x000002a0       0x40 ./src/FLASH_prog.o
- .debug_ranges  0x000002e0       0x40 ./src/HexDataProcessor_prog.o
- .debug_ranges  0x00000320       0x40 ./src/NVIC_prog.o
- .debug_ranges  0x00000360       0x30 ./src/RCC_prog.o
- .debug_ranges  0x00000390       0x10 ./src/main.o
+ .debug_ranges  0x00000270       0x20 ./src/DIO_prog.o
+ .debug_ranges  0x00000290       0x30 ./src/FLASH_prog.o
+ .debug_ranges  0x000002c0       0x40 ./src/HexDataProcessor_prog.o
+ .debug_ranges  0x00000300       0x40 ./src/NVIC_prog.o
+ .debug_ranges  0x00000340       0x30 ./src/RCC_prog.o
+ .debug_ranges  0x00000370       0x10 ./src/main.o
 
-.debug_macro    0x00000000     0x3b6d
+.debug_macro    0x00000000     0x3aa9
  .debug_macro   0x00000000      0x1b4 ./system/src/newlib/_exit.o
  .debug_macro   0x000001b4       0x9c ./system/src/newlib/_exit.o
  .debug_macro   0x00000250      0x10e ./system/src/newlib/_exit.o
@@ -2793,19 +2781,16 @@ OUTPUT(APP_Bootloader2.elf elf32-littlearm)
  .debug_macro   0x00002bd9      0x172 ./src/CAN.o
  .debug_macro   0x00002d4b       0xa6 ./src/CAN.o
  .debug_macro   0x00002df1       0x22 ./src/CAN.o
- .debug_macro   0x00002e13       0x35 ./src/CANHANDLER_prog.o
- .debug_macro   0x00002e48       0x16 ./src/CANHANDLER_prog.o
- .debug_macro   0x00002e5e       0x3e ./src/DIO_prog.o
- .debug_macro   0x00002e9c       0xb8 ./src/DIO_prog.o
- .debug_macro   0x00002f54       0x3f ./src/FLASH_prog.o
- .debug_macro   0x00002f93      0x14e ./src/FLASH_prog.o
- .debug_macro   0x000030e1       0x16 ./src/FLASH_prog.o
- .debug_macro   0x000030f7      0x1c3 ./src/HexDataProcessor_prog.o
- .debug_macro   0x000032ba       0x10 ./src/HexDataProcessor_prog.o
- .debug_macro   0x000032ca       0x9a ./src/HexDataProcessor_prog.o
- .debug_macro   0x00003364       0x3b ./src/NVIC_prog.o
- .debug_macro   0x0000339f       0x2e ./src/NVIC_prog.o
- .debug_macro   0x000033cd       0x3e ./src/RCC_prog.o
- .debug_macro   0x0000340b      0x4db ./src/RCC_prog.o
- .debug_macro   0x000038e6      0x265 ./src/main.o
- .debug_macro   0x00003b4b       0x22 ./src/main.o
+ .debug_macro   0x00002e13       0x3e ./src/DIO_prog.o
+ .debug_macro   0x00002e51       0xb8 ./src/DIO_prog.o
+ .debug_macro   0x00002f09       0x40 ./src/FLASH_prog.o
+ .debug_macro   0x00002f49       0xfa ./src/FLASH_prog.o
+ .debug_macro   0x00003043      0x1c4 ./src/HexDataProcessor_prog.o
+ .debug_macro   0x00003207       0x10 ./src/HexDataProcessor_prog.o
+ .debug_macro   0x00003217       0x9a ./src/HexDataProcessor_prog.o
+ .debug_macro   0x000032b1       0x3b ./src/NVIC_prog.o
+ .debug_macro   0x000032ec       0x2e ./src/NVIC_prog.o
+ .debug_macro   0x0000331a       0x3e ./src/RCC_prog.o
+ .debug_macro   0x00003358      0x4db ./src/RCC_prog.o
+ .debug_macro   0x00003833      0x25a ./src/main.o
+ .debug_macro   0x00003a8d       0x1c ./src/main.o

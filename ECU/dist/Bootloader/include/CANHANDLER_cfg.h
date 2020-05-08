@@ -17,7 +17,7 @@
 /* Range:		u8															*/
 #define CANHANDLER_u8UPDATEREQUESTID		40
 #define CANHANDLER_u8HEXFILEID				45
-
+#define CANHANDLER_u8NEXTMSGREQUEST			60
 
 /* Description:	Rx Message IDs												*/
 /* Range:		u8															*/
