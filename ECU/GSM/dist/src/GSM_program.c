@@ -40,11 +40,14 @@ u8* pu8UARTBuffer = (void*)0;
 /****************************************************************************************/
 Error_Status GSM_enuInit(u8 u8GSMUARTChannel)
 {
+
 	Error_Status enuReturnValue = OK;
 	Error_Status enuCheckValue = NOK;
 
+
 	if (u8GSMUARTChannel < 6)
 	{
+		//------------State_1------------------------------
 		GSM_u8USARTChannel = u8GSMUARTChannel;
 
 		while (enuCheckValue == NOK)
@@ -52,8 +55,10 @@ Error_Status GSM_enuInit(u8 u8GSMUARTChannel)
 			enuCheckValue = enuSendCommand( "ATE0" );
 		}
 
+		//------------State_2------------------------------
 		enuSendCommand("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");		/* Set the Connection type to GPRS */
 
+		//------------State_3------------------------------
 		/* Open the GPRS Context */
 		enuCheckValue = enuSendCommand("AT+SAPBR=1,1");
 		while (enuCheckValue == NOK)
@@ -80,6 +85,7 @@ void GSM_vidInitHTTP(void)
 {
 	Error_Status enuErrorCheck = OK;
 
+	//------------State_1------------------------------
 	/* Initiate HTTP */
 	enuErrorCheck = enuSendCommand("AT+HTTPINIT");
 	while (enuErrorCheck == NOK)
@@ -88,8 +94,11 @@ void GSM_vidInitHTTP(void)
 		enuErrorCheck = enuSendCommand("AT+HTTPINIT");
 	}
 
+	//------------State_2------------------------------
 	enuSendCommand("AT+HTTPSSL=1");							/* Enable HTTPS */
+	//------------State_3------------------------------
 	enuSendCommand("AT+HTTPPARA=\"CID\",1");			/* Choose barrier profile */
+	//------------State_4------------------------------
 	enuSendCommand("AT+HTTPPARA=\"REDIR\",1");		/* Enable redirection (i.e. If domain redirected to the secure page) */
 }
 
@@ -275,29 +284,40 @@ u16 GSM_u16GETData(u32 u32StartPoint, u16 u16DataLength, u8* au8Data)
 Error_Status GSM_enuPOSTRequestInit(const u8* pu8URL, const u8* postRequestData, u8* responseData, u32 * pu32DataSize)
 
 {
+	/*
+	 * au8ResponseBuffer[] --> Global variable */
 	u32 u32Counter = 0;
 	volatile u8 au8ResponseBuffer[64] = {0};		/* \r\nOK\r\n or \r\nERROR\r\n */
 	Error_Status enuErrorCheck = OK;
 	Error_Status enuServerStatus;
 	u32 u32count=0;
-	enuErrorCheck = enuSendCommand("AT+HTTPPARA=\"content\",\"application/json\"");
 	*pu32DataSize = 0;
 
+	//------------State_1------------------------------
+	enuErrorCheck = enuSendCommand("AT+HTTPPARA=\"content\",\"application/json\"");
+
+
+	//------------State_2------------------------------
 	/*Send URL*/
 	USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8ResponseBuffer, 64 );
 	USART_voidSendString(GSM_u8USARTChannel, "AT+HTTPPARA=\"URL\",\"");
 	USART_voidSendString(GSM_u8USARTChannel, pu8URL);
 	USART_voidSendString(GSM_u8USARTChannel, "\"\r\n");
 
+	//------------State_3------------------------------
 	while (!u8CheckBufferTermination(au8ResponseBuffer, 9, 2));
 	DMA_voidDisable(DMA_CHANNEL_5);
 
+	//------------State_4------------------------------
+
+	/* Note: High Excution time depending on data waiting time - Bottleneck */
 	vidClearBuffer(au8ResponseBuffer, 64);
 
 	/*Send HTTP POST request data*/
 	USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8ResponseBuffer, 64 );
-	USART_voidSendString(GSM_u8USARTChannel, "AT+HTTPDATA=100,10000");
+	USART_voidSendString(GSM_u8USARTChannel, "AT+HTTPDATA=100,10000");  //minimize waiting time
 	USART_voidSendString(GSM_u8USARTChannel, "\r\n");
+
 	enuErrorCheck=NOK;
 	while(enuErrorCheck == NOK && u32count<1000)
 	{
@@ -311,15 +331,19 @@ Error_Status GSM_enuPOSTRequestInit(const u8* pu8URL, const u8* postRequestData,
 	while ( !u8CheckBufferTermination( au8ResponseBuffer, 64, 4 ) );
 	DMA_voidDisable( DMA_CHANNEL_5 );
 
+	//------------State_5------------------------------
 	vidClearBuffer(au8ResponseBuffer, 64);
 	/*Send ACTION cmd */
 	USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8ResponseBuffer, 64 );
 	USART_voidSendString(GSM_u8USARTChannel, "AT+HTTPACTION=1");
 	USART_voidSendString(GSM_u8USARTChannel, "\r\n");
+
+	//------------State_6------------------------------
 	while ( !u8CheckBufferTermination( au8ResponseBuffer, 64, 4 ) );
 	DMA_voidDisable( DMA_CHANNEL_5 );
 
-	/*check if the Response status is 200 */
+	//------------State_7------------------------------
+	/* check if the Response status is 200 */
 	if ( au8ResponseBuffer[23] == '2' && au8ResponseBuffer[24] == '0' && au8ResponseBuffer[25] == '0' )
 	{
 		//Request and response are OK
@@ -328,6 +352,11 @@ Error_Status GSM_enuPOSTRequestInit(const u8* pu8URL, const u8* postRequestData,
 		{
 			*pu32DataSize = ((*pu32DataSize)* 10) + (au8ResponseBuffer[u32Counter] - '0');
 		}
+
+		/* ################################ ISSUE ################################## */
+		/* ############# Read version response and pass it to "responseData" ####### */
+		/* ######################################################################### */
+
 		return OK;
 	}
 	else
