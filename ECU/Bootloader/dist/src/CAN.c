@@ -20,8 +20,6 @@
 #include "util.h"
 #include "RCC_cfg.h"
 #include "RCC_int.h"
-#include "DIO_cfg.h"
-#include "DIO_int.h"
 #include "NVIC_int.h"
 #include "CAN_priv.h"                              // STM32 CAN adaption layer
 #include "CAN.h"
@@ -49,8 +47,6 @@ u8 u8MailBox1Flag;
 u8 value_2[8];
 u8 u8MailBox2Flag;
 
-strAFIO* AFIO_REG = AFIO_BASEADDRESS;
-
 
 
 
@@ -59,25 +55,6 @@ strAFIO* AFIO_REG = AFIO_BASEADDRESS;
  *----------------------------------------------------------------------------*/
 void CAN_setup (void)  {
 	u32 brp =  36000000;			//clock 36Mhz (salma)
-
-
-	RCC_vidEnablePeripheral(RCC_u8CANCLK);		// enable clock for CAN
-	// Note: MCBSTM32 uses PB8 and PB9 for CAN
-	RCC_vidEnablePeripheral(RCC_u8AFIOCLK);		// enable clock for Alternate Function
-
-
-	AFIO_REG->MAPR   &= Reset_Can_Remap;                     // reset CAN remap
-	AFIO_REG->MAPR   |= Set_Can_Remap;                     //   set CAN remap, use PB8, PB9 page 184 datasheet
-
-
-	RCC_vidEnablePeripheral(RCC_u8GPIOBCLK);			 // enable clock for GPIO B
-	DIO_vidInit();			// CAN RX pin PB.8 input pull down
-	// CAN TX pin PB.9 alternate output push pull 50MHz
-
-
-	NVIC_vidEnableInterrupt(NVIC_u8USB_HP_CAN_TX);			// enable interrupt
-
-	NVIC_vidEnableInterrupt(NVIC_u8USB_LP_CAN_RX0);			// enable interrupt
 
 	CAN1->MCR = (CAN_MCR_INRQ);       				// init mode, enable auto. retransmission                                         // Note: only FIFO 0, transmit mailbox 0 used
 	CAN1->MCR |= (1<<CAN_MCR_TXFP); 					//Transmit priority by request order

@@ -73,7 +73,8 @@ main(int argc, char* argv[])
 	u8 u8Counter  = 0;
 	u32 i = 0;
 	u8 rxcount = 0;
-	filter_type filters[] = {{CANHANDLER_u8UPDATEREQUESTID,REMOTE_FRAME, STANDARD_FORMAT}};
+	u8 au8version[3] = {0};
+	filter_type filters[] = {{CANHANDLER_u8UPDATEREQUESTID,REMOTE_FRAME, STANDARD_FORMAT}, {CANHANDLER_u8ECUSWVERSION,REMOTE_FRAME, STANDARD_FORMAT}};
 	RCC_vidInit();
 	RCC_vidEnablePeripheral(RCC_u8GPIOCCLK);
 	//	RCC_vidEnablePeripheral(RCC_u8GPIOBCLK);
@@ -83,15 +84,15 @@ main(int argc, char* argv[])
 	CAN_testmode(0);      // Normal, By Salma
 	CAN_start ();                                   // leave init mode
 	CAN_waitReady ();                               // wait til mbx is empty
-	CANHANDLER_vidSend(35, DATA_FRAME, HexData,1);
+//	CANHANDLER_vidSend(35, DATA_FRAME, HexData,1);
 	while (1)
 	{
-		DIO_vidSetPinValue(DIO_u8PORTC, DIO_u8PIN14, DIO_u8LOW);
+		DIO_vidSetPinValue(DIO_u8PORTC, DIO_u8PIN13, DIO_u8LOW);
 		for (i = 0; i < 8000000; i++)
 		{
 
 		}
-		DIO_vidSetPinValue(DIO_u8PORTC, DIO_u8PIN14, DIO_u8HIGH);
+		DIO_vidSetPinValue(DIO_u8PORTC, DIO_u8PIN13, DIO_u8HIGH);
 		for (i = 0; i < 8000000; i++)
 		{
 
@@ -111,6 +112,9 @@ main(int argc, char* argv[])
 				case CANHANDLER_u8UPDATEREQUESTID:
 					RCC_vidResetResetFlags();
 					SCB_vidPerformSoftReset();
+					break;
+				case CANHANDLER_u8ECUSWVERSION:
+					CANHANDLER_vidSend(CANHANDLER_u8ECUSWVERSION,CAN_u8DATAFRAME,au8version,3);
 					break;
 				}
 				CAN_RxMsg[rxcount].u8ActiveFlag = 0;

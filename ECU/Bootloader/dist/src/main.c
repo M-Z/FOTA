@@ -35,6 +35,8 @@
 #include "RCC_int.h"
 #include "DIO_int.h"
 #include "NVIC_int.h"
+#include "AFIO_init.h"
+#include "AFIO_config.h"
 #include "CAN.h"
 #include "CANHANDLER_int.h"
 #include "CANHANDLER_cfg.h"
@@ -88,9 +90,21 @@ main(int argc, char* argv[])
 	volatile u8 u8ResetReason = 0;
 //	pu32BaseAddress = 0x08010000;
 
-	filter_type filters[] = {{CANHANDLER_u8HEXFILEID,DATA_FRAME, STANDARD_FORMAT}};
+	u8 au8version[3] = {0};
+
+	filter_type filters[] = {{CANHANDLER_u8HEXFILEID,DATA_FRAME, STANDARD_FORMAT}, {CANHANDLER_u8ECUSWVERSION, REMOTE_FRAME,STANDARD_FORMAT}};
 	RCC_vidInit();
 	RCC_vidEnablePeripheral(RCC_u8GPIOCCLK);
+	RCC_vidEnablePeripheral(RCC_u8CANCLK);
+	RCC_vidEnablePeripheral(RCC_u8AFIOCLK);		// enable clock for Alternate Function
+	RCC_vidEnablePeripheral(RCC_u8GPIOBCLK);			 // enable clock for GPIO B
+
+	AFIO_vidinit();
+	DIO_vidInit();
+
+	NVIC_vidEnableInterrupt(NVIC_u8USB_HP_CAN_TX);			// enable interrupt
+	NVIC_vidEnableInterrupt(NVIC_u8USB_LP_CAN_RX0);			// enable interrupt
+
 	//	RCC_vidEnablePeripheral(RCC_u8GPIOBCLK);
 	u8UsedBank = FLASH_u8GetOptionByteData(FLASH_u8OPTDATA0);
 	switch (u8UsedBank)
@@ -158,6 +172,9 @@ main(int argc, char* argv[])
 								countertest++;
 								CANHANDLER_vidSend(CANHANDLER_u8NEXTMSGREQUEST,CAN_u8REMOTEFRAME,(void*)0,0);
 							}
+							break;
+						case CANHANDLER_u8ECUSWVERSION:
+							CANHANDLER_vidSend(CANHANDLER_u8ECUSWVERSION,CAN_u8DATAFRAME,au8version,3);
 							break;
 						}
 						CAN_RxMsg[rxcount].u8ActiveFlag = 0;

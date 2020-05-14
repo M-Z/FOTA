@@ -1,5 +1,12 @@
-#ifndef SYSTICK_INT_H
-#define SYSTICK_INT_H
+#include "STD_Types.h"
+#include "util.h"
+#include "SYSTICK_priv.h"
+#include "SYSTICK_int.h"
+
+volatile u32 u32delay;
+
+void (*InterruptCallback)(void) = &vidInterruptStub;
+
 
 /*****************************************/
 /***********Public Functions**************/
@@ -13,8 +20,15 @@
 /* Output     : Void                                                                  		 	*/
 /* Scope      : Public                                                                 			*/
 /************************************************************************************************/
-void SYSTICK_vidInit(u32 u32LoadCpy);
-
+void SYSTICK_vidInit(u32 u32LoadCpy)
+{
+	//load value to load register
+	SYSTICK_LOAD = u32LoadCpy & 0x00FFFFFF;
+	//reset value register, also resetting the count flag
+	SYSTICK_VAL = 0;
+	//Enbale timer, enable interrupt, select HSI as clock source
+	SYSTICK_CTRL = 0x07;
+}
 
 
 /************************************************************************************************/
@@ -25,7 +39,12 @@ void SYSTICK_vidInit(u32 u32LoadCpy);
 /* Output     : Void                                                                  		 	*/
 /* Scope      : Public                                                                 			*/
 /************************************************************************************************/
-void _delay_ms(u32 u32delayCpy);
+void _delay_ms(u32 u32delayCpy)
+{
+	u32delay = u32delayCpy;
+	while (u32delay != 0);
+}
+
 
 
 /************************************************************************************************/
@@ -35,6 +54,28 @@ void _delay_ms(u32 u32delayCpy);
 /* Output     : Void                                                                  		 	*/
 /* Scope      : Public                                                                 			*/
 /************************************************************************************************/
-void SYSTICK_vidSetCallback(void (*phandler)(void));
+void SYSTICK_vidSetCallback(void (*phandler)(void))
+{
+	InterruptCallback = phandler;
+}
 
-#endif
+
+
+/******************************************/
+/***********Private Functions**************/
+/******************************************/
+void vidInterruptStub(void)
+{
+	__asm__("NOP");
+}
+
+
+
+void __attribute__ ((section(".after_vectors"),weak))
+SysTick_Handler (void)
+{
+  // DO NOT loop, just return.
+  // Useful in case someone (like STM HAL) inadvertently enables SysTick.
+	InterruptCallback();
+}
+
