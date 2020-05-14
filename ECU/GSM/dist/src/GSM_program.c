@@ -21,11 +21,37 @@ u8 GSM_u8DMADoneFlag = 0;
 u8 GSM_u8NumberOfTerminations = 0;
 u8* pu8UARTBuffer = (void*)0;
 
-
+u8 GSM_u8ListenFlag = OFF;
+u8 au8listenBuffer[64];
+u8 * pu8StatePtr;
 
 /*****************************************/
 /***********Public Functions**************/
 /*****************************************/
+
+void DMAListen(void)
+{
+	GSM_u8ListenFlag = ON;
+	if(u8CheckBufferTermination(au8listenBuffer, 64, 2))
+	{
+		//check if the response is OK or NOK
+		 if (enuFindString(au8listenBuffer, "OK", 64) == OK)
+		 {
+			 // increment state counter to jump to the next state
+			 *pu8StatePtr++;
+			 GSM_u8ListenFlag = OFF;
+			 DMA_voidDisable(DMA_CHANNEL_5);
+		 }
+		 else if(enuFindString(au8listenBuffer, "ERROR", 64) == OK)
+		 {
+			 //Recall the same state
+			 GSM_u8ListenFlag = OFF;
+			 DMA_voidDisable(DMA_CHANNEL_5);
+		 }
+
+	}
+}
+
 
 /****************************************************************************************/
 /* Description: Checks to see if GSM module is connected to UARTx and disable			*/
@@ -43,17 +69,34 @@ Error_Status GSM_enuInit(u8 u8GSMUARTChannel)
 
 	Error_Status enuReturnValue = OK;
 	Error_Status enuCheckValue = NOK;
+	static u8 u8state = 0;
+	pu8StatePtr = &u8state;
 
-
-	if (u8GSMUARTChannel < 6)
+	if (u8GSMUARTChannel > 5)
 	{
-		//------------State_1------------------------------
-		GSM_u8USARTChannel = u8GSMUARTChannel;
+		return  indexOutOfRange;
+	}
 
-		while (enuCheckValue == NOK)
+	if(GSM_u8ListenFlag == OFF)
+	{
+		switch(u8state)
 		{
-			enuCheckValue = enuSendCommand( "ATE0" );
+		case 0:
+			//------------State_1------------------------------
+			USART_enumDMAReceive( u8GSMUARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
+			USART_voidSendString(u8GSMUARTChannel, "ATE0");
+			USART_voidSendString(u8GSMUARTChannel, "\r\n");
+			break;
+		case 1:
+			//------------State_2------------------------------
+			break;
+		case 2:
+			//------------State_3------------------------------
+			break;
 		}
+
+
+	}
 
 		//------------State_2------------------------------
 		enuSendCommand("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");		/* Set the Connection type to GPRS */
@@ -66,12 +109,8 @@ Error_Status GSM_enuInit(u8 u8GSMUARTChannel)
 			enuSendCommand("AT+SAPBR=0,1");
 			enuCheckValue = enuSendCommand("AT+SAPBR=1,1");
 		}
-	}
-	else
-	{
-		enuReturnValue = indexOutOfRange;
-	}
 
+	}
 	return enuReturnValue;
 }
 
