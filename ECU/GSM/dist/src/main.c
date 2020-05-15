@@ -9,6 +9,7 @@
 #include "DMA_int.h"
 #include "SCH_int.h"
 #include "SCH_cfg.h"
+#include "SCB_int.h"
 #include "CAN.h"
 #include "CANHANDLER_int.h"
 #include "CANHANDLER_cfg.h"
@@ -86,6 +87,10 @@ int	main(int argc, char* argv[])
 	NVIC_vidEnableInterrupt(NVIC_u8DMA1_CHANNEL5);
 	NVIC_vidEnableInterrupt(NVIC_u8USB_HP_CAN_TX);
 	NVIC_vidEnableInterrupt(NVIC_u8USB_LP_CAN_RX0);
+	NVIC_vidSetPriority(NVIC_u8USB_HP_CAN_TX, 3);	//Group 0, sub 3
+	NVIC_vidSetPriority(NVIC_u8USB_LP_CAN_RX0, 3);	//Group 0, sub 3
+	SCB_vidSetInterruptPriority(SCB_u8SYSTICK, 4);	//Group 1, sub 0
+
 
 	DMA_enumInit(newDMA);
 	USART_enumInit(USART_CHANNEL_1);
