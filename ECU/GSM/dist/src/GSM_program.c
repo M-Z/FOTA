@@ -25,14 +25,12 @@ u8 GSM_u8DMADoneFlag = 0;
 u8 GSM_u8NumberOfTerminations = 0;
 u8* pu8UARTBuffer = (void*)0;
 
-<<<<<<< HEAD
+
 volatile u8 GSM_u8TransmissionCompleteFlag = 0;
 
 u8 GSM_u8ListenFlag = OFF;
 u8 au8listenBuffer[64];
 u8 * pu8StatePtr;
-=======
->>>>>>> 0b73e2e9044f8dacff1a8f03e7970af1ea2db1f4
 
 /*****************************************/
 /***********Public Functions**************/

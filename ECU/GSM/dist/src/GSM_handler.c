@@ -24,7 +24,7 @@ u8 GSM_u8ListenFlag = OFF;
 u8 au8listenBuffer[64];
 u8 * pu8StatePtr;
 
-
+extern u8 GSM_u8USARTChannel;
 /***********************************************************************************************************************/
 /********************************************Public Functions***********************************************************/
 /***********************************************************************************************************************/
@@ -39,9 +39,9 @@ void GSM_handler(void)
 	//Intialize GSM
 	case 1:
 		// Send ATEO Cmd
-		USART_enumDMAReceive( u8GSMUARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
-		USART_voidSendString(u8GSMUARTChannel, "ATE0");
-		USART_voidSendString(u8GSMUARTChannel, "\r\n");
+		USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
+		USART_voidSendString(GSM_u8USARTChannel, "ATE0");
+		USART_voidSendString(GSM_u8USARTChannel, "\r\n");
 		u8state++;
 		break;
 	case 2:
@@ -57,9 +57,9 @@ void GSM_handler(void)
 		}
 		break;
 	case 3:
-		USART_enumDMAReceive( u8GSMUARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
-		USART_voidSendString(u8GSMUARTChannel, "AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
-		USART_voidSendString(u8GSMUARTChannel, "\r\n");
+		USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
+		USART_voidSendString(GSM_u8USARTChannel, "AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
+		USART_voidSendString(GSM_u8USARTChannel, "\r\n");
 		u8state++;
 		break;
 	case 4:
@@ -75,18 +75,18 @@ void GSM_handler(void)
 		}
 		break;
 	case 5:
-		USART_enumDMAReceive( u8GSMUARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
+		USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
 		if(u8flag == 0)
 		{
-			USART_voidSendString(u8GSMUARTChannel, "AT+SAPBR=1,1");
+			USART_voidSendString(GSM_u8USARTChannel, "AT+SAPBR=1,1");
 		}
 		else if( u8flag == 1)
 		{
 			u8flag == 0;
-			USART_voidSendString(u8GSMUARTChannel, "AT+SAPBR=0,1");
+			USART_voidSendString(GSM_u8USARTChannel, "AT+SAPBR=0,1");
 
 		}
-		USART_voidSendString(u8GSMUARTChannel, "\r\n");
+		USART_voidSendString(GSM_u8USARTChannel, "\r\n");
 		u8state++;
 
 		break;

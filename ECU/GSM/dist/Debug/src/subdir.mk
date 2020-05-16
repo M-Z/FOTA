@@ -10,6 +10,7 @@ C_SRCS += \
 ../src/CANHANDLER_prog.c \
 ../src/DIO_prog.c \
 ../src/DMA_program.c \
+../src/GSM_handler.c \
 ../src/GSM_program.c \
 ../src/NVIC_prog.c \
 ../src/RCC_prog.c \
@@ -28,6 +29,7 @@ OBJS += \
 ./src/CANHANDLER_prog.o \
 ./src/DIO_prog.o \
 ./src/DMA_program.o \
+./src/GSM_handler.o \
 ./src/GSM_program.o \
 ./src/NVIC_prog.o \
 ./src/RCC_prog.o \
@@ -46,6 +48,7 @@ C_DEPS += \
 ./src/CANHANDLER_prog.d \
 ./src/DIO_prog.d \
 ./src/DMA_program.d \
+./src/GSM_handler.d \
 ./src/GSM_program.d \
 ./src/NVIC_prog.d \
 ./src/RCC_prog.d \

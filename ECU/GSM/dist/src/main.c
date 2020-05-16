@@ -142,7 +142,6 @@ int	main(int argc, char* argv[])
 		CAN_RxRdy = 0;
 	}
 	//-------------------------------------------------------------------------------------------------------
-	u8MailBoxIndex = CANHANDLER_vidSend(CANHANDLER_u8ECUSWVERSION, CAN_u8REMOTEFRAME, (void*)0,0);
 
 	//Intialize GSM and HTTP
 	GSM_enuInit( USART_CHANNEL_1 );

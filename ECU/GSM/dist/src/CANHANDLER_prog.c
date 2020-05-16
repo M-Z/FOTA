@@ -10,7 +10,7 @@
 #include "STD_Types.h"
 #include "CAN.h"
 #include "CANHANDLER_int.h"
-
+#include "CANHANDLER_cfg.h"
 
 
 
@@ -78,3 +78,52 @@ u8 CANHANDLER_vidSend(u8 u8MessageID, u8 u8Frame,u8* pu8Data, u8 u8DataLength)
 	return u8MailBoxIndex;
 }
 
+
+/****************************************************************************************/
+/* Description: Receive Can Message 							 						*/
+/* Input      : Void																	*/
+/* Output     : Void                                                                   	*/
+/* Scope      : Public                                                                 	*/
+/****************************************************************************************/
+u8 CANHANDLER_vidReceive(void)
+{
+	u8 u8counter = 0;
+	u8 u8DataCounter = 0;
+	if (CAN_RxRdy)
+	{
+		CAN_RxRdy = 0;
+		for (u8counter = 0; u8counter < 3; u8counter++)
+		{
+			if (CAN_RxMsg[u8counter].u8ActiveFlag == 1)
+			{
+				switch (CAN_RxMsg[u8counter].id)
+				{
+				case CANHANDLER_u8ECUSWVERSION:
+					for (u8DataCounter = 0; u8DataCounter < CAN_RxMsg[u8counter].len; u8DataCounter++)
+					{
+						/*TODO: Convert data to the array of current version from app/gsm/whatever */
+						//au8CurrentVersion[u8DataCounter] = CAN_RxMsg[u8counter].data[u8DataCounter];
+					}
+					/*TODO: Set the flag from app/gsm/whatever */
+					//u8AcceptUpdate = 1;
+					break;
+
+				case CANHANDLER_u8GUIUPDATEACCEPT:
+					/*TODO: Set the flag from app/gsm/whatever */
+					//u8AcceptUpdate = 1;
+					break;
+
+				case CANHANDLER_u8NEXTMSGREQUEST:
+					/*TODO: Set the flag from app/gsm/whatever */
+					//u8NextMsgRequest = 1;
+					break;
+
+				default:
+					break;
+				}
+				CAN_RxMsg[u8counter].u8ActiveFlag = 0;
+			}
+		}
+	}
+
+}
