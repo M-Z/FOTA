@@ -21,36 +21,10 @@ u8 GSM_u8DMADoneFlag = 0;
 u8 GSM_u8NumberOfTerminations = 0;
 u8* pu8UARTBuffer = (void*)0;
 
-u8 GSM_u8ListenFlag = OFF;
-u8 au8listenBuffer[64];
-u8 * pu8StatePtr;
 
 /*****************************************/
 /***********Public Functions**************/
 /*****************************************/
-
-void DMAListen(void)
-{
-	GSM_u8ListenFlag = ON;
-	if(u8CheckBufferTermination(au8listenBuffer, 64, 2))
-	{
-		//check if the response is OK or NOK
-		if (enuFindString(au8listenBuffer, "OK", 64) == OK)
-		{
-			// increment state counter to jump to the next state
-			*pu8StatePtr++;
-			GSM_u8ListenFlag = OFF;
-			DMA_voidDisable(DMA_CHANNEL_5);
-		}
-		else if(enuFindString(au8listenBuffer, "ERROR", 64) == OK)
-		{
-			//Recall the same state
-			GSM_u8ListenFlag = OFF;
-			DMA_voidDisable(DMA_CHANNEL_5);
-		}
-
-	}
-}
 
 
 /****************************************************************************************/
