@@ -16,10 +16,16 @@
 #include "GSM_int.h"
 #include "GSM_conf.h"
 
+
+#include "Timer_int.h"
+
+
 u8 GSM_u8USARTChannel = 0;
 u8 GSM_u8DMADoneFlag = 0;
 u8 GSM_u8NumberOfTerminations = 0;
 u8* pu8UARTBuffer = (void*)0;
+
+volatile u8 GSM_u8TransmissionCompleteFlag = 0;
 
 u8 GSM_u8ListenFlag = OFF;
 u8 au8listenBuffer[64];
@@ -69,6 +75,8 @@ Error_Status GSM_enuInit(u8 u8GSMUARTChannel)
 	Error_Status enuReturnValue = OK;
 	Error_Status enuCheckValue = NOK;
 
+	DMA_enumSetCallback(DMA_CHANNEL_4,vidDMAInterruptHandler);
+
 	if (u8GSMUARTChannel < 6)
 	{
 		GSM_u8USARTChannel = u8GSMUARTChannel;
@@ -78,6 +86,7 @@ Error_Status GSM_enuInit(u8 u8GSMUARTChannel)
 			enuCheckValue = enuSendCommand( "ATE0" );
 		}
 
+		Timer1_vidStartCount();
 		enuSendCommand("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");		/* Set the Connection type to GPRS */
 
 		/* Open the GPRS Context */
@@ -94,48 +103,48 @@ Error_Status GSM_enuInit(u8 u8GSMUARTChannel)
 	}
 
 	return enuReturnValue;
-//
-//	Error_Status enuReturnValue = OK;
-//	Error_Status enuCheckValue = NOK;
-//	static u8 u8state = 0;
-//	pu8StatePtr = &u8state;
-//
-//	if (u8GSMUARTChannel > 5)
-//	{
-//		return  indexOutOfRange;
-//	}
-//
-//	if(GSM_u8ListenFlag == OFF)
-//	{
-//		switch(u8state)
-//		{
-//		case 0:
-//			//------------State_1------------------------------
-//			USART_enumDMAReceive( u8GSMUARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
-//			USART_voidSendString(u8GSMUARTChannel, "ATE0");
-//			USART_voidSendString(u8GSMUARTChannel, "\r\n");
-//			break;
-//		case 1:
-//			//------------State_2------------------------------
-//			break;
-//		case 2:
-//			//------------State_3------------------------------
-//			break;
-//		}
-//	}
-//
-//	//------------State_2------------------------------
-//	enuSendCommand("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");		/* Set the Connection type to GPRS */
-//
-//	//------------State_3------------------------------
-//	/* Open the GPRS Context */
-//	enuCheckValue = enuSendCommand("AT+SAPBR=1,1");
-//	while (enuCheckValue == NOK)
-//	{
-//		enuSendCommand("AT+SAPBR=0,1");
-//		enuCheckValue = enuSendCommand("AT+SAPBR=1,1");
-//	}
-//return enuReturnValue;
+	//
+	//	Error_Status enuReturnValue = OK;
+	//	Error_Status enuCheckValue = NOK;
+	//	static u8 u8state = 0;
+	//	pu8StatePtr = &u8state;
+	//
+	//	if (u8GSMUARTChannel > 5)
+	//	{
+	//		return  indexOutOfRange;
+	//	}
+	//
+	//	if(GSM_u8ListenFlag == OFF)
+	//	{
+	//		switch(u8state)
+	//		{
+	//		case 0:
+	//			//------------State_1------------------------------
+	//			USART_enumDMAReceive( u8GSMUARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
+	//			USART_voidSendString(u8GSMUARTChannel, "ATE0");
+	//			USART_voidSendString(u8GSMUARTChannel, "\r\n");
+	//			break;
+	//		case 1:
+	//			//------------State_2------------------------------
+	//			break;
+	//		case 2:
+	//			//------------State_3------------------------------
+	//			break;
+	//		}
+	//	}
+	//
+	//	//------------State_2------------------------------
+	//	enuSendCommand("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");		/* Set the Connection type to GPRS */
+	//
+	//	//------------State_3------------------------------
+	//	/* Open the GPRS Context */
+	//	enuCheckValue = enuSendCommand("AT+SAPBR=1,1");
+	//	while (enuCheckValue == NOK)
+	//	{
+	//		enuSendCommand("AT+SAPBR=0,1");
+	//		enuCheckValue = enuSendCommand("AT+SAPBR=1,1");
+	//	}
+	//return enuReturnValue;
 }
 
 /****************************************************************************************/
@@ -185,9 +194,20 @@ u32 GSM_enuGETRequestInit(const u8* pu8URL)
 	u32 u32ReturnValue = 0;
 
 	USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8ResponseBuffer, 64 );
-	USART_voidSendString(GSM_u8USARTChannel, "AT+HTTPPARA=\"URL\",\"");
-	USART_voidSendString(GSM_u8USARTChannel, pu8URL);
-	USART_voidSendString(GSM_u8USARTChannel, "\"\r\n");
+	//	USART_voidSendString(GSM_u8USARTChannel, "AT+HTTPPARA=\"URL\",\"");
+	//	USART_voidSendString(GSM_u8USARTChannel, pu8URL);
+	//	USART_voidSendString(GSM_u8USARTChannel, "\"\r\n");
+	USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, "AT+HTTPPARA=\"URL\",\"", 0 );
+	while (GSM_u8TransmissionCompleteFlag == 0);
+	GSM_u8TransmissionCompleteFlag =  0;
+
+	USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, pu8URL, 0 );
+	while (GSM_u8TransmissionCompleteFlag == 0);
+	GSM_u8TransmissionCompleteFlag =  0;
+
+	USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, "\r\n", 0 );
+	while (GSM_u8TransmissionCompleteFlag == 0);
+	GSM_u8TransmissionCompleteFlag = 0;
 
 	while (!u8CheckBufferTermination(au8ResponseBuffer, 9, 2));
 	DMA_voidDisable(DMA_CHANNEL_5);
@@ -294,11 +314,31 @@ u16 GSM_u16GETData(u32 u32StartPoint, u16 u16DataLength, u8* au8Data)
 	}
 
 	USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8Response, u16ResponseSize );
-	USART_voidSendString( GSM_u8USARTChannel, "AT+HTTPREAD=" );
-	USART_voidSendString( GSM_u8USARTChannel, &(au8startpointascii[10 - u8startasciistartpoint]));
-	USART_voidSendString( GSM_u8USARTChannel, ",");
-	USART_voidSendString( GSM_u8USARTChannel, &(au8sizeascii[10 - u8sizeasciistartpoint]));
-	USART_voidSendString( GSM_u8USARTChannel, "\r\n");
+	//	USART_voidSendString( GSM_u8USARTChannel, "AT+HTTPREAD=" );
+	//	USART_voidSendString( GSM_u8USARTChannel, &(au8startpointascii[10 - u8startasciistartpoint]));
+	//	USART_voidSendString( GSM_u8USARTChannel, ",");
+	//	USART_voidSendString( GSM_u8USARTChannel, &(au8sizeascii[10 - u8sizeasciistartpoint]));
+	//	USART_voidSendString( GSM_u8USARTChannel, "\r\n");
+	USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, "AT+HTTPREAD=" , 0 );
+	while (GSM_u8TransmissionCompleteFlag == 0);
+	GSM_u8TransmissionCompleteFlag =  0;
+
+	USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, &(au8startpointascii[10 - u8startasciistartpoint]) , 0 );
+	while (GSM_u8TransmissionCompleteFlag == 0);
+	GSM_u8TransmissionCompleteFlag =  0;
+
+	USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, "," , 0 );
+	while (GSM_u8TransmissionCompleteFlag == 0);
+	GSM_u8TransmissionCompleteFlag =  0;
+
+	USART_enumDMASend(GSM_u8USARTChannel,DMA_CHANNEL_4, &(au8sizeascii[10 - u8sizeasciistartpoint]) , 0 );
+	while (GSM_u8TransmissionCompleteFlag == 0);
+	GSM_u8TransmissionCompleteFlag =  0;
+
+	USART_enumDMASend(GSM_u8USARTChannel,DMA_CHANNEL_4, "\r\n" , 0 );
+	while (GSM_u8TransmissionCompleteFlag == 0);
+	GSM_u8TransmissionCompleteFlag =  0;
+
 	vidClearBuffer(au8Response, 300);
 
 	while ((enuFindString(au8Response, "\r\nOK\r\n",u16ResponseSize) == NOK) && (enuFindString(au8Response, "\r\nNOK\r\n",u16ResponseSize) == NOK));
@@ -363,9 +403,22 @@ Error_Status GSM_enuPOSTRequestInit(const u8* pu8URL, const u8* postRequestData,
 	//------------State_2------------------------------
 	/*Send URL*/
 	USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8ResponseBuffer, 64 );
-	USART_voidSendString(GSM_u8USARTChannel, "AT+HTTPPARA=\"URL\",\"");
-	USART_voidSendString(GSM_u8USARTChannel, pu8URL);
-	USART_voidSendString(GSM_u8USARTChannel, "\"\r\n");
+	//	USART_voidSendString(GSM_u8USARTChannel, "AT+HTTPPARA=\"URL\",\"");
+	//	USART_voidSendString(GSM_u8USARTChannel, pu8URL);
+	//	USART_voidSendString(GSM_u8USARTChannel, "\"\r\n");
+
+
+	USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, "AT+HTTPPARA=\"URL\",\"", 0 );
+	while (GSM_u8TransmissionCompleteFlag == 0);
+	GSM_u8TransmissionCompleteFlag = 0;
+
+	USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, pu8URL, 0 );
+	while (GSM_u8TransmissionCompleteFlag == 0);
+	GSM_u8TransmissionCompleteFlag = 0;
+
+	USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, "\"\r\n", 0 );
+	while (GSM_u8TransmissionCompleteFlag == 0);
+	GSM_u8TransmissionCompleteFlag = 0;
 
 	//------------State_3------------------------------
 	while (!u8CheckBufferTermination(au8ResponseBuffer, 9, 2));
@@ -378,8 +431,10 @@ Error_Status GSM_enuPOSTRequestInit(const u8* pu8URL, const u8* postRequestData,
 
 	/*Send HTTP POST request data*/
 	USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8ResponseBuffer, 64 );
-	USART_voidSendString(GSM_u8USARTChannel, "AT+HTTPDATA=100,10000");  //minimize waiting time
-	USART_voidSendString(GSM_u8USARTChannel, "\r\n");
+	//	USART_voidSendString(GSM_u8USARTChannel, "AT+HTTPDATA=100,10000\r\n");  //minimize waiting time
+	USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, "AT+HTTPDATA=100,10000\r\n", 0 );
+	while (GSM_u8TransmissionCompleteFlag == 0);
+	GSM_u8TransmissionCompleteFlag = 0;
 
 	enuErrorCheck=NOK;
 	while(enuErrorCheck == NOK && u32count<1000)
@@ -389,7 +444,11 @@ Error_Status GSM_enuPOSTRequestInit(const u8* pu8URL, const u8* postRequestData,
 	}
 	while ( !u8CheckBufferTermination( au8ResponseBuffer, 64, 2 ) );
 	//send data
-	USART_voidSendString(GSM_u8USARTChannel, postRequestData);
+	//	USART_voidSendString(GSM_u8USARTChannel, postRequestData);
+	USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, postRequestData, 0 );
+	while (GSM_u8TransmissionCompleteFlag == 0);
+	GSM_u8TransmissionCompleteFlag = 0;
+
 	//	USART_voidSendString(GSM_u8USARTChannel, "\r\n");
 	while ( !u8CheckBufferTermination( au8ResponseBuffer, 64, 4 ) );
 	DMA_voidDisable( DMA_CHANNEL_5 );
@@ -398,8 +457,12 @@ Error_Status GSM_enuPOSTRequestInit(const u8* pu8URL, const u8* postRequestData,
 	vidClearBuffer(au8ResponseBuffer, 64);
 	/*Send ACTION cmd */
 	USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8ResponseBuffer, 64 );
-	USART_voidSendString(GSM_u8USARTChannel, "AT+HTTPACTION=1");
-	USART_voidSendString(GSM_u8USARTChannel, "\r\n");
+	//	USART_voidSendString(GSM_u8USARTChannel, "AT+HTTPACTION=1");
+	//	USART_voidSendString(GSM_u8USARTChannel, "\r\n");
+	USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, "AT+HTTPACTION=1\r\n", 0 );
+	while (GSM_u8TransmissionCompleteFlag == 0);
+	GSM_u8TransmissionCompleteFlag = 0;
+
 
 	//------------State_6------------------------------
 	while ( !u8CheckBufferTermination( au8ResponseBuffer, 64, 4 ) );
@@ -614,10 +677,7 @@ Error_Status GSM_enumFTPGetExtended(u8 * fileData, u32 size, u32 startPoint)
 /****************************************************************************************/
 void vidDMAInterruptHandler(void)
 {
-	if (pu8UARTBuffer == (void*)0)
-	{
-		return;
-	}
+	GSM_u8TransmissionCompleteFlag = 1;
 }
 
 
@@ -731,9 +791,18 @@ static Error_Status enuSendCommand(const u8* pu8Command)
 	USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) buffer, 11 );
 
 	/* Send the AT command */
-	USART_voidSendString(GSM_u8USARTChannel, pu8Command);
-	USART_voidSendChar(GSM_u8USARTChannel, '\r');
-	USART_voidSendChar(GSM_u8USARTChannel, '\n');
+	//	USART_voidSendString(GSM_u8USARTChannel, pu8Command);
+	//	USART_voidSendChar(GSM_u8USARTChannel, '\r');
+	//	USART_voidSendChar(GSM_u8USARTChannel, '\n');
+
+	USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, pu8Command, 0 );
+	//	while (!USART_u8CheckTxComplete(GSM_u8USARTChannel));
+	while (GSM_u8TransmissionCompleteFlag == 0);
+	GSM_u8TransmissionCompleteFlag =  0;
+	USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, "\r\n", 0 );
+	//	while (!USART_u8CheckTxComplete(GSM_u8USARTChannel));
+	while (GSM_u8TransmissionCompleteFlag == 0);
+	GSM_u8TransmissionCompleteFlag = 0;
 
 	// Wait for starting and terminating /r/n
 	while ( !u8CheckBufferTermination(  buffer, 11, 2 ) );

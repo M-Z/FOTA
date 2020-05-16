@@ -16,6 +16,7 @@ C_SRCS += \
 ../src/SCB_prog.c \
 ../src/SCH_prog.c \
 ../src/SYSTICK_prog.c \
+../src/Timer_prog.c \
 ../src/USART_program.c \
 ../src/_write.c \
 ../src/main.c 
@@ -33,6 +34,7 @@ OBJS += \
 ./src/SCB_prog.o \
 ./src/SCH_prog.o \
 ./src/SYSTICK_prog.o \
+./src/Timer_prog.o \
 ./src/USART_program.o \
 ./src/_write.o \
 ./src/main.o 
@@ -50,6 +52,7 @@ C_DEPS += \
 ./src/SCB_prog.d \
 ./src/SCH_prog.d \
 ./src/SYSTICK_prog.d \
+./src/Timer_prog.d \
 ./src/USART_program.d \
 ./src/_write.d \
 ./src/main.d 

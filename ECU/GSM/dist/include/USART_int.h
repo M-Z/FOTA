@@ -71,6 +71,12 @@ u16 USART_u16Receive(u8);
  */
 Error_Status USART_enumDMAReceive(u8, u8, volatile u32*, u32);
 
+
+
+Error_Status USART_enumDMASend(u8 UART_Channel, u8 DMA_Channel, volatile u8* buffer, u32 Count);
+
+u8 USART_u8CheckTxComplete(u8 UART_Channel);
+
 #define USART_CHANNEL_1 		1
 #define USART_CHANNEL_2 		2
 #define USART_CHANNEL_3 		3

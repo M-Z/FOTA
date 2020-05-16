@@ -7,7 +7,7 @@ src/main.o: ../src/main.c ../include/STD_Types.h ../include/util.h \
  ../include/config.h ../include/HASH/hash.h \
  ../include/HASH/Common/hash_common.h ../include/HASH/SHA256/sha256.h \
  ../include/HASH/Common/sha256_sha224_transform.h \
- ../include/Application.h
+ ../include/Application.h ../include/Timer_int.h
 
 ../include/STD_Types.h:
 
@@ -54,3 +54,5 @@ src/main.o: ../src/main.c ../include/STD_Types.h ../include/util.h \
 ../include/HASH/Common/sha256_sha224_transform.h:
 
 ../include/Application.h:
+
+../include/Timer_int.h:

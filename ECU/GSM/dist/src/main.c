@@ -17,6 +17,8 @@
 #include "crypto.h"
 #include "Application.h"
 
+#include "Timer_int.h"
+
 u8 u8CharCount = 0;
 u8 u8Received = 0;
 u8 flag = 0;
@@ -71,6 +73,23 @@ int	main(int argc, char* argv[])
 			FALSE			// Transfer complete interrupt enable
 	};
 
+
+	DMA_Config DMA_Transmit =
+	{
+			DMA_CHANNEL_4,	// Channel number: CHANNEL_1, CHANNEL_2, ...
+			FALSE,			// Memory to Memory: TRUE, FALSE
+			VERY_HIGH,		// LOW, MEDIUM, HIGH, VERY_HIGH
+			BITS_8,			// Specifies Source data size alignment (byte, half word, word).
+			BITS_8,			// Specifies Destination data size alignment (byte, half word, word).
+			FALSE,			// Specifies if MEM address is incremented or not
+			TRUE,			// Specifies PERIPHRAL address is incremented or not.
+			FALSE,			// Specifies the normal or circular operation mode: TRUE, FALSE
+			FROM_PERIPHRAL,	// If the data will be transferred from memory to peripheral: FROM_MEM, FROM_PERIPHRAL
+			FALSE,			// Transfer error interrupt enable
+			FALSE,			// Half transfer interrupt enable
+			TRUE			// Transfer complete interrupt enable
+	};
+
 	RCC_vidInit();
 	RCC_vidEnablePeripheral(RCC_u8GPIOACLK);
 	RCC_vidEnablePeripheral(RCC_u8GPIOBCLK);
@@ -85,14 +104,21 @@ int	main(int argc, char* argv[])
 
 	NVIC_vidInit();
 	NVIC_vidEnableInterrupt(NVIC_u8DMA1_CHANNEL5);
+	NVIC_vidEnableInterrupt(NVIC_u8DMA1_CHANNEL4);
 	NVIC_vidEnableInterrupt(NVIC_u8USB_HP_CAN_TX);
 	NVIC_vidEnableInterrupt(NVIC_u8USB_LP_CAN_RX0);
 	NVIC_vidSetPriority(NVIC_u8USB_HP_CAN_TX, 3);	//Group 0, sub 3
 	NVIC_vidSetPriority(NVIC_u8USB_LP_CAN_RX0, 3);	//Group 0, sub 3
 	SCB_vidSetInterruptPriority(SCB_u8SYSTICK, 4);	//Group 1, sub 0
 
+	RCC_vidEnablePeripheral(RCC_u8TIM1CLK);
+	NVIC_vidEnableInterrupt(NVIC_u8TIM1_UP);
+	Timer1_UEV_Interrupt();
+
 
 	DMA_enumInit(newDMA);
+	DMA_enumInit(DMA_Transmit);
+
 	USART_enumInit(USART_CHANNEL_1);
 
 	/* Create Tasks */
@@ -116,6 +142,7 @@ int	main(int argc, char* argv[])
 		CAN_RxRdy = 0;
 	}
 	//-------------------------------------------------------------------------------------------------------
+	u8MailBoxIndex = CANHANDLER_vidSend(CANHANDLER_u8ECUSWVERSION, CAN_u8REMOTEFRAME, (void*)0,0);
 
 	//Intialize GSM and HTTP
 	GSM_enuInit( USART_CHANNEL_1 );
@@ -123,13 +150,13 @@ int	main(int argc, char* argv[])
 	//check the latest version of a certain ECU on the server
 	/***** Without Version Feedback *******/
 	//bank 1 c13
-//	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/v/5eb4957d8f310f60b7db600f", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
+	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/v/5eb4957d8f310f60b7db600f", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
 	//bank 2 c14
 	//	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/v/5eb495fa8f310f60b7db6011", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
 
 	/***** With Version Feedback *******/
 	//bank 1 c13
-	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/v/5ebdc50b8f310f60b7db6013", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
+//	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/v/5ebdc50b8f310f60b7db6013", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
 	//bank 2 c14
 	//	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/v/5ebdc54f8f310f60b7db6017", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
 
