@@ -30,6 +30,7 @@ typedef double 				f64;
 typedef enum {
 	OK,
 	NOK,
+	wait,
 	indexOutOfRange,
 	nullPointer,
 	numberOutOfRange,
