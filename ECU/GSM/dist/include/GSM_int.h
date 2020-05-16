@@ -1,8 +1,6 @@
 #ifndef GSM_INT_H_
 #define GSM_INT_H_
 
-#define ON  1
-#define OFF	0
 
 /**************** FTP Download Configuartions ******************/
 typedef enum
@@ -16,6 +14,7 @@ typedef enum
 /*****************************************/
 /*********Public Definitions*************/
 /*****************************************/
+extern u8 GSM_u8USARTChannel;
 
 
 

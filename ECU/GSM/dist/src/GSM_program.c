@@ -21,16 +21,16 @@
 
 
 u8 GSM_u8USARTChannel = 0;
-u8 GSM_u8DMADoneFlag = 0;
-u8 GSM_u8NumberOfTerminations = 0;
-u8* pu8UARTBuffer = (void*)0;
+//u8 GSM_u8DMADoneFlag = 0;
+//u8 GSM_u8NumberOfTerminations = 0;
+//u8* pu8UARTBuffer = (void*)0;
 
 
 volatile u8 GSM_u8TransmissionCompleteFlag = 0;
 
-u8 GSM_u8ListenFlag = OFF;
-u8 au8listenBuffer[64];
-u8 * pu8StatePtr;
+//u8 GSM_u8ListenFlag = OFF;
+//u8 au8listenBuffer[64];
+//u8 * pu8StatePtr;
 
 /*****************************************/
 /***********Public Functions**************/
