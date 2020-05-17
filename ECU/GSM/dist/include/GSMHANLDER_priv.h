@@ -17,8 +17,9 @@ typedef enum
 {
 	IDLE,
 	WaitingForMessage,
-//	MessageReceived
-}RecieveState;
+//	MessageReceived,
+	SendingMessage
+}MessageState;
 
 
 

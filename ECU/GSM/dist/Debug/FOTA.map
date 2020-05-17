@@ -1502,20 +1502,18 @@ Discarded input sections
  .text.enuFindString
                 0x00000000       0x48 ./src/GSMHANDLER_prog.o
  .text.GSMHANDLER_vidTask
-                0x00000000      0x190 ./src/GSMHANDLER_prog.o
+                0x00000000      0x49c ./src/GSMHANDLER_prog.o
  .bss.GSMHANDLER_u8TransmissionCompleteFlag
                 0x00000000        0x1 ./src/GSMHANDLER_prog.o
  .bss.GSM_enuListenFlag
                 0x00000000        0x1 ./src/GSMHANDLER_prog.o
- .bss.u8flag.3873
-                0x00000000        0x1 ./src/GSMHANDLER_prog.o
- .data.u8state.3872
+ .data.u8state.3874
                 0x00000000        0x1 ./src/GSMHANDLER_prog.o
  .rodata.GSMHANDLER_vidTask.str1.4
-                0x00000000       0x5d ./src/GSMHANDLER_prog.o
- .debug_info    0x00000000      0x448 ./src/GSMHANDLER_prog.o
- .debug_abbrev  0x00000000      0x176 ./src/GSMHANDLER_prog.o
- .debug_loc     0x00000000      0x1a6 ./src/GSMHANDLER_prog.o
+                0x00000000       0xbc ./src/GSMHANDLER_prog.o
+ .debug_info    0x00000000      0x81a ./src/GSMHANDLER_prog.o
+ .debug_abbrev  0x00000000      0x194 ./src/GSMHANDLER_prog.o
+ .debug_loc     0x00000000      0x329 ./src/GSMHANDLER_prog.o
  .debug_aranges
                 0x00000000       0x30 ./src/GSMHANDLER_prog.o
  .debug_ranges  0x00000000       0x50 ./src/GSMHANDLER_prog.o
@@ -1530,8 +1528,8 @@ Discarded input sections
  .debug_macro   0x00000000       0x10 ./src/GSMHANDLER_prog.o
  .debug_macro   0x00000000       0x16 ./src/GSMHANDLER_prog.o
  .debug_macro   0x00000000       0x10 ./src/GSMHANDLER_prog.o
- .debug_line    0x00000000      0x226 ./src/GSMHANDLER_prog.o
- .debug_str     0x00000000     0x3e00 ./src/GSMHANDLER_prog.o
+ .debug_line    0x00000000      0x2ad ./src/GSMHANDLER_prog.o
+ .debug_str     0x00000000     0x3dfc ./src/GSMHANDLER_prog.o
  .comment       0x00000000       0x7f ./src/GSMHANDLER_prog.o
  .debug_frame   0x00000000       0x5c ./src/GSMHANDLER_prog.o
  .ARM.attributes
