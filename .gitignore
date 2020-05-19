@@ -1,11 +1,11 @@
 # NPM Server Modules
-/node_modules
-!/fota-project/firmwares/.empty
-/fota-project/dist/*
-/fota-project/public/img/teams/*
-!/fota-project/public/img/teams/.empty
-/fota-project/public/img/users/*
-!/fota-project/public/img/users/newUser.svg
+*/node_modules
+!/cloud/firmwares/.empty
+/cloud/dist/*
+/cloud/public/img/teams/*
+!/cloud/public/img/teams/.empty
+/cloud/public/img/users/*
+!/cloud/public/img/users/newUser.svg
 *.hex
 *.pem
 *.ppk

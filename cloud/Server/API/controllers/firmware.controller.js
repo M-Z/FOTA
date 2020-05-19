@@ -73,7 +73,7 @@ exports.get_firmware_version = function(req, res) {
 
     }
 
-    let version = `v${firmware.version.major}.${firmware.version.minor}.${firmware.version.patch}`;
+    const version = `v${firmware.version.major}.${firmware.version.minor}.${firmware.version.patch}`;
 
     sendFeedback({
       firmwareID: firmware._id,
@@ -117,7 +117,7 @@ exports.read_firmware_file = function(req, res) {
     }
 
     // Read from rootFolder/fileName
-    fs.readFile(`${config.rootFolder}/${firmware.location}.hex`, 'utf8', async function(err, contents) {
+    fs.readFile(`${config.rootFolder}/${firmware.location}`, 'utf8', async function(err, contents) {
 
       if (err || !contents) {
 
