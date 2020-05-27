@@ -83,7 +83,10 @@ void GSMHANDLER_vidTask(void)
   u8 u8startasciistartpoint = 0;
   u8 u8DataStartPoint = 0;
   u32 delay = 0;
-
+  u8 u8Counter = 0;
+  u8 u8Counter2 = 0;
+  u8 au8tempCmd[13] ="AT+HTTPREAD="
+  u8 au8Cmd[100];
 
 
   if (enuSendFlag == SendingMessage)
@@ -787,7 +790,7 @@ void GSMHANDLER_vidTask(void)
     			   		}
     			   	}
 
-    			    USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
+    			/*    USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
     				USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, "AT+HTTPREAD=" , 0 );
     				while (GSM_u8TransmissionCompleteFlag == 0);
     				GSM_u8TransmissionCompleteFlag =  0;
@@ -806,7 +809,41 @@ void GSMHANDLER_vidTask(void)
 
     				USART_enumDMASend(GSM_u8USARTChannel,DMA_CHANNEL_4, "\r\n" , 0 );
     				while (GSM_u8TransmissionCompleteFlag == 0);
-    				GSM_u8TransmissionCompleteFlag =  0;
+    				GSM_u8TransmissionCompleteFlag =  0;*/
+
+
+    				//Re-Construct Command
+
+    			   	//Concatenate "AT+HTTPREAD="
+    				for(u8Counter = 0; u8Counter<=11; u8Counter++ )
+    				{
+    					au8Cmd[u8Counter] = au8tempCmd[u8Counter];
+    				}
+
+    				while(au8startpointascii[10 - u8startasciistartpoint+u8Counter2] != '\0')
+    				{
+    					au8Cmd[u8Counter] = au8startpointascii[10 - u8startasciistartpoint + u8Counter2];
+    					u8Counter++;
+    					u8Counter2++;
+    				}
+
+    				au8Cmd[u8Counter] = ",";
+
+    				u8Counter2 = 0;
+    				while(au8sizeascii[10 - u8sizeasciistartpoint + u8Counter2] != '\0')
+    				{
+    					au8Cmd[u8Counter] = au8sizeascii[10 - u8sizeasciistartpoint + u8Counter2];
+    					u8Counter++;
+    					u8Counter2++;
+    				}
+
+    				au8Cmd[u8Counter] = "\r";
+    				u8Counter++;
+    				au8Cmd[u8Counter] = "\n";
+
+
+    				USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
+    				USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, au8Cmd, 0 );
 
 
     				while ((enuFindString(au8listenBuffer, "\r\nOK\r\n",u16ResponseSize) == NOK) && (enuFindString(au8listenBuffer, "\r\nNOK\r\n",u16ResponseSize) == NOK));
