@@ -27,6 +27,9 @@ MessageState GSM_enuListenFlag = IDLE;
 
 u8 au8listenBuffer[64];
 u8 * pu8StatePtr;
+u32 u32ResponseDataSize = 0;
+u32 u32ResponseFileSize = 0;
+
 u8 GSMHANDLER_u8TransmissionCompleteFlag = 0;
 
 /*****************************************/
@@ -66,6 +69,23 @@ void GSMHANDLER_vidTask(void)
   static u8 u8CanDataLength = 0;
   static u8 u8state = 1;
   static u8 u8flag = 0;
+  u32 u32Counter;
+
+  u32 u32StartPoint;
+  u16 u16DataLength;
+  static  u8  au8Data[200] = {0};
+  u16 u16ReceivedDataSize = 0;
+  u16 u16ResponseSize = u16DataLength + (u16)25;
+  u8  au8startpointascii[11] = {0};
+  u8 au8sizeascii[11] = {0};
+  u16 u16Counter = 0;
+  u8 u8sizeasciistartpoint = 0;
+  u8 u8startasciistartpoint = 0;
+  u8 u8DataStartPoint = 0;
+  u32 delay = 0;
+
+
+
   if (enuSendFlag == SendingMessage)
   {
     u8MailBoxIndex = CANHANDLER_vidSend(u8CanMessageID, u8CanFrameType, pu8CanData, u8CanDataLength);
@@ -106,7 +126,7 @@ void GSMHANDLER_vidTask(void)
             else
             {
               /* Check for OK response */
-              enuresponseStatus = enuFindString(au8listenBuffer, "\r\n\OK\r\n", 64);
+              enuresponseStatus = enuFindString(au8listenBuffer, "\r\nOK\r\n", 64);
               if (enuresponseStatus == OK)
               {
                 GSM_enuListenFlag = IDLE;
@@ -150,7 +170,7 @@ void GSMHANDLER_vidTask(void)
             else
             {
               /* Check for OK response */
-              enuresponseStatus = enuFindString(au8listenBuffer, "\r\n\OK\r\n", 64);
+              enuresponseStatus = enuFindString(au8listenBuffer, "\r\nOK\r\n", 64);
               if (enuresponseStatus == OK)
               {
                 GSM_enuListenFlag = IDLE;
@@ -193,7 +213,7 @@ void GSMHANDLER_vidTask(void)
             else
             {
               /* Check for OK response */
-              enuresponseStatus = enuFindString(au8listenBuffer, "\r\n\OK\r\n", 64);
+              enuresponseStatus = enuFindString(au8listenBuffer, "\r\nOK\r\n", 64);
               if (enuresponseStatus == OK)
               {
                 GSM_enuListenFlag = IDLE;
@@ -238,7 +258,7 @@ void GSMHANDLER_vidTask(void)
             else
             {
               /* Check for OK response */
-              enuresponseStatus = enuFindString(au8listenBuffer, "\r\n\OK\r\n", 64);
+              enuresponseStatus = enuFindString(au8listenBuffer, "\r\nOK\r\n", 64);
               if (enuresponseStatus == OK)
               {
                 GSM_enuListenFlag = IDLE;
@@ -282,7 +302,7 @@ void GSMHANDLER_vidTask(void)
             else
             {
               /* Check for OK response */
-              enuresponseStatus = enuFindString(au8listenBuffer, "\r\n\OK\r\n", 64);
+              enuresponseStatus = enuFindString(au8listenBuffer, "\r\nOK\r\n", 64);
               if (enuresponseStatus == OK)
               {
                 GSM_enuListenFlag = IDLE;
@@ -327,7 +347,7 @@ void GSMHANDLER_vidTask(void)
             else
             {
               /* Check for OK response */
-              enuresponseStatus = enuFindString(au8listenBuffer, "\r\n\OK\r\n", 64);
+              enuresponseStatus = enuFindString(au8listenBuffer, "\r\nOK\r\n", 64);
               if (enuresponseStatus == OK)
               {
                 GSM_enuListenFlag = IDLE;
@@ -372,7 +392,7 @@ void GSMHANDLER_vidTask(void)
             else
             {
               /* Check for OK response */
-              enuresponseStatus = enuFindString(au8listenBuffer, "\r\n\OK\r\n", 64);
+              enuresponseStatus = enuFindString(au8listenBuffer, "\r\nOK\r\n", 64);
               if (enuresponseStatus == OK)
               {
                 GSM_enuListenFlag = IDLE;
@@ -416,7 +436,7 @@ void GSMHANDLER_vidTask(void)
             else
             {
               /* Check for OK response */
-              enuresponseStatus = enuFindString(au8listenBuffer, "\r\n\OK\r\n", 64);
+              enuresponseStatus = enuFindString(au8listenBuffer, "\r\nOK\r\n", 64);
               if (enuresponseStatus == OK)
               {
                 GSM_enuListenFlag = IDLE;
@@ -460,7 +480,7 @@ void GSMHANDLER_vidTask(void)
             else
             {
               /* Check for OK response */
-              enuresponseStatus = enuFindString(au8listenBuffer, "\r\n\OK\r\n", 64);
+              enuresponseStatus = enuFindString(au8listenBuffer, "\r\nOK\r\n", 64);
               if (enuresponseStatus == OK)
               {
                 GSM_enuListenFlag = IDLE;
@@ -493,7 +513,6 @@ void GSMHANDLER_vidTask(void)
           switch (GSM_enuListenFlag)
           {
             case IDLE:
-              DMA_enumSetCallback(DMA_CHANNEL_4, vidDMAIRQ);
               USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
               USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, "AT+HTTPPARA=\"content\",\"application/json\"\r\n", 0 );
               GSM_enuListenFlag = WaitingForMessage;
@@ -507,7 +526,7 @@ void GSMHANDLER_vidTask(void)
               else
               {
                 /* Check for OK response */
-                enuresponseStatus = enuFindString(au8listenBuffer, "\r\n\OK\r\n", 64);
+                enuresponseStatus = enuFindString(au8listenBuffer, "\r\nOK\r\n", 64);
                 if (enuresponseStatus == OK)
                 {
                   GSM_enuListenFlag = IDLE;
@@ -537,7 +556,6 @@ void GSMHANDLER_vidTask(void)
           switch (GSM_enuListenFlag)
           {
             case IDLE:
-              DMA_enumSetCallback(DMA_CHANNEL_4, vidDMAIRQ);
               USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
               USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, "AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5eb4957d8f310f60b7db600f\"\r\n", 0 );
               GSM_enuListenFlag = WaitingForMessage;
@@ -551,7 +569,7 @@ void GSMHANDLER_vidTask(void)
               else
               {
                 /* Check for OK response */
-                enuresponseStatus = enuFindString(au8listenBuffer, "\r\n\OK\r\n", 64);
+                enuresponseStatus = enuFindString(au8listenBuffer, "\r\nOK\r\n", 64);
                 if (enuresponseStatus == OK)
                 {
                   GSM_enuListenFlag = IDLE;
@@ -622,7 +640,6 @@ void GSMHANDLER_vidTask(void)
                  switch (GSM_enuListenFlag)
                  {
                    case IDLE:
-                     DMA_enumSetCallback(DMA_CHANNEL_4, vidDMAIRQ);
                      USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
                      USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", 0 );
                      GSM_enuListenFlag = WaitingForMessage;
@@ -636,7 +653,7 @@ void GSMHANDLER_vidTask(void)
                      else
                      {
                        /* Check for OK response */
-                       enuresponseStatus = enuFindString(au8listenBuffer, "\r\n\OK\r\n", 64);
+                       enuresponseStatus = enuFindString(au8listenBuffer, "\r\nOK\r\n", 64);
                        if (enuresponseStatus == OK)
                        {
                          GSM_enuListenFlag = IDLE;
@@ -659,60 +676,160 @@ void GSMHANDLER_vidTask(void)
                      }
             	 break;
 
-              case 14:
-                  switch (GSM_enuListenFlag)
-                  {
-                    case IDLE:
-                      DMA_enumSetCallback(DMA_CHANNEL_4, vidDMAIRQ);
-                      USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
-                      USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4,"AT+HTTPACTION=1\r\n", 0 );
-                      GSM_enuListenFlag = WaitingForMessage;
-                      break;
-                    case WaitingForMessage:
-                      /* Reset The transmission flag if the transmission is done */
-                      if (GSMHANDLER_u8TransmissionCompleteFlag == 1)
-                      {
-                        GSMHANDLER_u8TransmissionCompleteFlag = 0;
-                      }
-                      else
-                      {
-                        /* Check for OK response */
-                        enuresponseStatus = enuFindString(au8listenBuffer, "OK", 64);
-                        if ( enuresponseStatus == OK)
-                        {
-                        	enuresponseStatus = enuFindString(au8listenBuffer, "200", 64);
-                        	if ( enuresponseStatus == OK)
-                        	{
-                        		if(u8CheckBufferTermination( au8ResponseBuffer, 64, 4 ) == 1)
-                        		{
-                        			enuresponseStatus = OK;
-                                    GSM_enuListenFlag = IDLE;
-                                    u8state++;
-                        		}
-                        		else
-                        		{
-                        			enuresponseStatus = NOK;
-                        		}
-                        	}
-                        	else
-                        	{
-                                GSM_enuListenFlag = IDLE;
-                                u8state = 5;
-                        	}
-                        }
-
-                        }
-
-                      }
-                	   break;
-
-
-
-
              default:
                break;
            }
     	   break;
+
+    	   case 14:
+               switch (GSM_enuListenFlag)
+                     {
+                       case IDLE:
+                         USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
+                         USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, "AT+HTTPACTION=1\r\n", 0 );
+                         GSM_enuListenFlag = WaitingForMessage;
+                         break;
+                       case WaitingForMessage:
+                         /* Reset The transmission flag if the transmission is done */
+                         if (GSMHANDLER_u8TransmissionCompleteFlag == 1)
+                         {
+                           GSMHANDLER_u8TransmissionCompleteFlag = 0;
+                         }
+                         else
+                         {
+                           /* Check for OK response */
+                           enuresponseStatus = enuFindString(au8listenBuffer, "\r\nOK\r\n", 64);
+                           if (enuresponseStatus == OK)
+                           {
+                             GSM_enuListenFlag = IDLE;
+                             u8state++;
+                           }
+                           else
+                           {
+                             /* Check for Error Response */
+                             enuresponseStatus = enuFindString(au8listenBuffer, "\r\n\ERROR\r\n", 64);
+                             if (enuresponseStatus == OK)
+                             {
+                               GSM_enuListenFlag = IDLE;
+                               u8state = 5;
+                             }
+                             else
+                             {
+                               /* Do Nothing */
+                             }
+                           }
+                         }
+                	 break;
+
+                 default:
+                   break;
+               }
+
+    		   break;
+
+    		   case 15:
+    			   if(u8CheckBufferTermination(au8listenBuffer, 64, 4 )  == 1)
+    			   {
+    				   enuresponseStatus = enuFindString(au8listenBuffer, "200", 64);
+    				   if (enuresponseStatus == OK)
+    				   {
+                           GSM_enuListenFlag = IDLE;
+
+                   		//get Received data size
+                   		for (u32Counter = 27; au8listenBuffer[u32Counter] != '\r'; u32Counter++)
+                   		{
+                   			u32ResponseDataSize = ((u32ResponseDataSize)* 10) + (au8listenBuffer[u32Counter] - '0');
+                   		}
+
+                           u8state++;
+
+    				   }
+    				   else
+    				   {
+    					   GSM_enuListenFlag = IDLE;
+    					   u8state = 5;
+    				   }
+    			   }
+    			   break;
+
+    		   case 16:
+    			   u32StartPoint = 0;
+    			   u16DataLength = (u16)u32ResponseDataSize;
+
+    			   if (u32StartPoint == 0)
+    			   	{
+    			   		au8startpointascii[9] = '0';
+    			   		u8startasciistartpoint = 1;
+    			   	}
+    			   	if (u16DataLength == 0)
+    			   	{
+    			   		au8sizeascii[9] = '0';
+    			   		u8sizeasciistartpoint = 1;
+    			   	}
+
+    			   	for (u16Counter = 10; u16Counter > 0; u16Counter--)
+    			   	{
+    			   		if (u16DataLength != 0)
+    			   		{
+    			   			au8sizeascii[u16Counter-1] = (u16DataLength % 10) + 48;
+    			   			u16DataLength = u16DataLength/10;
+    			   			u8sizeasciistartpoint++;
+    			   		}
+    			   		if (u32StartPoint != 0)
+    			   		{
+    			   			au8startpointascii[u16Counter-1] = (u32StartPoint % 10) + 48;
+    			   			u32StartPoint = u32StartPoint/10;
+    			   			u8startasciistartpoint++;
+    			   		}
+    			   		if ( (au8sizeascii == 0) && (u32StartPoint == 0) )
+    			   		{
+    			   			break;
+    			   		}
+    			   	}
+
+    			    USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
+    				USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, "AT+HTTPREAD=" , 0 );
+    				while (GSM_u8TransmissionCompleteFlag == 0);
+    				GSM_u8TransmissionCompleteFlag =  0;
+
+    				USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, &(au8startpointascii[10 - u8startasciistartpoint]) , 0 );
+    				while (GSM_u8TransmissionCompleteFlag == 0);
+    				GSM_u8TransmissionCompleteFlag =  0;
+
+    				USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, "," , 0 );
+    				while (GSM_u8TransmissionCompleteFlag == 0);
+    				GSM_u8TransmissionCompleteFlag =  0;
+
+    				USART_enumDMASend(GSM_u8USARTChannel,DMA_CHANNEL_4, &(au8sizeascii[10 - u8sizeasciistartpoint]) , 0 );
+    				while (GSM_u8TransmissionCompleteFlag == 0);
+    				GSM_u8TransmissionCompleteFlag =  0;
+
+    				USART_enumDMASend(GSM_u8USARTChannel,DMA_CHANNEL_4, "\r\n" , 0 );
+    				while (GSM_u8TransmissionCompleteFlag == 0);
+    				GSM_u8TransmissionCompleteFlag =  0;
+
+
+    				while ((enuFindString(au8listenBuffer, "\r\nOK\r\n",u16ResponseSize) == NOK) && (enuFindString(au8listenBuffer, "\r\nNOK\r\n",u16ResponseSize) == NOK));
+
+    				for (u16Counter = 13; au8listenBuffer[u16Counter] != '\r'; u16Counter++)
+    				{
+    					u16ReceivedDataSize = (u16ReceivedDataSize * 10) + (au8listenBuffer[u16Counter] - '0');
+    				}
+
+    				// The Recieved data is version info from server
+    				u16Counter = u16Counter + 2;
+    				u8DataStartPoint = u16Counter;
+    				for ( ; u16Counter < (u8DataStartPoint + u16ReceivedDataSize); u16Counter++)
+    				{
+    					au8Data[u16Counter - u8DataStartPoint] = au8listenBuffer[u16Counter];
+    				}
+    			   u8state++;
+    			   break;
+    		   case 17:
+    			   //get ECU version through CAN bus
+    			   //Check if there's a needed update or not
+
+    			   break;
 
 
     }
