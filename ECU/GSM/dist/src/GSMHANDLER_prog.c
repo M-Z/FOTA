@@ -88,6 +88,7 @@ void GSMHANDLER_vidTask(void)
   u8 au8tempCmd[13] ="AT+HTTPREAD="
   u8 au8Cmd[100];
 
+  Update_Status serverStatus;
 
   if (enuSendFlag == SendingMessage)
   {
@@ -860,7 +861,7 @@ void GSMHANDLER_vidTask(void)
 								if (enuresponseStatus == OK)
 								{
 									GSM_enuListenFlag = IDLE;
-									u8state--;
+
 								}
 								else
 								{
@@ -879,7 +880,24 @@ void GSMHANDLER_vidTask(void)
 
     		   case 16:
     			   //get ECU version through CAN bus
+
     			   //Check if there's a needed update or not
+    			   /* Check the correctness of login data */
+    			   	serverStatus = serverResponseHandling(au8Data);
+    			   	if(serverStatus == checkupdate)
+    			   	{
+    			   		serverStatus=updateVersioncheck(au8Data,/* #### ECU software Version #### */);
+    			   	}
+    			   	else if(serverStatus == VehicleNotFound)
+    			   	{
+    			   		//The username passed in post requet init is incorrect
+    			   		asm("NOP");
+    			   	}
+    			   	else if(serverStatus == IncorrectPassword)
+    			   	{
+    			   		//The password passed in post requet init is incorrect
+    			   		asm("NOP");
+    			   	}
 
     			   break;
 
