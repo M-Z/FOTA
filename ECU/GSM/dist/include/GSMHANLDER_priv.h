@@ -47,13 +47,21 @@ typedef enum
 	POSTRequest,
 
 	/* Read Received Data */
-	GETData,
+	GETSWVersion,
 
 	/* Compare SW Versions */
 	CompareSWVersion,
 
 	/* User Acceptance from GUI */
 	AcceptUpdate,
+
+	/* Get The Hex File */
+	GETHash,
+	GETHexFile,
+	CheckDecryption,
+	SendFile,
+	ReceiveFeedback,
+
 	Done
 }Step;
 

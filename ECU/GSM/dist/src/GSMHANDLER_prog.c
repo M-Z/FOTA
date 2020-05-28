@@ -27,13 +27,15 @@
 #include "Application.h"
 
 MessageState GSM_enuListenFlag = IDLE;
+
 Step GSMHANDLER_enuCurrentStep = DisableEcho;
 Step GSMHANDLER_enuRollBackStep = DisableEcho;
 Step GSMHANDLER_enuNextStep = DisableEcho;
 
+Step GSMHANDLER_enuServerStep = GETSWVersion; /* Either GetSWVersion or GETHexFile */
+
 static u8 au8listenBuffer[64];
 u8 * pu8StatePtr;
-u32 u32ResponseDataSize = 0;
 u32 u32ResponseFileSize = 0;
 
 u8 GSMHANDLER_u8TransmissionCompleteFlag = 0;
@@ -52,10 +54,19 @@ u8 GSMHANDLER_u8TransmissionCompleteFlag = 0;
 /****************************************************************************************/
 void GSMHANDLER_vidTask(void)
 {
-	Error_Status enuresponseStatus = NOK;
-	static  u8  au8Data[200] = {0};
+	static u8 au8Data[200] = {0};
+	static u8 au8ExpectedHash[64] = {0};
 	static u16 u16ReceivedDataSize = 0;
 	static u8 u8CanMessageSent = 0;
+	static u32 u32ResponseDataSize = 0;
+	static u32 u32StartPoint = 0;
+
+	u8 u8UpdateProgress = 0;
+
+	s32 status = HASH_SUCCESS;
+	/* string length only, without '\0' end of string marker */
+	u8 MessageDigest[CRL_SHA256_SIZE];
+	s32 MessageDigestLength = 0;
 
 	switch (GSMHANDLER_enuCurrentStep)
 	{
@@ -125,7 +136,14 @@ void GSMHANDLER_vidTask(void)
 	case SetURL:
 		GSMHANDLER_enuNextStep = SendHTTPData;
 		GSMHANDLER_enuRollBackStep = SetURL;
-		vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5eb4957d8f310f60b7db600f\"\r\n");
+		if (GSMHANDLER_enuServerStep == GETSWVersion)
+		{
+			vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5eb4957d8f310f60b7db600f\"\r\n");
+		}
+		else if (GSMHANDLER_enuServerStep == GETHexFile)
+		{
+			vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5eb4957d8f310f60b7db600f\"\r\n");
+		}
 		break;
 
 	case SendHTTPData:
@@ -142,7 +160,7 @@ void GSMHANDLER_vidTask(void)
 		break;
 
 
-	case GETData:
+	case GETSWVersion:
 		/* Send SW Version Request Through CAN */
 		if (u8CanMessageSent == 0)
 		{
@@ -172,7 +190,10 @@ void GSMHANDLER_vidTask(void)
 		/* Wait for User Acceptance */
 		if (CANHANDLER_u8UpdateAcceptReceived == 1)
 		{
+			u8CanMessageSent = 0;
+			CANHANDLER_u8UpdateAcceptReceived = 0;
 			GSMHANDLER_enuCurrentStep = SetContentType;
+			GSMHANDLER_enuServerStep = GETHexFile;
 		}
 		else
 		{
@@ -180,6 +201,74 @@ void GSMHANDLER_vidTask(void)
 		}
 		break;
 
+	case GETHash:
+		u16ReceivedDataSize = u16GETData(u32StartPoint, (u16)64,au8ExpectedHash);
+		break;
+
+	case GETHexFile:
+		u16ReceivedDataSize = u16GETData((u32StartPoint+64), (u16)200, au8Data);
+		break;
+
+	case CheckDecryption:
+		/* DeInitialize STM32 Cryptographic Library */
+		Crypto_DeInit();
+		//Generate Hash code for a certain part of file
+		status = STM32_SHA256_HASH_DigestCompute((u8*)au8Data, u16ReceivedDataSize, (u8*)MessageDigest, &MessageDigestLength);
+		//if Hash generation succeed, Compare the received Hash code with the generated Hash code
+		if (status == HASH_SUCCESS) {
+			if (Buffercmp(au8ExpectedHash,MessageDigest) == PASSED) {
+				//Correct Hash check, Flash the file
+				GSMHANDLER_enuCurrentStep = SendFile;
+			} else {
+				asm("NOP");
+				//Incorrect Hash check, Retry one time only
+			}
+		} else {
+			//Hash check Error, Retry again
+			/* Add application traintment in case of hash not success possible values of status:
+			 * HASH_ERR_BAD_PARAMETER, HASH_ERR_BAD_CONTEXT, HASH_ERR_BAD_OPERATION
+			 */
+			asm("NOP");
+		}
+		break;
+
+	case SendFile:
+		vidSendHexFile(au8Data, u16ReceivedDataSize);
+		break;
+
+	case ReceiveFeedback:
+		if (CANHANDLER_u8NextMsgRequest == 1)
+		{
+			CANHANDLER_u8NextMsgRequest = 0;
+
+			/* Send Update Status to GUI */
+			u8UpdateProgress = (u8)((u32StartPoint*(u32)100)/u32ResponseDataSize);
+			CANHANDLER_vidSend(CANHANDLER_u8UPDATEPROGRESS, CAN_u8DATAFRAME, &u8UpdateProgress, 1);
+
+			GSMHANDLER_enuCurrentStep = GSMHANDLER_enuNextStep;
+			if (GSMHANDLER_enuNextStep == GETHash)
+			{
+				u32StartPoint += 264;
+				if (u32StartPoint >= u32ResponseDataSize)
+				{
+					GSMHANDLER_enuCurrentStep = Done;
+				}
+				else
+				{
+					/* Do Nothing */
+				}
+			}
+			else
+			{
+				/* Do Nothing */
+			}
+		}
+		break;
+
+	case Done:
+		u8UpdateProgress = 100;
+		CANHANDLER_vidSend(CANHANDLER_u8UPDATEPROGRESS, CAN_u8DATAFRAME, &u8UpdateProgress, 1);
+		break;
 	}
 }
 
@@ -290,6 +379,7 @@ void vidSendHTTPData(void)
 			}
 		}
 		break;
+
 	}
 }
 
@@ -396,8 +486,14 @@ u32 u32SendPostRequest(void)
 							u32ReceivedDataSize = ((u32ReceivedDataSize)* 10) + (au8listenBuffer[u8Counter] - '0');
 						}
 						GSM_enuListenFlag = IDLE;
-						GSMHANDLER_enuCurrentStep = GETData;
-
+						if (GSMHANDLER_enuServerStep == GETSWVersion)
+						{
+							GSMHANDLER_enuCurrentStep = GETSWVersion;
+						}
+						else if (GSMHANDLER_enuServerStep == GETHexFile)
+						{
+							GSMHANDLER_enuCurrentStep = GETHash;
+						}
 					}
 					else
 					{
@@ -405,7 +501,6 @@ u32 u32SendPostRequest(void)
 						GSMHANDLER_enuCurrentStep = InitializeHTTP;
 					}
 				}
-
 			}
 			else
 			{
@@ -552,7 +647,22 @@ u16 u16GETData(u32 u32StartPoint, u16 u16DataLength, u8* au8Data)
 					au8Data[u16Counter - u8DataStartPoint] = au8listenBuffer[u16Counter];
 				}
 				GSM_enuListenFlag = IDLE;
-				GSMHANDLER_enuCurrentStep = CompareSWVersion;
+				if (GSMHANDLER_enuServerStep == GETSWVersion)
+				{
+					GSMHANDLER_enuCurrentStep = CompareSWVersion;
+				}
+				else if (GSMHANDLER_enuServerStep == GETHexFile)
+				{
+					if (GSMHANDLER_enuCurrentStep == GETHash)
+					{
+						GSMHANDLER_enuCurrentStep = GETHexFile;
+					}
+					else if (GSMHANDLER_enuCurrentStep == GETHexFile)
+					{
+						GSMHANDLER_enuCurrentStep = CheckDecryption;
+					}
+				}
+
 			}
 			else
 			{
@@ -621,6 +731,50 @@ void vidCheckUpdate(u8* au8Data)
 	else
 	{
 		GSMHANDLER_enuCurrentStep = InitializeHTTP;
+	}
+}
+
+
+
+/****************************************************************************************/
+/* Description: Check if an update is available											*/
+/* Input      : u8* au8Data																*/
+/*              Description: File to be sent											*/
+/* Output     : Void																	*/
+/* Scope      : Public                                                                 	*/
+/****************************************************************************************/
+void vidSendHexFile(u8* au8Data, u16 u16ReceivedDataSize)
+{
+	static u8Counter = 0;
+	u8 au8HexData[8] = {0};
+	u8 u8CharCount = 0;
+	for (u8CharCount = 0 ; u8CharCount < 8; )
+	{
+		if (au8Data[u8Counter] != '\n')
+		{
+			au8HexData[u8CharCount] = au8Data[u8Counter];
+			u8CharCount++;
+		}
+		else
+		{
+
+		}
+		u8Counter++;
+		if ((au8HexData[u8CharCount-1] == '\r') || (u8Counter == u16ReceivedDataSize))
+		{
+			break;
+		}
+	}
+	CANHANDLER_vidSend(CANHANDLER_u8HEXFILEID, CAN_u8DATAFRAME, au8HexData, u8CharCount);
+	GSMHANDLER_enuCurrentStep = ReceiveFeedback;
+
+	if (u8Counter < u16ReceivedDataSize)
+	{
+		GSMHANDLER_enuNextStep = SendFile;
+	}
+	else
+	{
+		GSMHANDLER_enuNextStep = GETHash;
 	}
 }
 

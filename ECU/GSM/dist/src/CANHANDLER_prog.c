@@ -15,6 +15,7 @@
 
 u8 CANHANDLER_u8SWVersionReceived = 0;
 u8 CANHANDLER_u8UpdateAcceptReceived = 0;
+u8 CANHANDLER_u8NextMsgRequest = 0;
 
 u8 CANHANDLER_au8ReceivedData[8] = {0};
 
@@ -211,8 +212,7 @@ u8 CANHANDLER_vidReceive(void)
 					break;
 
 				case CANHANDLER_u8NEXTMSGREQUEST:
-					/*TODO: Set the flag from app/gsm/whatever */
-					//u8NextMsgRequest = 1;
+					CANHANDLER_u8NextMsgRequest = 1;
 					break;
 
 				default:
