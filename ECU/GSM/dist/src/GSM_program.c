@@ -20,7 +20,7 @@
 #include "Timer_int.h"
 
 
-u8 GSM_u8USARTChannel = 0;
+u8 GSM_u8USARTChannel = USART_CHANNEL_1;
 //u8 GSM_u8DMADoneFlag = 0;
 //u8 GSM_u8NumberOfTerminations = 0;
 //u8* pu8UARTBuffer = (void*)0;

@@ -14,6 +14,7 @@
 #include "CANHANDLER_int.h"
 #include "CANHANDLER_cfg.h"
 #include "GSM_int.h"
+#include "GSMHANDLER_int.h"
 #include "crypto.h"
 #include "Application.h"
 
@@ -122,9 +123,11 @@ int	main(int argc, char* argv[])
 	USART_enumInit(USART_CHANNEL_1);
 
 	/* Create Tasks */
-	task led1= 			{1000, 0, RUNNING, Blink_LED1};
+	task led1 = {1000, 0, RUNNING, Blink_LED1};
+	task gsm  = {10, 0, RUNNING, GSMHANDLER_vidTask};
 	/* Send Tasks to Scheduler */
-	SCH_vidCreateTask(0, &led1);
+	SCH_vidCreateTask(0, &gsm);
+	SCH_vidCreateTask(1, &led1);
 
 	/* Start the Scheduler */
 	SCH_vidStart();
@@ -144,215 +147,215 @@ int	main(int argc, char* argv[])
 	//-------------------------------------------------------------------------------------------------------
 
 	//Intialize GSM and HTTP
-	GSM_enuInit( USART_CHANNEL_1 );
-	GSM_vidInitHTTP();
-	//check the latest version of a certain ECU on the server
-	/***** Without Version Feedback *******/
-	//bank 1 c13
-	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/v/5eb4957d8f310f60b7db600f", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
-	//bank 2 c14
-	//	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/v/5eb495fa8f310f60b7db6011", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
-
-	/***** With Version Feedback *******/
-	//bank 1 c13
-//	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/v/5ebdc50b8f310f60b7db6013", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
-	//bank 2 c14
-	//	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/v/5ebdc54f8f310f60b7db6017", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
-
-	/* Get Server Response */
-	u16ReceivedDataSize = GSM_u16GETData(0, (u16)u32filesize, responseData);
-
-	/* Get the Current ECU Version */
-	do
-	{
-		u8MailBoxIndex = CANHANDLER_vidSend(CANHANDLER_u8ECUSWVERSION, CAN_u8REMOTEFRAME, (void*)0,0);
-	} while (u8MailBoxIndex == 3);
-	while (u8AcceptUpdate == 0)
-	{
-		if (CAN_RxRdy)
-		{
-			CAN_RxRdy = 0;
-			if (CAN_RxMsg[0].u8ActiveFlag == 1)
-			{
-				switch (CAN_RxMsg[0].id)
-				{
-				case CANHANDLER_u8ECUSWVERSION:
-					for (u8Counter = 0; u8Counter < 3; u8Counter++)
-					{
-						au8CurrentVersion[u8Counter] = CAN_RxMsg[0].data[u8Counter];
-					}
-					u8AcceptUpdate = 1;
-					break;
-				default:
-					break;
-				}
-				CAN_RxMsg[0].u8ActiveFlag = 0;
-			}
-		}
-	}
-
-	/* Check the correctness of login data */
-	serverStatus = serverResponseHandling(responseData);
-	if(serverStatus == checkupdate)
-	{
-		serverStatus=updateVersioncheck(responseData, au8CurrentVersion);
-	}
-	else if(serverStatus == VehicleNotFound)
-	{
-		//The username passed in post requet init is incorrect
-		asm("NOP");
-	}
-	else if(serverStatus == IncorrectPassword)
-	{
-		//The password passed in post requet init is incorrect
-		asm("NOP");
-	}
-
-
-	/* if the login succeed check the update version*/
-	if(serverStatus == updateExist)
-	{
-		do
-		{
-			u8MailBoxIndex = CANHANDLER_vidSend(CANHANDLER_u8UPDATEREQUESTGUI, CAN_u8REMOTEFRAME, (void*)0,1);
-		} while (u8MailBoxIndex == 3);
-		while (u8AcceptUpdate == 0)
-		{
-			if (CAN_RxRdy)
-			{
-				CAN_RxRdy = 0;
-				if (CAN_RxMsg[0].u8ActiveFlag == 1)
-				{
-					switch (CAN_RxMsg[0].id)
-					{
-					case CANHANDLER_u8GUIUPDATEACCEPT:
-						u8AcceptUpdate = 1;
-						break;
-					default:
-						break;
-					}
-					CAN_RxMsg[0].u8ActiveFlag = 0;
-				}
-			}
-		}
-		u8AcceptUpdate = 0;
-		CANHANDLER_vidSend(CANHANDLER_u8UPDATEREQUESTID, CAN_u8REMOTEFRAME, (void*)0,1);
-	}
-	else if(serverStatus ==  updateRollbackExist)
-	{
-		asm("NOP");
-	}
-	else if(serverStatus == updateNotExist)
-	{
-		asm("NOP");
-	}
-	//Request update file if needed
-
-	/***** Without Version Feedback *******/
-	//bank 1 c13
-//	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/get/5eb4957d8f310f60b7db600f", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
-	//bank 2 c14
-	//	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/get/5eb495fa8f310f60b7db6011", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
-
-	/***** With Version Feedback *******/
-	//bank 1 c13
-	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/get/5ebdc50b8f310f60b7db6013", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
-	//bank 2 c14
-	//	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/get/5ebdc54f8f310f60b7db6017", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
-
-	//Read the file
-	for (u32Counter = 0; u32Counter < u32filesize; u32Counter += 264)
-	{
-		u8UpdateProgress = (u8)((u32Counter*(u32)100)/u32filesize);
-		//get the Hash code of a certain part of file
-		u16ReceivedDataSize = GSM_u16GETData(u32Counter, (u16)64, Expected_OutputMessage);
-		//Read certain part of file
-		u16ReceivedDataSize = GSM_u16GETData((u32Counter+64), (u16)200, au8Response);
-		/* DeInitialize STM32 Cryptographic Library */
-		Crypto_DeInit();
-		//Generate Hash code for a certain part of file
-		status = STM32_SHA256_HASH_DigestCompute((u8*)au8Response, u16ReceivedDataSize, (u8*)MessageDigest, &MessageDigestLength);
-		//if Hash generation succeed, Compare the received Hash code with the generated Hash code
-		if (status == HASH_SUCCESS) {
-			if (Buffercmp(Expected_OutputMessage,MessageDigest) == PASSED) {
-				//Correct Hash check, Flash the file
-				asm("NOP");
-			} else {
-				asm("NOP");
-				//Incorrect Hash check, Retry one time only
-			}
-		} else {
-			//Hash check Error, Retry again
-			/* Add application traintment in case of hash not success possible values of status:
-			 * HASH_ERR_BAD_PARAMETER, HASH_ERR_BAD_CONTEXT, HASH_ERR_BAD_OPERATION
-			 */
-			asm("NOP");
-		}
-		//if Hash check succedded, send file data through CAN bus
-		u8Counter = 0;
-
-
-
-		while (u8Counter < u16ReceivedDataSize)
-		{
-			/* Clear Hex Data Array */
-			for (u8CharCount = 0; u8CharCount < 8; u8CharCount++)
-			{
-				HexData[u8CharCount] = 0;
-			}
-			for (u8CharCount = 0 ; u8CharCount < 8; )
-			{
-				if (au8Response[u8Counter] != '\n')
-				{
-					HexData[u8CharCount] = au8Response[u8Counter];
-					u8CharCount++;
-				}
-				else
-				{
-
-				}
-				u8Counter++;
-				if ((HexData[u8CharCount-1] == '\r') || (u8Counter == u16ReceivedDataSize))
-				{
-					//					u8CharCount++;
-					break;
-				}
-			}
-			do
-			{
-				u8MailBoxIndex = CANHANDLER_vidSend(CANHANDLER_u8HEXFILEID, CAN_u8DATAFRAME, HexData, u8CharCount);
-			} while (u8MailBoxIndex == 3);
-			while (u8NextMsgRequest == 0)
-			{
-				if (CAN_RxRdy)
-				{
-					CAN_RxRdy = 0;
-					if (CAN_RxMsg[0].u8ActiveFlag == 1)
-					{
-						switch (CAN_RxMsg[0].id)
-						{
-						case CANHANDLER_u8NEXTMSGREQUEST:
-							u8NextMsgRequest = 1;
-							break;
-						default:
-							break;
-						}
-						CAN_RxMsg[0].u8ActiveFlag = 0;
-					}
-				}
-			}
-			u8NextMsgRequest = 0;
-		}
-		do
-		{
-			u8MailBoxIndex = CANHANDLER_vidSend(CANHANDLER_u8UPDATEPROGRESS, CAN_u8DATAFRAME, &u8UpdateProgress, 1);
-		} while (u8MailBoxIndex == 3);
-	}
-	u8UpdateProgress = 100;
-	do
-	{
-		u8MailBoxIndex = CANHANDLER_vidSend(CANHANDLER_u8UPDATEPROGRESS, CAN_u8DATAFRAME, &u8UpdateProgress, 1);
-	} while (u8MailBoxIndex == 3);
+//	GSM_enuInit( USART_CHANNEL_1 );
+//	GSM_vidInitHTTP();
+//	//check the latest version of a certain ECU on the server
+//	/***** Without Version Feedback *******/
+//	//bank 1 c13
+//	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/v/5eb4957d8f310f60b7db600f", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
+//	//bank 2 c14
+//	//	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/v/5eb495fa8f310f60b7db6011", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
+//
+//	/***** With Version Feedback *******/
+//	//bank 1 c13
+////	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/v/5ebdc50b8f310f60b7db6013", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
+//	//bank 2 c14
+//	//	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/v/5ebdc54f8f310f60b7db6017", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
+//
+//	/* Get Server Response */
+//	u16ReceivedDataSize = GSM_u16GETData(0, (u16)u32filesize, responseData);
+//
+//	/* Get the Current ECU Version */
+//	do
+//	{
+//		u8MailBoxIndex = CANHANDLER_vidSend(CANHANDLER_u8ECUSWVERSION, CAN_u8REMOTEFRAME, (void*)0,0);
+//	} while (u8MailBoxIndex == 3);
+//	while (u8AcceptUpdate == 0)
+//	{
+//		if (CAN_RxRdy)
+//		{
+//			CAN_RxRdy = 0;
+//			if (CAN_RxMsg[0].u8ActiveFlag == 1)
+//			{
+//				switch (CAN_RxMsg[0].id)
+//				{
+//				case CANHANDLER_u8ECUSWVERSION:
+//					for (u8Counter = 0; u8Counter < 3; u8Counter++)
+//					{
+//						au8CurrentVersion[u8Counter] = CAN_RxMsg[0].data[u8Counter];
+//					}
+//					u8AcceptUpdate = 1;
+//					break;
+//				default:
+//					break;
+//				}
+//				CAN_RxMsg[0].u8ActiveFlag = 0;
+//			}
+//		}
+//	}
+//
+//	/* Check the correctness of login data */
+//	serverStatus = serverResponseHandling(responseData);
+//	if(serverStatus == checkupdate)
+//	{
+//		serverStatus=updateVersioncheck(responseData, au8CurrentVersion);
+//	}
+//	else if(serverStatus == VehicleNotFound)
+//	{
+//		//The username passed in post requet init is incorrect
+//		asm("NOP");
+//	}
+//	else if(serverStatus == IncorrectPassword)
+//	{
+//		//The password passed in post requet init is incorrect
+//		asm("NOP");
+//	}
+//
+//
+//	/* if the login succeed check the update version*/
+//	if(serverStatus == updateExist)
+//	{
+//		do
+//		{
+//			u8MailBoxIndex = CANHANDLER_vidSend(CANHANDLER_u8UPDATEREQUESTGUI, CAN_u8REMOTEFRAME, (void*)0,1);
+//		} while (u8MailBoxIndex == 3);
+//		while (u8AcceptUpdate == 0)
+//		{
+//			if (CAN_RxRdy)
+//			{
+//				CAN_RxRdy = 0;
+//				if (CAN_RxMsg[0].u8ActiveFlag == 1)
+//				{
+//					switch (CAN_RxMsg[0].id)
+//					{
+//					case CANHANDLER_u8GUIUPDATEACCEPT:
+//						u8AcceptUpdate = 1;
+//						break;
+//					default:
+//						break;
+//					}
+//					CAN_RxMsg[0].u8ActiveFlag = 0;
+//				}
+//			}
+//		}
+//		u8AcceptUpdate = 0;
+//		CANHANDLER_vidSend(CANHANDLER_u8UPDATEREQUESTID, CAN_u8REMOTEFRAME, (void*)0,1);
+//	}
+//	else if(serverStatus ==  updateRollbackExist)
+//	{
+//		asm("NOP");
+//	}
+//	else if(serverStatus == updateNotExist)
+//	{
+//		asm("NOP");
+//	}
+//	//Request update file if needed
+//
+//	/***** Without Version Feedback *******/
+//	//bank 1 c13
+////	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/get/5eb4957d8f310f60b7db600f", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
+//	//bank 2 c14
+//	//	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/get/5eb495fa8f310f60b7db6011", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
+//
+//	/***** With Version Feedback *******/
+//	//bank 1 c13
+//	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/get/5ebdc50b8f310f60b7db6013", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
+//	//bank 2 c14
+//	//	GSM_enuPOSTRequestInit("34.65.7.33/API/firmware/get/5ebdc54f8f310f60b7db6017", "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", responseData, &u32filesize);
+//
+//	//Read the file
+//	for (u32Counter = 0; u32Counter < u32filesize; u32Counter += 264)
+//	{
+//		u8UpdateProgress = (u8)((u32Counter*(u32)100)/u32filesize);
+//		//get the Hash code of a certain part of file
+//		u16ReceivedDataSize = GSM_u16GETData(u32Counter, (u16)64, Expected_OutputMessage);
+//		//Read certain part of file
+//		u16ReceivedDataSize = GSM_u16GETData((u32Counter+64), (u16)200, au8Response);
+//		/* DeInitialize STM32 Cryptographic Library */
+//		Crypto_DeInit();
+//		//Generate Hash code for a certain part of file
+//		status = STM32_SHA256_HASH_DigestCompute((u8*)au8Response, u16ReceivedDataSize, (u8*)MessageDigest, &MessageDigestLength);
+//		//if Hash generation succeed, Compare the received Hash code with the generated Hash code
+//		if (status == HASH_SUCCESS) {
+//			if (Buffercmp(Expected_OutputMessage,MessageDigest) == PASSED) {
+//				//Correct Hash check, Flash the file
+//				asm("NOP");
+//			} else {
+//				asm("NOP");
+//				//Incorrect Hash check, Retry one time only
+//			}
+//		} else {
+//			//Hash check Error, Retry again
+//			/* Add application traintment in case of hash not success possible values of status:
+//			 * HASH_ERR_BAD_PARAMETER, HASH_ERR_BAD_CONTEXT, HASH_ERR_BAD_OPERATION
+//			 */
+//			asm("NOP");
+//		}
+//		//if Hash check succedded, send file data through CAN bus
+//		u8Counter = 0;
+//
+//
+//
+//		while (u8Counter < u16ReceivedDataSize)
+//		{
+//			/* Clear Hex Data Array */
+//			for (u8CharCount = 0; u8CharCount < 8; u8CharCount++)
+//			{
+//				HexData[u8CharCount] = 0;
+//			}
+//			for (u8CharCount = 0 ; u8CharCount < 8; )
+//			{
+//				if (au8Response[u8Counter] != '\n')
+//				{
+//					HexData[u8CharCount] = au8Response[u8Counter];
+//					u8CharCount++;
+//				}
+//				else
+//				{
+//
+//				}
+//				u8Counter++;
+//				if ((HexData[u8CharCount-1] == '\r') || (u8Counter == u16ReceivedDataSize))
+//				{
+//					//					u8CharCount++;
+//					break;
+//				}
+//			}
+//			do
+//			{
+//				u8MailBoxIndex = CANHANDLER_vidSend(CANHANDLER_u8HEXFILEID, CAN_u8DATAFRAME, HexData, u8CharCount);
+//			} while (u8MailBoxIndex == 3);
+//			while (u8NextMsgRequest == 0)
+//			{
+//				if (CAN_RxRdy)
+//				{
+//					CAN_RxRdy = 0;
+//					if (CAN_RxMsg[0].u8ActiveFlag == 1)
+//					{
+//						switch (CAN_RxMsg[0].id)
+//						{
+//						case CANHANDLER_u8NEXTMSGREQUEST:
+//							u8NextMsgRequest = 1;
+//							break;
+//						default:
+//							break;
+//						}
+//						CAN_RxMsg[0].u8ActiveFlag = 0;
+//					}
+//				}
+//			}
+//			u8NextMsgRequest = 0;
+//		}
+//		do
+//		{
+//			u8MailBoxIndex = CANHANDLER_vidSend(CANHANDLER_u8UPDATEPROGRESS, CAN_u8DATAFRAME, &u8UpdateProgress, 1);
+//		} while (u8MailBoxIndex == 3);
+//	}
+//	u8UpdateProgress = 100;
+//	do
+//	{
+//		u8MailBoxIndex = CANHANDLER_vidSend(CANHANDLER_u8UPDATEPROGRESS, CAN_u8DATAFRAME, &u8UpdateProgress, 1);
+//	} while (u8MailBoxIndex == 3);
 
 	while (1)
 	{

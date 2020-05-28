@@ -19,6 +19,7 @@ typedef double 				f64;
 #define TRUE 				0b1
 #define FALSE 				0b0
 
+#define NULL	(void*)0
 //------------------HASH ERROR STATUS----------------------------------------------------------------------
 #define HASH_SUCCESS             (s32) (0)    /*!<  hash Success */
 #define HASH_ERR_BAD_OPERATION   (s32) (4001) /*!<  hash Invalid operation */

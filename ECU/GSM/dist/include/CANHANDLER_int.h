@@ -10,6 +10,9 @@
 
 
 
+extern u8 CANHANDLER_u8SWVersionReceived;
+extern u8 CANHANDLER_u8UpdateAcceptReceived;
+extern u8 CANHANDLER_au8ReceivedData[8];
 
 
 /*****************************************/
@@ -40,7 +43,7 @@
 /* Output     : Void                                                                   	*/
 /* Scope      : Public                                                                 	*/
 /****************************************************************************************/
-u8 CANHANDLER_vidSend(u8 u8MessageID, u8 u8Frame,u8* pu8Data, u8 u8DataLength);
+void CANHANDLER_vidSend(u8 u8MessageID, u8 u8Frame,u8* pu8Data, u8 u8DataLength);
 
 
 /****************************************************************************************/
