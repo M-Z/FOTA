@@ -94,6 +94,7 @@ module.exports = {
   certPathPhrase: envVars.NODE_ENV === 'development' ? 'localhost' : envVars.CERT_PASS_PHRASE,
   rootFolder: envVars.ROOT_HEX_FOLDER.replace(/\/?$/, ''),
   saltWorkFactor: envVars.SALT_WORK_FACTOR,
+  defaultBytes: 200,
   hashType: envVars.DEFAULT_HASH_ALGORITHM,
   supportedHashes: [
     'DSA',

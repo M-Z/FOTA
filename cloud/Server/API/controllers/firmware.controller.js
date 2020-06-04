@@ -136,13 +136,13 @@ exports.read_firmware_file = function(req, res) {
         firmwareID: firmware._id,
         incrementField: "downloadRequest.succeed",
         commandString: `Getting firmware [file] with ID ${req.params.firmwareID}`,
-        commandOutput: `Returned firmware ${ firmware.location }.hex`,
+        commandOutput: `Returned firmware ${ firmware.location }`,
         res: res,
 
         // Generate file Hash
         sendRequest: hashFile({
           contents: contents,
-          re: `[^]{1,${ req.body.bytes }}`,
+          re: `[^]{1,${ req.body.bytes || config.defaultBytes }}`,
           hashType: req.body.hashType || config.hashType
         })
       });
