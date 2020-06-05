@@ -87,12 +87,12 @@ main(int argc, char* argv[])
 //	CANHANDLER_vidSend(35, DATA_FRAME, HexData,1);
 	while (1)
 	{
-		DIO_vidSetPinValue(DIO_u8PORTC, DIO_u8PIN13, DIO_u8LOW);
+		DIO_vidSetPinValue(DIO_u8PORTC, DIO_u8PIN14, DIO_u8LOW);
 		for (i = 0; i < 8000000; i++)
 		{
 
 		}
-		DIO_vidSetPinValue(DIO_u8PORTC, DIO_u8PIN13, DIO_u8HIGH);
+		DIO_vidSetPinValue(DIO_u8PORTC, DIO_u8PIN14, DIO_u8HIGH);
 		for (i = 0; i < 8000000; i++)
 		{
 

@@ -49,6 +49,23 @@ void CANHANDLER_vidSend(u8 u8MessageID, u8 u8Frame,u8* pu8Data, u8 u8DataLength)
 
 
 /****************************************************************************************/
+/* Description: Send Can Message Task 							 						*/
+/* Input      : u8 u8MessageID		                                                	*/
+/*              Description: ID of the message to send over CAN			                */
+/* 				Range: 	u8																*/
+/*				u8 u8Frame																*/
+/*              Description: Type of Frame								                */
+/* 				Range: 	CAN_u8REMOTE, CAN_u8DATA										*/
+/*				u8* pu8Data																*/
+/*              Description: Array containing data to send over CAN, NULL if Remote Fram*/
+/* 				Range: 	u8*																*/
+/* Output     : Void                                                                   	*/
+/* Scope      : Public                                                                 	*/
+/****************************************************************************************/
+void CANHANDLER_vidSendTask(void);
+
+
+/****************************************************************************************/
 /* Description: Receive Can Message 							 						*/
 /* Input      : Void																	*/
 /* Output     : Void                                                                   	*/

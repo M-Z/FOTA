@@ -27,7 +27,7 @@ void Timer1_UEV_Interrupt (void)
 	//TIM1_CR1 |= (CEN | UDIS | DIR | ARPE );			// counter enable /UEV enable/ direction / preload or not
 	TIM1_CR1 &= ~(DIR);
 	TIM1_PSC = (u32)0;
-	TIM1_ARR = (u32)100;
+	TIM1_ARR = (u32)72000;
 	TIM1_DIER |= UIE;
 }
 

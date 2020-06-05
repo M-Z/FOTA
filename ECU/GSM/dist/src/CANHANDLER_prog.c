@@ -128,7 +128,7 @@ void CANHANDLER_vidSend(u8 u8MessageID, u8 u8Frame,u8* pu8Data, u8 u8DataLength)
 
 
 /****************************************************************************************/
-/* Description: Send Can Message 							 							*/
+/* Description: Send Can Message Task 							 						*/
 /* Input      : u8 u8MessageID		                                                	*/
 /*              Description: ID of the message to send over CAN			                */
 /* 				Range: 	u8																*/

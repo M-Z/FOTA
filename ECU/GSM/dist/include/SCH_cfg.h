@@ -11,7 +11,7 @@
 
 /* Description:	Max Number of Tasks in The Program 	*/
 /* Range: 0 -> 256									*/
-#define MAX_TASKS_NUM	1
+#define MAX_TASKS_NUM	4
 
 /* Description:	Tick Time of The Scheduler in ms	*/
 /* Range: 1 -> 65535								*/

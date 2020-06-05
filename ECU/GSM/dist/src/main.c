@@ -125,9 +125,14 @@ int	main(int argc, char* argv[])
 	/* Create Tasks */
 	task led1 = {1000, 0, RUNNING, Blink_LED1};
 	task gsm  = {10, 0, RUNNING, GSMHANDLER_vidTask};
+	task CANReceiver = {9, 0, RUNNING,CANHANDLER_vidReceive};
+	task CANSender = {9, 0, RUNNING,CANHANDLER_vidSendTask};
+
 	/* Send Tasks to Scheduler */
 	SCH_vidCreateTask(0, &gsm);
-	SCH_vidCreateTask(1, &led1);
+	SCH_vidCreateTask(1, &CANReceiver);
+	SCH_vidCreateTask(2, &CANSender);
+	SCH_vidCreateTask(3, &led1);
 
 	/* Start the Scheduler */
 	SCH_vidStart();

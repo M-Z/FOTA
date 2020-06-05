@@ -7,7 +7,7 @@ src/GSMHANDLER_prog.o: ../src/GSMHANDLER_prog.c ../include/STD_Types.h \
  ../include/HASH/hash.h ../include/HASH/Common/hash_common.h \
  ../include/HASH/SHA256/sha256.h \
  ../include/HASH/Common/sha256_sha224_transform.h \
- ../include/Application.h
+ ../include/Application.h ../include/Timer_int.h
 
 ../include/STD_Types.h:
 
@@ -46,3 +46,5 @@ src/GSMHANDLER_prog.o: ../src/GSMHANDLER_prog.c ../include/STD_Types.h \
 ../include/HASH/Common/sha256_sha224_transform.h:
 
 ../include/Application.h:
+
+../include/Timer_int.h:

@@ -182,6 +182,20 @@ static u8 u8CheckBufferTermination(u8* pu8Buffer, u32 u32BufferSize, u8 u8Termin
 /****************************************************************************************/
 static Error_Status enuFindString(u8* pu8Buffer, const u8* pu8ExpectedString, u32 u32Size);
 
+
+/****************************************************************************************/
+/* Description: Clears the data in the Buffer and replace it with zeros					*/
+/* Input      : u8* pu8Buffer		                                                    */
+/*              Description: Buffer to be cleard							            */
+/* 				Range: 	pointer to u8													*/
+/*				u32 u32BufferLength														*/
+/*              Description: Size of the buffer to be cleared							*/
+/* 				Range: 	u32																*/
+/* Output     : Void																	*/
+/* Scope      : Private                                                                	*/
+/****************************************************************************************/
+static void vidClearBuffer(u8* pu8Buffer, u32 u32BufferLength);
+
 Error_Status DMAListen(u8* pu8state);
 
 

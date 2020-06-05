@@ -170,8 +170,8 @@ main(int argc, char* argv[])
 							{
 								HexArrayLine[countertest] = CAN_RxMsg[rxcount].data[u8Counter];
 								countertest++;
-								CANHANDLER_vidSend(CANHANDLER_u8NEXTMSGREQUEST,CAN_u8REMOTEFRAME,(void*)0,0);
 							}
+							CANHANDLER_vidSend(CANHANDLER_u8NEXTMSGREQUEST,CAN_u8REMOTEFRAME,(void*)0,0);
 							break;
 						case CANHANDLER_u8ECUSWVERSION:
 							CANHANDLER_vidSend(CANHANDLER_u8ECUSWVERSION,CAN_u8DATAFRAME,au8version,3);

@@ -26,6 +26,10 @@
 #include "crypto.h"
 #include "Application.h"
 
+
+
+#include "Timer_int.h"
+
 MessageState GSM_enuListenFlag = IDLE;
 
 Step GSMHANDLER_enuCurrentStep = DisableEcho;
@@ -34,7 +38,7 @@ Step GSMHANDLER_enuNextStep = DisableEcho;
 
 Step GSMHANDLER_enuServerStep = GETSWVersion; /* Either GetSWVersion or GETHexFile */
 
-static u8 au8listenBuffer[64];
+volatile u8 au8listenBuffer[225];
 u8 * pu8StatePtr;
 u32 u32ResponseFileSize = 0;
 
@@ -138,11 +142,17 @@ void GSMHANDLER_vidTask(void)
 		GSMHANDLER_enuRollBackStep = SetURL;
 		if (GSMHANDLER_enuServerStep == GETSWVersion)
 		{
-			vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5eb4957d8f310f60b7db600f\"\r\n");
+			//C13 ON Bank 1
+//			vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5ed3cf5e3735b16961faf0fd\"\r\n");
+			//C14 on Bank 2
+			vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5ed97e86c67d0c31ae720b90\"\r\n");
 		}
 		else if (GSMHANDLER_enuServerStep == GETHexFile)
 		{
-			vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5eb4957d8f310f60b7db600f\"\r\n");
+			//C13 ON Bank 1
+//			vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5ed3cf5e3735b16961faf0fd\"\r\n");
+			//C14 on Bank 2
+			vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5ed97e86c67d0c31ae720b90\"\r\n");
 		}
 		break;
 
@@ -192,6 +202,7 @@ void GSMHANDLER_vidTask(void)
 		{
 			u8CanMessageSent = 0;
 			CANHANDLER_u8UpdateAcceptReceived = 0;
+			CANHANDLER_vidSend(CANHANDLER_u8UPDATEREQUESTID, CAN_u8REMOTEFRAME, NULL,0);
 			GSMHANDLER_enuCurrentStep = SetContentType;
 			GSMHANDLER_enuServerStep = GETHexFile;
 		}
@@ -210,6 +221,7 @@ void GSMHANDLER_vidTask(void)
 		break;
 
 	case CheckDecryption:
+
 		/* DeInitialize STM32 Cryptographic Library */
 		Crypto_DeInit();
 		//Generate Hash code for a certain part of file
@@ -306,15 +318,19 @@ void vidSendCommand(u8* pu8Command)
 			{
 				GSM_enuListenFlag = IDLE;
 				GSMHANDLER_enuCurrentStep = GSMHANDLER_enuNextStep;
+				DMA_voidDisable(DMA_CHANNEL_5);
+				vidClearBuffer(au8listenBuffer,64);
 			}
 			else
 			{
 				/* Check for Error Response */
-				enuresponseStatus = enuFindString(au8listenBuffer, "\r\n\ERROR\r\n", 64);
+				enuresponseStatus = enuFindString(au8listenBuffer, "\r\nERROR\r\n", 64);
 				if (enuresponseStatus == OK)
 				{
 					GSMHANDLER_enuCurrentStep = GSMHANDLER_enuRollBackStep;
 					GSM_enuListenFlag = IDLE;
+					DMA_voidDisable(DMA_CHANNEL_5);
+					vidClearBuffer(au8listenBuffer,64);
 				}
 				else
 				{
@@ -362,15 +378,19 @@ void vidSendHTTPData(void)
 			{
 				GSM_enuListenFlag = IDLE;
 				GSMHANDLER_enuCurrentStep = SendVehicleName;
+				DMA_voidDisable(DMA_CHANNEL_5);
+				vidClearBuffer(au8listenBuffer,64);
 			}
 			else
 			{
 				/* Check for Error Response */
-				enuresponseStatus = enuFindString(au8listenBuffer, "\r\n\ERROR\r\n", 64);
+				enuresponseStatus = enuFindString(au8listenBuffer, "\r\nERROR\r\n", 64);
 				if (enuresponseStatus == OK)
 				{
 					GSM_enuListenFlag = IDLE;
 					GSMHANDLER_enuCurrentStep = InitializeHTTP;
+					DMA_voidDisable(DMA_CHANNEL_5);
+					vidClearBuffer(au8listenBuffer,64);
 				}
 				else
 				{
@@ -399,7 +419,14 @@ void vidSendVehicleName(void)
 	{
 	case IDLE:
 		USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
-		USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", 0 );
+		if (GSMHANDLER_enuServerStep == GETSWVersion)
+		{
+			USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, "{\"vehicleName\":\"fota user\",\"password\":\"123\"}\r\n", 0 );
+		}
+		else if (GSMHANDLER_enuServerStep == GETHexFile)
+		{
+			USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, "{\"vehicleName\":\"fota user\",\"password\":\"123\", \"bytes\": \"200\", \"hashType\": \"sha256\"}\r\n", 0 );
+		}
 		GSM_enuListenFlag = WaitingForMessage;
 		break;
 	case WaitingForMessage:
@@ -416,15 +443,19 @@ void vidSendVehicleName(void)
 			{
 				GSM_enuListenFlag = IDLE;
 				GSMHANDLER_enuCurrentStep = POSTRequest;
+				DMA_voidDisable(DMA_CHANNEL_5);
+				vidClearBuffer(au8listenBuffer,64);
 			}
 			else
 			{
 				/* Check for Error Response */
-				enuresponseStatus = enuFindString(au8listenBuffer, "\r\n\ERROR\r\n", 64);
+				enuresponseStatus = enuFindString(au8listenBuffer, "\r\nERROR\r\n", 64);
 				if (enuresponseStatus == OK)
 				{
 					GSM_enuListenFlag = IDLE;
 					GSMHANDLER_enuCurrentStep = SendVehicleName;
+					DMA_voidDisable(DMA_CHANNEL_5);
+					vidClearBuffer(au8listenBuffer,64);
 				}
 				else
 				{
@@ -479,13 +510,16 @@ u32 u32SendPostRequest(void)
 					if (enuresponseStatus == OK)
 					{
 						GSM_enuListenFlag = IDLE;
-
+						DMA_voidDisable(DMA_CHANNEL_5);
 						//get Received data size
 						for (u8Counter = 27; au8listenBuffer[u8Counter] != '\r'; u8Counter++)
 						{
 							u32ReceivedDataSize = ((u32ReceivedDataSize)* 10) + (au8listenBuffer[u8Counter] - '0');
 						}
+
 						GSM_enuListenFlag = IDLE;
+						vidClearBuffer(au8listenBuffer,64);
+
 						if (GSMHANDLER_enuServerStep == GETSWVersion)
 						{
 							GSMHANDLER_enuCurrentStep = GETSWVersion;
@@ -505,11 +539,13 @@ u32 u32SendPostRequest(void)
 			else
 			{
 				/* Check for Error Response */
-				enuresponseStatus = enuFindString(au8listenBuffer, "\r\n\ERROR\r\n", 64);
+				enuresponseStatus = enuFindString(au8listenBuffer, "\r\nERROR\r\n", 64);
 				if (enuresponseStatus == OK)
 				{
 					GSM_enuListenFlag = IDLE;
 					GSMHANDLER_enuCurrentStep = InitializeHTTP;
+					DMA_voidDisable(DMA_CHANNEL_5);
+					vidClearBuffer(au8listenBuffer,64);
 				}
 				else
 				{
@@ -544,7 +580,7 @@ u32 u32SendPostRequest(void)
 u16 u16GETData(u32 u32StartPoint, u16 u16DataLength, u8* au8Data)
 {
 	Error_Status enuresponseStatus = NOK;
-	u8 au8Cmd[100] = "AT+HTTPREAD=";
+	static u8 au8Cmd[100] = "AT+HTTPREAD=";
 	u8 u8Counter = 12;
 	u8 u8Counter2 = 0;
 	u16 u16ReceivedDataSize = 0;
@@ -618,7 +654,7 @@ u16 u16GETData(u32 u32StartPoint, u16 u16DataLength, u8* au8Data)
 		u8Counter++;
 		au8Cmd[u8Counter] = '\0';
 
-		USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
+		USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 225 );
 		USART_enumDMASend(GSM_u8USARTChannel, DMA_CHANNEL_4, au8Cmd, 0 );
 		GSM_enuListenFlag = WaitingForMessage;
 		break;
@@ -631,9 +667,10 @@ u16 u16GETData(u32 u32StartPoint, u16 u16DataLength, u8* au8Data)
 		else
 		{
 			/* Check for OK response */
-			enuresponseStatus = enuFindString(au8listenBuffer, "\r\nOK\r\n", 64);
+			enuresponseStatus = enuFindString(au8listenBuffer, "\r\nOK\r\n", 225);
 			if (enuresponseStatus == OK)
 			{
+				DMA_voidDisable(DMA_CHANNEL_5);
 				for (u16Counter = 13; au8listenBuffer[u16Counter] != '\r'; u16Counter++)
 				{
 					u16ReceivedDataSize = (u16ReceivedDataSize * 10) + (au8listenBuffer[u16Counter] - '0');
@@ -647,6 +684,7 @@ u16 u16GETData(u32 u32StartPoint, u16 u16DataLength, u8* au8Data)
 					au8Data[u16Counter - u8DataStartPoint] = au8listenBuffer[u16Counter];
 				}
 				GSM_enuListenFlag = IDLE;
+				vidClearBuffer(au8listenBuffer,225);
 				if (GSMHANDLER_enuServerStep == GETSWVersion)
 				{
 					GSMHANDLER_enuCurrentStep = CompareSWVersion;
@@ -667,7 +705,7 @@ u16 u16GETData(u32 u32StartPoint, u16 u16DataLength, u8* au8Data)
 			else
 			{
 				/* Check for Error Response */
-				enuresponseStatus = enuFindString(au8listenBuffer, "\r\n\ERROR\r\n", 64);
+				enuresponseStatus = enuFindString(au8listenBuffer, "\r\nERROR\r\n", 225);
 				if (enuresponseStatus == OK)
 				{
 					GSM_enuListenFlag = IDLE;
@@ -774,6 +812,7 @@ void vidSendHexFile(u8* au8Data, u16 u16ReceivedDataSize)
 	}
 	else
 	{
+		u8Counter = 0;
 		GSMHANDLER_enuNextStep = GETHash;
 	}
 }
@@ -878,6 +917,27 @@ static Error_Status enuFindString(u8* pu8Buffer, const u8* pu8ExpectedString, u3
 	}
 
 	return NOK;
+}
+
+
+/****************************************************************************************/
+/* Description: Clears the data in the Buffer and replace it with zeros					*/
+/* Input      : u8* pu8Buffer		                                                    */
+/*              Description: Buffer to be cleard							            */
+/* 				Range: 	pointer to u8													*/
+/*				u32 u32BufferLength														*/
+/*              Description: Size of the buffer to be cleared							*/
+/* 				Range: 	u32																*/
+/* Output     : Void																	*/
+/* Scope      : Private                                                                	*/
+/****************************************************************************************/
+static void vidClearBuffer(u8* pu8Buffer, u32 u32BufferLength)
+{
+	u32 u32Counter = 0;
+	for(u32Counter = 0; u32Counter < u32BufferLength; u32Counter++)
+	{
+		pu8Buffer[u32Counter] = 0;
+	}
 }
 
 //Error_Status DMAListen(u8* pu8state)
