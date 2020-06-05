@@ -17,6 +17,9 @@
 #include "GSM_int.h"
 #include "GSM_conf.h"
 
+#include "SCH_int.h"
+#include "SCH_cfg.h"
+
 #include "CANHANDLER_int.h"
 #include "CANHANDLER_cfg.h"
 
@@ -253,13 +256,12 @@ void GSMHANDLER_vidTask(void)
 		{
 			CANHANDLER_u8NextMsgRequest = 0;
 
-			/* Send Update Status to GUI */
-			u8UpdateProgress = (u8)((u32StartPoint*(u32)100)/u32ResponseDataSize);
-			CANHANDLER_vidSend(CANHANDLER_u8UPDATEPROGRESS, CAN_u8DATAFRAME, &u8UpdateProgress, 1);
-
 			GSMHANDLER_enuCurrentStep = GSMHANDLER_enuNextStep;
 			if (GSMHANDLER_enuNextStep == GETHash)
 			{
+				/* Send Update Status to GUI */
+				u8UpdateProgress = (u8)((u32StartPoint*(u32)100)/u32ResponseDataSize);
+				CANHANDLER_vidSend(CANHANDLER_u8UPDATEPROGRESS, CAN_u8DATAFRAME, &u8UpdateProgress, 1);
 				u32StartPoint += 264;
 				if (u32StartPoint >= u32ResponseDataSize)
 				{
@@ -280,6 +282,7 @@ void GSMHANDLER_vidTask(void)
 	case Done:
 		u8UpdateProgress = 100;
 		CANHANDLER_vidSend(CANHANDLER_u8UPDATEPROGRESS, CAN_u8DATAFRAME, &u8UpdateProgress, 1);
+		SCH_vidStopTask(0);
 		break;
 	}
 }
@@ -783,7 +786,7 @@ void vidCheckUpdate(u8* au8Data)
 /****************************************************************************************/
 void vidSendHexFile(u8* au8Data, u16 u16ReceivedDataSize)
 {
-	static u8Counter = 0;
+	static u8 u8Counter = 0;
 	u8 au8HexData[8] = {0};
 	u8 u8CharCount = 0;
 	for (u8CharCount = 0 ; u8CharCount < 8; )
@@ -802,6 +805,10 @@ void vidSendHexFile(u8* au8Data, u16 u16ReceivedDataSize)
 		{
 			break;
 		}
+	}
+	if (au8Data[u8Counter] == '\n')
+	{
+		u8Counter++;
 	}
 	CANHANDLER_vidSend(CANHANDLER_u8HEXFILEID, CAN_u8DATAFRAME, au8HexData, u8CharCount);
 	GSMHANDLER_enuCurrentStep = ReceiveFeedback;
