@@ -20,6 +20,16 @@
 #define FLASH_WRPR		(*((volatile u32*)  0x40022020))
 
 
+/* Option Bytes Description */
+#define FLASH_OPTRDPADRR			(*((volatile u16*)  0x1FFFF800))
+#define FLASH_OPTUSERADDR			(*((volatile u16*)  0x1FFFF802))
+#define FLASH_OPTDATA0ADDR			(*((volatile u16*)  0x1FFFF804))
+#define FLASH_OPTDATA1ADDR			(*((volatile u16*)  0x1FFFF806))
+#define FLASH_OPTWRP0ADDR			(*((volatile u16*)  0x1FFFF808))
+#define FLASH_OPTWRP1ADDR			(*((volatile u16*)  0x1FFFF80A))
+#define FLASH_OPTWRP2ADDR			(*((volatile u16*)  0x1FFFF80C))
+#define FLASH_OPTWRP3ADDR			(*((volatile u16*)  0x1FFFF80E))
+
 /* ACR Register Bits */
 #define LATENCY		0
 #define HLFCYA		3
@@ -55,7 +65,8 @@
 #define WDG_SW		2
 #define NRST_STOP	3
 #define NRST_STDBY	4
-
+#define DATA0		10
+#define DATA1		18
 
 
 /* Bits Status Definitions */
@@ -77,4 +88,9 @@
 /* Half Word Definitions */
 #define HALFWORDMASK				0x0000FFFF
 #define HALFWORDOFFSET				16
+#define	BYTEMASK						0x000000FF
+/* Flash Read Protection */
+#define FLASH_u8READUNPROTECTED		0
+#define FLASH_u8READPROTECTED		1
+#define FLASH_u16READPROTECTKEY		0x00A5
 #endif /* FLASH_PRIV_H_ */

@@ -36,6 +36,7 @@
 #include "DIO_int.h"
 #include "NVIC_int.h"
 #include "SCB_int.h"
+#include "FLASH_int.h"
 #include "CAN.h"
 #include "CANHANDLER_int.h"
 #include "CANHANDLER_cfg.h"
@@ -74,7 +75,13 @@ main(int argc, char* argv[])
 	u32 i = 0;
 	u8 rxcount = 0;
 	u8 au8version[3] = {0};
-	filter_type filters[] = {{CANHANDLER_u8UPDATEREQUESTID,REMOTE_FRAME, STANDARD_FORMAT}, {CANHANDLER_u8ECUSWVERSION,REMOTE_FRAME, STANDARD_FORMAT}};
+	u8 u8UsedBank = 0;
+	filter_type filters[] =
+	{
+		{CANHANDLER_u8UPDATEREQUESTID,REMOTE_FRAME, STANDARD_FORMAT},
+		{CANHANDLER_u8ECUSWVERSION,REMOTE_FRAME, STANDARD_FORMAT},
+		{CANHANDLER_u8GETFLASHBANK, REMOTE_FRAME, STANDARD_FORMAT}
+	};
 	RCC_vidInit();
 	RCC_vidEnablePeripheral(RCC_u8GPIOCCLK);
 	//	RCC_vidEnablePeripheral(RCC_u8GPIOBCLK);
@@ -115,6 +122,10 @@ main(int argc, char* argv[])
 					break;
 				case CANHANDLER_u8ECUSWVERSION:
 					CANHANDLER_vidSend(CANHANDLER_u8ECUSWVERSION,CAN_u8DATAFRAME,au8version,3);
+					break;
+				case CANHANDLER_u8GETFLASHBANK:
+					u8UsedBank = FLASH_u8GetOptionByteData(FLASH_u8OPTDATA0);
+					CANHANDLER_vidSend(CANHANDLER_u8GETFLASHBANK,CAN_u8DATAFRAME,&u8UsedBank,1);
 					break;
 				}
 				CAN_RxMsg[rxcount].u8ActiveFlag = 0;

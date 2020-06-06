@@ -92,7 +92,12 @@ main(int argc, char* argv[])
 
 	u8 au8version[3] = {0};
 
-	filter_type filters[] = {{CANHANDLER_u8HEXFILEID,DATA_FRAME, STANDARD_FORMAT}, {CANHANDLER_u8ECUSWVERSION, REMOTE_FRAME,STANDARD_FORMAT}};
+	filter_type filters[] =
+	{
+		{CANHANDLER_u8HEXFILEID,DATA_FRAME, STANDARD_FORMAT},
+		{CANHANDLER_u8ECUSWVERSION, REMOTE_FRAME,STANDARD_FORMAT},
+		{CANHANDLER_u8GETFLASHBANK, REMOTE_FRAME,STANDARD_FORMAT},
+	};
 	RCC_vidInit();
 	RCC_vidEnablePeripheral(RCC_u8GPIOCCLK);
 	RCC_vidEnablePeripheral(RCC_u8CANCLK);
@@ -176,6 +181,11 @@ main(int argc, char* argv[])
 						case CANHANDLER_u8ECUSWVERSION:
 							CANHANDLER_vidSend(CANHANDLER_u8ECUSWVERSION,CAN_u8DATAFRAME,au8version,3);
 							break;
+						case CANHANDLER_u8GETFLASHBANK:
+							u8UsedBank = FLASH_u8GetOptionByteData(FLASH_u8OPTDATA0);
+							CANHANDLER_vidSend(CANHANDLER_u8GETFLASHBANK,CAN_u8DATAFRAME,&u8UsedBank,1);
+							break;
+
 						}
 						CAN_RxMsg[rxcount].u8ActiveFlag = 0;
 						rxcount++;

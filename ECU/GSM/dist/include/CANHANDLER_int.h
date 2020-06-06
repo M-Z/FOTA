@@ -13,9 +13,10 @@
 extern u8 CANHANDLER_u8SWVersionReceived;
 extern u8 CANHANDLER_u8UpdateAcceptReceived;
 extern u8 CANHANDLER_u8NextMsgRequest;
+extern u8 CANHANDLER_u8FlashBankReceived;
 
 extern u8 CANHANDLER_au8ReceivedData[8];
-
+extern u8 CANHANDLER_u8UsedBank;
 
 /*****************************************/
 /***********Public Definitions************/

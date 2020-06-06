@@ -67,7 +67,7 @@ void GSMHANDLER_vidTask(void)
 	static u8 u8CanMessageSent = 0;
 	static u32 u32ResponseDataSize = 0;
 	static u32 u32StartPoint = 0;
-
+	static u8 u8UsedBank = 0;
 	u8 u8UpdateProgress = 0;
 
 	s32 status = HASH_SUCCESS;
@@ -77,7 +77,7 @@ void GSMHANDLER_vidTask(void)
 
 	switch (GSMHANDLER_enuCurrentStep)
 	{
-	//Intialize GSM
+	//Initialize GSM
 	case DisableEcho:
 		GSMHANDLER_enuNextStep = SetBearerParameters;
 		GSMHANDLER_enuRollBackStep = DisableEcho;
@@ -116,6 +116,11 @@ void GSMHANDLER_vidTask(void)
 
 
 	case EnableSSL:
+		if (u8CanMessageSent == 0)
+		{
+			CANHANDLER_vidSend(CANHANDLER_u8GETFLASHBANK, CAN_u8REMOTEFRAME, NULL ,0);
+			u8CanMessageSent = 1;
+		}
 		GSMHANDLER_enuNextStep = SetCID;
 		GSMHANDLER_enuRollBackStep = EnableSSL;
 		vidSendCommand("AT+HTTPSSL=1\r\n");
@@ -143,20 +148,55 @@ void GSMHANDLER_vidTask(void)
 	case SetURL:
 		GSMHANDLER_enuNextStep = SendHTTPData;
 		GSMHANDLER_enuRollBackStep = SetURL;
-		if (GSMHANDLER_enuServerStep == GETSWVersion)
+		if (CANHANDLER_u8FlashBankReceived == 1)
 		{
-			//C13 ON Bank 1
-//			vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5ed3cf5e3735b16961faf0fd\"\r\n");
-			//C14 on Bank 2
-			vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5ed97e86c67d0c31ae720b90\"\r\n");
+			u8CanMessageSent = 0;
+			CANHANDLER_u8FlashBankReceived = 0;
 		}
-		else if (GSMHANDLER_enuServerStep == GETHexFile)
+		else
 		{
-			//C13 ON Bank 1
-//			vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5ed3cf5e3735b16961faf0fd\"\r\n");
-			//C14 on Bank 2
-			vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5ed97e86c67d0c31ae720b90\"\r\n");
+
 		}
+
+		if (CANHANDLER_u8UsedBank == 1)
+		{
+			if (GSMHANDLER_enuServerStep == GETSWVersion)
+			{
+				//C13 ON Bank 1 w/o feedback
+//					vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5ed3cf5e3735b16961faf0fd\"\r\n");
+				//C13 ON Bank 1 with feedback
+				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5edbb180c67d0c31ae720b92\"\r\n");
+			}
+			else if (GSMHANDLER_enuServerStep == GETHexFile)
+			{
+				//C13 ON Bank 1 w/o feedback
+//					vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5ed3cf5e3735b16961faf0fd\"\r\n");
+				//C13 ON Bank 1 with feedback
+				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5edbb180c67d0c31ae720b92\"\r\n");
+			}
+		}
+		else if (CANHANDLER_u8UsedBank == 0)
+		{
+			if (GSMHANDLER_enuServerStep == GETSWVersion)
+			{
+				//C14 on Bank 2 w/o feedback
+//					vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5ed97e86c67d0c31ae720b90\"\r\n");
+				//C14 ON Bank 2 with feedback
+				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5edbb355c67d0c31ae720b94\"\r\n");
+			}
+			else if (GSMHANDLER_enuServerStep == GETHexFile)
+			{
+				//C14 on Bank 2 w/o feedback
+//					vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5ed97e86c67d0c31ae720b90\"\r\n");
+				//C14 ON Bank 2 with feedback
+				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5edbb355c67d0c31ae720b94\"\r\n");
+			}
+		}
+		else
+		{
+			/* Not yet received */
+		}
+
 		break;
 
 	case SendHTTPData:

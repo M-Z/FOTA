@@ -10,7 +10,7 @@
 
 /* Description:	Maximum Number of Filters ion filters array					*/
 /* Range:		1 ~ 13														*/
-#define CANHANDLER_u8MAXFILTERNUMBERS		2
+#define CANHANDLER_u8MAXFILTERNUMBERS		3
 
 
 /* Description:	Tx Message IDs												*/
@@ -22,6 +22,8 @@
 #define CANHANDLER_u8GUIUPDATEACCEPT		70
 #define CANHANDLER_u8UPDATEPROGRESS			75
 #define CANHANDLER_u8ECUSWVERSION			80
+#define CANHANDLER_u8GETFLASHBANK			90
+
 
 /* Description:	Rx Message IDs												*/
 /* Range:		u8															*/

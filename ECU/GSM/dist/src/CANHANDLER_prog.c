@@ -16,8 +16,10 @@
 u8 CANHANDLER_u8SWVersionReceived = 0;
 u8 CANHANDLER_u8UpdateAcceptReceived = 0;
 u8 CANHANDLER_u8NextMsgRequest = 0;
+u8 CANHANDLER_u8FlashBankReceived = 0;
 
 u8 CANHANDLER_au8ReceivedData[8] = {0};
+u8 CANHANDLER_u8UsedBank = 0xFF;
 
 CAN_msg CANHANDLER_strPendingMsg[10] = {0};
 u8 CANHANDLER_u8PendingFlag[10] = {0};
@@ -213,6 +215,11 @@ u8 CANHANDLER_vidReceive(void)
 
 				case CANHANDLER_u8NEXTMSGREQUEST:
 					CANHANDLER_u8NextMsgRequest = 1;
+					break;
+
+				case CANHANDLER_u8GETFLASHBANK:
+					CANHANDLER_u8FlashBankReceived = 1;
+					CANHANDLER_u8UsedBank = CAN_RxMsg[u8counter].data[0];
 					break;
 
 				default:
