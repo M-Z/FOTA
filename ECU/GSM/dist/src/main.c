@@ -1,6 +1,8 @@
 #include "STD_Types.h"
 #include "util.h"
 #include "RCC_int.h"
+#include "RTC_cfg.h"
+#include "RTC_int.h"
 #include "DIO_int.h"
 #include "NVIC_int.h"
 #include "AFIO_init.h"
@@ -105,6 +107,14 @@ int	main(int argc, char* argv[])
 	RCC_vidEnablePeripheral(RCC_u8CANCLK);
 	RCC_vidEnablePeripheral(RCC_u8AFIOCLK);
 	RCC_vidEnablePeripheral( RCC_u8DMA1CLK );
+
+	/* RTC initialization */
+	RCC_vidEnablePeripheral(RCC_u8BKPCLK);
+	RCC_vidEnablePeripheral(RCC_u8PWRCLK);
+	RCC_vidInitRTCCLK();
+	RTC_vidInit();
+	RTC_vidSetPrescaler(0x7FFF);
+	RTC_vidSetCounter(0);
 
 	AFIO_vidinit();
 	DIO_vidInit();

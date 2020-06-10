@@ -115,7 +115,7 @@
 /*				Must be configured 											*/
 /* Range:		RCC_u8RTCOFF,	RCC_u8RTCLSE,	RCC_u8RTCLSI				*/
 /* 				RCC_u8RTCHSEPRESCALER128									*/
-#define RCC_u8RTCCLK	RCC_u8RTCOFF
+#define RCC_u8RTCCLK	RCC_u8RTCLSE
 
 
 

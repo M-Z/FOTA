@@ -76,33 +76,6 @@ void RCC_vidInit(void)
 
 #endif
 
-#if (RTC_u8RTCCLK > RTC_u8RTCOFF)
-	/* If RTC is turned On */
-#if ( RCC_u8RTCCLK == RCC_u8RTCLSE )
-
-	//Choose LSE Bypassing
-	RCC_BDCR |= (RCC_u8LSEBYP << LSEBYP);
-	//Turn on LSE
-	SET_BIT(RCC_BDCR, LSEON);
-	//Wait for LSE to be Ready
-	while (GET_BIT(RCC_BDCR, LSERDY) != 1);
-
-#elif (RCC_u8RTCCLK == RCC_u8RTCLSI)
-
-	//Turn on LSI
-	SET_BIT(RCC_CSR, LSION);
-	//Wait for LSI to be Ready
-	while (GET_BIT(RCC_CSR, LSIRDY) != 1);
-
-#endif
-
-	/* Set RTC Clock Source */
-	RCC_BDCR |= ((RCC_u8RTCCLK & 0x03) << RTCSEL));
-
-	/* Enable RTC Peripheral */
-	SET_BIT(RCC_BDCR, RTCEN);
-
-#endif
 
 	/* At this stage all the clocks we need are enabled and ready, We choose the System Clock */
 	RCC_CFGR |= ((RCC_u8SYSCLK & 0x03) << SW);
@@ -127,6 +100,50 @@ void RCC_vidInit(void)
 }
 
 
+
+
+/****************************************************************************************/
+/* Description: Enable RTC Clock														*/
+/* Input      : Void				                                	               	*/
+/* Output     : Void                                                                   	*/
+/* Scope      : Public                                                                 	*/
+/****************************************************************************************/
+void RCC_vidInitRTCCLK(void)
+{
+#if (RCC_u8RTCCLK > RTC_u8RTCOFF)
+	/* If RTC is turned On */
+
+	/* Enable access to RTC and Backup domain registers */
+	SET_BIT(PWR_CR,DBP);
+
+#if ( RCC_u8RTCCLK == RCC_u8RTCLSE )
+
+
+	//Choose LSE Bypassing
+	RCC_BDCR |= (RCC_u8LSEBYP << LSEBYP);
+	//Turn on LSE
+	SET_BIT(RCC_BDCR, LSEON);
+	//Wait for LSE to be Ready
+	while (GET_BIT(RCC_BDCR, LSERDY) != 1);
+
+#elif (RCC_u8RTCCLK == RCC_u8RTCLSI)
+
+	//Turn on LSI
+	SET_BIT(RCC_CSR, LSION);
+	//Wait for LSI to be Ready
+	while (GET_BIT(RCC_CSR, LSIRDY) != 1);
+
+#endif
+
+	/* Set RTC Clock Source */
+	RCC_BDCR |= ((RCC_u8RTCCLK & 0x03) << RTCSEL);
+
+	/* Enable RTC Peripheral */
+	SET_BIT(RCC_BDCR, RTCEN);
+
+#endif
+
+}
 
 
 /****************************************************************************************/
