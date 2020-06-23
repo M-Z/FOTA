@@ -17,8 +17,10 @@ u8 CANHANDLER_u8SWVersionReceived = 0;
 u8 CANHANDLER_u8UpdateAcceptReceived = 0;
 u8 CANHANDLER_u8NextMsgRequest = 0;
 u8 CANHANDLER_u8FlashBankReceived = 0;
+u8 CANHANDLER_u8DTCsReceived = 0;
 
-u8 CANHANDLER_au8ReceivedData[8] = {0};
+u8 CANHANDLER_au8ECUVersion[8] = {0};
+u8 CANHANDLER_au8DTCs[8] = {0};
 u8 CANHANDLER_u8UsedBank = 0xFF;
 
 CAN_msg CANHANDLER_strPendingMsg[10] = {0};
@@ -188,7 +190,7 @@ void CANHANDLER_vidSendTask(void)
 /* Output     : Void                                                                   	*/
 /* Scope      : Public                                                                 	*/
 /****************************************************************************************/
-u8 CANHANDLER_vidReceive(void)
+void CANHANDLER_vidReceive(void)
 {
 	u8 u8counter = 0;
 	u8 u8DataCounter = 0;
@@ -204,7 +206,7 @@ u8 CANHANDLER_vidReceive(void)
 				case CANHANDLER_u8ECUSWVERSION:
 					for (u8DataCounter = 0; u8DataCounter < CAN_RxMsg[u8counter].len; u8DataCounter++)
 					{
-						CANHANDLER_au8ReceivedData[u8DataCounter] = CAN_RxMsg[u8counter].data[u8DataCounter];
+						CANHANDLER_au8ECUVersion[u8DataCounter] = CAN_RxMsg[u8counter].data[u8DataCounter];
 					}
 					CANHANDLER_u8SWVersionReceived = 1;
 					break;
@@ -221,6 +223,15 @@ u8 CANHANDLER_vidReceive(void)
 					CANHANDLER_u8FlashBankReceived = 1;
 					CANHANDLER_u8UsedBank = CAN_RxMsg[u8counter].data[0];
 					break;
+
+				case CANHANDLER_u8ECUDTCs:
+					for (u8DataCounter = 0; u8DataCounter < CAN_RxMsg[u8counter].len; u8DataCounter++)
+					{
+						CANHANDLER_au8DTCs[u8DataCounter] = CAN_RxMsg[u8counter].data[u8DataCounter];
+					}
+					CANHANDLER_u8DTCsReceived = 1;
+					break;
+
 
 				default:
 					break;

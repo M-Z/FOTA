@@ -20,7 +20,6 @@
 #define CANHANDLER_u8NEXTMSGREQUEST			60
 #define CANHANDLER_u8ECUSWVERSION			80
 #define CANHANDLER_u8GETFLASHBANK			90
-
 /* Description:	Rx Message IDs												*/
 /* Range:		u8															*/
 

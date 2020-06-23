@@ -23,7 +23,21 @@ const u8 u8Version[]= "V01";
 /***********Public Functions**************/
 /*****************************************/
 
-
+/****************************************************************************************/
+/* Description: Enable Flash EOP Interrupt												*/
+/* Input      : Void																	*/
+/* Output     : Void                                                                   	*/
+/* Scope      : Public                                                                 	*/
+/****************************************************************************************/
+void FLASH_vidEnableInterrupt(void)
+{
+	if (GET_BIT(FLASH_CR,LOCK) == FLASH_u8LOCKED)
+	{
+		FLASH_KEYR = FLASH_u32KEY1;
+		FLASH_KEYR = FLASH_u32KEY2;
+	}
+	SET_BIT(FLASH_CR,EOPIE);
+}
 /****************************************************************************************/
 /* Description: Log the Driver Version													*/
 /* Input      : Void																	*/
@@ -227,10 +241,10 @@ void FLASH_vidWriteOptionByteData(u8 u8DataByte, u8 u8Value)
 	SET_BIT(FLASH_CR, OPTPG);
 
 	/* Re-set read protection */
-	if (u8ReadProtection == FLASH_u8READUNPROTECTED)
-	{
+//	if (u8ReadProtection == FLASH_u8READUNPROTECTED)
+//	{
 		FLASH_OPTRDPADRR = FLASH_u16READPROTECTKEY;
-	}
+//	}
 	while (GET_BIT(FLASH_SR,BSY) == FLASH_u8BSY);
 
 	/* Write Data in the specified address */
@@ -289,3 +303,7 @@ u8 FLASH_u8GetOptionByteData(u8 u8DataByte)
 }
 
 
+void FLASH_IRQHandler(void)
+{
+	SET_BIT(FLASH_SR,EOP);
+}

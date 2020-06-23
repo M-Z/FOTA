@@ -10,7 +10,7 @@
 
 /* Description:	Maximum Number of Filters ion filters array					*/
 /* Range:		1 ~ 13														*/
-#define CANHANDLER_u8MAXFILTERNUMBERS		4
+#define CANHANDLER_u8MAXFILTERNUMBERS		5
 
 
 /* Description:	Tx Message IDs												*/
@@ -26,6 +26,6 @@
 #define CANHANDLER_u8GUIUPDATEACCEPT		70	//remote from gui to main (user accept update)
 #define CANHANDLER_u8ECUSWVERSION			80	//remote from main to app (request SW version ID on ECU) , data from app to main (the SW version)
 #define CANHANDLER_u8NEXTMSGREQUEST			60	//remote from app to main (feedback after receiving file)
-
+#define CANHANDLER_u8ECUDTCs				25  //data from app to main
 
 #endif /* CANHANDLER_CFG_H_ */

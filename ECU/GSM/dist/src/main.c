@@ -55,7 +55,8 @@ int	main(int argc, char* argv[])
 		{CANHANDLER_u8NEXTMSGREQUEST,REMOTE_FRAME, STANDARD_FORMAT},
 		{CANHANDLER_u8GUIUPDATEACCEPT,REMOTE_FRAME, STANDARD_FORMAT},
 		{CANHANDLER_u8ECUSWVERSION, DATA_FRAME, STANDARD_FORMAT},
-		{CANHANDLER_u8GETFLASHBANK, DATA_FRAME, STANDARD_FORMAT}
+		{CANHANDLER_u8GETFLASHBANK, DATA_FRAME, STANDARD_FORMAT},
+		{CANHANDLER_u8ECUDTCs, DATA_FRAME, STANDARD_FORMAT}
 	};
 	u8 au8Response[250] = {0};
 	u32 u32filesize = 0;
@@ -141,7 +142,7 @@ int	main(int argc, char* argv[])
 	/* Create Tasks */
 	task led1 = {1000, 1, RUNNING, Blink_LED1};
 	task gsm  = {10, 0, RUNNING, GSMHANDLER_vidTask};
-	task CANReceiver = {10, 6, RUNNING,CANHANDLER_vidReceive};
+	task CANReceiver = {10, 6, RUNNING, CANHANDLER_vidReceive};
 	task CANSender = {10, 5, RUNNING,CANHANDLER_vidSendTask};
 
 	/* Send Tasks to Scheduler */

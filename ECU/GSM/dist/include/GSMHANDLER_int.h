@@ -8,6 +8,9 @@
 #ifndef GSMHANDLER_INT_H_
 #define GSMHANDLER_INT_H_
 
+
+extern u8 GSMHANDLER_u8GSMBusy;
+
 /*****************************************/
 /*********Public Definitions*************/
 /*****************************************/
@@ -26,5 +29,14 @@
 /****************************************************************************************/
 void GSMHANDLER_vidTask(void);
 
+
+
+/****************************************************************************************/
+/* Description: Start Diagnostics Send to Server										*/
+/* Input      : Void					                                                */
+/* Output     : Void		                                                            */
+/* Scope      : Public                                                                 	*/
+/****************************************************************************************/
+void GSMHANDLER_vidStartDiag(void);
 
 #endif /* GSMHANDLER_INT_H_ */

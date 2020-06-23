@@ -14,8 +14,11 @@ extern u8 CANHANDLER_u8SWVersionReceived;
 extern u8 CANHANDLER_u8UpdateAcceptReceived;
 extern u8 CANHANDLER_u8NextMsgRequest;
 extern u8 CANHANDLER_u8FlashBankReceived;
+extern u8 CANHANDLER_u8DTCsReceived;
 
-extern u8 CANHANDLER_au8ReceivedData[8];
+
+extern u8 CANHANDLER_au8ECUVersion[8];
+extern u8 CANHANDLER_au8DTCs[8];
 extern u8 CANHANDLER_u8UsedBank;
 
 /*****************************************/
@@ -72,7 +75,7 @@ void CANHANDLER_vidSendTask(void);
 /* Output     : Void                                                                   	*/
 /* Scope      : Public                                                                 	*/
 /****************************************************************************************/
-u8 CANHANDLER_vidReceive(void);
+void CANHANDLER_vidReceive(void);
 
 
 #endif /* CANHANDLER_INT_H_ */

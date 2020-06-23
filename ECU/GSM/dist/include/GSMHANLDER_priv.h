@@ -62,6 +62,10 @@ typedef enum
 	SendFile,
 	ReceiveFeedback,
 
+	/* Diagnostics Session */
+	SendDiag,
+
+
 	Done
 }Step;
 

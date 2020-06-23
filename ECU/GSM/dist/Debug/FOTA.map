@@ -1498,6 +1498,8 @@ Discarded input sections
  .text          0x00000000        0x0 ./src/GSMHANDLER_prog.o
  .data          0x00000000        0x0 ./src/GSMHANDLER_prog.o
  .bss           0x00000000        0x0 ./src/GSMHANDLER_prog.o
+ .text.GSMHANDLER_vidStartDiag
+                0x00000000       0x44 ./src/GSMHANDLER_prog.o
  .bss.u32ResponseFileSize
                 0x00000000        0x4 ./src/GSMHANDLER_prog.o
  .debug_macro   0x00000000      0xa6c ./src/GSMHANDLER_prog.o
@@ -1507,7 +1509,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x172 ./src/GSMHANDLER_prog.o
  .debug_macro   0x00000000       0x64 ./src/GSMHANDLER_prog.o
  .debug_macro   0x00000000       0x16 ./src/GSMHANDLER_prog.o
- .debug_macro   0x00000000       0x40 ./src/GSMHANDLER_prog.o
+ .debug_macro   0x00000000       0x46 ./src/GSMHANDLER_prog.o
  .debug_macro   0x00000000       0x16 ./src/GSMHANDLER_prog.o
  .debug_macro   0x00000000       0x10 ./src/GSMHANDLER_prog.o
  .group         0x00000000        0xc ./src/GSM_program.o
@@ -1629,8 +1631,6 @@ Discarded input sections
  .text          0x00000000        0x0 ./src/RTC_prog.o
  .data          0x00000000        0x0 ./src/RTC_prog.o
  .bss           0x00000000        0x0 ./src/RTC_prog.o
- .text.RTC_vidGetCounter
-                0x00000000       0x18 ./src/RTC_prog.o
  .text.RTC_vidSetAlarm
                 0x00000000       0x34 ./src/RTC_prog.o
  .debug_macro   0x00000000      0xa6c ./src/RTC_prog.o
@@ -1788,7 +1788,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x2e ./src/main.o
  .debug_macro   0x00000000       0x22 ./src/main.o
  .debug_macro   0x00000000       0x16 ./src/main.o
- .debug_macro   0x00000000       0x40 ./src/main.o
+ .debug_macro   0x00000000       0x46 ./src/main.o
  .debug_macro   0x00000000       0x16 ./src/main.o
  .debug_macro   0x00000000       0x10 ./src/main.o
  COMMON         0x00000000       0x21 ./src/main.o
@@ -2287,7 +2287,7 @@ END GROUP
                 0x20004c00                __Main_Stack_Limit = (__stack - __Main_Stack_Size)
                 [!provide]                PROVIDE (_Main_Stack_Limit, __Main_Stack_Limit)
                 0x00000100                _Minimum_Stack_Size = 0x100
-                0x2000053c                PROVIDE (_Heap_Begin, _end_noinit)
+                0x200005d8                PROVIDE (_Heap_Begin, _end_noinit)
                 0x20004c00                PROVIDE (_Heap_Limit, (__stack - __Main_Stack_Size))
 
 .isr_vector     0x08000000      0x35c
@@ -2402,16 +2402,16 @@ END GROUP
 
 .inits          0x0800035c       0x28
                 0x0800035c                __data_regions_array_start = .
-                0x0800035c        0x4 LONG 0x80058bc LOADADDR (.data)
+                0x0800035c        0x4 LONG 0x8005a18 LOADADDR (.data)
                 0x08000360        0x4 LONG 0x20000000 ADDR (.data)
-                0x08000364        0x4 LONG 0x20000128 (ADDR (.data) + SIZEOF (.data))
-                0x08000368        0x4 LONG 0x80058bc LOADADDR (.data_CCMRAM)
+                0x08000364        0x4 LONG 0x200001bc (ADDR (.data) + SIZEOF (.data))
+                0x08000368        0x4 LONG 0x8005a18 LOADADDR (.data_CCMRAM)
                 0x0800036c        0x4 LONG 0x0 ADDR (.data_CCMRAM)
                 0x08000370        0x4 LONG 0x0 (ADDR (.data_CCMRAM) + SIZEOF (.data_CCMRAM))
                 0x08000374                __data_regions_array_end = .
                 0x08000374                __bss_regions_array_start = .
-                0x08000374        0x4 LONG 0x20000128 ADDR (.bss)
-                0x08000378        0x4 LONG 0x2000053c (ADDR (.bss) + SIZEOF (.bss))
+                0x08000374        0x4 LONG 0x200001bc ADDR (.bss)
+                0x08000378        0x4 LONG 0x200005d8 (ADDR (.bss) + SIZEOF (.bss))
                 0x0800037c        0x4 LONG 0x0 ADDR (.bss_CCMRAM)
                 0x08000380        0x4 LONG 0x0 (ADDR (.bss_CCMRAM) + SIZEOF (.bss_CCMRAM))
                 0x08000384                __bss_regions_array_end = .
@@ -2437,7 +2437,7 @@ END GROUP
 .flashtext
  *(.flashtext .flashtext.*)
 
-.text           0x08000384     0x4fa0
+.text           0x08000384     0x50fc
  *(.text .text.*)
  .text.RCC_AHBPeriphClockCmd
                 0x08000384       0x4c ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
@@ -2554,360 +2554,363 @@ END GROUP
                 0x08000ee8       0x64 ./src/CANHANDLER_prog.o
                 0x08000ee8                CANHANDLER_vidSendTask
  .text.CANHANDLER_vidReceive
-                0x08000f4c      0x13c ./src/CANHANDLER_prog.o
+                0x08000f4c       0xf8 ./src/CANHANDLER_prog.o
                 0x08000f4c                CANHANDLER_vidReceive
  .text.DIO_vidInit
-                0x08001088      0x13c ./src/DIO_prog.o
-                0x08001088                DIO_vidInit
+                0x08001044      0x13c ./src/DIO_prog.o
+                0x08001044                DIO_vidInit
  .text.DIO_vidSetPinValue
-                0x080011c4       0x3c ./src/DIO_prog.o
-                0x080011c4                DIO_vidSetPinValue
+                0x08001180       0x3c ./src/DIO_prog.o
+                0x08001180                DIO_vidSetPinValue
  .text.DMA_Stub
-                0x08001200        0x4 ./src/DMA_program.o
+                0x080011bc        0x4 ./src/DMA_program.o
  .text.DMA_enumInit
-                0x08001204       0x94 ./src/DMA_program.o
-                0x08001204                DMA_enumInit
+                0x080011c0       0x94 ./src/DMA_program.o
+                0x080011c0                DMA_enumInit
  .text.DMA_Transfer
-                0x08001298       0x78 ./src/DMA_program.o
-                0x08001298                DMA_Transfer
+                0x08001254       0x78 ./src/DMA_program.o
+                0x08001254                DMA_Transfer
  .text.DMA_voidDisable
-                0x08001310       0x20 ./src/DMA_program.o
-                0x08001310                DMA_voidDisable
+                0x080012cc       0x20 ./src/DMA_program.o
+                0x080012cc                DMA_voidDisable
  .text.DMA_enumSetCallback
-                0x08001330       0x1c ./src/DMA_program.o
-                0x08001330                DMA_enumSetCallback
+                0x080012ec       0x1c ./src/DMA_program.o
+                0x080012ec                DMA_enumSetCallback
  .text.DMA1_Channel1_IRQHandler
-                0x0800134c       0x4c ./src/DMA_program.o
-                0x0800134c                DMA1_Channel1_IRQHandler
+                0x08001308       0x4c ./src/DMA_program.o
+                0x08001308                DMA1_Channel1_IRQHandler
  .text.DMA1_Channel5_IRQHandler
-                0x08001398       0x60 ./src/DMA_program.o
-                0x08001398                DMA1_Channel5_IRQHandler
+                0x08001354       0x60 ./src/DMA_program.o
+                0x08001354                DMA1_Channel5_IRQHandler
  .text.DMA1_Channel4_IRQHandler
-                0x080013f8       0x68 ./src/DMA_program.o
-                0x080013f8                DMA1_Channel4_IRQHandler
+                0x080013b4       0x68 ./src/DMA_program.o
+                0x080013b4                DMA1_Channel4_IRQHandler
  .text.vidDMAIRQ
-                0x08001460        0xc ./src/GSMHANDLER_prog.o
-                0x08001460                vidDMAIRQ
+                0x0800141c        0xc ./src/GSMHANDLER_prog.o
+                0x0800141c                vidDMAIRQ
  .text.u8CheckBufferTermination
-                0x0800146c       0x3a ./src/GSMHANDLER_prog.o
+                0x08001428       0x3a ./src/GSMHANDLER_prog.o
  .text.enuFindString
-                0x080014a6       0x48 ./src/GSMHANDLER_prog.o
+                0x08001462       0x48 ./src/GSMHANDLER_prog.o
  .text.vidClearBuffer
-                0x080014ee       0x10 ./src/GSMHANDLER_prog.o
- *fill*         0x080014fe        0x2 
+                0x080014aa       0x10 ./src/GSMHANDLER_prog.o
+ *fill*         0x080014ba        0x2 
  .text.vidSendCommand
-                0x08001500       0xc8 ./src/GSMHANDLER_prog.o
-                0x08001500                vidSendCommand
+                0x080014bc       0xc8 ./src/GSMHANDLER_prog.o
+                0x080014bc                vidSendCommand
  .text.vidSendHTTPData
-                0x080015c8       0xb4 ./src/GSMHANDLER_prog.o
-                0x080015c8                vidSendHTTPData
+                0x08001584       0xb4 ./src/GSMHANDLER_prog.o
+                0x08001584                vidSendHTTPData
  .text.vidSendVehicleName
-                0x0800167c       0xdc ./src/GSMHANDLER_prog.o
-                0x0800167c                vidSendVehicleName
+                0x08001638      0x210 ./src/GSMHANDLER_prog.o
+                0x08001638                vidSendVehicleName
  .text.u32SendPostRequest
-                0x08001758      0x12c ./src/GSMHANDLER_prog.o
-                0x08001758                u32SendPostRequest
+                0x08001848      0x138 ./src/GSMHANDLER_prog.o
+                0x08001848                u32SendPostRequest
  .text.u16GETData
-                0x08001884      0x210 ./src/GSMHANDLER_prog.o
-                0x08001884                u16GETData
+                0x08001980      0x210 ./src/GSMHANDLER_prog.o
+                0x08001980                u16GETData
  .text.vidCheckUpdate
-                0x08001a94       0x68 ./src/GSMHANDLER_prog.o
-                0x08001a94                vidCheckUpdate
+                0x08001b90       0x68 ./src/GSMHANDLER_prog.o
+                0x08001b90                vidCheckUpdate
  .text.vidSendHexFile
-                0x08001afc       0x94 ./src/GSMHANDLER_prog.o
-                0x08001afc                vidSendHexFile
+                0x08001bf8       0x94 ./src/GSMHANDLER_prog.o
+                0x08001bf8                vidSendHexFile
  .text.GSMHANDLER_vidTask
-                0x08001b90      0x370 ./src/GSMHANDLER_prog.o
-                0x08001b90                GSMHANDLER_vidTask
+                0x08001c8c      0x384 ./src/GSMHANDLER_prog.o
+                0x08001c8c                GSMHANDLER_vidTask
  .text.NVIC_vidInit
-                0x08001f00       0x10 ./src/NVIC_prog.o
-                0x08001f00                NVIC_vidInit
+                0x08002010       0x10 ./src/NVIC_prog.o
+                0x08002010                NVIC_vidInit
  .text.NVIC_vidEnableInterrupt
-                0x08001f10       0x28 ./src/NVIC_prog.o
-                0x08001f10                NVIC_vidEnableInterrupt
+                0x08002020       0x28 ./src/NVIC_prog.o
+                0x08002020                NVIC_vidEnableInterrupt
  .text.NVIC_vidSetPriority
-                0x08001f38       0x10 ./src/NVIC_prog.o
-                0x08001f38                NVIC_vidSetPriority
+                0x08002048       0x10 ./src/NVIC_prog.o
+                0x08002048                NVIC_vidSetPriority
  .text.RCC_vidInit
-                0x08001f48       0xc4 ./src/RCC_prog.o
-                0x08001f48                RCC_vidInit
+                0x08002058       0xc4 ./src/RCC_prog.o
+                0x08002058                RCC_vidInit
  .text.RCC_vidInitRTCCLK
-                0x0800200c       0x40 ./src/RCC_prog.o
-                0x0800200c                RCC_vidInitRTCCLK
+                0x0800211c       0x40 ./src/RCC_prog.o
+                0x0800211c                RCC_vidInitRTCCLK
  .text.RCC_vidEnablePeripheral
-                0x0800204c       0x54 ./src/RCC_prog.o
-                0x0800204c                RCC_vidEnablePeripheral
+                0x0800215c       0x54 ./src/RCC_prog.o
+                0x0800215c                RCC_vidEnablePeripheral
  .text.RTC_vidInit
-                0x080020a0       0x30 ./src/RTC_prog.o
-                0x080020a0                RTC_vidInit
+                0x080021b0       0x30 ./src/RTC_prog.o
+                0x080021b0                RTC_vidInit
  .text.RTC_vidSetPrescaler
-                0x080020d0       0x34 ./src/RTC_prog.o
-                0x080020d0                RTC_vidSetPrescaler
+                0x080021e0       0x34 ./src/RTC_prog.o
+                0x080021e0                RTC_vidSetPrescaler
  .text.RTC_vidSetCounter
-                0x08002104       0x34 ./src/RTC_prog.o
-                0x08002104                RTC_vidSetCounter
+                0x08002214       0x34 ./src/RTC_prog.o
+                0x08002214                RTC_vidSetCounter
+ .text.RTC_vidGetCounter
+                0x08002248       0x18 ./src/RTC_prog.o
+                0x08002248                RTC_vidGetCounter
  .text.SCB_vidSetInterruptPriority
-                0x08002138       0x14 ./src/SCB_prog.o
-                0x08002138                SCB_vidSetInterruptPriority
+                0x08002260       0x14 ./src/SCB_prog.o
+                0x08002260                SCB_vidSetInterruptPriority
  .text.Scheduler
-                0x0800214c       0x3c ./src/SCH_prog.o
-                0x0800214c                Scheduler
+                0x08002274       0x3c ./src/SCH_prog.o
+                0x08002274                Scheduler
  .text.SCH_vidStart
-                0x08002188       0x18 ./src/SCH_prog.o
-                0x08002188                SCH_vidStart
+                0x080022b0       0x18 ./src/SCH_prog.o
+                0x080022b0                SCH_vidStart
  .text.SCH_vidCreateTask
-                0x080021a0        0xc ./src/SCH_prog.o
-                0x080021a0                SCH_vidCreateTask
+                0x080022c8        0xc ./src/SCH_prog.o
+                0x080022c8                SCH_vidCreateTask
  .text.SCH_vidStopTask
-                0x080021ac       0x10 ./src/SCH_prog.o
-                0x080021ac                SCH_vidStopTask
+                0x080022d4       0x10 ./src/SCH_prog.o
+                0x080022d4                SCH_vidStopTask
  .text.vidInterruptStub
-                0x080021bc        0x4 ./src/SYSTICK_prog.o
-                0x080021bc                vidInterruptStub
+                0x080022e4        0x4 ./src/SYSTICK_prog.o
+                0x080022e4                vidInterruptStub
  .text.SYSTICK_vidInit
-                0x080021c0       0x1c ./src/SYSTICK_prog.o
-                0x080021c0                SYSTICK_vidInit
+                0x080022e8       0x1c ./src/SYSTICK_prog.o
+                0x080022e8                SYSTICK_vidInit
  .text.SYSTICK_vidSetCallback
-                0x080021dc        0xc ./src/SYSTICK_prog.o
-                0x080021dc                SYSTICK_vidSetCallback
+                0x08002304        0xc ./src/SYSTICK_prog.o
+                0x08002304                SYSTICK_vidSetCallback
  .text.Timer1_UEV_Interrupt
-                0x080021e8       0x34 ./src/Timer_prog.o
-                0x080021e8                Timer1_UEV_Interrupt
+                0x08002310       0x34 ./src/Timer_prog.o
+                0x08002310                Timer1_UEV_Interrupt
  .text.TIM1_UP_IRQHandler
-                0x0800221c       0x1c ./src/Timer_prog.o
-                0x0800221c                TIM1_UP_IRQHandler
+                0x08002344       0x1c ./src/Timer_prog.o
+                0x08002344                TIM1_UP_IRQHandler
  .text.USART_Stub
-                0x08002238        0x4 ./src/USART_program.o
+                0x08002360        0x4 ./src/USART_program.o
  .text.USART_enumInit
-                0x0800223c       0xe0 ./src/USART_program.o
-                0x0800223c                USART_enumInit
+                0x08002364       0xe0 ./src/USART_program.o
+                0x08002364                USART_enumInit
  .text.USART_enumDMAReceive
-                0x0800231c       0x4c ./src/USART_program.o
-                0x0800231c                USART_enumDMAReceive
+                0x08002444       0x4c ./src/USART_program.o
+                0x08002444                USART_enumDMAReceive
  .text.USART_enumDMASend
-                0x08002368       0x60 ./src/USART_program.o
-                0x08002368                USART_enumDMASend
+                0x08002490       0x60 ./src/USART_program.o
+                0x08002490                USART_enumDMASend
  .text.USART1_IRQHandler
-                0x080023c8       0x20 ./src/USART_program.o
-                0x080023c8                USART1_IRQHandler
+                0x080024f0       0x20 ./src/USART_program.o
+                0x080024f0                USART1_IRQHandler
  .text.USART2_IRQHandler
-                0x080023e8       0x20 ./src/USART_program.o
-                0x080023e8                USART2_IRQHandler
+                0x08002510       0x20 ./src/USART_program.o
+                0x08002510                USART2_IRQHandler
  .text.USART3_IRQHandler
-                0x08002408       0x20 ./src/USART_program.o
-                0x08002408                USART3_IRQHandler
+                0x08002530       0x20 ./src/USART_program.o
+                0x08002530                USART3_IRQHandler
  .text.Blink_LED1
-                0x08002428       0x38 ./src/main.o
-                0x08002428                Blink_LED1
- .text.main     0x08002460      0x174 ./src/main.o
-                0x08002460                main
- .text          0x080025d4      0x378 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
-                0x080025d4                __aeabi_drsub
-                0x080025dc                __aeabi_dsub
-                0x080025dc                __subdf3
-                0x080025e0                __aeabi_dadd
-                0x080025e0                __adddf3
-                0x08002858                __floatunsidf
-                0x08002858                __aeabi_ui2d
-                0x08002878                __floatsidf
-                0x08002878                __aeabi_i2d
-                0x0800289c                __aeabi_f2d
-                0x0800289c                __extendsfdf2
-                0x080028e0                __floatundidf
-                0x080028e0                __aeabi_ul2d
-                0x080028f0                __floatdidf
-                0x080028f0                __aeabi_l2d
- .text          0x0800294c      0x424 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
-                0x0800294c                __aeabi_dmul
-                0x0800294c                __muldf3
-                0x08002ba0                __divdf3
-                0x08002ba0                __aeabi_ddiv
- .text          0x08002d70       0x40 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixunsdfsi.o)
-                0x08002d70                __aeabi_d2uiz
-                0x08002d70                __fixunsdfsi
- .text.__errno  0x08002db0        0xc e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
-                0x08002db0                __errno
- .text.memcpy   0x08002dbc       0x16 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
-                0x08002dbc                memcpy
- .text          0x08002dd2       0x10 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-strlen.o)
-                0x08002dd2                strlen
+                0x08002550       0x38 ./src/main.o
+                0x08002550                Blink_LED1
+ .text.main     0x08002588      0x178 ./src/main.o
+                0x08002588                main
+ .text          0x08002700      0x378 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+                0x08002700                __aeabi_drsub
+                0x08002708                __aeabi_dsub
+                0x08002708                __subdf3
+                0x0800270c                __aeabi_dadd
+                0x0800270c                __adddf3
+                0x08002984                __floatunsidf
+                0x08002984                __aeabi_ui2d
+                0x080029a4                __floatsidf
+                0x080029a4                __aeabi_i2d
+                0x080029c8                __aeabi_f2d
+                0x080029c8                __extendsfdf2
+                0x08002a0c                __floatundidf
+                0x08002a0c                __aeabi_ul2d
+                0x08002a1c                __floatdidf
+                0x08002a1c                __aeabi_l2d
+ .text          0x08002a78      0x424 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+                0x08002a78                __aeabi_dmul
+                0x08002a78                __muldf3
+                0x08002ccc                __divdf3
+                0x08002ccc                __aeabi_ddiv
+ .text          0x08002e9c       0x40 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixunsdfsi.o)
+                0x08002e9c                __aeabi_d2uiz
+                0x08002e9c                __fixunsdfsi
+ .text.__errno  0x08002edc        0xc e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
+                0x08002edc                __errno
+ .text.memcpy   0x08002ee8       0x16 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x08002ee8                memcpy
+ .text          0x08002efe       0x10 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-strlen.o)
+                0x08002efe                strlen
  .text._vsnprintf_r
-                0x08002de2       0x58 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
-                0x08002de2                _vsniprintf_r
-                0x08002de2                _vsnprintf_r
- *fill*         0x08002e3a        0x2 
+                0x08002f0e       0x58 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
+                0x08002f0e                _vsniprintf_r
+                0x08002f0e                _vsnprintf_r
+ *fill*         0x08002f66        0x2 
  .text.vsnprintf
-                0x08002e3c       0x1c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
-                0x08002e3c                vsniprintf
-                0x08002e3c                vsnprintf
+                0x08002f68       0x1c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
+                0x08002f68                vsniprintf
+                0x08002f68                vsnprintf
  .text.__ssputs_r
-                0x08002e58       0xb4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x08002e58                __ssputs_r
+                0x08002f84       0xb4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x08002f84                __ssputs_r
  .text._svfprintf_r
-                0x08002f0c      0x1ec e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x08002f0c                _svfiprintf_r
-                0x08002f0c                _svfprintf_r
+                0x08003038      0x1ec e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x08003038                _svfiprintf_r
+                0x08003038                _svfprintf_r
  .text._printf_common
-                0x080030f8       0xec e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x080030f8                _printf_common
+                0x08003224       0xec e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x08003224                _printf_common
  .text._printf_i
-                0x080031e4      0x224 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x080031e4                _printf_i
- .text.memchr   0x08003408       0x1c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
-                0x08003408                memchr
- .text.memmove  0x08003424       0x32 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
-                0x08003424                memmove
- *fill*         0x08003456        0x2 
- .text._free_r  0x08003458       0x98 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
-                0x08003458                _free_r
+                0x08003310      0x224 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x08003310                _printf_i
+ .text.memchr   0x08003534       0x1c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
+                0x08003534                memchr
+ .text.memmove  0x08003550       0x32 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
+                0x08003550                memmove
+ *fill*         0x08003582        0x2 
+ .text._free_r  0x08003584       0x98 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
+                0x08003584                _free_r
  .text._malloc_r
-                0x080034f0       0xb4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x080034f0                _malloc_r
+                0x0800361c       0xb4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x0800361c                _malloc_r
  .text._realloc_r
-                0x080035a4       0x4c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
-                0x080035a4                _realloc_r
- .text._sbrk_r  0x080035f0       0x20 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
-                0x080035f0                _sbrk_r
+                0x080036d0       0x4c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
+                0x080036d0                _realloc_r
+ .text._sbrk_r  0x0800371c       0x20 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
+                0x0800371c                _sbrk_r
  .text.__malloc_lock
-                0x08003610        0x2 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
-                0x08003610                __malloc_lock
+                0x0800373c        0x2 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
+                0x0800373c                __malloc_lock
  .text.__malloc_unlock
-                0x08003612        0x2 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
-                0x08003612                __malloc_unlock
+                0x0800373e        0x2 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
+                0x0800373e                __malloc_unlock
  .text._malloc_usable_size_r
-                0x08003614       0x10 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
-                0x08003614                _malloc_usable_size_r
+                0x08003740       0x10 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
+                0x08003740                _malloc_usable_size_r
  *(.rodata .rodata.* .constdata .constdata.*)
  .rodata.RCC_HSEConfig.str1.4
-                0x08003624       0x30 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+                0x08003750       0x30 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .rodata.abort.str1.4
-                0x08003654       0x14 ./system/src/newlib/_exit.o
+                0x08003780       0x14 ./system/src/newlib/_exit.o
  .rodata.assert_failed.str1.4
-                0x08003668       0x2b ./system/src/newlib/assert.o
+                0x08003794       0x2b ./system/src/newlib/assert.o
  .rodata.trace_puts.str1.4
-                0x08003693       0x2b ./system/src/diag/Trace.o
+                0x080037bf       0x2b ./system/src/diag/Trace.o
                                   0x2 (size before relaxing)
- *fill*         0x08003693        0x1 
+ *fill*         0x080037bf        0x1 
  .rodata.dumpExceptionStack.str1.4
-                0x08003694      0x11a ./system/src/cortexm/exception_handlers.o
- *fill*         0x080037ae        0x2 
+                0x080037c0      0x11a ./system/src/cortexm/exception_handlers.o
+ *fill*         0x080038da        0x2 
  .rodata.str1.4
-                0x080037b0       0x2a ./system/src/cortexm/exception_handlers.o
- *fill*         0x080037da        0x2 
+                0x080038dc       0x2a ./system/src/cortexm/exception_handlers.o
+ *fill*         0x08003906        0x2 
  .rodata.serverResponseHandling.str1.4
-                0x080037dc       0x27 ./src/Application.o
- *fill*         0x08003803        0x1 
- .rodata        0x08003804       0x23 ./src/DIO_prog.o
- *fill*         0x08003827        0x1 
+                0x08003908       0x27 ./src/Application.o
+ *fill*         0x0800392f        0x1 
+ .rodata        0x08003930       0x23 ./src/DIO_prog.o
+ *fill*         0x08003953        0x1 
  .rodata.GSMHANDLER_vidTask.str1.4
-                0x08003828      0x203 ./src/GSMHANDLER_prog.o
- *fill*         0x08003a2b        0x1 
+                0x08003954      0x203 ./src/GSMHANDLER_prog.o
+ *fill*         0x08003b57        0x1 
  .rodata.u32SendPostRequest.str1.4
-                0x08003a2c       0x18 ./src/GSMHANDLER_prog.o
+                0x08003b58       0x18 ./src/GSMHANDLER_prog.o
  .rodata.vidSendCommand.str1.4
-                0x08003a44       0x12 ./src/GSMHANDLER_prog.o
- *fill*         0x08003a56        0x2 
+                0x08003b70       0x12 ./src/GSMHANDLER_prog.o
+ *fill*         0x08003b82        0x2 
  .rodata.vidSendHTTPData.str1.4
-                0x08003a58       0x23 ./src/GSMHANDLER_prog.o
- *fill*         0x08003a7b        0x1 
+                0x08003b84       0x23 ./src/GSMHANDLER_prog.o
+ *fill*         0x08003ba7        0x1 
  .rodata.vidSendVehicleName.str1.4
-                0x08003a7c       0x88 ./src/GSMHANDLER_prog.o
-                                 0x85 (size before relaxing)
- .rodata        0x08003b04       0x54 ./src/main.o
+                0x08003ba8       0xb4 ./src/GSMHANDLER_prog.o
+                                 0xb2 (size before relaxing)
+ .rodata        0x08003c5c       0x58 ./src/main.o
  .rodata._svfprintf_r.str1.1
-                0x08003b58       0x11 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x08003cb4       0x11 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
  .rodata._printf_i.str1.1
-                0x08003b69       0x22 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
- *fill*         0x08003b8b        0x1 
- .constdata     0x08003b8c     0x1798 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
-                0x08003b8c                Sbox
-                0x08003c8c                InvSbox
-                0x08003d8c                rcon
-                0x08003db4                enc_table
-                0x080041b4                dec_table
-                0x080047d4                SP1
-                0x080048d4                SP2
-                0x080049d4                SP3
-                0x08004ad4                SP4
-                0x08004bd4                SP5
-                0x08004cd4                SP6
-                0x08004dd4                SP7
-                0x08004ed4                SP8
-                0x08004fd4                K256
+                0x08003cc5       0x22 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ *fill*         0x08003ce7        0x1 
+ .constdata     0x08003ce8     0x1798 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+                0x08003ce8                Sbox
+                0x08003de8                InvSbox
+                0x08003ee8                rcon
+                0x08003f10                enc_table
+                0x08004310                dec_table
+                0x08004930                SP1
+                0x08004a30                SP2
+                0x08004b30                SP3
+                0x08004c30                SP4
+                0x08004d30                SP5
+                0x08004e30                SP6
+                0x08004f30                SP7
+                0x08005030                SP8
+                0x08005130                K256
  *(vtable)
  *(.eh_frame*)
  *(.glue_7)
- .glue_7        0x08005324        0x0 linker stubs
+ .glue_7        0x08005480        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x08005324        0x0 linker stubs
+ .glue_7t       0x08005480        0x0 linker stubs
 
-.vfp11_veneer   0x08005324        0x0
- .vfp11_veneer  0x08005324        0x0 linker stubs
+.vfp11_veneer   0x08005480        0x0
+ .vfp11_veneer  0x08005480        0x0 linker stubs
 
-.v4_bx          0x08005324        0x0
- .v4_bx         0x08005324        0x0 linker stubs
+.v4_bx          0x08005480        0x0
+ .v4_bx         0x08005480        0x0 linker stubs
 
-.iplt           0x08005324        0x0
- .iplt          0x08005324        0x0 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+.iplt           0x08005480        0x0
+ .iplt          0x08005480        0x0 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
 
 i.Crypto_DeInit
-                0x08005324        0x8
+                0x08005480        0x8
  i.Crypto_DeInit
-                0x08005324        0x8 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
-                0x08005324                Crypto_DeInit
+                0x08005480        0x8 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+                0x08005480                Crypto_DeInit
 
-i.SHA256Final   0x0800532c      0x186
- i.SHA256Final  0x0800532c      0x186 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
-                0x0800532c                SHA256Final
+i.SHA256Final   0x08005488      0x186
+ i.SHA256Final  0x08005488      0x186 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+                0x08005488                SHA256Final
 
 i.SHA256Transform
-                0x080054b4      0x258
+                0x08005610      0x258
  i.SHA256Transform
-                0x080054b4      0x258 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+                0x08005610      0x258 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
 
-i.SHA256Update  0x0800570c       0x9a
+i.SHA256Update  0x08005868       0x9a
  i.SHA256Update
-                0x0800570c       0x9a ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
-                0x0800570c                SHA256Update
+                0x08005868       0x9a ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+                0x08005868                SHA256Update
 
 i.SHA256_Append
-                0x080057a6       0x2a
+                0x08005902       0x2a
  i.SHA256_Append
-                0x080057a6       0x2a ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
-                0x080057a6                SHA256_Append
+                0x08005902       0x2a ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+                0x08005902                SHA256_Append
 
 i.SHA256_Finish
-                0x080057d0       0x90
+                0x0800592c       0x90
  i.SHA256_Finish
-                0x080057d0       0x90 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
-                0x080057d0                SHA256_Finish
+                0x0800592c       0x90 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+                0x0800592c                SHA256_Finish
 
-i.SHA256_Init   0x08005860       0x5c
- i.SHA256_Init  0x08005860       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
-                0x08005860                SHA256_Init
+i.SHA256_Init   0x080059bc       0x5c
+ i.SHA256_Init  0x080059bc       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+                0x080059bc                SHA256_Init
 
-.rel.dyn        0x080058bc        0x0
- .rel.iplt      0x080058bc        0x0 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+.rel.dyn        0x08005a18        0x0
+ .rel.iplt      0x08005a18        0x0 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x080058bc                . = ALIGN (0x4)
-                0x080058bc                __exidx_start = .
+                0x08005a18                . = ALIGN (0x4)
+                0x08005a18                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x080058bc                __exidx_end = .
-                0x080058bc                . = ALIGN (0x4)
-                0x080058bc                _etext = .
-                0x080058bc                __etext = .
+                0x08005a18                __exidx_end = .
+                0x08005a18                . = ALIGN (0x4)
+                0x08005a18                _etext = .
+                0x08005a18                __etext = .
 
-.data_CCMRAM    0x00000000        0x0 load address 0x080058bc
+.data_CCMRAM    0x00000000        0x0 load address 0x08005a18
  FILL mask 0xff
  *(.data.CCMRAM .data.CCMRAM.*)
                 0x00000000                . = ALIGN (0x4)
-                0x080058bc                _sidata = LOADADDR (.data)
+                0x08005a18                _sidata = LOADADDR (.data)
 
-.data           0x20000000      0x128 load address 0x080058bc
+.data           0x20000000      0x1bc load address 0x08005a18
  FILL mask 0xff
                 0x20000000                _sdata = .
                 0x20000000                __data_start__ = .
@@ -2939,168 +2942,179 @@ i.SHA256_Init   0x08005860       0x5c
                 0x2000004c        0x1 ./src/GSMHANDLER_prog.o
                 0x2000004c                GSMHANDLER_enuServerStep
  *fill*         0x2000004d        0x3 ff
- .data.au8Cmd.4047
+ .data.au8Cmd.4089
                 0x20000050       0x64 ./src/GSMHANDLER_prog.o
+ .data.au8VehicleNameDiag.4053
+                0x200000b4       0x96 ./src/GSMHANDLER_prog.o
  .data.GSM_u8USARTChannel
-                0x200000b4        0x1 ./src/GSM_program.o
-                0x200000b4                GSM_u8USARTChannel
- *fill*         0x200000b5        0x3 ff
- .data.SCB_REG  0x200000b8        0x4 ./src/SCB_prog.o
-                0x200000b8                SCB_REG
+                0x2000014a        0x1 ./src/GSM_program.o
+                0x2000014a                GSM_u8USARTChannel
+ *fill*         0x2000014b        0x1 ff
+ .data.SCB_REG  0x2000014c        0x4 ./src/SCB_prog.o
+                0x2000014c                SCB_REG
  .data.InterruptCallback
-                0x200000bc        0x4 ./src/SYSTICK_prog.o
-                0x200000bc                InterruptCallback
+                0x20000150        0x4 ./src/SYSTICK_prog.o
+                0x20000150                InterruptCallback
  .data._impure_ptr
-                0x200000c0        0x4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
-                0x200000c0                _impure_ptr
+                0x20000154        0x4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
+                0x20000154                _impure_ptr
  .data.impure_data
-                0x200000c4       0x60 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
+                0x20000158       0x60 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
  *(.data_end .data_end.*)
- .data_end      0x20000124        0x4 ./system/src/newlib/_startup.o
-                0x20000128                . = ALIGN (0x4)
-                0x20000128                _edata = .
-                0x20000128                __data_end__ = .
+ .data_end      0x200001b8        0x4 ./system/src/newlib/_startup.o
+                0x200001bc                . = ALIGN (0x4)
+                0x200001bc                _edata = .
+                0x200001bc                __data_end__ = .
 
-.igot.plt       0x20000128        0x0 load address 0x080059e4
- .igot.plt      0x20000128        0x0 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+.igot.plt       0x200001bc        0x0 load address 0x08005bd4
+ .igot.plt      0x200001bc        0x0 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
 
 .bss_CCMRAM     0x00000000        0x0
  *(.bss.CCMRAM .bss.CCMRAM.*)
 
-.bss            0x20000128      0x414
-                0x20000128                __bss_start__ = .
-                0x20000128                _sbss = .
+.bss            0x200001bc      0x41c
+                0x200001bc                __bss_start__ = .
+                0x200001bc                _sbss = .
  *(.bss_begin .bss_begin.*)
- .bss_begin     0x20000128        0x4 ./system/src/newlib/_startup.o
+ .bss_begin     0x200001bc        0x4 ./system/src/newlib/_startup.o
  *(.bss .bss.*)
  .bss.current_heap_end.3961
-                0x2000012c        0x4 ./system/src/newlib/_sbrk.o
+                0x200001c0        0x4 ./system/src/newlib/_sbrk.o
  .bss.name.4309
-                0x20000130        0x1 ./system/src/newlib/_syscalls.o
- *fill*         0x20000131        0x3 
- .bss.buf.5205  0x20000134       0x80 ./system/src/diag/Trace.o
+                0x200001c4        0x1 ./system/src/newlib/_syscalls.o
+ *fill*         0x200001c5        0x3 
+ .bss.buf.5205  0x200001c8       0x80 ./system/src/diag/Trace.o
  .bss.CAN_RxRdy
-                0x200001b4        0x1 ./src/CAN.o
-                0x200001b4                CAN_RxRdy
- *fill*         0x200001b5        0x3 
+                0x20000248        0x1 ./src/CAN.o
+                0x20000248                CAN_RxRdy
+ *fill*         0x20000249        0x3 
  .bss.CAN_TxRdy
-                0x200001b8        0x3 ./src/CAN.o
-                0x200001b8                CAN_TxRdy
- *fill*         0x200001bb        0x1 
+                0x2000024c        0x3 ./src/CAN.o
+                0x2000024c                CAN_TxRdy
+ *fill*         0x2000024f        0x1 
  .bss.CAN_filterIdx.5607
-                0x200001bc        0x2 ./src/CAN.o
- *fill*         0x200001be        0x2 
- .bss.CANHANDLER_au8ReceivedData
-                0x200001c0        0x8 ./src/CANHANDLER_prog.o
-                0x200001c0                CANHANDLER_au8ReceivedData
+                0x20000250        0x2 ./src/CAN.o
+ *fill*         0x20000252        0x2 
+ .bss.CANHANDLER_au8DTCs
+                0x20000254        0x8 ./src/CANHANDLER_prog.o
+                0x20000254                CANHANDLER_au8DTCs
+ .bss.CANHANDLER_au8ECUVersion
+                0x2000025c        0x8 ./src/CANHANDLER_prog.o
+                0x2000025c                CANHANDLER_au8ECUVersion
  .bss.CANHANDLER_strPendingMsg
-                0x200001c8       0xa0 ./src/CANHANDLER_prog.o
-                0x200001c8                CANHANDLER_strPendingMsg
+                0x20000264       0xa0 ./src/CANHANDLER_prog.o
+                0x20000264                CANHANDLER_strPendingMsg
+ .bss.CANHANDLER_u8DTCsReceived
+                0x20000304        0x1 ./src/CANHANDLER_prog.o
+                0x20000304                CANHANDLER_u8DTCsReceived
  .bss.CANHANDLER_u8FlashBankReceived
-                0x20000268        0x1 ./src/CANHANDLER_prog.o
-                0x20000268                CANHANDLER_u8FlashBankReceived
+                0x20000305        0x1 ./src/CANHANDLER_prog.o
+                0x20000305                CANHANDLER_u8FlashBankReceived
  .bss.CANHANDLER_u8NextMsgRequest
-                0x20000269        0x1 ./src/CANHANDLER_prog.o
-                0x20000269                CANHANDLER_u8NextMsgRequest
- *fill*         0x2000026a        0x2 
+                0x20000306        0x1 ./src/CANHANDLER_prog.o
+                0x20000306                CANHANDLER_u8NextMsgRequest
+ *fill*         0x20000307        0x1 
  .bss.CANHANDLER_u8PendingFlag
-                0x2000026c        0xa ./src/CANHANDLER_prog.o
-                0x2000026c                CANHANDLER_u8PendingFlag
+                0x20000308        0xa ./src/CANHANDLER_prog.o
+                0x20000308                CANHANDLER_u8PendingFlag
  .bss.CANHANDLER_u8SWVersionReceived
-                0x20000276        0x1 ./src/CANHANDLER_prog.o
-                0x20000276                CANHANDLER_u8SWVersionReceived
+                0x20000312        0x1 ./src/CANHANDLER_prog.o
+                0x20000312                CANHANDLER_u8SWVersionReceived
  .bss.CANHANDLER_u8UpdateAcceptReceived
-                0x20000277        0x1 ./src/CANHANDLER_prog.o
-                0x20000277                CANHANDLER_u8UpdateAcceptReceived
+                0x20000313        0x1 ./src/CANHANDLER_prog.o
+                0x20000313                CANHANDLER_u8UpdateAcceptReceived
  .bss.u8PendingMsgs
-                0x20000278        0x1 ./src/CANHANDLER_prog.o
-                0x20000278                u8PendingMsgs
+                0x20000314        0x1 ./src/CANHANDLER_prog.o
+                0x20000314                u8PendingMsgs
  .bss.GSMHANDLER_enuCurrentStep
-                0x20000279        0x1 ./src/GSMHANDLER_prog.o
-                0x20000279                GSMHANDLER_enuCurrentStep
+                0x20000315        0x1 ./src/GSMHANDLER_prog.o
+                0x20000315                GSMHANDLER_enuCurrentStep
  .bss.GSMHANDLER_enuNextStep
-                0x2000027a        0x1 ./src/GSMHANDLER_prog.o
-                0x2000027a                GSMHANDLER_enuNextStep
+                0x20000316        0x1 ./src/GSMHANDLER_prog.o
+                0x20000316                GSMHANDLER_enuNextStep
  .bss.GSMHANDLER_enuRollBackStep
-                0x2000027b        0x1 ./src/GSMHANDLER_prog.o
-                0x2000027b                GSMHANDLER_enuRollBackStep
+                0x20000317        0x1 ./src/GSMHANDLER_prog.o
+                0x20000317                GSMHANDLER_enuRollBackStep
+ .bss.GSMHANDLER_u8GSMBusy
+                0x20000318        0x1 ./src/GSMHANDLER_prog.o
+                0x20000318                GSMHANDLER_u8GSMBusy
  .bss.GSMHANDLER_u8TransmissionCompleteFlag
-                0x2000027c        0x1 ./src/GSMHANDLER_prog.o
-                0x2000027c                GSMHANDLER_u8TransmissionCompleteFlag
+                0x20000319        0x1 ./src/GSMHANDLER_prog.o
+                0x20000319                GSMHANDLER_u8TransmissionCompleteFlag
  .bss.GSM_enuListenFlag
-                0x2000027d        0x1 ./src/GSMHANDLER_prog.o
-                0x2000027d                GSM_enuListenFlag
- *fill*         0x2000027e        0x2 
- .bss.au8Data.3968
-                0x20000280       0xc8 ./src/GSMHANDLER_prog.o
- .bss.au8ExpectedHash.3969
-                0x20000348       0x40 ./src/GSMHANDLER_prog.o
- .bss.u16ReceivedDataSize.3970
-                0x20000388        0x2 ./src/GSMHANDLER_prog.o
- *fill*         0x2000038a        0x2 
- .bss.u32ResponseDataSize.3972
-                0x2000038c        0x4 ./src/GSMHANDLER_prog.o
- .bss.u32StartPoint.3973
-                0x20000390        0x4 ./src/GSMHANDLER_prog.o
- .bss.u8CanMessageSent.3971
-                0x20000394        0x1 ./src/GSMHANDLER_prog.o
- .bss.u8Counter.4084
-                0x20000395        0x1 ./src/GSMHANDLER_prog.o
- *fill*         0x20000396        0x2 
- .bss.task_arr  0x20000398       0x10 ./src/SCH_prog.o
- .bss.x         0x200003a8        0x4 ./src/Timer_prog.o
-                0x200003a8                x
- .bss.x.4015    0x200003ac        0x1 ./src/main.o
- *fill*         0x200003ad        0x3 
+                0x2000031a        0x1 ./src/GSMHANDLER_prog.o
+                0x2000031a                GSM_enuListenFlag
+ *fill*         0x2000031b        0x1 
+ .bss.au8Data.3985
+                0x2000031c       0xc8 ./src/GSMHANDLER_prog.o
+ .bss.au8ExpectedHash.3986
+                0x200003e4       0x40 ./src/GSMHANDLER_prog.o
+ .bss.u16ReceivedDataSize.3987
+                0x20000424        0x2 ./src/GSMHANDLER_prog.o
+ *fill*         0x20000426        0x2 
+ .bss.u32ResponseDataSize.3989
+                0x20000428        0x4 ./src/GSMHANDLER_prog.o
+ .bss.u32StartPoint.3990
+                0x2000042c        0x4 ./src/GSMHANDLER_prog.o
+ .bss.u8CanMessageSent.3988
+                0x20000430        0x1 ./src/GSMHANDLER_prog.o
+ .bss.u8Counter.4126
+                0x20000431        0x1 ./src/GSMHANDLER_prog.o
+ *fill*         0x20000432        0x2 
+ .bss.task_arr  0x20000434       0x10 ./src/SCH_prog.o
+ .bss.x         0x20000444        0x4 ./src/Timer_prog.o
+                0x20000444                x
+ .bss.x.4020    0x20000448        0x1 ./src/main.o
+ *fill*         0x20000449        0x3 
  .bss.__malloc_free_list
-                0x200003b0        0x4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x200003b0                __malloc_free_list
+                0x2000044c        0x4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x2000044c                __malloc_free_list
  .bss.__malloc_sbrk_start
-                0x200003b4        0x4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x200003b4                __malloc_sbrk_start
+                0x20000450        0x4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x20000450                __malloc_sbrk_start
  *(COMMON)
- COMMON         0x200003b8        0x4 ./system/src/newlib/_syscalls.o
-                0x200003b8                errno
- COMMON         0x200003bc       0x88 ./src/CAN.o
-                0x200003bc                CAN_TxMsg
-                0x200003ec                u8MailBox0Flag
-                0x200003f0                value_0
-                0x200003f8                u8MailBox2Flag
-                0x200003fc                value_2
-                0x20000404                u8MailBox1Flag
-                0x20000408                value_1
-                0x20000410                filt_counter
-                0x20000414                CAN_RxMsg
- COMMON         0x20000444       0xe5 ./src/GSMHANDLER_prog.o
-                0x20000444                pu8StatePtr
-                0x20000448                au8listenBuffer
- *fill*         0x20000529        0x3 
- COMMON         0x2000052c        0xc ./src/USART_program.o
-                0x2000052c                CallbackFunction2
-                0x20000530                CallbackFunction1
-                0x20000534                CallbackFunction3
+ COMMON         0x20000454        0x4 ./system/src/newlib/_syscalls.o
+                0x20000454                errno
+ COMMON         0x20000458       0x88 ./src/CAN.o
+                0x20000458                CAN_TxMsg
+                0x20000488                u8MailBox0Flag
+                0x2000048c                value_0
+                0x20000494                u8MailBox2Flag
+                0x20000498                value_2
+                0x200004a0                u8MailBox1Flag
+                0x200004a4                value_1
+                0x200004ac                filt_counter
+                0x200004b0                CAN_RxMsg
+ COMMON         0x200004e0       0xe5 ./src/GSMHANDLER_prog.o
+                0x200004e0                pu8StatePtr
+                0x200004e4                au8listenBuffer
+ *fill*         0x200005c5        0x3 
+ COMMON         0x200005c8        0xc ./src/USART_program.o
+                0x200005c8                CallbackFunction2
+                0x200005cc                CallbackFunction1
+                0x200005d0                CallbackFunction3
  *(.bss_end .bss_end.*)
- .bss_end       0x20000538        0x4 ./system/src/newlib/_startup.o
-                0x2000053c                . = ALIGN (0x4)
-                0x2000053c                __bss_end__ = .
-                0x2000053c                _ebss = .
+ .bss_end       0x200005d4        0x4 ./system/src/newlib/_startup.o
+                0x200005d8                . = ALIGN (0x4)
+                0x200005d8                __bss_end__ = .
+                0x200005d8                _ebss = .
 
 .noinit_CCMRAM
  *(.noinit.CCMRAM .noinit.CCMRAM.*)
 
-.noinit         0x2000053c        0x0
-                0x2000053c                _noinit = .
+.noinit         0x200005d8        0x0
+                0x200005d8                _noinit = .
  *(.noinit .noinit.*)
-                0x2000053c                . = ALIGN (0x4)
-                0x2000053c                _end_noinit = .
+                0x200005d8                . = ALIGN (0x4)
+                0x200005d8                _end_noinit = .
                 [!provide]                PROVIDE (end, _end_noinit)
                 [!provide]                PROVIDE (_end, _end_noinit)
                 [!provide]                PROVIDE (__end, _end_noinit)
                 [!provide]                PROVIDE (__end__, _end_noinit)
 
-._check_stack   0x2000053c      0x100
-                0x2000063c                . = (. + _Minimum_Stack_Size)
- *fill*         0x2000053c      0x100 
+._check_stack   0x200005d8      0x100
+                0x200006d8                . = (. + _Minimum_Stack_Size)
+ *fill*         0x200005d8      0x100 
 
 .b1text
  *(.b1text)
@@ -3295,7 +3309,7 @@ i.SHA256_Init   0x08005860       0x5c
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x890
+.debug_aranges  0x00000000      0x898
  *(.debug_aranges)
  .debug_aranges
                 0x00000000      0x118 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
@@ -3334,32 +3348,32 @@ i.SHA256_Init   0x08005860       0x5c
  .debug_aranges
                 0x000004b8       0x58 ./src/DMA_program.o
  .debug_aranges
-                0x00000510       0x78 ./src/GSMHANDLER_prog.o
+                0x00000510       0x80 ./src/GSMHANDLER_prog.o
  .debug_aranges
-                0x00000588       0x90 ./src/GSM_program.o
+                0x00000590       0x90 ./src/GSM_program.o
  .debug_aranges
-                0x00000618       0x50 ./src/NVIC_prog.o
+                0x00000620       0x50 ./src/NVIC_prog.o
  .debug_aranges
-                0x00000668       0x48 ./src/RCC_prog.o
+                0x00000670       0x48 ./src/RCC_prog.o
  .debug_aranges
-                0x000006b0       0x40 ./src/RTC_prog.o
+                0x000006b8       0x40 ./src/RTC_prog.o
  .debug_aranges
-                0x000006f0       0x30 ./src/SCB_prog.o
+                0x000006f8       0x30 ./src/SCB_prog.o
  .debug_aranges
-                0x00000720       0x48 ./src/SCH_prog.o
+                0x00000728       0x48 ./src/SCH_prog.o
  .debug_aranges
-                0x00000768       0x40 ./src/SYSTICK_prog.o
+                0x00000770       0x40 ./src/SYSTICK_prog.o
  .debug_aranges
-                0x000007a8       0x38 ./src/Timer_prog.o
+                0x000007b0       0x38 ./src/Timer_prog.o
  .debug_aranges
-                0x000007e0       0x88 ./src/USART_program.o
+                0x000007e8       0x88 ./src/USART_program.o
  .debug_aranges
-                0x00000868       0x28 ./src/main.o
+                0x00000870       0x28 ./src/main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0xc05e
+.debug_info     0x00000000     0xc24f
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xc77 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .debug_info    0x00000c77      0x956 ./system/src/newlib/_exit.o
@@ -3376,22 +3390,22 @@ i.SHA256_Init   0x08005860       0x5c
  .debug_info    0x00005f23       0x7e ./src/AFIO_program.o
  .debug_info    0x00005fa1      0x730 ./src/Application.o
  .debug_info    0x000066d1      0xee1 ./src/CAN.o
- .debug_info    0x000075b2      0x3c6 ./src/CANHANDLER_prog.o
- .debug_info    0x00007978      0x223 ./src/DIO_prog.o
- .debug_info    0x00007b9b      0x4ed ./src/DMA_program.o
- .debug_info    0x00008088     0x10e5 ./src/GSMHANDLER_prog.o
- .debug_info    0x0000916d     0x157d ./src/GSM_program.o
- .debug_info    0x0000a6ea      0x18b ./src/NVIC_prog.o
- .debug_info    0x0000a875      0x13f ./src/RCC_prog.o
- .debug_info    0x0000a9b4      0x121 ./src/RTC_prog.o
- .debug_info    0x0000aad5      0x1ad ./src/SCB_prog.o
- .debug_info    0x0000ac82      0x234 ./src/SCH_prog.o
- .debug_info    0x0000aeb6      0x124 ./src/SYSTICK_prog.o
- .debug_info    0x0000afda       0xdf ./src/Timer_prog.o
- .debug_info    0x0000b0b9      0x5e4 ./src/USART_program.o
- .debug_info    0x0000b69d      0x9c1 ./src/main.o
+ .debug_info    0x000075b2      0x3f2 ./src/CANHANDLER_prog.o
+ .debug_info    0x000079a4      0x223 ./src/DIO_prog.o
+ .debug_info    0x00007bc7      0x4ed ./src/DMA_program.o
+ .debug_info    0x000080b4     0x1289 ./src/GSMHANDLER_prog.o
+ .debug_info    0x0000933d     0x157d ./src/GSM_program.o
+ .debug_info    0x0000a8ba      0x18b ./src/NVIC_prog.o
+ .debug_info    0x0000aa45      0x13f ./src/RCC_prog.o
+ .debug_info    0x0000ab84      0x121 ./src/RTC_prog.o
+ .debug_info    0x0000aca5      0x1ad ./src/SCB_prog.o
+ .debug_info    0x0000ae52      0x234 ./src/SCH_prog.o
+ .debug_info    0x0000b086      0x124 ./src/SYSTICK_prog.o
+ .debug_info    0x0000b1aa       0xdf ./src/Timer_prog.o
+ .debug_info    0x0000b289      0x5e4 ./src/USART_program.o
+ .debug_info    0x0000b86d      0x9e2 ./src/main.o
 
-.debug_abbrev   0x00000000     0x2dbe
+.debug_abbrev   0x00000000     0x2da0
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x20b ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .debug_abbrev  0x0000020b      0x1f3 ./system/src/newlib/_exit.o
@@ -3408,22 +3422,22 @@ i.SHA256_Init   0x08005860       0x5c
  .debug_abbrev  0x00001655       0x47 ./src/AFIO_program.o
  .debug_abbrev  0x0000169c      0x248 ./src/Application.o
  .debug_abbrev  0x000018e4      0x2eb ./src/CAN.o
- .debug_abbrev  0x00001bcf      0x149 ./src/CANHANDLER_prog.o
- .debug_abbrev  0x00001d18       0xfd ./src/DIO_prog.o
- .debug_abbrev  0x00001e15      0x1bd ./src/DMA_program.o
- .debug_abbrev  0x00001fd2      0x226 ./src/GSMHANDLER_prog.o
- .debug_abbrev  0x000021f8      0x266 ./src/GSM_program.o
- .debug_abbrev  0x0000245e       0xc4 ./src/NVIC_prog.o
- .debug_abbrev  0x00002522       0xaa ./src/RCC_prog.o
- .debug_abbrev  0x000025cc       0x9b ./src/RTC_prog.o
- .debug_abbrev  0x00002667       0xdf ./src/SCB_prog.o
- .debug_abbrev  0x00002746      0x12a ./src/SCH_prog.o
- .debug_abbrev  0x00002870       0xd7 ./src/SYSTICK_prog.o
- .debug_abbrev  0x00002947       0x9a ./src/Timer_prog.o
- .debug_abbrev  0x000029e1      0x21b ./src/USART_program.o
- .debug_abbrev  0x00002bfc      0x1c2 ./src/main.o
+ .debug_abbrev  0x00001bcf      0x12d ./src/CANHANDLER_prog.o
+ .debug_abbrev  0x00001cfc       0xfd ./src/DIO_prog.o
+ .debug_abbrev  0x00001df9      0x1bd ./src/DMA_program.o
+ .debug_abbrev  0x00001fb6      0x224 ./src/GSMHANDLER_prog.o
+ .debug_abbrev  0x000021da      0x266 ./src/GSM_program.o
+ .debug_abbrev  0x00002440       0xc4 ./src/NVIC_prog.o
+ .debug_abbrev  0x00002504       0xaa ./src/RCC_prog.o
+ .debug_abbrev  0x000025ae       0x9b ./src/RTC_prog.o
+ .debug_abbrev  0x00002649       0xdf ./src/SCB_prog.o
+ .debug_abbrev  0x00002728      0x12a ./src/SCH_prog.o
+ .debug_abbrev  0x00002852       0xd7 ./src/SYSTICK_prog.o
+ .debug_abbrev  0x00002929       0x9a ./src/Timer_prog.o
+ .debug_abbrev  0x000029c3      0x21b ./src/USART_program.o
+ .debug_abbrev  0x00002bde      0x1c2 ./src/main.o
 
-.debug_line     0x00000000     0x5361
+.debug_line     0x00000000     0x540b
  *(.debug_line)
  .debug_line    0x00000000      0x869 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .debug_line    0x00000869      0x323 ./system/src/newlib/_exit.o
@@ -3440,22 +3454,22 @@ i.SHA256_Init   0x08005860       0x5c
  .debug_line    0x000031e3       0xa3 ./src/AFIO_program.o
  .debug_line    0x00003286      0x285 ./src/Application.o
  .debug_line    0x0000350b      0x4d7 ./src/CAN.o
- .debug_line    0x000039e2      0x17b ./src/CANHANDLER_prog.o
- .debug_line    0x00003b5d      0x146 ./src/DIO_prog.o
- .debug_line    0x00003ca3      0x148 ./src/DMA_program.o
- .debug_line    0x00003deb      0x511 ./src/GSMHANDLER_prog.o
- .debug_line    0x000042fc      0x4c6 ./src/GSM_program.o
- .debug_line    0x000047c2      0x107 ./src/NVIC_prog.o
- .debug_line    0x000048c9      0x134 ./src/RCC_prog.o
- .debug_line    0x000049fd       0xf9 ./src/RTC_prog.o
- .debug_line    0x00004af6       0xa3 ./src/SCB_prog.o
- .debug_line    0x00004b99      0x111 ./src/SCH_prog.o
- .debug_line    0x00004caa       0xdb ./src/SYSTICK_prog.o
- .debug_line    0x00004d85       0xf2 ./src/Timer_prog.o
- .debug_line    0x00004e77      0x285 ./src/USART_program.o
- .debug_line    0x000050fc      0x265 ./src/main.o
+ .debug_line    0x000039e2      0x198 ./src/CANHANDLER_prog.o
+ .debug_line    0x00003b7a      0x146 ./src/DIO_prog.o
+ .debug_line    0x00003cc0      0x148 ./src/DMA_program.o
+ .debug_line    0x00003e08      0x59e ./src/GSMHANDLER_prog.o
+ .debug_line    0x000043a6      0x4c6 ./src/GSM_program.o
+ .debug_line    0x0000486c      0x107 ./src/NVIC_prog.o
+ .debug_line    0x00004973      0x134 ./src/RCC_prog.o
+ .debug_line    0x00004aa7       0xf9 ./src/RTC_prog.o
+ .debug_line    0x00004ba0       0xa3 ./src/SCB_prog.o
+ .debug_line    0x00004c43      0x111 ./src/SCH_prog.o
+ .debug_line    0x00004d54       0xdb ./src/SYSTICK_prog.o
+ .debug_line    0x00004e2f       0xf2 ./src/Timer_prog.o
+ .debug_line    0x00004f21      0x285 ./src/USART_program.o
+ .debug_line    0x000051a6      0x265 ./src/main.o
 
-.debug_frame    0x00000000     0x6148
+.debug_frame    0x00000000     0x616c
  *(.debug_frame)
  .debug_frame   0x00000000      0x320 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .debug_frame   0x00000320       0x38 ./system/src/newlib/_exit.o
@@ -3475,254 +3489,254 @@ i.SHA256_Init   0x08005860       0x5c
  .debug_frame   0x000009f0       0x68 ./src/CANHANDLER_prog.o
  .debug_frame   0x00000a58       0x54 ./src/DIO_prog.o
  .debug_frame   0x00000aac       0xbc ./src/DMA_program.o
- .debug_frame   0x00000b68      0x164 ./src/GSMHANDLER_prog.o
- .debug_frame   0x00000ccc      0x208 ./src/GSM_program.o
- .debug_frame   0x00000ed4       0x80 ./src/NVIC_prog.o
- .debug_frame   0x00000f54       0x70 ./src/RCC_prog.o
- .debug_frame   0x00000fc4       0x60 ./src/RTC_prog.o
- .debug_frame   0x00001024       0x40 ./src/SCB_prog.o
- .debug_frame   0x00001064       0x84 ./src/SCH_prog.o
- .debug_frame   0x000010e8       0x68 ./src/SYSTICK_prog.o
- .debug_frame   0x00001150       0x58 ./src/Timer_prog.o
- .debug_frame   0x000011a8      0x150 ./src/USART_program.o
- .debug_frame   0x000012f8       0x4c ./src/main.o
- .debug_frame   0x00001344       0xac e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
- .debug_frame   0x000013f0       0x50 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
- .debug_frame   0x00001440       0x24 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixunsdfsi.o)
- .debug_frame   0x00001464       0x20 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
- .debug_frame   0x00001484       0x28 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
- .debug_frame   0x000014ac       0x4c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
- .debug_frame   0x000014f8       0x90 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
- .debug_frame   0x00001588       0x60 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
- .debug_frame   0x000015e8       0x28 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
- .debug_frame   0x00001610       0x28 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
- .debug_frame   0x00001638       0x38 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
- .debug_frame   0x00001670       0x2c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
- .debug_frame   0x0000169c       0x3c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
- .debug_frame   0x000016d8       0x2c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
- .debug_frame   0x00001704       0x30 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
- .debug_frame   0x00001734       0x20 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
- .debug_frame   0x00001754       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001798       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000017dc       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001838       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000018a0       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000018fc       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001950       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000019a4       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000019f8       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001a5c       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001ac0       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001b24       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001b88       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001bec       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001c50       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001cb0       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001cf4       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001d5c       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001da0       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001de4       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001e4c       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001e90       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001ed4       0x6c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001f40       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001f84       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00001fc8       0x6c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002034       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002078       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000020bc       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002124       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002168       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000021ac       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000021f8       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000223c       0x6c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000022a8       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000230c       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002370       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000023d8       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000242c       0x6c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002498       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000024dc       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002520       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002574       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000025b8       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002620       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002678       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000026e0       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000273c       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002780       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000027e8       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002850       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000289c       0x6c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002908       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002958       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000029a4       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000029e8       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002a44       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002a88       0x70 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002af8       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002b3c       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002b80       0x70 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002bf0       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002c34       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002c94       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002cf8       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002d50       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002d94       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002dfc       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002e40       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002e84       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002eec       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002f30       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002f74       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00002fcc       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003010       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003054       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000030bc       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003100       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003158       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000319c       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003204       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003248       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000328c       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000032f4       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003338       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000337c       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000033d4       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003418       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000345c       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000034c4       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003508       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003564       0x7c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000035e0       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003624       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003684       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000036d0       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003714       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003758       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000379c       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003800       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003860       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000038ac       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003900       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000395c       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000039b8       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003a04       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003a64       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003aa8       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003aec       0x7c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003b68       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003bc8       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003c1c       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003c70       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003ccc       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003d28       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003d6c       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003dcc       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003e10       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003e54       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003eb8       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003f18       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003f64       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00003fb8       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004014       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004070       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000040bc       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000411c       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004160       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000041a4       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000041f0       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004244       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000042a0       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000042fc       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004348       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000043a8       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004400       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004444       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000044a0       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000044fc       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004540       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004590       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000045d4       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004618       0x8c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000046a4       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000046e8       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000472c       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004770       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000047d0       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004828       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000487c       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000048d0       0x70 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004940       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000499c       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000049f4       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004a4c       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004aa8       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004b08       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004b6c       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004bd4       0x6c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004c40       0x78 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004cb8       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004d0c       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004d74       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004db8       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004e08       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004e70       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004ec4       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004f14       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004f6c       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00004fc4       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000502c       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005090       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000050ec       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005154       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000051bc       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005214       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000526c       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000052c8       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005330       0x6c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000539c       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000053f0       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005444       0x6c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000054b0       0x6c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000551c       0x70 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000558c       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000055f0       0x74 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005664       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000056a8       0x70 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005718       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005770       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000057cc       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000581c       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005878       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000058c8       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x0000592c       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005990       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000059e0       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005a30       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005a94       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005ae8       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005b38       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005b8c       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005bdc       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005c20       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005c64       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005cb4       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005d04       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005d48       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005d98       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005e00       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005e50       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005ea0       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005ef0       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005f34       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005f84       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00005fe4       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00006044       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x000060a4       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
- .debug_frame   0x00006104       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00000b68      0x188 ./src/GSMHANDLER_prog.o
+ .debug_frame   0x00000cf0      0x208 ./src/GSM_program.o
+ .debug_frame   0x00000ef8       0x80 ./src/NVIC_prog.o
+ .debug_frame   0x00000f78       0x70 ./src/RCC_prog.o
+ .debug_frame   0x00000fe8       0x60 ./src/RTC_prog.o
+ .debug_frame   0x00001048       0x40 ./src/SCB_prog.o
+ .debug_frame   0x00001088       0x84 ./src/SCH_prog.o
+ .debug_frame   0x0000110c       0x68 ./src/SYSTICK_prog.o
+ .debug_frame   0x00001174       0x58 ./src/Timer_prog.o
+ .debug_frame   0x000011cc      0x150 ./src/USART_program.o
+ .debug_frame   0x0000131c       0x4c ./src/main.o
+ .debug_frame   0x00001368       0xac e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x00001414       0x50 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+ .debug_frame   0x00001464       0x24 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixunsdfsi.o)
+ .debug_frame   0x00001488       0x20 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x000014a8       0x28 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x000014d0       0x4c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
+ .debug_frame   0x0000151c       0x90 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+ .debug_frame   0x000015ac       0x60 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .debug_frame   0x0000160c       0x28 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
+ .debug_frame   0x00001634       0x28 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
+ .debug_frame   0x0000165c       0x38 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
+ .debug_frame   0x00001694       0x2c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
+ .debug_frame   0x000016c0       0x3c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
+ .debug_frame   0x000016fc       0x2c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
+ .debug_frame   0x00001728       0x30 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
+ .debug_frame   0x00001758       0x20 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
+ .debug_frame   0x00001778       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000017bc       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001800       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000185c       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000018c4       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001920       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001974       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000019c8       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001a1c       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001a80       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001ae4       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001b48       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001bac       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001c10       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001c74       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001cd4       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001d18       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001d80       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001dc4       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001e08       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001e70       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001eb4       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001ef8       0x6c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001f64       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001fa8       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00001fec       0x6c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002058       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000209c       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000020e0       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002148       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000218c       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000021d0       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000221c       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002260       0x6c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000022cc       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002330       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002394       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000023fc       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002450       0x6c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000024bc       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002500       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002544       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002598       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000025dc       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002644       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000269c       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002704       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002760       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000027a4       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000280c       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002874       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000028c0       0x6c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000292c       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000297c       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000029c8       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002a0c       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002a68       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002aac       0x70 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002b1c       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002b60       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002ba4       0x70 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002c14       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002c58       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002cb8       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002d1c       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002d74       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002db8       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002e20       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002e64       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002ea8       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002f10       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002f54       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002f98       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00002ff0       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003034       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003078       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000030e0       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003124       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000317c       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000031c0       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003228       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000326c       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000032b0       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003318       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000335c       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000033a0       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000033f8       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000343c       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003480       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000034e8       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000352c       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003588       0x7c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003604       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003648       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000036a8       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000036f4       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003738       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000377c       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000037c0       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003824       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003884       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000038d0       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003924       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003980       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000039dc       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003a28       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003a88       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003acc       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003b10       0x7c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003b8c       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003bec       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003c40       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003c94       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003cf0       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003d4c       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003d90       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003df0       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003e34       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003e78       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003edc       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003f3c       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003f88       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00003fdc       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004038       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004094       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000040e0       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004140       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004184       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000041c8       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004214       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004268       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000042c4       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004320       0x4c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000436c       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000043cc       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004424       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004468       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000044c4       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004520       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004564       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000045b4       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000045f8       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000463c       0x8c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000046c8       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000470c       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004750       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004794       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000047f4       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000484c       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000048a0       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000048f4       0x70 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004964       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000049c0       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004a18       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004a70       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004acc       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004b2c       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004b90       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004bf8       0x6c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004c64       0x78 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004cdc       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004d30       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004d98       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004ddc       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004e2c       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004e94       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004ee8       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004f38       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004f90       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00004fe8       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005050       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000050b4       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005110       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005178       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000051e0       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005238       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005290       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000052ec       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005354       0x6c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000053c0       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005414       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005468       0x6c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000054d4       0x6c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005540       0x70 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000055b0       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005614       0x74 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005688       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000056cc       0x70 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000573c       0x58 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005794       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000057f0       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005840       0x5c ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x0000589c       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000058ec       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005950       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000059b4       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005a04       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005a54       0x64 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005ab8       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005b0c       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005b5c       0x54 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005bb0       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005c00       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005c44       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005c88       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005cd8       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005d28       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005d6c       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005dbc       0x68 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005e24       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005e74       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005ec4       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005f14       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005f58       0x50 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00005fa8       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00006008       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00006068       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x000060c8       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
+ .debug_frame   0x00006128       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
 
-.debug_str      0x00000000    0x5d0dd
+.debug_str      0x00000000    0x5d191
  *(.debug_str)
  .debug_str     0x00000000    0x4f168 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
                               0x4f31f (size before relaxing)
@@ -3754,36 +3768,36 @@ i.SHA256_Init   0x08005860       0x5c
                                0x36cf (size before relaxing)
  .debug_str     0x00057b1a     0x1379 ./src/CAN.o
                                0x99c6 (size before relaxing)
- .debug_str     0x00058e93      0x306 ./src/CANHANDLER_prog.o
-                               0x3530 (size before relaxing)
- .debug_str     0x00059199      0xc26 ./src/DIO_prog.o
+ .debug_str     0x00058e93      0x349 ./src/CANHANDLER_prog.o
+                               0x3573 (size before relaxing)
+ .debug_str     0x000591dc      0xc26 ./src/DIO_prog.o
                                0x3d6c (size before relaxing)
- .debug_str     0x00059dbf      0x352 ./src/DMA_program.o
+ .debug_str     0x00059e02      0x352 ./src/DMA_program.o
                                0x35bd (size before relaxing)
- .debug_str     0x0005a111      0x5b5 ./src/GSMHANDLER_prog.o
-                               0x454e (size before relaxing)
- .debug_str     0x0005a6c6      0x2a4 ./src/GSM_program.o
+ .debug_str     0x0005a154      0x655 ./src/GSMHANDLER_prog.o
+                               0x462e (size before relaxing)
+ .debug_str     0x0005a7a9      0x2a4 ./src/GSM_program.o
                                0x4089 (size before relaxing)
- .debug_str     0x0005a96a      0x1e5 ./src/NVIC_prog.o
+ .debug_str     0x0005aa4d      0x1e5 ./src/NVIC_prog.o
                                0x3768 (size before relaxing)
- .debug_str     0x0005ab4f      0xd47 ./src/RCC_prog.o
+ .debug_str     0x0005ac32      0xd47 ./src/RCC_prog.o
                                0x438f (size before relaxing)
- .debug_str     0x0005b896      0x346 ./src/RTC_prog.o
+ .debug_str     0x0005b979      0x328 ./src/RTC_prog.o
                                0x3475 (size before relaxing)
- .debug_str     0x0005bbdc      0x1de ./src/SCB_prog.o
+ .debug_str     0x0005bca1      0x1de ./src/SCB_prog.o
                                0x3336 (size before relaxing)
- .debug_str     0x0005bdba      0x12d ./src/SCH_prog.o
+ .debug_str     0x0005be7f      0x11c ./src/SCH_prog.o
                                0x32be (size before relaxing)
- .debug_str     0x0005bee7      0x134 ./src/SYSTICK_prog.o
+ .debug_str     0x0005bf9b      0x134 ./src/SYSTICK_prog.o
                                0x3299 (size before relaxing)
- .debug_str     0x0005c01b      0xb2e ./src/Timer_prog.o
+ .debug_str     0x0005c0cf      0xb2e ./src/Timer_prog.o
                                0x3e21 (size before relaxing)
- .debug_str     0x0005cb49      0x4eb ./src/USART_program.o
+ .debug_str     0x0005cbfd      0x4eb ./src/USART_program.o
                                0x3903 (size before relaxing)
- .debug_str     0x0005d034       0xa9 ./src/main.o
-                               0x4efe (size before relaxing)
+ .debug_str     0x0005d0e8       0xa9 ./src/main.o
+                               0x4f56 (size before relaxing)
 
-.debug_loc      0x00000000     0x4053
+.debug_loc      0x00000000     0x418a
  *(.debug_loc)
  .debug_loc     0x00000000      0xa63 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .debug_loc     0x00000a63       0x85 ./system/src/newlib/_sbrk.o
@@ -3796,19 +3810,19 @@ i.SHA256_Init   0x08005860       0x5c
  .debug_loc     0x000012d0       0xdf ./system/src/cmsis/system_stm32f10x.o
  .debug_loc     0x000013af      0x586 ./src/Application.o
  .debug_loc     0x00001935      0x1c5 ./src/CAN.o
- .debug_loc     0x00001afa      0x2d1 ./src/CANHANDLER_prog.o
- .debug_loc     0x00001dcb      0x1b6 ./src/DIO_prog.o
- .debug_loc     0x00001f81      0x16b ./src/DMA_program.o
- .debug_loc     0x000020ec      0x984 ./src/GSMHANDLER_prog.o
- .debug_loc     0x00002a70      0xa3c ./src/GSM_program.o
- .debug_loc     0x000034ac      0x15f ./src/NVIC_prog.o
- .debug_loc     0x0000360b      0x130 ./src/RCC_prog.o
- .debug_loc     0x0000373b       0x94 ./src/RTC_prog.o
- .debug_loc     0x000037cf       0x42 ./src/SCB_prog.o
- .debug_loc     0x00003811       0x2a ./src/SCH_prog.o
- .debug_loc     0x0000383b       0x21 ./src/SYSTICK_prog.o
- .debug_loc     0x0000385c      0x7b5 ./src/USART_program.o
- .debug_loc     0x00004011       0x42 ./src/main.o
+ .debug_loc     0x00001afa      0x2f3 ./src/CANHANDLER_prog.o
+ .debug_loc     0x00001ded      0x1b6 ./src/DIO_prog.o
+ .debug_loc     0x00001fa3      0x16b ./src/DMA_program.o
+ .debug_loc     0x0000210e      0xa99 ./src/GSMHANDLER_prog.o
+ .debug_loc     0x00002ba7      0xa3c ./src/GSM_program.o
+ .debug_loc     0x000035e3      0x15f ./src/NVIC_prog.o
+ .debug_loc     0x00003742      0x130 ./src/RCC_prog.o
+ .debug_loc     0x00003872       0x94 ./src/RTC_prog.o
+ .debug_loc     0x00003906       0x42 ./src/SCB_prog.o
+ .debug_loc     0x00003948       0x2a ./src/SCH_prog.o
+ .debug_loc     0x00003972       0x21 ./src/SYSTICK_prog.o
+ .debug_loc     0x00003993      0x7b5 ./src/USART_program.o
+ .debug_loc     0x00004148       0x42 ./src/main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -3826,7 +3840,7 @@ i.SHA256_Init   0x08005860       0x5c
  *(.debug_varnames)
 OUTPUT(FOTA.elf elf32-littlearm)
 
-.debug_ranges   0x00000000      0x840
+.debug_ranges   0x00000000      0x848
  .debug_ranges  0x00000000      0x108 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .debug_ranges  0x00000108       0x18 ./system/src/newlib/_exit.o
  .debug_ranges  0x00000120       0x10 ./system/src/newlib/_sbrk.o
@@ -3845,19 +3859,19 @@ OUTPUT(FOTA.elf elf32-littlearm)
  .debug_ranges  0x00000428       0x20 ./src/CANHANDLER_prog.o
  .debug_ranges  0x00000448       0x20 ./src/DIO_prog.o
  .debug_ranges  0x00000468       0x48 ./src/DMA_program.o
- .debug_ranges  0x000004b0       0xb0 ./src/GSMHANDLER_prog.o
- .debug_ranges  0x00000560       0xc8 ./src/GSM_program.o
- .debug_ranges  0x00000628       0x40 ./src/NVIC_prog.o
- .debug_ranges  0x00000668       0x38 ./src/RCC_prog.o
- .debug_ranges  0x000006a0       0x30 ./src/RTC_prog.o
- .debug_ranges  0x000006d0       0x20 ./src/SCB_prog.o
- .debug_ranges  0x000006f0       0x38 ./src/SCH_prog.o
- .debug_ranges  0x00000728       0x30 ./src/SYSTICK_prog.o
- .debug_ranges  0x00000758       0x28 ./src/Timer_prog.o
- .debug_ranges  0x00000780       0xa8 ./src/USART_program.o
- .debug_ranges  0x00000828       0x18 ./src/main.o
+ .debug_ranges  0x000004b0       0xb8 ./src/GSMHANDLER_prog.o
+ .debug_ranges  0x00000568       0xc8 ./src/GSM_program.o
+ .debug_ranges  0x00000630       0x40 ./src/NVIC_prog.o
+ .debug_ranges  0x00000670       0x38 ./src/RCC_prog.o
+ .debug_ranges  0x000006a8       0x30 ./src/RTC_prog.o
+ .debug_ranges  0x000006d8       0x20 ./src/SCB_prog.o
+ .debug_ranges  0x000006f8       0x38 ./src/SCH_prog.o
+ .debug_ranges  0x00000730       0x30 ./src/SYSTICK_prog.o
+ .debug_ranges  0x00000760       0x28 ./src/Timer_prog.o
+ .debug_ranges  0x00000788       0xa8 ./src/USART_program.o
+ .debug_ranges  0x00000830       0x18 ./src/main.o
 
-.debug_macro    0x00000000     0x4a62
+.debug_macro    0x00000000     0x4a72
  .debug_macro   0x00000000      0x287 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .debug_macro   0x00000287      0x3dc ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .debug_macro   0x00000663      0x1b4 ./system/src/newlib/_exit.o
@@ -3925,37 +3939,37 @@ OUTPUT(FOTA.elf elf32-littlearm)
  .debug_macro   0x000038ba       0x22 ./src/CAN.o
  .debug_macro   0x000038dc       0x3e ./src/CANHANDLER_prog.o
  .debug_macro   0x0000391a       0x16 ./src/CANHANDLER_prog.o
- .debug_macro   0x00003930       0x40 ./src/CANHANDLER_prog.o
- .debug_macro   0x00003970       0x3e ./src/DIO_prog.o
- .debug_macro   0x000039ae       0xdc ./src/DIO_prog.o
- .debug_macro   0x00003a8a       0x8e ./src/DIO_prog.o
- .debug_macro   0x00003b18       0xb8 ./src/DIO_prog.o
- .debug_macro   0x00003bd0       0x35 ./src/DMA_program.o
- .debug_macro   0x00003c05       0x16 ./src/DMA_program.o
- .debug_macro   0x00003c1b       0x64 ./src/DMA_program.o
- .debug_macro   0x00003c7f       0xdb ./src/GSMHANDLER_prog.o
- .debug_macro   0x00003d5a       0x28 ./src/GSMHANDLER_prog.o
- .debug_macro   0x00003d82       0x10 ./src/GSMHANDLER_prog.o
- .debug_macro   0x00003d92       0x16 ./src/GSMHANDLER_prog.o
- .debug_macro   0x00003da8       0x6e ./src/GSM_program.o
- .debug_macro   0x00003e16       0x3b ./src/NVIC_prog.o
- .debug_macro   0x00003e51       0x2e ./src/NVIC_prog.o
- .debug_macro   0x00003e7f       0x3e ./src/RCC_prog.o
- .debug_macro   0x00003ebd      0x4eb ./src/RCC_prog.o
- .debug_macro   0x000043a8       0x3f ./src/RTC_prog.o
- .debug_macro   0x000043e7       0x88 ./src/RTC_prog.o
- .debug_macro   0x0000446f       0x1c ./src/RTC_prog.o
- .debug_macro   0x0000448b       0x35 ./src/SCB_prog.o
- .debug_macro   0x000044c0       0x34 ./src/SCB_prog.o
- .debug_macro   0x000044f4       0x2e ./src/SCB_prog.o
- .debug_macro   0x00004522       0x49 ./src/SCH_prog.o
- .debug_macro   0x0000456b       0x10 ./src/SCH_prog.o
- .debug_macro   0x0000457b       0x36 ./src/SYSTICK_prog.o
- .debug_macro   0x000045b1       0x34 ./src/SYSTICK_prog.o
- .debug_macro   0x000045e5       0x48 ./src/Timer_prog.o
- .debug_macro   0x0000462d      0x1b4 ./src/Timer_prog.o
- .debug_macro   0x000047e1       0x6a ./src/Timer_prog.o
- .debug_macro   0x0000484b       0x47 ./src/USART_program.o
- .debug_macro   0x00004892       0x76 ./src/USART_program.o
- .debug_macro   0x00004908       0x52 ./src/USART_program.o
- .debug_macro   0x0000495a      0x108 ./src/main.o
+ .debug_macro   0x00003930       0x46 ./src/CANHANDLER_prog.o
+ .debug_macro   0x00003976       0x3e ./src/DIO_prog.o
+ .debug_macro   0x000039b4       0xdc ./src/DIO_prog.o
+ .debug_macro   0x00003a90       0x8e ./src/DIO_prog.o
+ .debug_macro   0x00003b1e       0xb8 ./src/DIO_prog.o
+ .debug_macro   0x00003bd6       0x35 ./src/DMA_program.o
+ .debug_macro   0x00003c0b       0x16 ./src/DMA_program.o
+ .debug_macro   0x00003c21       0x64 ./src/DMA_program.o
+ .debug_macro   0x00003c85       0xe5 ./src/GSMHANDLER_prog.o
+ .debug_macro   0x00003d6a       0x28 ./src/GSMHANDLER_prog.o
+ .debug_macro   0x00003d92       0x10 ./src/GSMHANDLER_prog.o
+ .debug_macro   0x00003da2       0x16 ./src/GSMHANDLER_prog.o
+ .debug_macro   0x00003db8       0x6e ./src/GSM_program.o
+ .debug_macro   0x00003e26       0x3b ./src/NVIC_prog.o
+ .debug_macro   0x00003e61       0x2e ./src/NVIC_prog.o
+ .debug_macro   0x00003e8f       0x3e ./src/RCC_prog.o
+ .debug_macro   0x00003ecd      0x4eb ./src/RCC_prog.o
+ .debug_macro   0x000043b8       0x3f ./src/RTC_prog.o
+ .debug_macro   0x000043f7       0x88 ./src/RTC_prog.o
+ .debug_macro   0x0000447f       0x1c ./src/RTC_prog.o
+ .debug_macro   0x0000449b       0x35 ./src/SCB_prog.o
+ .debug_macro   0x000044d0       0x34 ./src/SCB_prog.o
+ .debug_macro   0x00004504       0x2e ./src/SCB_prog.o
+ .debug_macro   0x00004532       0x49 ./src/SCH_prog.o
+ .debug_macro   0x0000457b       0x10 ./src/SCH_prog.o
+ .debug_macro   0x0000458b       0x36 ./src/SYSTICK_prog.o
+ .debug_macro   0x000045c1       0x34 ./src/SYSTICK_prog.o
+ .debug_macro   0x000045f5       0x48 ./src/Timer_prog.o
+ .debug_macro   0x0000463d      0x1b4 ./src/Timer_prog.o
+ .debug_macro   0x000047f1       0x6a ./src/Timer_prog.o
+ .debug_macro   0x0000485b       0x47 ./src/USART_program.o
+ .debug_macro   0x000048a2       0x76 ./src/USART_program.o
+ .debug_macro   0x00004918       0x52 ./src/USART_program.o
+ .debug_macro   0x0000496a      0x108 ./src/main.o

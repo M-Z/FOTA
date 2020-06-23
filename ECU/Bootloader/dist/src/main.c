@@ -38,6 +38,9 @@
 #include "AFIO_init.h"
 #include "AFIO_config.h"
 #include "CAN.h"
+
+#include "Timer_int.h"
+
 #include "CANHANDLER_int.h"
 #include "CANHANDLER_cfg.h"
 #include "FLASH_int.h"
@@ -96,13 +99,18 @@ main(int argc, char* argv[])
 	{
 		{CANHANDLER_u8HEXFILEID,DATA_FRAME, STANDARD_FORMAT},
 		{CANHANDLER_u8ECUSWVERSION, REMOTE_FRAME,STANDARD_FORMAT},
-		{CANHANDLER_u8GETFLASHBANK, REMOTE_FRAME,STANDARD_FORMAT},
+		{CANHANDLER_u8GETFLASHBANK, REMOTE_FRAME,STANDARD_FORMAT}
 	};
 	RCC_vidInit();
 	RCC_vidEnablePeripheral(RCC_u8GPIOCCLK);
 	RCC_vidEnablePeripheral(RCC_u8CANCLK);
 	RCC_vidEnablePeripheral(RCC_u8AFIOCLK);		// enable clock for Alternate Function
 	RCC_vidEnablePeripheral(RCC_u8GPIOBCLK);			 // enable clock for GPIO B
+
+
+	RCC_vidEnablePeripheral(RCC_u8TIM1CLK);
+	NVIC_vidEnableInterrupt(NVIC_u8TIM1_UP);
+	Timer1_UEV_Interrupt();
 
 	AFIO_vidinit();
 	DIO_vidInit();
@@ -143,6 +151,10 @@ main(int argc, char* argv[])
 	}
 	RCC_vidResetResetFlags();
 
+	NVIC_vidEnableInterrupt(NVIC_u8FLASH);			// enable interrupt
+	FLASH_vidEnableInterrupt();
+
+
 	NVIC_vidInit();
 	CAN_setup ();                                   // setup CAN interface
 	CAN_vid_filter_list(filters,CANHANDLER_u8MAXFILTERNUMBERS);
@@ -177,12 +189,13 @@ main(int argc, char* argv[])
 								countertest++;
 							}
 							CANHANDLER_vidSend(CANHANDLER_u8NEXTMSGREQUEST,CAN_u8REMOTEFRAME,(void*)0,0);
+
 							break;
 						case CANHANDLER_u8ECUSWVERSION:
 							CANHANDLER_vidSend(CANHANDLER_u8ECUSWVERSION,CAN_u8DATAFRAME,au8version,3);
 							break;
+
 						case CANHANDLER_u8GETFLASHBANK:
-							u8UsedBank = FLASH_u8GetOptionByteData(FLASH_u8OPTDATA0);
 							CANHANDLER_vidSend(CANHANDLER_u8GETFLASHBANK,CAN_u8DATAFRAME,&u8UsedBank,1);
 							break;
 
@@ -202,6 +215,7 @@ main(int argc, char* argv[])
 			//				HexDataProcessor_vidGetHexData(HexArrayLine, &(strHexData[u8Counter]));
 			//				SET_BIT(PORTA_BASEADDRESS->GPIO_ODR, 0);
 			countertest = 0;
+			Timer1_vidStartCount();
 			err = HexDataProcessor_u32StoreHexInFlash(HexArrayLine);
 			//				CLR_BIT(PORTA_BASEADDRESS->GPIO_ODR, 0);
 //			u8Counter++;
