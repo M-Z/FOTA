@@ -76,9 +76,10 @@ sockets.init = function(jwtToken) {
         const keys = Object.keys(clients.clientList);
         const received = JSON.parse(message);
 
+        // All subsribed parties
         for (const client of keys) {
           // Intended receiver
-          if (received.receipients.includes(client)) {
+          if (received.receipients.includes(client) || received.receipients.length == 0) {
             clients.clientList[client].send(JSON.stringify(received.body));
           }
         }

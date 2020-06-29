@@ -1,10 +1,20 @@
 'use strict';
 
 const Vehicle = require('mongoose').model('Vehicle');
+const config = require('../../config/config.js');
 const {
   sendFeedback
 } = require('../../helper');
 
+require('../../helper/stringReplace.js');
+
+/**
+ * Diagnostics data required
+ * @typedef diagnosticsData
+ * @property {string} vehicleName.required - username of requesting vehicle - eg: fota user
+ * @property {string} password.required - Password of requesting vehicle - eg: 123
+ * @property {string} Diag.required - The diagnostics data - eg: Diagnostics for 123 DTC: 0x50
+ */
 exports.authenticate_vehicle = function(req, res, next) {
 
   // fetch user and test password verification
@@ -54,6 +64,29 @@ exports.authenticate_vehicle = function(req, res, next) {
   });
 
 };
+
+/**
+ * @route POST /vehicle/diagnostics/{uniqueID}
+ * @group Vehicle - End points for vehicle communication
+ * @summary Sends diagnostics to the terminal
+ * @param {string} uniqueID.path.required - Diagnostics' unique ID - eg: 11122
+ * @param {diagnosticsData.model} body.body - Vehicle's diagnostics data
+ * @returns {string}  200 - success
+ * @returns {Error}  default: Failed parsing diagnostics.
+ * @produces text/plain text/html
+ */
+exports.send_diagnostics = function(req, res) {
+
+  const diagnostics = req.body.Diag.replaceArray(config.DTCs.find, config.DTCs.replace);
+
+  sendFeedback({
+    commandString: `Diagnostics firmware with ID ${req.params.uniqueID}`,
+    commandOutput: `Firmware deleted successfully!`,
+    commandDiagnostics: diagnostics,
+    res: res,
+    sendRequest: '{"data": "success"}'
+  });
+}
 
 // // create a user a new user
 // var testUser = new Vehicle({

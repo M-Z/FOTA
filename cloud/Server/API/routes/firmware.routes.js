@@ -34,6 +34,7 @@ module.exports = function(router) {
     celebrate(firmwareSchema),
     firmware.update_firmware_file
   );
+
   router.delete('/firmware/delete/:firmwareID',
     celebrate(firmwareSchema),
     firmware.delete_firmware_file

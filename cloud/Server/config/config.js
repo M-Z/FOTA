@@ -96,6 +96,10 @@ module.exports = {
   saltWorkFactor: envVars.SALT_WORK_FACTOR,
   defaultBytes: 200,
   hashType: envVars.DEFAULT_HASH_ALGORITHM,
+  DTCs: {
+    find: ["0x50"],
+    replace: ["High temperature"]
+  },
   supportedHashes: [
     'DSA',
     'DSA-SHA',

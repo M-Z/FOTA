@@ -9,6 +9,7 @@
       <div *ngFor="let command of commands">
         <span>$ {{ command.string }}</span>
         <span *ngIf="command.output" class="gray">{{ command.output }}</span>
+        <span *ngIf="command.diagnostics" class="alert-warning">{{ command.diagnostics }}</span>
       </div>
     </div>
     <div class="newCommand">

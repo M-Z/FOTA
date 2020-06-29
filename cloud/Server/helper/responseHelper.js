@@ -6,6 +6,7 @@ const sockets = require('./sockets');
 module.exports = async function feedbackHandler(feedbackItem = {
   commandString: null,
   commandOutput: null,
+  commandDiagnostics: null,
   firmwareID: null,
   incrementField: null,
   res: null,
@@ -47,13 +48,15 @@ module.exports = async function feedbackHandler(feedbackItem = {
 
   // Send results to websocket
   if (feedbackItem.commandString && feedbackItem.commandOutput) {
+
     sockets.sendToTerminal({
       receipients: teams.map(team => team.teamName),
       body: {
         event: 'command',
         data: {
           string: feedbackItem.commandString,
-          output: feedbackItem.commandOutput
+          output: feedbackItem.commandOutput,
+          diagnostics: feedbackItem.commandDiagnostics
         }
       }
     });

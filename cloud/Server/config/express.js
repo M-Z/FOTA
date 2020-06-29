@@ -18,8 +18,8 @@ app.use(
     directives: {
       defaultSrc: ["'self'"],
       scriptSrc: [
-	"'self'",
-	"'sha256-WKuDZ/JEhPqWVB/Q/9NHi/rWHSoQaxYVDHZ/s8d3Kfw='"
+        "'self'",
+        "'sha256-WKuDZ/JEhPqWVB/Q/9NHi/rWHSoQaxYVDHZ/s8d3Kfw='"
       ],
       styleSrc: [
         "'self'",
@@ -28,15 +28,15 @@ app.use(
         "'unsafe-inline'"
       ],
       fontSrc: [
-	"'self'",
-	'fonts.gstatic.com',
-	"data:"
+        "'self'",
+        'fonts.gstatic.com',
+        "data:"
       ],
       connectSrc: ["'self'"],
       imgSrc: [
-	"'self'",
-	"data:",
-	"https://online.swagger.io"
+        "'self'",
+        "data:",
+        "https://online.swagger.io"
       ],
       frameAncestors: ["'none'"],
       upgradeInsecureRequests: true
@@ -96,7 +96,7 @@ expressSwagger({
         url: "http://www.apache.org/licenses/LICENSE-2.0.html"
       }
     },
-    host: '34.65.7.33',
+    host: config.base_url,
     basePath: '/API',
     consumes: [
       "application/json",

@@ -6,5 +6,5 @@ module.exports = {
   roles: require('./roles').roles,
   upload: require('./uploadHandler'),
   sendEmail: require('./sendMail'),
-  totp: require('./totp')
+  totp: require('./totp'),
 }
