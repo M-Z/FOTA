@@ -96,7 +96,7 @@ expressSwagger({
         url: "http://www.apache.org/licenses/LICENSE-2.0.html"
       }
     },
-    host: config.base_url,
+    host: "34.65.7.33",
     basePath: '/API',
     consumes: [
       "application/json",
