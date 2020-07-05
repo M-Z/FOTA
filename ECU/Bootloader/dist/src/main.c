@@ -74,6 +74,7 @@
 int
 main(int argc, char* argv[])
 {
+	u8 au8DTCs[]={20,30};
 	u8 HexArrayLine[261] = {0};
 	u8 u8Counter  = 0;
 	u16 u16Counter = 0;
@@ -99,7 +100,9 @@ main(int argc, char* argv[])
 	{
 		{CANHANDLER_u8HEXFILEID,DATA_FRAME, STANDARD_FORMAT},
 		{CANHANDLER_u8ECUSWVERSION, REMOTE_FRAME,STANDARD_FORMAT},
-		{CANHANDLER_u8GETFLASHBANK, REMOTE_FRAME,STANDARD_FORMAT}
+		{CANHANDLER_u8GETFLASHBANK, REMOTE_FRAME,STANDARD_FORMAT},
+		{CANHANDLER_u8ECUDTCs, REMOTE_FRAME,STANDARD_FORMAT},
+
 	};
 	RCC_vidInit();
 	RCC_vidEnablePeripheral(RCC_u8GPIOCCLK);
@@ -151,9 +154,6 @@ main(int argc, char* argv[])
 	}
 	RCC_vidResetResetFlags();
 
-	NVIC_vidEnableInterrupt(NVIC_u8FLASH);			// enable interrupt
-	FLASH_vidEnableInterrupt();
-
 
 	NVIC_vidInit();
 	CAN_setup ();                                   // setup CAN interface
@@ -197,6 +197,9 @@ main(int argc, char* argv[])
 
 						case CANHANDLER_u8GETFLASHBANK:
 							CANHANDLER_vidSend(CANHANDLER_u8GETFLASHBANK,CAN_u8DATAFRAME,&u8UsedBank,1);
+							break;
+						case CANHANDLER_u8ECUDTCs:
+							CANHANDLER_vidSend(CANHANDLER_u8ECUDTCs,CAN_u8DATAFRAME,au8DTCs,1);
 							break;
 
 						}

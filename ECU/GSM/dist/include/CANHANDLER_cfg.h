@@ -10,7 +10,7 @@
 
 /* Description:	Maximum Number of Filters ion filters array					*/
 /* Range:		1 ~ 13														*/
-#define CANHANDLER_u8MAXFILTERNUMBERS		5
+#define CANHANDLER_u8MAXFILTERNUMBERS		6
 
 
 /* Description:	Tx Message IDs												*/
@@ -20,6 +20,7 @@
 #define CANHANDLER_u8UPDATEREQUESTGUI		65	//remote from main to gui(ask user to accept update)
 #define CANHANDLER_u8UPDATEPROGRESS			75	//data from main to gui (the update progress for progress bar)
 #define CANHANDLER_u8GETFLASHBANK			90
+#define CANHANDLER_u8GSMBUSY				20	//remote to gui to display gsm is busy and cannot send diag
 
 /* Description:	Rx Message IDs												*/
 /* Range:		u8															*/

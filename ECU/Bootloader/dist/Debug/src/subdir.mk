@@ -13,6 +13,7 @@ C_SRCS += \
 ../src/NVIC_prog.c \
 ../src/RCC_prog.c \
 ../src/SCB_prog.c \
+../src/Timer_prog.c \
 ../src/_write.c \
 ../src/main.c 
 
@@ -26,6 +27,7 @@ OBJS += \
 ./src/NVIC_prog.o \
 ./src/RCC_prog.o \
 ./src/SCB_prog.o \
+./src/Timer_prog.o \
 ./src/_write.o \
 ./src/main.o 
 
@@ -39,6 +41,7 @@ C_DEPS += \
 ./src/NVIC_prog.d \
 ./src/RCC_prog.d \
 ./src/SCB_prog.d \
+./src/Timer_prog.d \
 ./src/_write.d \
 ./src/main.d 
 

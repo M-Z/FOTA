@@ -170,14 +170,19 @@ void GSMHANDLER_vidTask(void)
 				//C13 ON Bank 1 w/o feedback
 //					vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5ed3cf5e3735b16961faf0fd\"\r\n");
 				//C13 ON Bank 1 with feedback
-				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5edbb180c67d0c31ae720b92\"\r\n");
+//				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5edbb180c67d0c31ae720b92\"\r\n");
+				//C13 on Bank1 with Diag
+				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5f00bafea594b91498537ed3\"\r\n");
+
 			}
 			else if (CANHANDLER_u8UsedBank == 0)
 			{
 				//C14 on Bank 2 w/o feedback
 //					vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5ed97e86c67d0c31ae720b90\"\r\n");
 				//C14 ON Bank 2 with feedback
-				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5edbb355c67d0c31ae720b94\"\r\n");
+//				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5edbb355c67d0c31ae720b94\"\r\n");
+				//C14 on Bank2 with Diag
+				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5f00bb53a594b91498537ed5\"\r\n");
 			}
 			else
 			{
@@ -191,14 +196,14 @@ void GSMHANDLER_vidTask(void)
 				//C13 ON Bank 1 w/o feedback
 //					vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5ed3cf5e3735b16961faf0fd\"\r\n");
 				//C13 ON Bank 1 with feedback
-				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5edbb180c67d0c31ae720b92\"\r\n");
+				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5f00bafea594b91498537ed3\"\r\n");
 			}
 			else if (CANHANDLER_u8UsedBank == 0)
 			{
 				//C14 on Bank 2 w/o feedback
 //					vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5ed97e86c67d0c31ae720b90\"\r\n");
 				//C14 ON Bank 2 with feedback
-				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5edbb355c67d0c31ae720b94\"\r\n");
+				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5f00bb53a594b91498537ed5\"\r\n");
 			}
 			else
 			{
@@ -207,8 +212,8 @@ void GSMHANDLER_vidTask(void)
 			break;
 
 		case SendDiag:
-			/* TODO: Add The right URL */
-//			vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5edbb355c67d0c31ae720b94\"\r\n");
+			/* Set URL of Diag */
+			vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/vehicle/diagnostics/11122\"\r\n");
 
 			break;
 
@@ -357,7 +362,8 @@ void GSMHANDLER_vidStartDiag(void)
 {
 	if (GSMHANDLER_u8GSMBusy == 1)
 	{
-		/* TODO: Send Can Message that GSM is currently busy */
+		/* Send Can Message that GSM is currently busy */
+		CANHANDLER_vidSend(CANHANDLER_u8GSMBUSY, CAN_u8REMOTEFRAME, NULL ,0);
 	}
 	else
 	{
@@ -365,9 +371,6 @@ void GSMHANDLER_vidStartDiag(void)
 		GSMHANDLER_enuCurrentStep = SetBearerParameters;
 		GSMHANDLER_enuRollBackStep = SetBearerParameters;
 		GSMHANDLER_enuNextStep = SetBearerParameters;
-
-		CANHANDLER_vidSend(CANHANDLER_u8ECUSWVERSION, CAN_u8REMOTEFRAME, NULL ,0);
-
 		SCH_vidStartTask(0);
 	}
 }
@@ -501,13 +504,11 @@ void vidSendHTTPData(void)
 void vidSendVehicleName(void)
 {
 	Error_Status enuresponseStatus = NOK;
-	u32 u32Time = 0;
-	u8 au8Version[] = "\",\"Current Version\":";
-	u8 au8DTCs[] = "\",\"DTCs\":";
-	u8 au8End[] = "\"}}\r\n";
+	u8 au8End[] = "\"}\r\n";
 	u8 u8Counter = 0;
+	u8 u8DTCsCounter = 0;
 	u8 u8DTCEndPoint = 0;
-	static u8 au8VehicleNameDiag[150] = "{\"vehicleName\":\"fota user\",\"password\":\"123\",\"Diag\":{\"time\":\"";
+	static u8 au8VehicleNameDiag[150] = "{\"vehicleName\":\"fota user\",\"password\":\"123\",\"Diag\":\"DTCS: ";
 
 	switch (GSM_enuListenFlag)
 	{
@@ -526,38 +527,28 @@ void vidSendVehicleName(void)
 		}
 		else if (GSMHANDLER_enuServerStep == SendDiag)
 		{
-			if ( (CANHANDLER_u8DTCsReceived == 1) && (CANHANDLER_u8SWVersionReceived == 1) )
+			if ( CANHANDLER_u8DTCsReceived == 1 )
 			{
 				CANHANDLER_u8DTCsReceived = 0;
-				CANHANDLER_u8SWVersionReceived = 0;
 
 				USART_enumDMAReceive( GSM_u8USARTChannel, DMA_CHANNEL_5, (u32*) au8listenBuffer, 64 );
 
-				/* Add Unix Time */
-				u32Time = RTC_vidGetCounter();
-				au8VehicleNameDiag[60] = ((u8)(u32Time >> 24) & 0xFF);
-				au8VehicleNameDiag[61] = ((u8)(u32Time >> 16) & 0xFF);
-				au8VehicleNameDiag[62] = ((u8)(u32Time >> 8) & 0xFF);
-				au8VehicleNameDiag[63] = (u8)(u32Time & 0x00000000000000FF);
-
-				/* Add ECU Version */
-				for (u8Counter = 0; au8Version[u8Counter] != '\0'; u8Counter++)
-				{
-					au8VehicleNameDiag[64 + u8Counter] = au8Version[u8Counter];
-				}
-				au8VehicleNameDiag[84] = CANHANDLER_au8ECUVersion[0];
-				au8VehicleNameDiag[85] = CANHANDLER_au8ECUVersion[1];
-
 				/* Add DTCs */
-				for (u8Counter = 0; au8DTCs[u8Counter] != '\0'; u8Counter++)
+				u8Counter = 58;
+				for (u8DTCsCounter = 0; CANHANDLER_au8DTCs[u8DTCsCounter] != 0; u8DTCsCounter++)
 				{
-					au8VehicleNameDiag[86 + u8Counter] = au8DTCs[u8Counter];
+					au8VehicleNameDiag[u8Counter] = '0';
+					u8Counter++;
+					au8VehicleNameDiag[u8Counter] = 'x';
+					u8Counter++;
+					au8VehicleNameDiag[u8Counter] = ((CANHANDLER_au8DTCs[u8DTCsCounter]>>4) & 0x0F) + '0';
+					u8Counter++;
+					au8VehicleNameDiag[u8Counter] = (CANHANDLER_au8DTCs[u8DTCsCounter] & 0x0F) + '0';
+					u8Counter++;
+					au8VehicleNameDiag[u8Counter] = ',';
+					u8Counter++;
 				}
-				for (u8Counter = 0; CANHANDLER_au8DTCs[u8Counter] != 0; u8Counter++)
-				{
-					au8VehicleNameDiag[95 + u8Counter] = CANHANDLER_au8DTCs[u8Counter];
-				}
-				u8DTCEndPoint = 95 + u8Counter;
+				u8DTCEndPoint = u8Counter;
 
 				/* Add The array end */
 				for (u8Counter = 0; au8End[u8Counter] != 0; u8Counter++)

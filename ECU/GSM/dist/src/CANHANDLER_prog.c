@@ -11,7 +11,7 @@
 #include "CAN.h"
 #include "CANHANDLER_int.h"
 #include "CANHANDLER_cfg.h"
-
+#include "GSMHANDLER_int.h"
 
 u8 CANHANDLER_u8SWVersionReceived = 0;
 u8 CANHANDLER_u8UpdateAcceptReceived = 0;
@@ -225,13 +225,22 @@ void CANHANDLER_vidReceive(void)
 					break;
 
 				case CANHANDLER_u8ECUDTCs:
-					for (u8DataCounter = 0; u8DataCounter < CAN_RxMsg[u8counter].len; u8DataCounter++)
+					switch(CAN_RxMsg[u8counter].type)
 					{
-						CANHANDLER_au8DTCs[u8DataCounter] = CAN_RxMsg[u8counter].data[u8DataCounter];
-					}
-					CANHANDLER_u8DTCsReceived = 1;
-					break;
+					case CAN_u8REMOTEFRAME:
+						/* Start Diagnostics Session */
+						GSMHANDLER_vidStartDiag();
+						break;
 
+					case CAN_u8DATAFRAME:
+						for (u8DataCounter = 0; u8DataCounter < CAN_RxMsg[u8counter].len; u8DataCounter++)
+						{
+							CANHANDLER_au8DTCs[u8DataCounter] = CAN_RxMsg[u8counter].data[u8DataCounter];
+						}
+						CANHANDLER_u8DTCsReceived = 1;
+						break;
+					}
+					break;
 
 				default:
 					break;

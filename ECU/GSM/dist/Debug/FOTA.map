@@ -1498,8 +1498,6 @@ Discarded input sections
  .text          0x00000000        0x0 ./src/GSMHANDLER_prog.o
  .data          0x00000000        0x0 ./src/GSMHANDLER_prog.o
  .bss           0x00000000        0x0 ./src/GSMHANDLER_prog.o
- .text.GSMHANDLER_vidStartDiag
-                0x00000000       0x44 ./src/GSMHANDLER_prog.o
  .bss.u32ResponseFileSize
                 0x00000000        0x4 ./src/GSMHANDLER_prog.o
  .debug_macro   0x00000000      0xa6c ./src/GSMHANDLER_prog.o
@@ -1509,7 +1507,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x172 ./src/GSMHANDLER_prog.o
  .debug_macro   0x00000000       0x64 ./src/GSMHANDLER_prog.o
  .debug_macro   0x00000000       0x16 ./src/GSMHANDLER_prog.o
- .debug_macro   0x00000000       0x46 ./src/GSMHANDLER_prog.o
+ .debug_macro   0x00000000       0x4c ./src/GSMHANDLER_prog.o
  .debug_macro   0x00000000       0x16 ./src/GSMHANDLER_prog.o
  .debug_macro   0x00000000       0x10 ./src/GSMHANDLER_prog.o
  .group         0x00000000        0xc ./src/GSM_program.o
@@ -1631,6 +1629,8 @@ Discarded input sections
  .text          0x00000000        0x0 ./src/RTC_prog.o
  .data          0x00000000        0x0 ./src/RTC_prog.o
  .bss           0x00000000        0x0 ./src/RTC_prog.o
+ .text.RTC_vidGetCounter
+                0x00000000       0x18 ./src/RTC_prog.o
  .text.RTC_vidSetAlarm
                 0x00000000       0x34 ./src/RTC_prog.o
  .debug_macro   0x00000000      0xa6c ./src/RTC_prog.o
@@ -1660,8 +1660,6 @@ Discarded input sections
  .data          0x00000000        0x0 ./src/SCH_prog.o
  .bss           0x00000000        0x0 ./src/SCH_prog.o
  .text.SCH_vidDeleteTask
-                0x00000000       0x10 ./src/SCH_prog.o
- .text.SCH_vidStartTask
                 0x00000000       0x10 ./src/SCH_prog.o
  .debug_macro   0x00000000      0xa6c ./src/SCH_prog.o
  .debug_macro   0x00000000       0x40 ./src/SCH_prog.o
@@ -1788,7 +1786,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x2e ./src/main.o
  .debug_macro   0x00000000       0x22 ./src/main.o
  .debug_macro   0x00000000       0x16 ./src/main.o
- .debug_macro   0x00000000       0x46 ./src/main.o
+ .debug_macro   0x00000000       0x4c ./src/main.o
  .debug_macro   0x00000000       0x16 ./src/main.o
  .debug_macro   0x00000000       0x10 ./src/main.o
  COMMON         0x00000000       0x21 ./src/main.o
@@ -2554,269 +2552,272 @@ END GROUP
                 0x08000ee8       0x64 ./src/CANHANDLER_prog.o
                 0x08000ee8                CANHANDLER_vidSendTask
  .text.CANHANDLER_vidReceive
-                0x08000f4c       0xf8 ./src/CANHANDLER_prog.o
+                0x08000f4c      0x104 ./src/CANHANDLER_prog.o
                 0x08000f4c                CANHANDLER_vidReceive
  .text.DIO_vidInit
-                0x08001044      0x13c ./src/DIO_prog.o
-                0x08001044                DIO_vidInit
+                0x08001050      0x13c ./src/DIO_prog.o
+                0x08001050                DIO_vidInit
  .text.DIO_vidSetPinValue
-                0x08001180       0x3c ./src/DIO_prog.o
-                0x08001180                DIO_vidSetPinValue
+                0x0800118c       0x3c ./src/DIO_prog.o
+                0x0800118c                DIO_vidSetPinValue
  .text.DMA_Stub
-                0x080011bc        0x4 ./src/DMA_program.o
+                0x080011c8        0x4 ./src/DMA_program.o
  .text.DMA_enumInit
-                0x080011c0       0x94 ./src/DMA_program.o
-                0x080011c0                DMA_enumInit
+                0x080011cc       0x94 ./src/DMA_program.o
+                0x080011cc                DMA_enumInit
  .text.DMA_Transfer
-                0x08001254       0x78 ./src/DMA_program.o
-                0x08001254                DMA_Transfer
+                0x08001260       0x78 ./src/DMA_program.o
+                0x08001260                DMA_Transfer
  .text.DMA_voidDisable
-                0x080012cc       0x20 ./src/DMA_program.o
-                0x080012cc                DMA_voidDisable
+                0x080012d8       0x20 ./src/DMA_program.o
+                0x080012d8                DMA_voidDisable
  .text.DMA_enumSetCallback
-                0x080012ec       0x1c ./src/DMA_program.o
-                0x080012ec                DMA_enumSetCallback
+                0x080012f8       0x1c ./src/DMA_program.o
+                0x080012f8                DMA_enumSetCallback
  .text.DMA1_Channel1_IRQHandler
-                0x08001308       0x4c ./src/DMA_program.o
-                0x08001308                DMA1_Channel1_IRQHandler
+                0x08001314       0x4c ./src/DMA_program.o
+                0x08001314                DMA1_Channel1_IRQHandler
  .text.DMA1_Channel5_IRQHandler
-                0x08001354       0x60 ./src/DMA_program.o
-                0x08001354                DMA1_Channel5_IRQHandler
+                0x08001360       0x60 ./src/DMA_program.o
+                0x08001360                DMA1_Channel5_IRQHandler
  .text.DMA1_Channel4_IRQHandler
-                0x080013b4       0x68 ./src/DMA_program.o
-                0x080013b4                DMA1_Channel4_IRQHandler
+                0x080013c0       0x68 ./src/DMA_program.o
+                0x080013c0                DMA1_Channel4_IRQHandler
  .text.vidDMAIRQ
-                0x0800141c        0xc ./src/GSMHANDLER_prog.o
-                0x0800141c                vidDMAIRQ
+                0x08001428        0xc ./src/GSMHANDLER_prog.o
+                0x08001428                vidDMAIRQ
  .text.u8CheckBufferTermination
-                0x08001428       0x3a ./src/GSMHANDLER_prog.o
+                0x08001434       0x3a ./src/GSMHANDLER_prog.o
  .text.enuFindString
-                0x08001462       0x48 ./src/GSMHANDLER_prog.o
+                0x0800146e       0x48 ./src/GSMHANDLER_prog.o
  .text.vidClearBuffer
-                0x080014aa       0x10 ./src/GSMHANDLER_prog.o
- *fill*         0x080014ba        0x2 
+                0x080014b6       0x10 ./src/GSMHANDLER_prog.o
+ *fill*         0x080014c6        0x2 
+ .text.GSMHANDLER_vidStartDiag
+                0x080014c8       0x48 ./src/GSMHANDLER_prog.o
+                0x080014c8                GSMHANDLER_vidStartDiag
  .text.vidSendCommand
-                0x080014bc       0xc8 ./src/GSMHANDLER_prog.o
-                0x080014bc                vidSendCommand
+                0x08001510       0xc8 ./src/GSMHANDLER_prog.o
+                0x08001510                vidSendCommand
  .text.vidSendHTTPData
-                0x08001584       0xb4 ./src/GSMHANDLER_prog.o
-                0x08001584                vidSendHTTPData
+                0x080015d8       0xb4 ./src/GSMHANDLER_prog.o
+                0x080015d8                vidSendHTTPData
  .text.vidSendVehicleName
-                0x08001638      0x210 ./src/GSMHANDLER_prog.o
-                0x08001638                vidSendVehicleName
+                0x0800168c      0x19c ./src/GSMHANDLER_prog.o
+                0x0800168c                vidSendVehicleName
  .text.u32SendPostRequest
-                0x08001848      0x138 ./src/GSMHANDLER_prog.o
-                0x08001848                u32SendPostRequest
+                0x08001828      0x138 ./src/GSMHANDLER_prog.o
+                0x08001828                u32SendPostRequest
  .text.u16GETData
-                0x08001980      0x210 ./src/GSMHANDLER_prog.o
-                0x08001980                u16GETData
+                0x08001960      0x210 ./src/GSMHANDLER_prog.o
+                0x08001960                u16GETData
  .text.vidCheckUpdate
-                0x08001b90       0x68 ./src/GSMHANDLER_prog.o
-                0x08001b90                vidCheckUpdate
+                0x08001b70       0x68 ./src/GSMHANDLER_prog.o
+                0x08001b70                vidCheckUpdate
  .text.vidSendHexFile
-                0x08001bf8       0x94 ./src/GSMHANDLER_prog.o
-                0x08001bf8                vidSendHexFile
+                0x08001bd8       0x94 ./src/GSMHANDLER_prog.o
+                0x08001bd8                vidSendHexFile
  .text.GSMHANDLER_vidTask
-                0x08001c8c      0x384 ./src/GSMHANDLER_prog.o
-                0x08001c8c                GSMHANDLER_vidTask
+                0x08001c6c      0x398 ./src/GSMHANDLER_prog.o
+                0x08001c6c                GSMHANDLER_vidTask
  .text.NVIC_vidInit
-                0x08002010       0x10 ./src/NVIC_prog.o
-                0x08002010                NVIC_vidInit
+                0x08002004       0x10 ./src/NVIC_prog.o
+                0x08002004                NVIC_vidInit
  .text.NVIC_vidEnableInterrupt
-                0x08002020       0x28 ./src/NVIC_prog.o
-                0x08002020                NVIC_vidEnableInterrupt
+                0x08002014       0x28 ./src/NVIC_prog.o
+                0x08002014                NVIC_vidEnableInterrupt
  .text.NVIC_vidSetPriority
-                0x08002048       0x10 ./src/NVIC_prog.o
-                0x08002048                NVIC_vidSetPriority
+                0x0800203c       0x10 ./src/NVIC_prog.o
+                0x0800203c                NVIC_vidSetPriority
  .text.RCC_vidInit
-                0x08002058       0xc4 ./src/RCC_prog.o
-                0x08002058                RCC_vidInit
+                0x0800204c       0xc4 ./src/RCC_prog.o
+                0x0800204c                RCC_vidInit
  .text.RCC_vidInitRTCCLK
-                0x0800211c       0x40 ./src/RCC_prog.o
-                0x0800211c                RCC_vidInitRTCCLK
+                0x08002110       0x40 ./src/RCC_prog.o
+                0x08002110                RCC_vidInitRTCCLK
  .text.RCC_vidEnablePeripheral
-                0x0800215c       0x54 ./src/RCC_prog.o
-                0x0800215c                RCC_vidEnablePeripheral
+                0x08002150       0x54 ./src/RCC_prog.o
+                0x08002150                RCC_vidEnablePeripheral
  .text.RTC_vidInit
-                0x080021b0       0x30 ./src/RTC_prog.o
-                0x080021b0                RTC_vidInit
+                0x080021a4       0x30 ./src/RTC_prog.o
+                0x080021a4                RTC_vidInit
  .text.RTC_vidSetPrescaler
-                0x080021e0       0x34 ./src/RTC_prog.o
-                0x080021e0                RTC_vidSetPrescaler
+                0x080021d4       0x34 ./src/RTC_prog.o
+                0x080021d4                RTC_vidSetPrescaler
  .text.RTC_vidSetCounter
-                0x08002214       0x34 ./src/RTC_prog.o
-                0x08002214                RTC_vidSetCounter
- .text.RTC_vidGetCounter
-                0x08002248       0x18 ./src/RTC_prog.o
-                0x08002248                RTC_vidGetCounter
+                0x08002208       0x34 ./src/RTC_prog.o
+                0x08002208                RTC_vidSetCounter
  .text.SCB_vidSetInterruptPriority
-                0x08002260       0x14 ./src/SCB_prog.o
-                0x08002260                SCB_vidSetInterruptPriority
+                0x0800223c       0x14 ./src/SCB_prog.o
+                0x0800223c                SCB_vidSetInterruptPriority
  .text.Scheduler
-                0x08002274       0x3c ./src/SCH_prog.o
-                0x08002274                Scheduler
+                0x08002250       0x3c ./src/SCH_prog.o
+                0x08002250                Scheduler
  .text.SCH_vidStart
-                0x080022b0       0x18 ./src/SCH_prog.o
-                0x080022b0                SCH_vidStart
+                0x0800228c       0x18 ./src/SCH_prog.o
+                0x0800228c                SCH_vidStart
  .text.SCH_vidCreateTask
-                0x080022c8        0xc ./src/SCH_prog.o
-                0x080022c8                SCH_vidCreateTask
+                0x080022a4        0xc ./src/SCH_prog.o
+                0x080022a4                SCH_vidCreateTask
  .text.SCH_vidStopTask
-                0x080022d4       0x10 ./src/SCH_prog.o
-                0x080022d4                SCH_vidStopTask
+                0x080022b0       0x10 ./src/SCH_prog.o
+                0x080022b0                SCH_vidStopTask
+ .text.SCH_vidStartTask
+                0x080022c0       0x10 ./src/SCH_prog.o
+                0x080022c0                SCH_vidStartTask
  .text.vidInterruptStub
-                0x080022e4        0x4 ./src/SYSTICK_prog.o
-                0x080022e4                vidInterruptStub
+                0x080022d0        0x4 ./src/SYSTICK_prog.o
+                0x080022d0                vidInterruptStub
  .text.SYSTICK_vidInit
-                0x080022e8       0x1c ./src/SYSTICK_prog.o
-                0x080022e8                SYSTICK_vidInit
+                0x080022d4       0x1c ./src/SYSTICK_prog.o
+                0x080022d4                SYSTICK_vidInit
  .text.SYSTICK_vidSetCallback
-                0x08002304        0xc ./src/SYSTICK_prog.o
-                0x08002304                SYSTICK_vidSetCallback
+                0x080022f0        0xc ./src/SYSTICK_prog.o
+                0x080022f0                SYSTICK_vidSetCallback
  .text.Timer1_UEV_Interrupt
-                0x08002310       0x34 ./src/Timer_prog.o
-                0x08002310                Timer1_UEV_Interrupt
+                0x080022fc       0x34 ./src/Timer_prog.o
+                0x080022fc                Timer1_UEV_Interrupt
  .text.TIM1_UP_IRQHandler
-                0x08002344       0x1c ./src/Timer_prog.o
-                0x08002344                TIM1_UP_IRQHandler
+                0x08002330       0x1c ./src/Timer_prog.o
+                0x08002330                TIM1_UP_IRQHandler
  .text.USART_Stub
-                0x08002360        0x4 ./src/USART_program.o
+                0x0800234c        0x4 ./src/USART_program.o
  .text.USART_enumInit
-                0x08002364       0xe0 ./src/USART_program.o
-                0x08002364                USART_enumInit
+                0x08002350       0xe0 ./src/USART_program.o
+                0x08002350                USART_enumInit
  .text.USART_enumDMAReceive
-                0x08002444       0x4c ./src/USART_program.o
-                0x08002444                USART_enumDMAReceive
+                0x08002430       0x4c ./src/USART_program.o
+                0x08002430                USART_enumDMAReceive
  .text.USART_enumDMASend
-                0x08002490       0x60 ./src/USART_program.o
-                0x08002490                USART_enumDMASend
+                0x0800247c       0x60 ./src/USART_program.o
+                0x0800247c                USART_enumDMASend
  .text.USART1_IRQHandler
-                0x080024f0       0x20 ./src/USART_program.o
-                0x080024f0                USART1_IRQHandler
+                0x080024dc       0x20 ./src/USART_program.o
+                0x080024dc                USART1_IRQHandler
  .text.USART2_IRQHandler
-                0x08002510       0x20 ./src/USART_program.o
-                0x08002510                USART2_IRQHandler
+                0x080024fc       0x20 ./src/USART_program.o
+                0x080024fc                USART2_IRQHandler
  .text.USART3_IRQHandler
-                0x08002530       0x20 ./src/USART_program.o
-                0x08002530                USART3_IRQHandler
+                0x0800251c       0x20 ./src/USART_program.o
+                0x0800251c                USART3_IRQHandler
  .text.Blink_LED1
-                0x08002550       0x38 ./src/main.o
-                0x08002550                Blink_LED1
- .text.main     0x08002588      0x178 ./src/main.o
-                0x08002588                main
- .text          0x08002700      0x378 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
-                0x08002700                __aeabi_drsub
-                0x08002708                __aeabi_dsub
-                0x08002708                __subdf3
-                0x0800270c                __aeabi_dadd
-                0x0800270c                __adddf3
-                0x08002984                __floatunsidf
-                0x08002984                __aeabi_ui2d
-                0x080029a4                __floatsidf
-                0x080029a4                __aeabi_i2d
-                0x080029c8                __aeabi_f2d
-                0x080029c8                __extendsfdf2
-                0x08002a0c                __floatundidf
-                0x08002a0c                __aeabi_ul2d
-                0x08002a1c                __floatdidf
-                0x08002a1c                __aeabi_l2d
- .text          0x08002a78      0x424 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
-                0x08002a78                __aeabi_dmul
-                0x08002a78                __muldf3
-                0x08002ccc                __divdf3
-                0x08002ccc                __aeabi_ddiv
- .text          0x08002e9c       0x40 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixunsdfsi.o)
-                0x08002e9c                __aeabi_d2uiz
-                0x08002e9c                __fixunsdfsi
- .text.__errno  0x08002edc        0xc e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
-                0x08002edc                __errno
- .text.memcpy   0x08002ee8       0x16 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
-                0x08002ee8                memcpy
- .text          0x08002efe       0x10 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-strlen.o)
-                0x08002efe                strlen
+                0x0800253c       0x38 ./src/main.o
+                0x0800253c                Blink_LED1
+ .text.main     0x08002574      0x174 ./src/main.o
+                0x08002574                main
+ .text          0x080026e8      0x378 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+                0x080026e8                __aeabi_drsub
+                0x080026f0                __aeabi_dsub
+                0x080026f0                __subdf3
+                0x080026f4                __aeabi_dadd
+                0x080026f4                __adddf3
+                0x0800296c                __floatunsidf
+                0x0800296c                __aeabi_ui2d
+                0x0800298c                __floatsidf
+                0x0800298c                __aeabi_i2d
+                0x080029b0                __aeabi_f2d
+                0x080029b0                __extendsfdf2
+                0x080029f4                __floatundidf
+                0x080029f4                __aeabi_ul2d
+                0x08002a04                __floatdidf
+                0x08002a04                __aeabi_l2d
+ .text          0x08002a60      0x424 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+                0x08002a60                __aeabi_dmul
+                0x08002a60                __muldf3
+                0x08002cb4                __divdf3
+                0x08002cb4                __aeabi_ddiv
+ .text          0x08002e84       0x40 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixunsdfsi.o)
+                0x08002e84                __aeabi_d2uiz
+                0x08002e84                __fixunsdfsi
+ .text.__errno  0x08002ec4        0xc e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
+                0x08002ec4                __errno
+ .text.memcpy   0x08002ed0       0x16 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x08002ed0                memcpy
+ .text          0x08002ee6       0x10 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-strlen.o)
+                0x08002ee6                strlen
  .text._vsnprintf_r
-                0x08002f0e       0x58 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
-                0x08002f0e                _vsniprintf_r
-                0x08002f0e                _vsnprintf_r
- *fill*         0x08002f66        0x2 
+                0x08002ef6       0x58 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
+                0x08002ef6                _vsniprintf_r
+                0x08002ef6                _vsnprintf_r
+ *fill*         0x08002f4e        0x2 
  .text.vsnprintf
-                0x08002f68       0x1c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
-                0x08002f68                vsniprintf
-                0x08002f68                vsnprintf
+                0x08002f50       0x1c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
+                0x08002f50                vsniprintf
+                0x08002f50                vsnprintf
  .text.__ssputs_r
-                0x08002f84       0xb4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x08002f84                __ssputs_r
+                0x08002f6c       0xb4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x08002f6c                __ssputs_r
  .text._svfprintf_r
-                0x08003038      0x1ec e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x08003038                _svfiprintf_r
-                0x08003038                _svfprintf_r
+                0x08003020      0x1ec e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x08003020                _svfiprintf_r
+                0x08003020                _svfprintf_r
  .text._printf_common
-                0x08003224       0xec e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x08003224                _printf_common
+                0x0800320c       0xec e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x0800320c                _printf_common
  .text._printf_i
-                0x08003310      0x224 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x08003310                _printf_i
- .text.memchr   0x08003534       0x1c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
-                0x08003534                memchr
- .text.memmove  0x08003550       0x32 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
-                0x08003550                memmove
- *fill*         0x08003582        0x2 
- .text._free_r  0x08003584       0x98 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
-                0x08003584                _free_r
+                0x080032f8      0x224 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x080032f8                _printf_i
+ .text.memchr   0x0800351c       0x1c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
+                0x0800351c                memchr
+ .text.memmove  0x08003538       0x32 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
+                0x08003538                memmove
+ *fill*         0x0800356a        0x2 
+ .text._free_r  0x0800356c       0x98 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
+                0x0800356c                _free_r
  .text._malloc_r
-                0x0800361c       0xb4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x0800361c                _malloc_r
+                0x08003604       0xb4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x08003604                _malloc_r
  .text._realloc_r
-                0x080036d0       0x4c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
-                0x080036d0                _realloc_r
- .text._sbrk_r  0x0800371c       0x20 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
-                0x0800371c                _sbrk_r
+                0x080036b8       0x4c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
+                0x080036b8                _realloc_r
+ .text._sbrk_r  0x08003704       0x20 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
+                0x08003704                _sbrk_r
  .text.__malloc_lock
-                0x0800373c        0x2 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
-                0x0800373c                __malloc_lock
+                0x08003724        0x2 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
+                0x08003724                __malloc_lock
  .text.__malloc_unlock
-                0x0800373e        0x2 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
-                0x0800373e                __malloc_unlock
+                0x08003726        0x2 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
+                0x08003726                __malloc_unlock
  .text._malloc_usable_size_r
-                0x08003740       0x10 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
-                0x08003740                _malloc_usable_size_r
+                0x08003728       0x10 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
+                0x08003728                _malloc_usable_size_r
  *(.rodata .rodata.* .constdata .constdata.*)
  .rodata.RCC_HSEConfig.str1.4
-                0x08003750       0x30 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+                0x08003738       0x30 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .rodata.abort.str1.4
-                0x08003780       0x14 ./system/src/newlib/_exit.o
+                0x08003768       0x14 ./system/src/newlib/_exit.o
  .rodata.assert_failed.str1.4
-                0x08003794       0x2b ./system/src/newlib/assert.o
+                0x0800377c       0x2b ./system/src/newlib/assert.o
  .rodata.trace_puts.str1.4
-                0x080037bf       0x2b ./system/src/diag/Trace.o
+                0x080037a7       0x2b ./system/src/diag/Trace.o
                                   0x2 (size before relaxing)
- *fill*         0x080037bf        0x1 
+ *fill*         0x080037a7        0x1 
  .rodata.dumpExceptionStack.str1.4
-                0x080037c0      0x11a ./system/src/cortexm/exception_handlers.o
- *fill*         0x080038da        0x2 
+                0x080037a8      0x11a ./system/src/cortexm/exception_handlers.o
+ *fill*         0x080038c2        0x2 
  .rodata.str1.4
-                0x080038dc       0x2a ./system/src/cortexm/exception_handlers.o
- *fill*         0x08003906        0x2 
+                0x080038c4       0x2a ./system/src/cortexm/exception_handlers.o
+ *fill*         0x080038ee        0x2 
  .rodata.serverResponseHandling.str1.4
-                0x08003908       0x27 ./src/Application.o
- *fill*         0x0800392f        0x1 
- .rodata        0x08003930       0x23 ./src/DIO_prog.o
- *fill*         0x08003953        0x1 
+                0x080038f0       0x27 ./src/Application.o
+ *fill*         0x08003917        0x1 
+ .rodata        0x08003918       0x23 ./src/DIO_prog.o
+ *fill*         0x0800393b        0x1 
  .rodata.GSMHANDLER_vidTask.str1.4
-                0x08003954      0x203 ./src/GSMHANDLER_prog.o
- *fill*         0x08003b57        0x1 
+                0x0800393c      0x243 ./src/GSMHANDLER_prog.o
+ *fill*         0x08003b7f        0x1 
  .rodata.u32SendPostRequest.str1.4
-                0x08003b58       0x18 ./src/GSMHANDLER_prog.o
+                0x08003b80       0x18 ./src/GSMHANDLER_prog.o
  .rodata.vidSendCommand.str1.4
-                0x08003b70       0x12 ./src/GSMHANDLER_prog.o
- *fill*         0x08003b82        0x2 
+                0x08003b98       0x12 ./src/GSMHANDLER_prog.o
+ *fill*         0x08003baa        0x2 
  .rodata.vidSendHTTPData.str1.4
-                0x08003b84       0x23 ./src/GSMHANDLER_prog.o
- *fill*         0x08003ba7        0x1 
+                0x08003bac       0x23 ./src/GSMHANDLER_prog.o
+ *fill*         0x08003bcf        0x1 
  .rodata.vidSendVehicleName.str1.4
-                0x08003ba8       0xb4 ./src/GSMHANDLER_prog.o
-                                 0xb2 (size before relaxing)
- .rodata        0x08003c5c       0x58 ./src/main.o
+                0x08003bd0       0x88 ./src/GSMHANDLER_prog.o
+                                 0x8d (size before relaxing)
+ .rodata        0x08003c58       0x5c ./src/main.o
  .rodata._svfprintf_r.str1.1
                 0x08003cb4       0x11 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
  .rodata._printf_i.str1.1
@@ -2942,7 +2943,7 @@ i.SHA256_Init   0x080059bc       0x5c
                 0x2000004c        0x1 ./src/GSMHANDLER_prog.o
                 0x2000004c                GSMHANDLER_enuServerStep
  *fill*         0x2000004d        0x3 ff
- .data.au8Cmd.4089
+ .data.au8Cmd.4083
                 0x20000050       0x64 ./src/GSMHANDLER_prog.o
  .data.au8VehicleNameDiag.4053
                 0x200000b4       0x96 ./src/GSMHANDLER_prog.o
@@ -3058,7 +3059,7 @@ i.SHA256_Init   0x080059bc       0x5c
                 0x2000042c        0x4 ./src/GSMHANDLER_prog.o
  .bss.u8CanMessageSent.3988
                 0x20000430        0x1 ./src/GSMHANDLER_prog.o
- .bss.u8Counter.4126
+ .bss.u8Counter.4120
                 0x20000431        0x1 ./src/GSMHANDLER_prog.o
  *fill*         0x20000432        0x2 
  .bss.task_arr  0x20000434       0x10 ./src/SCH_prog.o
@@ -3373,7 +3374,7 @@ i.SHA256_Init   0x080059bc       0x5c
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0xc24f
+.debug_info     0x00000000     0xc267
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xc77 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .debug_info    0x00000c77      0x956 ./system/src/newlib/_exit.o
@@ -3390,22 +3391,22 @@ i.SHA256_Init   0x080059bc       0x5c
  .debug_info    0x00005f23       0x7e ./src/AFIO_program.o
  .debug_info    0x00005fa1      0x730 ./src/Application.o
  .debug_info    0x000066d1      0xee1 ./src/CAN.o
- .debug_info    0x000075b2      0x3f2 ./src/CANHANDLER_prog.o
- .debug_info    0x000079a4      0x223 ./src/DIO_prog.o
- .debug_info    0x00007bc7      0x4ed ./src/DMA_program.o
- .debug_info    0x000080b4     0x1289 ./src/GSMHANDLER_prog.o
- .debug_info    0x0000933d     0x157d ./src/GSM_program.o
- .debug_info    0x0000a8ba      0x18b ./src/NVIC_prog.o
- .debug_info    0x0000aa45      0x13f ./src/RCC_prog.o
- .debug_info    0x0000ab84      0x121 ./src/RTC_prog.o
- .debug_info    0x0000aca5      0x1ad ./src/SCB_prog.o
- .debug_info    0x0000ae52      0x234 ./src/SCH_prog.o
- .debug_info    0x0000b086      0x124 ./src/SYSTICK_prog.o
- .debug_info    0x0000b1aa       0xdf ./src/Timer_prog.o
- .debug_info    0x0000b289      0x5e4 ./src/USART_program.o
- .debug_info    0x0000b86d      0x9e2 ./src/main.o
+ .debug_info    0x000075b2      0x411 ./src/CANHANDLER_prog.o
+ .debug_info    0x000079c3      0x223 ./src/DIO_prog.o
+ .debug_info    0x00007be6      0x4ed ./src/DMA_program.o
+ .debug_info    0x000080d3     0x1282 ./src/GSMHANDLER_prog.o
+ .debug_info    0x00009355     0x157d ./src/GSM_program.o
+ .debug_info    0x0000a8d2      0x18b ./src/NVIC_prog.o
+ .debug_info    0x0000aa5d      0x13f ./src/RCC_prog.o
+ .debug_info    0x0000ab9c      0x121 ./src/RTC_prog.o
+ .debug_info    0x0000acbd      0x1ad ./src/SCB_prog.o
+ .debug_info    0x0000ae6a      0x234 ./src/SCH_prog.o
+ .debug_info    0x0000b09e      0x124 ./src/SYSTICK_prog.o
+ .debug_info    0x0000b1c2       0xdf ./src/Timer_prog.o
+ .debug_info    0x0000b2a1      0x5e4 ./src/USART_program.o
+ .debug_info    0x0000b885      0x9e2 ./src/main.o
 
-.debug_abbrev   0x00000000     0x2da0
+.debug_abbrev   0x00000000     0x2db8
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x20b ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .debug_abbrev  0x0000020b      0x1f3 ./system/src/newlib/_exit.o
@@ -3422,22 +3423,22 @@ i.SHA256_Init   0x080059bc       0x5c
  .debug_abbrev  0x00001655       0x47 ./src/AFIO_program.o
  .debug_abbrev  0x0000169c      0x248 ./src/Application.o
  .debug_abbrev  0x000018e4      0x2eb ./src/CAN.o
- .debug_abbrev  0x00001bcf      0x12d ./src/CANHANDLER_prog.o
- .debug_abbrev  0x00001cfc       0xfd ./src/DIO_prog.o
- .debug_abbrev  0x00001df9      0x1bd ./src/DMA_program.o
- .debug_abbrev  0x00001fb6      0x224 ./src/GSMHANDLER_prog.o
- .debug_abbrev  0x000021da      0x266 ./src/GSM_program.o
- .debug_abbrev  0x00002440       0xc4 ./src/NVIC_prog.o
- .debug_abbrev  0x00002504       0xaa ./src/RCC_prog.o
- .debug_abbrev  0x000025ae       0x9b ./src/RTC_prog.o
- .debug_abbrev  0x00002649       0xdf ./src/SCB_prog.o
- .debug_abbrev  0x00002728      0x12a ./src/SCH_prog.o
- .debug_abbrev  0x00002852       0xd7 ./src/SYSTICK_prog.o
- .debug_abbrev  0x00002929       0x9a ./src/Timer_prog.o
- .debug_abbrev  0x000029c3      0x21b ./src/USART_program.o
- .debug_abbrev  0x00002bde      0x1c2 ./src/main.o
+ .debug_abbrev  0x00001bcf      0x138 ./src/CANHANDLER_prog.o
+ .debug_abbrev  0x00001d07       0xfd ./src/DIO_prog.o
+ .debug_abbrev  0x00001e04      0x1bd ./src/DMA_program.o
+ .debug_abbrev  0x00001fc1      0x231 ./src/GSMHANDLER_prog.o
+ .debug_abbrev  0x000021f2      0x266 ./src/GSM_program.o
+ .debug_abbrev  0x00002458       0xc4 ./src/NVIC_prog.o
+ .debug_abbrev  0x0000251c       0xaa ./src/RCC_prog.o
+ .debug_abbrev  0x000025c6       0x9b ./src/RTC_prog.o
+ .debug_abbrev  0x00002661       0xdf ./src/SCB_prog.o
+ .debug_abbrev  0x00002740      0x12a ./src/SCH_prog.o
+ .debug_abbrev  0x0000286a       0xd7 ./src/SYSTICK_prog.o
+ .debug_abbrev  0x00002941       0x9a ./src/Timer_prog.o
+ .debug_abbrev  0x000029db      0x21b ./src/USART_program.o
+ .debug_abbrev  0x00002bf6      0x1c2 ./src/main.o
 
-.debug_line     0x00000000     0x540b
+.debug_line     0x00000000     0x542b
  *(.debug_line)
  .debug_line    0x00000000      0x869 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .debug_line    0x00000869      0x323 ./system/src/newlib/_exit.o
@@ -3454,20 +3455,20 @@ i.SHA256_Init   0x080059bc       0x5c
  .debug_line    0x000031e3       0xa3 ./src/AFIO_program.o
  .debug_line    0x00003286      0x285 ./src/Application.o
  .debug_line    0x0000350b      0x4d7 ./src/CAN.o
- .debug_line    0x000039e2      0x198 ./src/CANHANDLER_prog.o
- .debug_line    0x00003b7a      0x146 ./src/DIO_prog.o
- .debug_line    0x00003cc0      0x148 ./src/DMA_program.o
- .debug_line    0x00003e08      0x59e ./src/GSMHANDLER_prog.o
- .debug_line    0x000043a6      0x4c6 ./src/GSM_program.o
- .debug_line    0x0000486c      0x107 ./src/NVIC_prog.o
- .debug_line    0x00004973      0x134 ./src/RCC_prog.o
- .debug_line    0x00004aa7       0xf9 ./src/RTC_prog.o
- .debug_line    0x00004ba0       0xa3 ./src/SCB_prog.o
- .debug_line    0x00004c43      0x111 ./src/SCH_prog.o
- .debug_line    0x00004d54       0xdb ./src/SYSTICK_prog.o
- .debug_line    0x00004e2f       0xf2 ./src/Timer_prog.o
- .debug_line    0x00004f21      0x285 ./src/USART_program.o
- .debug_line    0x000051a6      0x265 ./src/main.o
+ .debug_line    0x000039e2      0x1b1 ./src/CANHANDLER_prog.o
+ .debug_line    0x00003b93      0x146 ./src/DIO_prog.o
+ .debug_line    0x00003cd9      0x148 ./src/DMA_program.o
+ .debug_line    0x00003e21      0x5a5 ./src/GSMHANDLER_prog.o
+ .debug_line    0x000043c6      0x4c6 ./src/GSM_program.o
+ .debug_line    0x0000488c      0x107 ./src/NVIC_prog.o
+ .debug_line    0x00004993      0x134 ./src/RCC_prog.o
+ .debug_line    0x00004ac7       0xf9 ./src/RTC_prog.o
+ .debug_line    0x00004bc0       0xa3 ./src/SCB_prog.o
+ .debug_line    0x00004c63      0x111 ./src/SCH_prog.o
+ .debug_line    0x00004d74       0xdb ./src/SYSTICK_prog.o
+ .debug_line    0x00004e4f       0xf2 ./src/Timer_prog.o
+ .debug_line    0x00004f41      0x285 ./src/USART_program.o
+ .debug_line    0x000051c6      0x265 ./src/main.o
 
 .debug_frame    0x00000000     0x616c
  *(.debug_frame)
@@ -3736,7 +3737,7 @@ i.SHA256_Init   0x080059bc       0x5c
  .debug_frame   0x000060c8       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
  .debug_frame   0x00006128       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
 
-.debug_str      0x00000000    0x5d191
+.debug_str      0x00000000    0x5d1af
  *(.debug_str)
  .debug_str     0x00000000    0x4f168 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
                               0x4f31f (size before relaxing)
@@ -3768,36 +3769,36 @@ i.SHA256_Init   0x080059bc       0x5c
                                0x36cf (size before relaxing)
  .debug_str     0x00057b1a     0x1379 ./src/CAN.o
                                0x99c6 (size before relaxing)
- .debug_str     0x00058e93      0x349 ./src/CANHANDLER_prog.o
-                               0x3573 (size before relaxing)
- .debug_str     0x000591dc      0xc26 ./src/DIO_prog.o
+ .debug_str     0x00058e93      0x3a1 ./src/CANHANDLER_prog.o
+                               0x35cb (size before relaxing)
+ .debug_str     0x00059234      0xc26 ./src/DIO_prog.o
                                0x3d6c (size before relaxing)
- .debug_str     0x00059e02      0x352 ./src/DMA_program.o
+ .debug_str     0x00059e5a      0x352 ./src/DMA_program.o
                                0x35bd (size before relaxing)
- .debug_str     0x0005a154      0x655 ./src/GSMHANDLER_prog.o
-                               0x462e (size before relaxing)
- .debug_str     0x0005a7a9      0x2a4 ./src/GSM_program.o
+ .debug_str     0x0005a1ac      0x609 ./src/GSMHANDLER_prog.o
+                               0x463a (size before relaxing)
+ .debug_str     0x0005a7b5      0x2a4 ./src/GSM_program.o
                                0x4089 (size before relaxing)
- .debug_str     0x0005aa4d      0x1e5 ./src/NVIC_prog.o
+ .debug_str     0x0005aa59      0x1e5 ./src/NVIC_prog.o
                                0x3768 (size before relaxing)
- .debug_str     0x0005ac32      0xd47 ./src/RCC_prog.o
+ .debug_str     0x0005ac3e      0xd47 ./src/RCC_prog.o
                                0x438f (size before relaxing)
- .debug_str     0x0005b979      0x328 ./src/RTC_prog.o
+ .debug_str     0x0005b985      0x33a ./src/RTC_prog.o
                                0x3475 (size before relaxing)
- .debug_str     0x0005bca1      0x1de ./src/SCB_prog.o
+ .debug_str     0x0005bcbf      0x1de ./src/SCB_prog.o
                                0x3336 (size before relaxing)
- .debug_str     0x0005be7f      0x11c ./src/SCH_prog.o
+ .debug_str     0x0005be9d      0x11c ./src/SCH_prog.o
                                0x32be (size before relaxing)
- .debug_str     0x0005bf9b      0x134 ./src/SYSTICK_prog.o
+ .debug_str     0x0005bfb9      0x134 ./src/SYSTICK_prog.o
                                0x3299 (size before relaxing)
- .debug_str     0x0005c0cf      0xb2e ./src/Timer_prog.o
+ .debug_str     0x0005c0ed      0xb2e ./src/Timer_prog.o
                                0x3e21 (size before relaxing)
- .debug_str     0x0005cbfd      0x4eb ./src/USART_program.o
+ .debug_str     0x0005cc1b      0x4eb ./src/USART_program.o
                                0x3903 (size before relaxing)
- .debug_str     0x0005d0e8       0xa9 ./src/main.o
-                               0x4f56 (size before relaxing)
+ .debug_str     0x0005d106       0xa9 ./src/main.o
+                               0x4f6e (size before relaxing)
 
-.debug_loc      0x00000000     0x418a
+.debug_loc      0x00000000     0x4156
  *(.debug_loc)
  .debug_loc     0x00000000      0xa63 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .debug_loc     0x00000a63       0x85 ./system/src/newlib/_sbrk.o
@@ -3810,19 +3811,19 @@ i.SHA256_Init   0x080059bc       0x5c
  .debug_loc     0x000012d0       0xdf ./system/src/cmsis/system_stm32f10x.o
  .debug_loc     0x000013af      0x586 ./src/Application.o
  .debug_loc     0x00001935      0x1c5 ./src/CAN.o
- .debug_loc     0x00001afa      0x2f3 ./src/CANHANDLER_prog.o
- .debug_loc     0x00001ded      0x1b6 ./src/DIO_prog.o
- .debug_loc     0x00001fa3      0x16b ./src/DMA_program.o
- .debug_loc     0x0000210e      0xa99 ./src/GSMHANDLER_prog.o
- .debug_loc     0x00002ba7      0xa3c ./src/GSM_program.o
- .debug_loc     0x000035e3      0x15f ./src/NVIC_prog.o
- .debug_loc     0x00003742      0x130 ./src/RCC_prog.o
- .debug_loc     0x00003872       0x94 ./src/RTC_prog.o
- .debug_loc     0x00003906       0x42 ./src/SCB_prog.o
- .debug_loc     0x00003948       0x2a ./src/SCH_prog.o
- .debug_loc     0x00003972       0x21 ./src/SYSTICK_prog.o
- .debug_loc     0x00003993      0x7b5 ./src/USART_program.o
- .debug_loc     0x00004148       0x42 ./src/main.o
+ .debug_loc     0x00001afa      0x2db ./src/CANHANDLER_prog.o
+ .debug_loc     0x00001dd5      0x1b6 ./src/DIO_prog.o
+ .debug_loc     0x00001f8b      0x16b ./src/DMA_program.o
+ .debug_loc     0x000020f6      0xa7d ./src/GSMHANDLER_prog.o
+ .debug_loc     0x00002b73      0xa3c ./src/GSM_program.o
+ .debug_loc     0x000035af      0x15f ./src/NVIC_prog.o
+ .debug_loc     0x0000370e      0x130 ./src/RCC_prog.o
+ .debug_loc     0x0000383e       0x94 ./src/RTC_prog.o
+ .debug_loc     0x000038d2       0x42 ./src/SCB_prog.o
+ .debug_loc     0x00003914       0x2a ./src/SCH_prog.o
+ .debug_loc     0x0000393e       0x21 ./src/SYSTICK_prog.o
+ .debug_loc     0x0000395f      0x7b5 ./src/USART_program.o
+ .debug_loc     0x00004114       0x42 ./src/main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -3871,7 +3872,7 @@ OUTPUT(FOTA.elf elf32-littlearm)
  .debug_ranges  0x00000788       0xa8 ./src/USART_program.o
  .debug_ranges  0x00000830       0x18 ./src/main.o
 
-.debug_macro    0x00000000     0x4a72
+.debug_macro    0x00000000     0x4a82
  .debug_macro   0x00000000      0x287 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .debug_macro   0x00000287      0x3dc ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .debug_macro   0x00000663      0x1b4 ./system/src/newlib/_exit.o
@@ -3937,39 +3938,39 @@ OUTPUT(FOTA.elf elf32-littlearm)
  .debug_macro   0x000036a2      0x172 ./src/CAN.o
  .debug_macro   0x00003814       0xa6 ./src/CAN.o
  .debug_macro   0x000038ba       0x22 ./src/CAN.o
- .debug_macro   0x000038dc       0x3e ./src/CANHANDLER_prog.o
- .debug_macro   0x0000391a       0x16 ./src/CANHANDLER_prog.o
- .debug_macro   0x00003930       0x46 ./src/CANHANDLER_prog.o
- .debug_macro   0x00003976       0x3e ./src/DIO_prog.o
- .debug_macro   0x000039b4       0xdc ./src/DIO_prog.o
- .debug_macro   0x00003a90       0x8e ./src/DIO_prog.o
- .debug_macro   0x00003b1e       0xb8 ./src/DIO_prog.o
- .debug_macro   0x00003bd6       0x35 ./src/DMA_program.o
- .debug_macro   0x00003c0b       0x16 ./src/DMA_program.o
- .debug_macro   0x00003c21       0x64 ./src/DMA_program.o
- .debug_macro   0x00003c85       0xe5 ./src/GSMHANDLER_prog.o
- .debug_macro   0x00003d6a       0x28 ./src/GSMHANDLER_prog.o
- .debug_macro   0x00003d92       0x10 ./src/GSMHANDLER_prog.o
- .debug_macro   0x00003da2       0x16 ./src/GSMHANDLER_prog.o
- .debug_macro   0x00003db8       0x6e ./src/GSM_program.o
- .debug_macro   0x00003e26       0x3b ./src/NVIC_prog.o
- .debug_macro   0x00003e61       0x2e ./src/NVIC_prog.o
- .debug_macro   0x00003e8f       0x3e ./src/RCC_prog.o
- .debug_macro   0x00003ecd      0x4eb ./src/RCC_prog.o
- .debug_macro   0x000043b8       0x3f ./src/RTC_prog.o
- .debug_macro   0x000043f7       0x88 ./src/RTC_prog.o
- .debug_macro   0x0000447f       0x1c ./src/RTC_prog.o
- .debug_macro   0x0000449b       0x35 ./src/SCB_prog.o
- .debug_macro   0x000044d0       0x34 ./src/SCB_prog.o
- .debug_macro   0x00004504       0x2e ./src/SCB_prog.o
- .debug_macro   0x00004532       0x49 ./src/SCH_prog.o
- .debug_macro   0x0000457b       0x10 ./src/SCH_prog.o
- .debug_macro   0x0000458b       0x36 ./src/SYSTICK_prog.o
- .debug_macro   0x000045c1       0x34 ./src/SYSTICK_prog.o
- .debug_macro   0x000045f5       0x48 ./src/Timer_prog.o
- .debug_macro   0x0000463d      0x1b4 ./src/Timer_prog.o
- .debug_macro   0x000047f1       0x6a ./src/Timer_prog.o
- .debug_macro   0x0000485b       0x47 ./src/USART_program.o
- .debug_macro   0x000048a2       0x76 ./src/USART_program.o
- .debug_macro   0x00004918       0x52 ./src/USART_program.o
- .debug_macro   0x0000496a      0x108 ./src/main.o
+ .debug_macro   0x000038dc       0x48 ./src/CANHANDLER_prog.o
+ .debug_macro   0x00003924       0x16 ./src/CANHANDLER_prog.o
+ .debug_macro   0x0000393a       0x4c ./src/CANHANDLER_prog.o
+ .debug_macro   0x00003986       0x3e ./src/DIO_prog.o
+ .debug_macro   0x000039c4       0xdc ./src/DIO_prog.o
+ .debug_macro   0x00003aa0       0x8e ./src/DIO_prog.o
+ .debug_macro   0x00003b2e       0xb8 ./src/DIO_prog.o
+ .debug_macro   0x00003be6       0x35 ./src/DMA_program.o
+ .debug_macro   0x00003c1b       0x16 ./src/DMA_program.o
+ .debug_macro   0x00003c31       0x64 ./src/DMA_program.o
+ .debug_macro   0x00003c95       0xe5 ./src/GSMHANDLER_prog.o
+ .debug_macro   0x00003d7a       0x28 ./src/GSMHANDLER_prog.o
+ .debug_macro   0x00003da2       0x10 ./src/GSMHANDLER_prog.o
+ .debug_macro   0x00003db2       0x16 ./src/GSMHANDLER_prog.o
+ .debug_macro   0x00003dc8       0x6e ./src/GSM_program.o
+ .debug_macro   0x00003e36       0x3b ./src/NVIC_prog.o
+ .debug_macro   0x00003e71       0x2e ./src/NVIC_prog.o
+ .debug_macro   0x00003e9f       0x3e ./src/RCC_prog.o
+ .debug_macro   0x00003edd      0x4eb ./src/RCC_prog.o
+ .debug_macro   0x000043c8       0x3f ./src/RTC_prog.o
+ .debug_macro   0x00004407       0x88 ./src/RTC_prog.o
+ .debug_macro   0x0000448f       0x1c ./src/RTC_prog.o
+ .debug_macro   0x000044ab       0x35 ./src/SCB_prog.o
+ .debug_macro   0x000044e0       0x34 ./src/SCB_prog.o
+ .debug_macro   0x00004514       0x2e ./src/SCB_prog.o
+ .debug_macro   0x00004542       0x49 ./src/SCH_prog.o
+ .debug_macro   0x0000458b       0x10 ./src/SCH_prog.o
+ .debug_macro   0x0000459b       0x36 ./src/SYSTICK_prog.o
+ .debug_macro   0x000045d1       0x34 ./src/SYSTICK_prog.o
+ .debug_macro   0x00004605       0x48 ./src/Timer_prog.o
+ .debug_macro   0x0000464d      0x1b4 ./src/Timer_prog.o
+ .debug_macro   0x00004801       0x6a ./src/Timer_prog.o
+ .debug_macro   0x0000486b       0x47 ./src/USART_program.o
+ .debug_macro   0x000048b2       0x76 ./src/USART_program.o
+ .debug_macro   0x00004928       0x52 ./src/USART_program.o
+ .debug_macro   0x0000497a      0x108 ./src/main.o

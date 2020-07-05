@@ -34,7 +34,6 @@ void CANHANDLER_vidSend(u8 u8MessageID, u8 u8Frame,u8* pu8Data, u8 u8DataLength)
 {
 	u8 u8MailBoxIndex = 0;
 	u8 u8DataCounter = 0;
-
 	for (u8MailBoxIndex = 0; u8MailBoxIndex < 3; u8MailBoxIndex++)
 	{
 		if (CAN_TxRdy[u8MailBoxIndex] == 1)
@@ -48,7 +47,6 @@ void CANHANDLER_vidSend(u8 u8MessageID, u8 u8Frame,u8* pu8Data, u8 u8DataLength)
 		return;
 	}
 
-	/* Send Message */
 	switch (u8Frame)
 	{
 	case CAN_u8REMOTEFRAME:
@@ -76,4 +74,6 @@ void CANHANDLER_vidSend(u8 u8MessageID, u8 u8Frame,u8* pu8Data, u8 u8DataLength)
 		break;
 
 	}
+
 }
+

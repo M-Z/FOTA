@@ -17,7 +17,7 @@ from gp import Ui_MainWindow
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(24,GPIO.IN)
 GPIO.add_event_detect(24,GPIO.FALLING,callback=can.RX_interrupt)
-filters = [65,75]
+filters = [65,75,20]
 can.init(filters)
 
 
@@ -38,6 +38,10 @@ class RX(QThread):
                     updateprogress = can.RX_msg[0]['data'][0]
                     print('update progress  = ',updateprogress)
                     self.progressbar_update.emit(updateprogress)
+ #               elif can.RX_msg[0]['ID'] == 20:
+                    #Display GSM Busy on Text Browser
+#                    self.textBrowser.setText("GSM Busy, Cannnot complete action")
+                    
                 del can.RX_msg[0]
     
 
@@ -74,7 +78,9 @@ class Main(QMainWindow, Ui_MainWindow):
         self.pushButton_19.setEnabled(False)
         self.pushButton_18.clicked.connect(self.Accept_Update)
         self.pushButton_19.clicked.connect(self.Reject_Update)
-        
+        self.pushButton_20.clicked.connect(self.Open_DIAGS_Tab)
+        self.pushButton_21.clicked.connect(self.Send_diagnostics_click)
+
     def Open_Gallery_Tab(self):
         self.tabWidget.setCurrentIndex(0)
 
@@ -87,6 +93,10 @@ class Main(QMainWindow, Ui_MainWindow):
         self.tabWidget_3.setCurrentIndex(0)
         self.tabWidget_4.setCurrentIndex(0)
         self.textBrowser.setText("Hello There!")
+
+    def Open_DIAGS_Tab(self):
+        self.tabWidget.setCurrentIndex(5)
+
 
     def Show_New_Update(self):
         self.textBrowser.setText("New Update Available")
@@ -113,6 +123,10 @@ class Main(QMainWindow, Ui_MainWindow):
         if x == 100:
             self.textBrowser.setText("Update Completed")
             
+    def Send_diagnostics_click(self):
+#        self.textBrowser.setText("Sending Diag in Progress")
+        msg = {'ID':25, 'format':'standard_format', 'type':'remote_frame', 'length':0, 'data':[0,0,0,0,0,0,0,0]}
+        can.transmit_buffer0(msg)
 
 ###############################################################################
 
