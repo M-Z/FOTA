@@ -142,7 +142,7 @@ int	main(int argc, char* argv[])
 
 	/* Create Tasks */
 	task led1 = {1000, 1, RUNNING, Blink_LED1};
-	task gsm  = {10, 0, PAUSED, GSMHANDLER_vidTask};
+	task gsm  = {10, 0, RUNNING, GSMHANDLER_vidTask};
 	task CANReceiver = {10, 6, RUNNING, CANHANDLER_vidReceive};
 	task CANSender = {10, 5, RUNNING,CANHANDLER_vidSendTask};
 

@@ -70,6 +70,7 @@ void GSMHANDLER_vidTask(void)
 	static u8 u8CanMessageSent = 0;
 	static u32 u32ResponseDataSize = 0;
 	static u32 u32StartPoint = 0;
+	static u16 u16Timeout = 0;
 	u8 u8UpdateProgress = 0;
 
 	s32 status = HASH_SUCCESS;
@@ -172,7 +173,11 @@ void GSMHANDLER_vidTask(void)
 				//C13 ON Bank 1 with feedback
 //				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5edbb180c67d0c31ae720b92\"\r\n");
 				//C13 on Bank1 with Diag
-				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5f00bafea594b91498537ed3\"\r\n");
+//				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5f00bafea594b91498537ed3\"\r\n");
+				//C15 on Bank 1, New Option Bytes Cfg
+//				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5f21ffa5a594b91498537ed7\"\r\n");
+				//Application Bank 1
+				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5f2dbd21a594b91498537edb\"\r\n");
 
 			}
 			else if (CANHANDLER_u8UsedBank == 0)
@@ -182,10 +187,16 @@ void GSMHANDLER_vidTask(void)
 				//C14 ON Bank 2 with feedback
 //				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5edbb355c67d0c31ae720b94\"\r\n");
 				//C14 on Bank2 with Diag
-				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5f00bb53a594b91498537ed5\"\r\n");
+//				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5f00bb53a594b91498537ed5\"\r\n");
+				//C14 on Bank 2, New Option Bytes Cfg
+//				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5f21ffe6a594b91498537ed9\"\r\n");
+				//Application Bank 2
+				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5f2dbdd2a594b91498537edd\"\r\n");
+
 			}
 			else
 			{
+//				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/v/5f2dbd21a594b91498537edb\"\r\n");
 
 			}
 			break;
@@ -196,17 +207,26 @@ void GSMHANDLER_vidTask(void)
 				//C13 ON Bank 1 w/o feedback
 //					vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5ed3cf5e3735b16961faf0fd\"\r\n");
 				//C13 ON Bank 1 with feedback
-				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5f00bafea594b91498537ed3\"\r\n");
+//				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5f00bafea594b91498537ed3\"\r\n");
+				//C15 on Bank 1, New Option Bytes Cfg
+//				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5f21ffa5a594b91498537ed7\"\r\n");
+				//Application Bank 1
+				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5f2dbd21a594b91498537edb\"\r\n");
 			}
 			else if (CANHANDLER_u8UsedBank == 0)
 			{
 				//C14 on Bank 2 w/o feedback
 //					vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5ed97e86c67d0c31ae720b90\"\r\n");
 				//C14 ON Bank 2 with feedback
-				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5f00bb53a594b91498537ed5\"\r\n");
+//				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5f00bb53a594b91498537ed5\"\r\n");
+				//C14 on Bank 2, New Option Bytes Cfg
+//				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5f21ffe6a594b91498537ed9\"\r\n");
+				//Application Bank 2
+				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5f2dbdd2a594b91498537edd\"\r\n");
 			}
 			else
 			{
+//				vidSendCommand("AT+HTTPPARA=\"URL\",\"34.65.7.33/API/firmware/get/5f2dbd21a594b91498537edb\"\r\n");
 
 			}
 			break;
@@ -250,6 +270,7 @@ void GSMHANDLER_vidTask(void)
 		/* Wait for the CAN Response */
 		if (CANHANDLER_u8SWVersionReceived == 1)
 		{
+			u16Timeout = 0;
 			u8CanMessageSent = 0;
 			CANHANDLER_u8SWVersionReceived = 0;
 			/* Check if an update is available */
@@ -257,6 +278,12 @@ void GSMHANDLER_vidTask(void)
 		}
 		else
 		{
+			u16Timeout++;
+			if (u16Timeout >=  300)
+			{
+				u16Timeout = 0;
+				CANHANDLER_vidSend(CANHANDLER_u8ECUSWVERSION, CAN_u8REMOTEFRAME, NULL ,0);
+			}
 			/* TODO: Timeout? resend CAN Message */
 		}
 		break;
@@ -548,7 +575,7 @@ void vidSendVehicleName(void)
 					au8VehicleNameDiag[u8Counter] = ',';
 					u8Counter++;
 				}
-				u8DTCEndPoint = u8Counter;
+				u8DTCEndPoint = u8Counter - 1;
 
 				/* Add The array end */
 				for (u8Counter = 0; au8End[u8Counter] != 0; u8Counter++)

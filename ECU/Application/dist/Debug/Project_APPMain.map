@@ -1,5 +1,13 @@
 Archive member included to satisfy reference by file (symbol)
 
+e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+                              ./src/ADC_prog.o (__aeabi_ui2d)
+e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+                              ./src/ADC_prog.o (__aeabi_dmul)
+e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_truncdfsf2.o)
+                              ./src/ADC_prog.o (__aeabi_d2f)
+e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_cmpsf2.o)
+                              ./src/main.o (__aeabi_fcmplt)
 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
                               ./system/src/newlib/_sbrk.o (__errno)
 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
@@ -1364,6 +1372,24 @@ Discarded input sections
  .bss           0x00000000        0x0 ./system/src/cmsis/vectors_stm32f10x.o
  .debug_macro   0x00000000      0xa6c ./system/src/cmsis/vectors_stm32f10x.o
  .debug_macro   0x00000000      0x34e ./system/src/cmsis/vectors_stm32f10x.o
+ .group         0x00000000        0xc ./src/ADC_prog.o
+ .group         0x00000000        0xc ./src/ADC_prog.o
+ .group         0x00000000        0xc ./src/ADC_prog.o
+ .group         0x00000000        0xc ./src/ADC_prog.o
+ .group         0x00000000        0xc ./src/ADC_prog.o
+ .text          0x00000000        0x0 ./src/ADC_prog.o
+ .data          0x00000000        0x0 ./src/ADC_prog.o
+ .bss           0x00000000        0x0 ./src/ADC_prog.o
+ .debug_macro   0x00000000      0xa6c ./src/ADC_prog.o
+ .group         0x00000000        0xc ./src/AFIO_program.o
+ .group         0x00000000        0xc ./src/AFIO_program.o
+ .group         0x00000000        0xc ./src/AFIO_program.o
+ .group         0x00000000        0xc ./src/AFIO_program.o
+ .group         0x00000000        0xc ./src/AFIO_program.o
+ .text          0x00000000        0x0 ./src/AFIO_program.o
+ .data          0x00000000        0x0 ./src/AFIO_program.o
+ .bss           0x00000000        0x0 ./src/AFIO_program.o
+ .debug_macro   0x00000000      0xa6c ./src/AFIO_program.o
  .group         0x00000000        0xc ./src/CAN.o
  .group         0x00000000        0xc ./src/CAN.o
  .group         0x00000000        0xc ./src/CAN.o
@@ -1450,6 +1476,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x29 ./src/CAN.o
  .debug_macro   0x00000000       0x16 ./src/CAN.o
  .debug_macro   0x00000000      0x51a ./src/CAN.o
+ .debug_macro   0x00000000       0x22 ./src/CAN.o
  .group         0x00000000        0xc ./src/CANHANDLER_prog.o
  .group         0x00000000        0xc ./src/CANHANDLER_prog.o
  .group         0x00000000        0xc ./src/CANHANDLER_prog.o
@@ -1471,8 +1498,6 @@ Discarded input sections
  .text          0x00000000        0x0 ./src/DIO_prog.o
  .data          0x00000000        0x0 ./src/DIO_prog.o
  .bss           0x00000000        0x0 ./src/DIO_prog.o
- .text.DIO_u8GetPinValue
-                0x00000000       0x28 ./src/DIO_prog.o
  .data.DIO_PORTAREG
                 0x00000000        0x4 ./src/DIO_prog.o
  .data.DIO_PORTBREG
@@ -1501,6 +1526,7 @@ Discarded input sections
  .text.DMA_enumSetCallback
                 0x00000000       0x1c ./src/DMA_program.o
  .debug_macro   0x00000000      0xa6c ./src/DMA_program.o
+ .debug_macro   0x00000000       0x22 ./src/DMA_program.o
  .group         0x00000000        0xc ./src/FLASH_prog.o
  .group         0x00000000        0xc ./src/FLASH_prog.o
  .group         0x00000000        0xc ./src/FLASH_prog.o
@@ -1680,6 +1706,41 @@ Discarded input sections
  .debug_macro   0x00000000      0xa6c ./src/SCB_prog.o
  .debug_macro   0x00000000       0x22 ./src/SCB_prog.o
  .debug_macro   0x00000000       0x76 ./src/SCB_prog.o
+ .group         0x00000000        0xc ./src/Timer_prog.o
+ .group         0x00000000        0xc ./src/Timer_prog.o
+ .group         0x00000000        0xc ./src/Timer_prog.o
+ .group         0x00000000        0xc ./src/Timer_prog.o
+ .group         0x00000000        0xc ./src/Timer_prog.o
+ .group         0x00000000        0xc ./src/Timer_prog.o
+ .text          0x00000000        0x0 ./src/Timer_prog.o
+ .data          0x00000000        0x0 ./src/Timer_prog.o
+ .bss           0x00000000        0x0 ./src/Timer_prog.o
+ .text.Timer1_UEV_Interrupt
+                0x00000000       0x44 ./src/Timer_prog.o
+ .text.Timer1_Genetare_PWM_config
+                0x00000000       0x70 ./src/Timer_prog.o
+ .text.Timer1_Channel1_Genetare_PWM
+                0x00000000        0xc ./src/Timer_prog.o
+ .text.Timer1_Channel2_Genetare_PWM
+                0x00000000        0xc ./src/Timer_prog.o
+ .debug_info    0x00000000       0xf4 ./src/Timer_prog.o
+ .debug_abbrev  0x00000000       0x98 ./src/Timer_prog.o
+ .debug_aranges
+                0x00000000       0x38 ./src/Timer_prog.o
+ .debug_ranges  0x00000000       0x28 ./src/Timer_prog.o
+ .debug_macro   0x00000000       0x48 ./src/Timer_prog.o
+ .debug_macro   0x00000000      0xa6c ./src/Timer_prog.o
+ .debug_macro   0x00000000       0x22 ./src/Timer_prog.o
+ .debug_macro   0x00000000      0x13c ./src/Timer_prog.o
+ .debug_macro   0x00000000       0x34 ./src/Timer_prog.o
+ .debug_macro   0x00000000      0x1c0 ./src/Timer_prog.o
+ .debug_macro   0x00000000       0x7c ./src/Timer_prog.o
+ .debug_line    0x00000000       0xf0 ./src/Timer_prog.o
+ .debug_str     0x00000000     0x3e4a ./src/Timer_prog.o
+ .comment       0x00000000       0x7f ./src/Timer_prog.o
+ .debug_frame   0x00000000       0x58 ./src/Timer_prog.o
+ .ARM.attributes
+                0x00000000       0x33 ./src/Timer_prog.o
  .group         0x00000000        0xc ./src/_write.o
  .text          0x00000000        0x0 ./src/_write.o
  .data          0x00000000        0x0 ./src/_write.o
@@ -1740,11 +1801,15 @@ Discarded input sections
  .group         0x00000000        0xc ./src/main.o
  .group         0x00000000        0xc ./src/main.o
  .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
  .text          0x00000000        0x0 ./src/main.o
  .data          0x00000000        0x0 ./src/main.o
  .bss           0x00000000        0x0 ./src/main.o
- .bss.u8CharCount
-                0x00000000        0x1 ./src/main.o
+ .text.check    0x00000000        0xc ./src/main.o
+ .bss.v         0x00000000        0x1 ./src/main.o
  .debug_macro   0x00000000      0xa6c ./src/main.o
  .debug_macro   0x00000000       0x22 ./src/main.o
  .debug_macro   0x00000000       0x52 ./src/main.o
@@ -1785,10 +1850,22 @@ Discarded input sections
  .debug_macro   0x00000000       0x76 ./src/main.o
  .debug_macro   0x00000000      0x13c ./src/main.o
  .debug_macro   0x00000000       0x8e ./src/main.o
+ .debug_macro   0x00000000       0x64 ./src/main.o
+ .debug_macro   0x00000000       0x16 ./src/main.o
  .debug_macro   0x00000000      0x172 ./src/main.o
+ .debug_macro   0x00000000      0x159 ./src/main.o
+ .debug_macro   0x00000000      0x130 ./src/main.o
  .debug_macro   0x00000000       0x16 ./src/main.o
  .debug_macro   0x00000000       0x22 ./src/main.o
  .debug_macro   0x00000000       0x16 ./src/main.o
+ .data          0x00000000        0x0 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+ .bss           0x00000000        0x0 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+ .data          0x00000000        0x0 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+ .bss           0x00000000        0x0 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+ .data          0x00000000        0x0 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_truncdfsf2.o)
+ .bss           0x00000000        0x0 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_truncdfsf2.o)
+ .data          0x00000000        0x0 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_cmpsf2.o)
+ .bss           0x00000000        0x0 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_cmpsf2.o)
  .text          0x00000000        0x0 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
  .data          0x00000000        0x0 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
  .bss           0x00000000        0x0 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
@@ -1876,6 +1953,8 @@ LOAD ./system/src/cortexm/_reset_hardware.o
 LOAD ./system/src/cortexm/exception_handlers.o
 LOAD ./system/src/cmsis/system_stm32f10x.o
 LOAD ./system/src/cmsis/vectors_stm32f10x.o
+LOAD ./src/ADC_prog.o
+LOAD ./src/AFIO_program.o
 LOAD ./src/CAN.o
 LOAD ./src/CANHANDLER_prog.o
 LOAD ./src/DIO_prog.o
@@ -1885,6 +1964,7 @@ LOAD ./src/HexDataProcessor_prog.o
 LOAD ./src/NVIC_prog.o
 LOAD ./src/RCC_prog.o
 LOAD ./src/SCB_prog.o
+LOAD ./src/Timer_prog.o
 LOAD ./src/_write.o
 LOAD ./src/main.o
 LOAD e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libstdc++_nano.a
@@ -2023,10 +2103,10 @@ END GROUP
 
 .inits          0x08014350       0x28
                 0x08014350                __data_regions_array_start = .
-                0x08014350        0x4 LONG 0x8015a7c LOADADDR (.data)
+                0x08014350        0x4 LONG 0x80165a4 LOADADDR (.data)
                 0x08014354        0x4 LONG 0x20000000 ADDR (.data)
                 0x08014358        0x4 LONG 0x200000a0 (ADDR (.data) + SIZEOF (.data))
-                0x0801435c        0x4 LONG 0x8015a7c LOADADDR (.data_CCMRAM)
+                0x0801435c        0x4 LONG 0x80165a4 LOADADDR (.data_CCMRAM)
                 0x08014360        0x4 LONG 0x0 ADDR (.data_CCMRAM)
                 0x08014364        0x4 LONG 0x0 (ADDR (.data_CCMRAM) + SIZEOF (.data_CCMRAM))
                 0x08014368                __data_regions_array_end = .
@@ -2058,7 +2138,7 @@ END GROUP
 .flashtext
  *(.flashtext .flashtext.*)
 
-.text           0x08014378     0x1703
+.text           0x08014378     0x222b
  *(.text .text.*)
  .text._exit    0x08014378        0x2 ./system/src/newlib/_exit.o
                 0x08014378                _exit
@@ -2098,179 +2178,247 @@ END GROUP
  .text.SystemCoreClockUpdate
                 0x080146b8       0x94 ./system/src/cmsis/system_stm32f10x.o
                 0x080146b8                SystemCoreClockUpdate
+ .text.ADC_Enable
+                0x0801474c       0x28 ./src/ADC_prog.o
+                0x0801474c                ADC_Enable
+ .text.WaitingStartConversion
+                0x08014774       0x10 ./src/ADC_prog.o
+                0x08014774                WaitingStartConversion
+ .text.WaitingEndofConversion
+                0x08014784       0x10 ./src/ADC_prog.o
+                0x08014784                WaitingEndofConversion
+ .text.EndofConversionReset
+                0x08014794       0x1c ./src/ADC_prog.o
+                0x08014794                EndofConversionReset
+ .text.SequenceRegistersInit
+                0x080147b0       0x2c ./src/ADC_prog.o
+                0x080147b0                SequenceRegistersInit
+ .text.ADC_Init
+                0x080147dc       0x30 ./src/ADC_prog.o
+                0x080147dc                ADC_Init
+ *fill*         0x0801480c        0x4 
+ .text.Reading_Channels
+                0x08014810       0x58 ./src/ADC_prog.o
+                0x08014810                Reading_Channels
+ .text.AFIO_voidinit
+                0x08014868       0x20 ./src/AFIO_program.o
+                0x08014868                AFIO_voidinit
  .text.CAN_setup
-                0x0801474c       0x5c ./src/CAN.o
-                0x0801474c                CAN_setup
+                0x08014888       0x5c ./src/CAN.o
+                0x08014888                CAN_setup
  .text.CAN_start
-                0x080147a8       0x1c ./src/CAN.o
-                0x080147a8                CAN_start
+                0x080148e4       0x1c ./src/CAN.o
+                0x080148e4                CAN_start
  .text.CAN_testmode
-                0x080147c4       0x18 ./src/CAN.o
-                0x080147c4                CAN_testmode
+                0x08014900       0x18 ./src/CAN.o
+                0x08014900                CAN_testmode
  .text.CAN_waitReady
-                0x080147dc       0x2c ./src/CAN.o
-                0x080147dc                CAN_waitReady
+                0x08014918       0x2c ./src/CAN.o
+                0x08014918                CAN_waitReady
  .text.CAN_wrMsg
-                0x08014808       0xb8 ./src/CAN.o
-                0x08014808                CAN_wrMsg
+                0x08014944       0xb8 ./src/CAN.o
+                0x08014944                CAN_wrMsg
  .text.CAN_wrFilter
-                0x080148c0       0x80 ./src/CAN.o
-                0x080148c0                CAN_wrFilter
+                0x080149fc       0x80 ./src/CAN.o
+                0x080149fc                CAN_wrFilter
  .text.CAN_vidReleaseMessage
-                0x08014940       0x10 ./src/CAN.o
-                0x08014940                CAN_vidReleaseMessage
+                0x08014a7c       0x10 ./src/CAN.o
+                0x08014a7c                CAN_vidReleaseMessage
  .text.CAN_rdMsg_0
-                0x08014950       0x90 ./src/CAN.o
-                0x08014950                CAN_rdMsg_0
+                0x08014a8c       0x90 ./src/CAN.o
+                0x08014a8c                CAN_rdMsg_0
  .text.CAN_vid_filter_list
-                0x080149e0       0x50 ./src/CAN.o
-                0x080149e0                CAN_vid_filter_list
+                0x08014b1c       0x50 ./src/CAN.o
+                0x08014b1c                CAN_vid_filter_list
  .text.USB_HP_CAN1_TX_IRQHandler
-                0x08014a30       0x6c ./src/CAN.o
-                0x08014a30                USB_HP_CAN1_TX_IRQHandler
+                0x08014b6c       0x6c ./src/CAN.o
+                0x08014b6c                USB_HP_CAN1_TX_IRQHandler
  .text.USB_LP_CAN1_RX0_IRQHandler
-                0x08014a9c       0x5c ./src/CAN.o
-                0x08014a9c                USB_LP_CAN1_RX0_IRQHandler
+                0x08014bd8       0x5c ./src/CAN.o
+                0x08014bd8                USB_LP_CAN1_RX0_IRQHandler
  .text.CANHANDLER_vidSend
-                0x08014af8       0x8c ./src/CANHANDLER_prog.o
-                0x08014af8                CANHANDLER_vidSend
+                0x08014c34       0x8c ./src/CANHANDLER_prog.o
+                0x08014c34                CANHANDLER_vidSend
  .text.DIO_vidInit
-                0x08014b84      0x13c ./src/DIO_prog.o
-                0x08014b84                DIO_vidInit
+                0x08014cc0      0x13c ./src/DIO_prog.o
+                0x08014cc0                DIO_vidInit
  .text.DIO_vidSetPinValue
-                0x08014cc0       0x3c ./src/DIO_prog.o
-                0x08014cc0                DIO_vidSetPinValue
+                0x08014dfc       0x3c ./src/DIO_prog.o
+                0x08014dfc                DIO_vidSetPinValue
+ .text.DIO_u8GetPinValue
+                0x08014e38       0x28 ./src/DIO_prog.o
+                0x08014e38                DIO_u8GetPinValue
  .text.DMA1_Channel1_IRQHandler
-                0x08014cfc       0x4c ./src/DMA_program.o
-                0x08014cfc                DMA1_Channel1_IRQHandler
+                0x08014e60       0x4c ./src/DMA_program.o
+                0x08014e60                DMA1_Channel1_IRQHandler
  .text.DMA1_Channel5_IRQHandler
-                0x08014d48       0x60 ./src/DMA_program.o
-                0x08014d48                DMA1_Channel5_IRQHandler
+                0x08014eac       0x60 ./src/DMA_program.o
+                0x08014eac                DMA1_Channel5_IRQHandler
  .text.FLASH_u8GetOptionByteData
-                0x08014da8       0x24 ./src/FLASH_prog.o
-                0x08014da8                FLASH_u8GetOptionByteData
+                0x08014f0c       0x24 ./src/FLASH_prog.o
+                0x08014f0c                FLASH_u8GetOptionByteData
  .text.NVIC_vidInit
-                0x08014dcc       0x10 ./src/NVIC_prog.o
-                0x08014dcc                NVIC_vidInit
+                0x08014f30       0x10 ./src/NVIC_prog.o
+                0x08014f30                NVIC_vidInit
  .text.NVIC_vidEnableInterrupt
-                0x08014ddc       0x28 ./src/NVIC_prog.o
-                0x08014ddc                NVIC_vidEnableInterrupt
+                0x08014f40       0x28 ./src/NVIC_prog.o
+                0x08014f40                NVIC_vidEnableInterrupt
  .text.RCC_vidInit
-                0x08014e04       0xc4 ./src/RCC_prog.o
-                0x08014e04                RCC_vidInit
+                0x08014f68       0xc4 ./src/RCC_prog.o
+                0x08014f68                RCC_vidInit
  .text.RCC_vidEnablePeripheral
-                0x08014ec8       0x54 ./src/RCC_prog.o
-                0x08014ec8                RCC_vidEnablePeripheral
+                0x0801502c       0x54 ./src/RCC_prog.o
+                0x0801502c                RCC_vidEnablePeripheral
  .text.RCC_vidResetResetFlags
-                0x08014f1c       0x10 ./src/RCC_prog.o
-                0x08014f1c                RCC_vidResetResetFlags
+                0x08015080       0x10 ./src/RCC_prog.o
+                0x08015080                RCC_vidResetResetFlags
  .text.SCB_vidPerformSoftReset
-                0x08014f2c       0x14 ./src/SCB_prog.o
-                0x08014f2c                SCB_vidPerformSoftReset
- .text.main     0x08014f40      0x11c ./src/main.o
-                0x08014f40                main
- .text.__errno  0x0801505c        0xc e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
-                0x0801505c                __errno
- .text.memset   0x08015068       0x10 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
-                0x08015068                memset
+                0x08015090       0x14 ./src/SCB_prog.o
+                0x08015090                SCB_vidPerformSoftReset
+ .text.main     0x080150a4      0x1bc ./src/main.o
+                0x080150a4                main
+ .text          0x08015260      0x378 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+                0x08015260                __aeabi_drsub
+                0x08015268                __aeabi_dsub
+                0x08015268                __subdf3
+                0x0801526c                __aeabi_dadd
+                0x0801526c                __adddf3
+                0x080154e4                __floatunsidf
+                0x080154e4                __aeabi_ui2d
+                0x08015504                __floatsidf
+                0x08015504                __aeabi_i2d
+                0x08015528                __aeabi_f2d
+                0x08015528                __extendsfdf2
+                0x0801556c                __floatundidf
+                0x0801556c                __aeabi_ul2d
+                0x0801557c                __floatdidf
+                0x0801557c                __aeabi_l2d
+ .text          0x080155d8      0x424 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+                0x080155d8                __aeabi_dmul
+                0x080155d8                __muldf3
+                0x0801582c                __divdf3
+                0x0801582c                __aeabi_ddiv
+ .text          0x080159fc       0xa0 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_truncdfsf2.o)
+                0x080159fc                __truncdfsf2
+                0x080159fc                __aeabi_d2f
+ .text          0x08015a9c       0xec e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_cmpsf2.o)
+                0x08015a9c                __gesf2
+                0x08015a9c                __gtsf2
+                0x08015aa4                __lesf2
+                0x08015aa4                __ltsf2
+                0x08015aac                __nesf2
+                0x08015aac                __eqsf2
+                0x08015aac                __cmpsf2
+                0x08015b0c                __aeabi_cfrcmple
+                0x08015b14                __aeabi_cfcmpeq
+                0x08015b14                __aeabi_cfcmple
+                0x08015b24                __aeabi_fcmpeq
+                0x08015b38                __aeabi_fcmplt
+                0x08015b4c                __aeabi_fcmple
+                0x08015b60                __aeabi_fcmpge
+                0x08015b74                __aeabi_fcmpgt
+ .text.__errno  0x08015b88        0xc e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
+                0x08015b88                __errno
+ .text.memset   0x08015b94       0x10 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
+                0x08015b94                memset
  .text._vsnprintf_r
-                0x08015078       0x58 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
-                0x08015078                _vsniprintf_r
-                0x08015078                _vsnprintf_r
+                0x08015ba4       0x58 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
+                0x08015ba4                _vsniprintf_r
+                0x08015ba4                _vsnprintf_r
  .text.vsnprintf
-                0x080150d0       0x1c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
-                0x080150d0                vsniprintf
-                0x080150d0                vsnprintf
+                0x08015bfc       0x1c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
+                0x08015bfc                vsniprintf
+                0x08015bfc                vsnprintf
  .text.__ssputs_r
-                0x080150ec       0xb4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x080150ec                __ssputs_r
+                0x08015c18       0xb4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x08015c18                __ssputs_r
  .text._svfprintf_r
-                0x080151a0      0x1ec e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x080151a0                _svfiprintf_r
-                0x080151a0                _svfprintf_r
+                0x08015ccc      0x1ec e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x08015ccc                _svfiprintf_r
+                0x08015ccc                _svfprintf_r
  .text._printf_common
-                0x0801538c       0xec e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x0801538c                _printf_common
+                0x08015eb8       0xec e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x08015eb8                _printf_common
  .text._printf_i
-                0x08015478      0x224 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x08015478                _printf_i
- .text.memchr   0x0801569c       0x1c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
-                0x0801569c                memchr
- .text.memcpy   0x080156b8       0x16 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
-                0x080156b8                memcpy
- .text.memmove  0x080156ce       0x32 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
-                0x080156ce                memmove
- .text._free_r  0x08015700       0x98 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
-                0x08015700                _free_r
+                0x08015fa4      0x224 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x08015fa4                _printf_i
+ .text.memchr   0x080161c8       0x1c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
+                0x080161c8                memchr
+ .text.memcpy   0x080161e4       0x16 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x080161e4                memcpy
+ .text.memmove  0x080161fa       0x32 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
+                0x080161fa                memmove
+ .text._free_r  0x0801622c       0x98 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
+                0x0801622c                _free_r
  .text._malloc_r
-                0x08015798       0xb4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x08015798                _malloc_r
+                0x080162c4       0xb4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x080162c4                _malloc_r
  .text._realloc_r
-                0x0801584c       0x4c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
-                0x0801584c                _realloc_r
- .text._sbrk_r  0x08015898       0x20 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
-                0x08015898                _sbrk_r
+                0x08016378       0x4c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
+                0x08016378                _realloc_r
+ .text._sbrk_r  0x080163c4       0x20 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
+                0x080163c4                _sbrk_r
  .text.__malloc_lock
-                0x080158b8        0x2 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
-                0x080158b8                __malloc_lock
+                0x080163e4        0x2 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
+                0x080163e4                __malloc_lock
  .text.__malloc_unlock
-                0x080158ba        0x2 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
-                0x080158ba                __malloc_unlock
+                0x080163e6        0x2 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
+                0x080163e6                __malloc_unlock
  .text._malloc_usable_size_r
-                0x080158bc       0x10 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
-                0x080158bc                _malloc_usable_size_r
+                0x080163e8       0x10 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
+                0x080163e8                _malloc_usable_size_r
  *(.rodata .rodata.* .constdata .constdata.*)
  .rodata.dumpExceptionStack.str1.4
-                0x080158cc      0x11a ./system/src/cortexm/exception_handlers.o
- *fill*         0x080159e6        0x2 
+                0x080163f8      0x11a ./system/src/cortexm/exception_handlers.o
+ *fill*         0x08016512        0x2 
  .rodata.str1.4
-                0x080159e8       0x2c ./system/src/cortexm/exception_handlers.o
+                0x08016514       0x2c ./system/src/cortexm/exception_handlers.o
                                  0x2a (size before relaxing)
- .rodata        0x08015a14       0x23 ./src/DIO_prog.o
- *fill*         0x08015a37        0x1 
- .rodata        0x08015a38       0x10 ./src/main.o
+ .rodata        0x08016540       0x23 ./src/DIO_prog.o
+ *fill*         0x08016563        0x1 
+ .rodata        0x08016564        0xc ./src/main.o
  .rodata._svfprintf_r.str1.1
-                0x08015a48       0x11 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x08016570       0x11 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
  .rodata._printf_i.str1.1
-                0x08015a59       0x22 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x08016581       0x22 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
  *(vtable)
  *(.eh_frame*)
  *(.glue_7)
- .glue_7        0x08015a7b        0x0 linker stubs
+ .glue_7        0x080165a3        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x08015a7b        0x0 linker stubs
+ .glue_7t       0x080165a3        0x0 linker stubs
 
-.vfp11_veneer   0x08015a7c        0x0
- .vfp11_veneer  0x08015a7c        0x0 linker stubs
+.vfp11_veneer   0x080165a4        0x0
+ .vfp11_veneer  0x080165a4        0x0 linker stubs
 
-.v4_bx          0x08015a7c        0x0
- .v4_bx         0x08015a7c        0x0 linker stubs
+.v4_bx          0x080165a4        0x0
+ .v4_bx         0x080165a4        0x0 linker stubs
 
-.iplt           0x08015a7c        0x0
- .iplt          0x08015a7c        0x0 ./system/src/newlib/_exit.o
+.iplt           0x080165a4        0x0
+ .iplt          0x080165a4        0x0 ./system/src/newlib/_exit.o
 
-.rel.dyn        0x08015a7c        0x0
- .rel.iplt      0x08015a7c        0x0 ./system/src/newlib/_exit.o
+.rel.dyn        0x080165a4        0x0
+ .rel.iplt      0x080165a4        0x0 ./system/src/newlib/_exit.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x08015a7c                . = ALIGN (0x4)
-                0x08015a7c                __exidx_start = .
+                0x080165a4                . = ALIGN (0x4)
+                0x080165a4                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x08015a7c                __exidx_end = .
-                0x08015a7c                . = ALIGN (0x4)
-                0x08015a7c                _etext = .
-                0x08015a7c                __etext = .
+                0x080165a4                __exidx_end = .
+                0x080165a4                . = ALIGN (0x4)
+                0x080165a4                _etext = .
+                0x080165a4                __etext = .
 
-.data_CCMRAM    0x00000000        0x0 load address 0x08015a7c
+.data_CCMRAM    0x00000000        0x0 load address 0x080165a4
  FILL mask 0xff
  *(.data.CCMRAM .data.CCMRAM.*)
                 0x00000000                . = ALIGN (0x4)
-                0x08015a7c                _sidata = LOADADDR (.data)
+                0x080165a4                _sidata = LOADADDR (.data)
 
-.data           0x20000000       0xa0 load address 0x08015a7c
+.data           0x20000000       0xa0 load address 0x080165a4
  FILL mask 0xff
                 0x20000000                _sdata = .
                 0x20000000                __data_start__ = .
@@ -2307,7 +2455,7 @@ END GROUP
                 0x200000a0                _edata = .
                 0x200000a0                __data_end__ = .
 
-.igot.plt       0x200000a0        0x0 load address 0x08015b1c
+.igot.plt       0x200000a0        0x0 load address 0x08016644
  .igot.plt      0x200000a0        0x0 ./system/src/newlib/_exit.o
 
 .bss_CCMRAM     0x00000000        0x0
@@ -2438,6 +2586,8 @@ END GROUP
  .comment       0x0000007e       0x7f ./system/src/cortexm/exception_handlers.o
  .comment       0x0000007e       0x7f ./system/src/cmsis/system_stm32f10x.o
  .comment       0x0000007e       0x7f ./system/src/cmsis/vectors_stm32f10x.o
+ .comment       0x0000007e       0x7f ./src/ADC_prog.o
+ .comment       0x0000007e       0x7f ./src/AFIO_program.o
  .comment       0x0000007e       0x7f ./src/CAN.o
  .comment       0x0000007e       0x7f ./src/CANHANDLER_prog.o
  .comment       0x0000007e       0x7f ./src/DIO_prog.o
@@ -2471,53 +2621,65 @@ END GROUP
  .ARM.attributes
                 0x000001cb       0x33 ./system/src/cmsis/vectors_stm32f10x.o
  .ARM.attributes
-                0x000001fe       0x33 ./src/CAN.o
+                0x000001fe       0x33 ./src/ADC_prog.o
  .ARM.attributes
-                0x00000231       0x33 ./src/CANHANDLER_prog.o
+                0x00000231       0x33 ./src/AFIO_program.o
  .ARM.attributes
-                0x00000264       0x33 ./src/DIO_prog.o
+                0x00000264       0x33 ./src/CAN.o
  .ARM.attributes
-                0x00000297       0x33 ./src/DMA_program.o
+                0x00000297       0x33 ./src/CANHANDLER_prog.o
  .ARM.attributes
-                0x000002ca       0x33 ./src/FLASH_prog.o
+                0x000002ca       0x33 ./src/DIO_prog.o
  .ARM.attributes
-                0x000002fd       0x33 ./src/NVIC_prog.o
+                0x000002fd       0x33 ./src/DMA_program.o
  .ARM.attributes
-                0x00000330       0x33 ./src/RCC_prog.o
+                0x00000330       0x33 ./src/FLASH_prog.o
  .ARM.attributes
-                0x00000363       0x33 ./src/SCB_prog.o
+                0x00000363       0x33 ./src/NVIC_prog.o
  .ARM.attributes
-                0x00000396       0x33 ./src/main.o
+                0x00000396       0x33 ./src/RCC_prog.o
  .ARM.attributes
-                0x000003c9       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
+                0x000003c9       0x33 ./src/SCB_prog.o
  .ARM.attributes
-                0x000003f6       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
+                0x000003fc       0x33 ./src/main.o
  .ARM.attributes
-                0x00000423       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
+                0x0000042f       0x1d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
  .ARM.attributes
-                0x00000450       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
+                0x0000044c       0x1d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
  .ARM.attributes
-                0x0000047d       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x00000469       0x1d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_truncdfsf2.o)
  .ARM.attributes
-                0x000004aa       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x00000486       0x1d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_cmpsf2.o)
  .ARM.attributes
-                0x000004d7       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
+                0x000004a3       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
  .ARM.attributes
-                0x00000504       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x000004d0       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-impure.o)
  .ARM.attributes
-                0x00000531       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
+                0x000004fd       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
  .ARM.attributes
-                0x0000055e       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
+                0x0000052a       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
  .ARM.attributes
-                0x0000058b       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x00000557       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
  .ARM.attributes
-                0x000005b8       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
+                0x00000584       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
  .ARM.attributes
-                0x000005e5       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
+                0x000005b1       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
  .ARM.attributes
-                0x00000612       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
+                0x000005de       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
  .ARM.attributes
-                0x0000063f       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
+                0x0000060b       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
+ .ARM.attributes
+                0x00000638       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
+ .ARM.attributes
+                0x00000665       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
+ .ARM.attributes
+                0x00000692       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
+ .ARM.attributes
+                0x000006bf       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
+ .ARM.attributes
+                0x000006ec       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
+ .ARM.attributes
+                0x00000719       0x2d e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
 
 .debug
  *(.debug)
@@ -2531,7 +2693,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x470
+.debug_aranges  0x00000000      0x4e8
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x28 ./system/src/newlib/_exit.o
@@ -2554,28 +2716,32 @@ END GROUP
  .debug_aranges
                 0x00000210       0x20 ./system/src/cmsis/vectors_stm32f10x.o
  .debug_aranges
-                0x00000230       0x78 ./src/CAN.o
+                0x00000230       0x50 ./src/ADC_prog.o
  .debug_aranges
-                0x000002a8       0x20 ./src/CANHANDLER_prog.o
+                0x00000280       0x20 ./src/AFIO_program.o
  .debug_aranges
-                0x000002c8       0x30 ./src/DIO_prog.o
+                0x000002a0       0x78 ./src/CAN.o
  .debug_aranges
-                0x000002f8       0x50 ./src/DMA_program.o
+                0x00000318       0x20 ./src/CANHANDLER_prog.o
  .debug_aranges
-                0x00000348       0x50 ./src/FLASH_prog.o
+                0x00000338       0x30 ./src/DIO_prog.o
  .debug_aranges
-                0x00000398       0x50 ./src/NVIC_prog.o
+                0x00000368       0x50 ./src/DMA_program.o
  .debug_aranges
-                0x000003e8       0x40 ./src/RCC_prog.o
+                0x000003b8       0x50 ./src/FLASH_prog.o
  .debug_aranges
-                0x00000428       0x28 ./src/SCB_prog.o
+                0x00000408       0x50 ./src/NVIC_prog.o
  .debug_aranges
-                0x00000450       0x20 ./src/main.o
+                0x00000458       0x40 ./src/RCC_prog.o
+ .debug_aranges
+                0x00000498       0x28 ./src/SCB_prog.o
+ .debug_aranges
+                0x000004c0       0x28 ./src/main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x7547
+.debug_info     0x00000000     0x798e
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x956 ./system/src/newlib/_exit.o
  .debug_info    0x00000956      0x942 ./system/src/newlib/_sbrk.o
@@ -2587,17 +2753,19 @@ END GROUP
  .debug_info    0x00003221     0x1140 ./system/src/cortexm/exception_handlers.o
  .debug_info    0x00004361      0x494 ./system/src/cmsis/system_stm32f10x.o
  .debug_info    0x000047f5       0xca ./system/src/cmsis/vectors_stm32f10x.o
- .debug_info    0x000048bf      0xfca ./src/CAN.o
- .debug_info    0x00005889      0x215 ./src/CANHANDLER_prog.o
- .debug_info    0x00005a9e      0x223 ./src/DIO_prog.o
- .debug_info    0x00005cc1      0x4aa ./src/DMA_program.o
- .debug_info    0x0000616b      0x299 ./src/FLASH_prog.o
- .debug_info    0x00006404      0x18b ./src/NVIC_prog.o
- .debug_info    0x0000658f      0x12a ./src/RCC_prog.o
- .debug_info    0x000066b9      0x170 ./src/SCB_prog.o
- .debug_info    0x00006829      0xd1e ./src/main.o
+ .debug_info    0x000048bf      0x15d ./src/ADC_prog.o
+ .debug_info    0x00004a1c       0x7e ./src/AFIO_program.o
+ .debug_info    0x00004a9a      0xfca ./src/CAN.o
+ .debug_info    0x00005a64      0x215 ./src/CANHANDLER_prog.o
+ .debug_info    0x00005c79      0x223 ./src/DIO_prog.o
+ .debug_info    0x00005e9c      0x4aa ./src/DMA_program.o
+ .debug_info    0x00006346      0x299 ./src/FLASH_prog.o
+ .debug_info    0x000065df      0x18b ./src/NVIC_prog.o
+ .debug_info    0x0000676a      0x12a ./src/RCC_prog.o
+ .debug_info    0x00006894      0x170 ./src/SCB_prog.o
+ .debug_info    0x00006a04      0xf8a ./src/main.o
 
-.debug_abbrev   0x00000000     0x1e98
+.debug_abbrev   0x00000000     0x1fe1
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x1f3 ./system/src/newlib/_exit.o
  .debug_abbrev  0x000001f3      0x1fc ./system/src/newlib/_sbrk.o
@@ -2609,17 +2777,19 @@ END GROUP
  .debug_abbrev  0x00000d18      0x32b ./system/src/cortexm/exception_handlers.o
  .debug_abbrev  0x00001043      0x177 ./system/src/cmsis/system_stm32f10x.o
  .debug_abbrev  0x000011ba       0x9d ./system/src/cmsis/vectors_stm32f10x.o
- .debug_abbrev  0x00001257      0x300 ./src/CAN.o
- .debug_abbrev  0x00001557      0x102 ./src/CANHANDLER_prog.o
- .debug_abbrev  0x00001659       0xfd ./src/DIO_prog.o
- .debug_abbrev  0x00001756      0x18c ./src/DMA_program.o
- .debug_abbrev  0x000018e2      0x135 ./src/FLASH_prog.o
- .debug_abbrev  0x00001a17       0xc4 ./src/NVIC_prog.o
- .debug_abbrev  0x00001adb       0x9b ./src/RCC_prog.o
- .debug_abbrev  0x00001b76       0xa4 ./src/SCB_prog.o
- .debug_abbrev  0x00001c1a      0x27e ./src/main.o
+ .debug_abbrev  0x00001257       0xce ./src/ADC_prog.o
+ .debug_abbrev  0x00001325       0x47 ./src/AFIO_program.o
+ .debug_abbrev  0x0000136c      0x300 ./src/CAN.o
+ .debug_abbrev  0x0000166c      0x102 ./src/CANHANDLER_prog.o
+ .debug_abbrev  0x0000176e       0xfd ./src/DIO_prog.o
+ .debug_abbrev  0x0000186b      0x18c ./src/DMA_program.o
+ .debug_abbrev  0x000019f7      0x135 ./src/FLASH_prog.o
+ .debug_abbrev  0x00001b2c       0xc4 ./src/NVIC_prog.o
+ .debug_abbrev  0x00001bf0       0x9b ./src/RCC_prog.o
+ .debug_abbrev  0x00001c8b       0xa4 ./src/SCB_prog.o
+ .debug_abbrev  0x00001d2f      0x2b2 ./src/main.o
 
-.debug_line     0x00000000     0x36a3
+.debug_line     0x00000000     0x38fa
  *(.debug_line)
  .debug_line    0x00000000      0x323 ./system/src/newlib/_exit.o
  .debug_line    0x00000323      0x2d7 ./system/src/newlib/_sbrk.o
@@ -2631,17 +2801,19 @@ END GROUP
  .debug_line    0x00001a81      0x6ce ./system/src/cortexm/exception_handlers.o
  .debug_line    0x0000214f      0x3dc ./system/src/cmsis/system_stm32f10x.o
  .debug_line    0x0000252b       0xf5 ./system/src/cmsis/vectors_stm32f10x.o
- .debug_line    0x00002620      0x4f0 ./src/CAN.o
- .debug_line    0x00002b10       0xbd ./src/CANHANDLER_prog.o
- .debug_line    0x00002bcd      0x146 ./src/DIO_prog.o
- .debug_line    0x00002d13      0x12a ./src/DMA_program.o
- .debug_line    0x00002e3d      0x19e ./src/FLASH_prog.o
- .debug_line    0x00002fdb      0x107 ./src/NVIC_prog.o
- .debug_line    0x000030e2      0x119 ./src/RCC_prog.o
- .debug_line    0x000031fb       0x92 ./src/SCB_prog.o
- .debug_line    0x0000328d      0x416 ./src/main.o
+ .debug_line    0x00002620      0x145 ./src/ADC_prog.o
+ .debug_line    0x00002765       0x94 ./src/AFIO_program.o
+ .debug_line    0x000027f9      0x4f0 ./src/CAN.o
+ .debug_line    0x00002ce9       0xbd ./src/CANHANDLER_prog.o
+ .debug_line    0x00002da6      0x146 ./src/DIO_prog.o
+ .debug_line    0x00002eec      0x12a ./src/DMA_program.o
+ .debug_line    0x00003016      0x19e ./src/FLASH_prog.o
+ .debug_line    0x000031b4      0x107 ./src/NVIC_prog.o
+ .debug_line    0x000032bb      0x119 ./src/RCC_prog.o
+ .debug_line    0x000033d4       0x92 ./src/SCB_prog.o
+ .debug_line    0x00003466      0x494 ./src/main.o
 
-.debug_frame    0x00000000      0xb84
+.debug_frame    0x00000000      0xe30
  *(.debug_frame)
  .debug_frame   0x00000000       0x38 ./system/src/newlib/_exit.o
  .debug_frame   0x00000038       0x28 ./system/src/newlib/_sbrk.o
@@ -2653,31 +2825,37 @@ END GROUP
  .debug_frame   0x00000264      0x158 ./system/src/cortexm/exception_handlers.o
  .debug_frame   0x000003bc       0x6c ./system/src/cmsis/system_stm32f10x.o
  .debug_frame   0x00000428       0x20 ./system/src/cmsis/vectors_stm32f10x.o
- .debug_frame   0x00000448      0x11c ./src/CAN.o
- .debug_frame   0x00000564       0x30 ./src/CANHANDLER_prog.o
- .debug_frame   0x00000594       0x54 ./src/DIO_prog.o
- .debug_frame   0x000005e8       0xa4 ./src/DMA_program.o
- .debug_frame   0x0000068c       0xac ./src/FLASH_prog.o
- .debug_frame   0x00000738       0x80 ./src/NVIC_prog.o
- .debug_frame   0x000007b8       0x60 ./src/RCC_prog.o
- .debug_frame   0x00000818       0x30 ./src/SCB_prog.o
- .debug_frame   0x00000848       0x2c ./src/main.o
- .debug_frame   0x00000874       0x20 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
- .debug_frame   0x00000894       0x20 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
- .debug_frame   0x000008b4       0x4c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
- .debug_frame   0x00000900       0x90 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
- .debug_frame   0x00000990       0x60 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
- .debug_frame   0x000009f0       0x28 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
- .debug_frame   0x00000a18       0x28 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
- .debug_frame   0x00000a40       0x28 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
- .debug_frame   0x00000a68       0x38 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
- .debug_frame   0x00000aa0       0x2c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
- .debug_frame   0x00000acc       0x3c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
- .debug_frame   0x00000b08       0x2c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
- .debug_frame   0x00000b34       0x30 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
- .debug_frame   0x00000b64       0x20 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
+ .debug_frame   0x00000448       0x94 ./src/ADC_prog.o
+ .debug_frame   0x000004dc       0x20 ./src/AFIO_program.o
+ .debug_frame   0x000004fc      0x11c ./src/CAN.o
+ .debug_frame   0x00000618       0x30 ./src/CANHANDLER_prog.o
+ .debug_frame   0x00000648       0x54 ./src/DIO_prog.o
+ .debug_frame   0x0000069c       0xa4 ./src/DMA_program.o
+ .debug_frame   0x00000740       0xac ./src/FLASH_prog.o
+ .debug_frame   0x000007ec       0x80 ./src/NVIC_prog.o
+ .debug_frame   0x0000086c       0x60 ./src/RCC_prog.o
+ .debug_frame   0x000008cc       0x30 ./src/SCB_prog.o
+ .debug_frame   0x000008fc       0x3c ./src/main.o
+ .debug_frame   0x00000938       0xac e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x000009e4       0x50 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+ .debug_frame   0x00000a34       0x24 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_truncdfsf2.o)
+ .debug_frame   0x00000a58       0xc8 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_cmpsf2.o)
+ .debug_frame   0x00000b20       0x20 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x00000b40       0x20 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memset.o)
+ .debug_frame   0x00000b60       0x4c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
+ .debug_frame   0x00000bac       0x90 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+ .debug_frame   0x00000c3c       0x60 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .debug_frame   0x00000c9c       0x28 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memchr-stub.o)
+ .debug_frame   0x00000cc4       0x28 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x00000cec       0x28 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
+ .debug_frame   0x00000d14       0x38 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
+ .debug_frame   0x00000d4c       0x2c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
+ .debug_frame   0x00000d78       0x3c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-reallocr.o)
+ .debug_frame   0x00000db4       0x2c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-sbrkr.o)
+ .debug_frame   0x00000de0       0x30 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-mlock.o)
+ .debug_frame   0x00000e10       0x20 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-msizer.o)
 
-.debug_str      0x00000000    0x59af0
+.debug_str      0x00000000    0x5adb4
  *(.debug_str)
  .debug_str     0x00000000     0x7d20 ./system/src/newlib/_exit.o
                                0x7ef3 (size before relaxing)
@@ -2699,26 +2877,30 @@ END GROUP
                               0x4e8dc (size before relaxing)
  .debug_str     0x00055a95       0x57 ./system/src/cmsis/vectors_stm32f10x.o
                                0x3881 (size before relaxing)
- .debug_str     0x00055aec     0x1c03 ./src/CAN.o
-                               0xa190 (size before relaxing)
- .debug_str     0x000576ef       0xa3 ./src/CANHANDLER_prog.o
+ .debug_str     0x00055aec      0xaf8 ./src/ADC_prog.o
+                               0x387e (size before relaxing)
+ .debug_str     0x000565e4      0xafa ./src/AFIO_program.o
+                               0x38b9 (size before relaxing)
+ .debug_str     0x000570de     0x1b97 ./src/CAN.o
+                               0xa15d (size before relaxing)
+ .debug_str     0x00058c75       0xa3 ./src/CANHANDLER_prog.o
                                0x322e (size before relaxing)
- .debug_str     0x00057792      0x438 ./src/DIO_prog.o
-                               0x3ce6 (size before relaxing)
- .debug_str     0x00057bca      0x6ef ./src/DMA_program.o
+ .debug_str     0x00058d18      0x438 ./src/DIO_prog.o
+                               0x3cb3 (size before relaxing)
+ .debug_str     0x00059150      0x396 ./src/DMA_program.o
                                0x34d2 (size before relaxing)
- .debug_str     0x000582b9      0x64f ./src/FLASH_prog.o
+ .debug_str     0x000594e6      0x64f ./src/FLASH_prog.o
                                0x3725 (size before relaxing)
- .debug_str     0x00058908      0x1cd ./src/NVIC_prog.o
+ .debug_str     0x00059b35      0x1cd ./src/NVIC_prog.o
                                0x36e1 (size before relaxing)
- .debug_str     0x00058ad5      0xcfe ./src/RCC_prog.o
+ .debug_str     0x00059d02      0xcfe ./src/RCC_prog.o
                                0x42c9 (size before relaxing)
- .debug_str     0x000597d3      0x170 ./src/SCB_prog.o
+ .debug_str     0x0005aa00      0x170 ./src/SCB_prog.o
                                0x3218 (size before relaxing)
- .debug_str     0x00059943      0x1ad ./src/main.o
-                               0x95c0 (size before relaxing)
+ .debug_str     0x0005ab70      0x244 ./src/main.o
+                               0xa368 (size before relaxing)
 
-.debug_loc      0x00000000     0x135c
+.debug_loc      0x00000000     0x1384
  *(.debug_loc)
  .debug_loc     0x00000000       0x85 ./system/src/newlib/_sbrk.o
  .debug_loc     0x00000085      0x1a9 ./system/src/newlib/_startup.o
@@ -2727,14 +2909,15 @@ END GROUP
  .debug_loc     0x00000387      0x121 ./system/src/diag/trace_impl.o
  .debug_loc     0x000004a8      0x291 ./system/src/cortexm/exception_handlers.o
  .debug_loc     0x00000739       0xdf ./system/src/cmsis/system_stm32f10x.o
- .debug_loc     0x00000818      0x184 ./src/CAN.o
- .debug_loc     0x0000099c      0x160 ./src/CANHANDLER_prog.o
- .debug_loc     0x00000afc      0x1b6 ./src/DIO_prog.o
- .debug_loc     0x00000cb2      0x16b ./src/DMA_program.o
- .debug_loc     0x00000e1d      0x1ea ./src/FLASH_prog.o
- .debug_loc     0x00001007      0x15f ./src/NVIC_prog.o
- .debug_loc     0x00001166      0x130 ./src/RCC_prog.o
- .debug_loc     0x00001296       0xc6 ./src/main.o
+ .debug_loc     0x00000818       0x6a ./src/ADC_prog.o
+ .debug_loc     0x00000882      0x184 ./src/CAN.o
+ .debug_loc     0x00000a06      0x160 ./src/CANHANDLER_prog.o
+ .debug_loc     0x00000b66      0x1b6 ./src/DIO_prog.o
+ .debug_loc     0x00000d1c      0x16b ./src/DMA_program.o
+ .debug_loc     0x00000e87      0x1ea ./src/FLASH_prog.o
+ .debug_loc     0x00001071      0x15f ./src/NVIC_prog.o
+ .debug_loc     0x000011d0      0x130 ./src/RCC_prog.o
+ .debug_loc     0x00001300       0x84 ./src/main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -2752,7 +2935,7 @@ END GROUP
  *(.debug_varnames)
 OUTPUT(Project_APPMain.elf elf32-littlearm)
 
-.debug_ranges   0x00000000      0x3b8
+.debug_ranges   0x00000000      0x410
  .debug_ranges  0x00000000       0x18 ./system/src/newlib/_exit.o
  .debug_ranges  0x00000018       0x10 ./system/src/newlib/_sbrk.o
  .debug_ranges  0x00000028       0x78 ./system/src/newlib/_startup.o
@@ -2763,17 +2946,19 @@ OUTPUT(Project_APPMain.elf elf32-littlearm)
  .debug_ranges  0x00000150       0x80 ./system/src/cortexm/exception_handlers.o
  .debug_ranges  0x000001d0       0x28 ./system/src/cmsis/system_stm32f10x.o
  .debug_ranges  0x000001f8       0x10 ./system/src/cmsis/vectors_stm32f10x.o
- .debug_ranges  0x00000208       0x68 ./src/CAN.o
- .debug_ranges  0x00000270       0x10 ./src/CANHANDLER_prog.o
- .debug_ranges  0x00000280       0x20 ./src/DIO_prog.o
- .debug_ranges  0x000002a0       0x40 ./src/DMA_program.o
- .debug_ranges  0x000002e0       0x40 ./src/FLASH_prog.o
- .debug_ranges  0x00000320       0x40 ./src/NVIC_prog.o
- .debug_ranges  0x00000360       0x30 ./src/RCC_prog.o
- .debug_ranges  0x00000390       0x18 ./src/SCB_prog.o
- .debug_ranges  0x000003a8       0x10 ./src/main.o
+ .debug_ranges  0x00000208       0x40 ./src/ADC_prog.o
+ .debug_ranges  0x00000248       0x10 ./src/AFIO_program.o
+ .debug_ranges  0x00000258       0x68 ./src/CAN.o
+ .debug_ranges  0x000002c0       0x10 ./src/CANHANDLER_prog.o
+ .debug_ranges  0x000002d0       0x20 ./src/DIO_prog.o
+ .debug_ranges  0x000002f0       0x40 ./src/DMA_program.o
+ .debug_ranges  0x00000330       0x40 ./src/FLASH_prog.o
+ .debug_ranges  0x00000370       0x40 ./src/NVIC_prog.o
+ .debug_ranges  0x000003b0       0x30 ./src/RCC_prog.o
+ .debug_ranges  0x000003e0       0x18 ./src/SCB_prog.o
+ .debug_ranges  0x000003f8       0x18 ./src/main.o
 
-.debug_macro    0x00000000     0x3a90
+.debug_macro    0x00000000     0x3fcd
  .debug_macro   0x00000000      0x1b4 ./system/src/newlib/_exit.o
  .debug_macro   0x000001b4       0x9c ./system/src/newlib/_exit.o
  .debug_macro   0x00000250      0x10e ./system/src/newlib/_exit.o
@@ -2818,33 +3003,41 @@ OUTPUT(Project_APPMain.elf elf32-littlearm)
  .debug_macro   0x00002451       0x10 ./system/src/cortexm/exception_handlers.o
  .debug_macro   0x00002461      0x16e ./system/src/cmsis/system_stm32f10x.o
  .debug_macro   0x000025cf       0x34 ./system/src/cmsis/vectors_stm32f10x.o
- .debug_macro   0x00002603      0x246 ./src/CAN.o
- .debug_macro   0x00002849       0x22 ./src/CAN.o
- .debug_macro   0x0000286b       0x76 ./src/CAN.o
- .debug_macro   0x000028e1       0x52 ./src/CAN.o
- .debug_macro   0x00002933      0x13c ./src/CAN.o
- .debug_macro   0x00002a6f       0xdc ./src/CAN.o
- .debug_macro   0x00002b4b       0x8e ./src/CAN.o
- .debug_macro   0x00002bd9      0x172 ./src/CAN.o
- .debug_macro   0x00002d4b       0xa6 ./src/CAN.o
- .debug_macro   0x00002df1       0x22 ./src/CAN.o
- .debug_macro   0x00002e13       0x35 ./src/CANHANDLER_prog.o
- .debug_macro   0x00002e48       0x16 ./src/CANHANDLER_prog.o
- .debug_macro   0x00002e5e       0x3e ./src/DIO_prog.o
- .debug_macro   0x00002e9c       0xb8 ./src/DIO_prog.o
- .debug_macro   0x00002f54       0x35 ./src/DMA_program.o
- .debug_macro   0x00002f89       0x22 ./src/DMA_program.o
- .debug_macro   0x00002fab       0x46 ./src/DMA_program.o
- .debug_macro   0x00002ff1       0x16 ./src/DMA_program.o
- .debug_macro   0x00003007       0x64 ./src/DMA_program.o
- .debug_macro   0x0000306b       0x3f ./src/FLASH_prog.o
- .debug_macro   0x000030aa      0x14e ./src/FLASH_prog.o
- .debug_macro   0x000031f8       0x16 ./src/FLASH_prog.o
- .debug_macro   0x0000320e       0x3b ./src/NVIC_prog.o
- .debug_macro   0x00003249       0x2e ./src/NVIC_prog.o
- .debug_macro   0x00003277       0x3e ./src/RCC_prog.o
- .debug_macro   0x000032b5      0x4db ./src/RCC_prog.o
- .debug_macro   0x00003790       0x36 ./src/SCB_prog.o
- .debug_macro   0x000037c6       0x34 ./src/SCB_prog.o
- .debug_macro   0x000037fa      0x250 ./src/main.o
- .debug_macro   0x00003a4a       0x46 ./src/main.o
+ .debug_macro   0x00002603       0x3f ./src/ADC_prog.o
+ .debug_macro   0x00002642       0x22 ./src/ADC_prog.o
+ .debug_macro   0x00002664       0x46 ./src/ADC_prog.o
+ .debug_macro   0x000026aa      0x130 ./src/ADC_prog.o
+ .debug_macro   0x000027da       0x76 ./src/ADC_prog.o
+ .debug_macro   0x00002850       0x35 ./src/AFIO_program.o
+ .debug_macro   0x00002885       0x22 ./src/AFIO_program.o
+ .debug_macro   0x000028a7       0x34 ./src/AFIO_program.o
+ .debug_macro   0x000028db      0x159 ./src/AFIO_program.o
+ .debug_macro   0x00002a34       0xf4 ./src/AFIO_program.o
+ .debug_macro   0x00002b28      0x246 ./src/CAN.o
+ .debug_macro   0x00002d6e       0x76 ./src/CAN.o
+ .debug_macro   0x00002de4       0x52 ./src/CAN.o
+ .debug_macro   0x00002e36      0x13c ./src/CAN.o
+ .debug_macro   0x00002f72       0xdc ./src/CAN.o
+ .debug_macro   0x0000304e       0x8e ./src/CAN.o
+ .debug_macro   0x000030dc      0x172 ./src/CAN.o
+ .debug_macro   0x0000324e       0xa6 ./src/CAN.o
+ .debug_macro   0x000032f4       0x22 ./src/CAN.o
+ .debug_macro   0x00003316       0x35 ./src/CANHANDLER_prog.o
+ .debug_macro   0x0000334b       0x16 ./src/CANHANDLER_prog.o
+ .debug_macro   0x00003361       0x3e ./src/DIO_prog.o
+ .debug_macro   0x0000339f       0xb8 ./src/DIO_prog.o
+ .debug_macro   0x00003457       0x35 ./src/DMA_program.o
+ .debug_macro   0x0000348c       0x46 ./src/DMA_program.o
+ .debug_macro   0x000034d2       0x16 ./src/DMA_program.o
+ .debug_macro   0x000034e8       0x64 ./src/DMA_program.o
+ .debug_macro   0x0000354c       0x3f ./src/FLASH_prog.o
+ .debug_macro   0x0000358b      0x14e ./src/FLASH_prog.o
+ .debug_macro   0x000036d9       0x16 ./src/FLASH_prog.o
+ .debug_macro   0x000036ef       0x3b ./src/NVIC_prog.o
+ .debug_macro   0x0000372a       0x2e ./src/NVIC_prog.o
+ .debug_macro   0x00003758       0x3e ./src/RCC_prog.o
+ .debug_macro   0x00003796      0x4db ./src/RCC_prog.o
+ .debug_macro   0x00003c71       0x36 ./src/SCB_prog.o
+ .debug_macro   0x00003ca7       0x34 ./src/SCB_prog.o
+ .debug_macro   0x00003cdb      0x2ac ./src/main.o
+ .debug_macro   0x00003f87       0x46 ./src/main.o
