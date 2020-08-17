@@ -2111,7 +2111,7 @@ END GROUP
  *(.text .text.*)
  .text._exit    0x08000378        0x2 ./system/src/newlib/_exit.o
                 0x08000378                _exit
- *fill*         0x0800037a        0x2 
+ *fill*         0x0800037a        0x2
  .text._sbrk    0x0800037c       0x44 ./system/src/newlib/_sbrk.o
                 0x0800037c                _sbrk
  .text.__initialize_args
@@ -2301,12 +2301,12 @@ END GROUP
  *(.rodata .rodata.* .constdata .constdata.*)
  .rodata.dumpExceptionStack.str1.4
                 0x08001e58      0x11a ./system/src/cortexm/exception_handlers.o
- *fill*         0x08001f72        0x2 
+ *fill*         0x08001f72        0x2
  .rodata.str1.4
                 0x08001f74       0x2c ./system/src/cortexm/exception_handlers.o
                                  0x2a (size before relaxing)
  .rodata        0x08001fa0       0x23 ./src/DIO_prog.o
- *fill*         0x08001fc3        0x1 
+ *fill*         0x08001fc3        0x1
  .rodata        0x08001fc4       0x10 ./src/main.o
  .rodata._svfprintf_r.str1.1
                 0x08001fd4       0x11 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
@@ -2397,24 +2397,24 @@ END GROUP
                 0x2000009c        0x4 ./system/src/newlib/_sbrk.o
  .bss.name.4309
                 0x200000a0        0x1 ./system/src/newlib/_syscalls.o
- *fill*         0x200000a1        0x3 
+ *fill*         0x200000a1        0x3
  .bss.buf.5205  0x200000a4       0x80 ./system/src/diag/Trace.o
  .bss.CAN_RxRdy
                 0x20000124        0x1 ./src/CAN.o
                 0x20000124                CAN_RxRdy
- *fill*         0x20000125        0x3 
+ *fill*         0x20000125        0x3
  .bss.CAN_TxRdy
                 0x20000128        0x3 ./src/CAN.o
                 0x20000128                CAN_TxRdy
- *fill*         0x2000012b        0x1 
+ *fill*         0x2000012b        0x1
  .bss.CAN_filterIdx.5585
                 0x2000012c        0x2 ./src/CAN.o
  .bss.u8RxMsgIndex.5606
                 0x2000012e        0x1 ./src/CAN.o
- *fill*         0x2000012f        0x1 
+ *fill*         0x2000012f        0x1
  .bss.u16AddressOffset.4811
                 0x20000130        0x2 ./src/HexDataProcessor_prog.o
- *fill*         0x20000132        0x2 
+ *fill*         0x20000132        0x2
  .bss.x         0x20000134        0x4 ./src/Timer_prog.o
                 0x20000134                x
  .bss.__malloc_free_list
@@ -2457,7 +2457,7 @@ END GROUP
 
 ._check_stack   0x200001d0      0x100
                 0x200002d0                . = (. + _Minimum_Stack_Size)
- *fill*         0x200001d0      0x100 
+ *fill*         0x200001d0      0x100
 
 .b1text
  *(.b1text)

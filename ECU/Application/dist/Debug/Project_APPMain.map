@@ -2142,7 +2142,7 @@ END GROUP
  *(.text .text.*)
  .text._exit    0x08014378        0x2 ./system/src/newlib/_exit.o
                 0x08014378                _exit
- *fill*         0x0801437a        0x2 
+ *fill*         0x0801437a        0x2
  .text._sbrk    0x0801437c       0x44 ./system/src/newlib/_sbrk.o
                 0x0801437c                _sbrk
  .text.__initialize_args
@@ -2196,7 +2196,7 @@ END GROUP
  .text.ADC_Init
                 0x080147dc       0x30 ./src/ADC_prog.o
                 0x080147dc                ADC_Init
- *fill*         0x0801480c        0x4 
+ *fill*         0x0801480c        0x4
  .text.Reading_Channels
                 0x08014810       0x58 ./src/ADC_prog.o
                 0x08014810                Reading_Channels
@@ -2370,12 +2370,12 @@ END GROUP
  *(.rodata .rodata.* .constdata .constdata.*)
  .rodata.dumpExceptionStack.str1.4
                 0x080163f8      0x11a ./system/src/cortexm/exception_handlers.o
- *fill*         0x08016512        0x2 
+ *fill*         0x08016512        0x2
  .rodata.str1.4
                 0x08016514       0x2c ./system/src/cortexm/exception_handlers.o
                                  0x2a (size before relaxing)
  .rodata        0x08016540       0x23 ./src/DIO_prog.o
- *fill*         0x08016563        0x1 
+ *fill*         0x08016563        0x1
  .rodata        0x08016564        0xc ./src/main.o
  .rodata._svfprintf_r.str1.1
                 0x08016570       0x11 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
@@ -2471,21 +2471,21 @@ END GROUP
                 0x200000a4        0x4 ./system/src/newlib/_sbrk.o
  .bss.name.4309
                 0x200000a8        0x1 ./system/src/newlib/_syscalls.o
- *fill*         0x200000a9        0x3 
+ *fill*         0x200000a9        0x3
  .bss.buf.5205  0x200000ac       0x80 ./system/src/diag/Trace.o
  .bss.CAN_RxRdy
                 0x2000012c        0x1 ./src/CAN.o
                 0x2000012c                CAN_RxRdy
- *fill*         0x2000012d        0x3 
+ *fill*         0x2000012d        0x3
  .bss.CAN_TxRdy
                 0x20000130        0x3 ./src/CAN.o
                 0x20000130                CAN_TxRdy
- *fill*         0x20000133        0x1 
+ *fill*         0x20000133        0x1
  .bss.CAN_filterIdx.5602
                 0x20000134        0x2 ./src/CAN.o
  .bss.u8RxMsgIndex.5623
                 0x20000136        0x1 ./src/CAN.o
- *fill*         0x20000137        0x1 
+ *fill*         0x20000137        0x1
  .bss.__malloc_free_list
                 0x20000138        0x4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
                 0x20000138                __malloc_free_list
@@ -2528,7 +2528,7 @@ END GROUP
 
 ._check_stack   0x200001e8      0x100
                 0x200002e8                . = (. + _Minimum_Stack_Size)
- *fill*         0x200001e8      0x100 
+ *fill*         0x200001e8      0x100
 
 .b1text
  *(.b1text)

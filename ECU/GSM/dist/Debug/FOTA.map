@@ -2442,7 +2442,7 @@ END GROUP
                 0x08000384                RCC_AHBPeriphClockCmd
  .text._exit    0x080003d0        0x2 ./system/src/newlib/_exit.o
                 0x080003d0                _exit
- *fill*         0x080003d2        0x2 
+ *fill*         0x080003d2        0x2
  .text.abort    0x080003d4       0x14 ./system/src/newlib/_exit.o
                 0x080003d4                abort
  .text._sbrk    0x080003e8       0x44 ./system/src/newlib/_sbrk.o
@@ -2592,7 +2592,7 @@ END GROUP
                 0x0800146e       0x48 ./src/GSMHANDLER_prog.o
  .text.vidClearBuffer
                 0x080014b6       0x10 ./src/GSMHANDLER_prog.o
- *fill*         0x080014c6        0x2 
+ *fill*         0x080014c6        0x2
  .text.GSMHANDLER_vidStartDiag
                 0x080014c8       0x48 ./src/GSMHANDLER_prog.o
                 0x080014c8                GSMHANDLER_vidStartDiag
@@ -2739,7 +2739,7 @@ END GROUP
                 0x08002f2e       0x58 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
                 0x08002f2e                _vsniprintf_r
                 0x08002f2e                _vsnprintf_r
- *fill*         0x08002f86        0x2 
+ *fill*         0x08002f86        0x2
  .text.vsnprintf
                 0x08002f88       0x1c e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-vsnprintf.o)
                 0x08002f88                vsniprintf
@@ -2761,7 +2761,7 @@ END GROUP
                 0x08003554                memchr
  .text.memmove  0x08003570       0x32 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-memmove.o)
                 0x08003570                memmove
- *fill*         0x080035a2        0x2 
+ *fill*         0x080035a2        0x2
  .text._free_r  0x080035a4       0x98 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-freer.o)
                 0x080035a4                _free_r
  .text._malloc_r
@@ -2791,29 +2791,29 @@ END GROUP
  .rodata.trace_puts.str1.4
                 0x080037df       0x2b ./system/src/diag/Trace.o
                                   0x2 (size before relaxing)
- *fill*         0x080037df        0x1 
+ *fill*         0x080037df        0x1
  .rodata.dumpExceptionStack.str1.4
                 0x080037e0      0x11a ./system/src/cortexm/exception_handlers.o
- *fill*         0x080038fa        0x2 
+ *fill*         0x080038fa        0x2
  .rodata.str1.4
                 0x080038fc       0x2a ./system/src/cortexm/exception_handlers.o
- *fill*         0x08003926        0x2 
+ *fill*         0x08003926        0x2
  .rodata.serverResponseHandling.str1.4
                 0x08003928       0x27 ./src/Application.o
- *fill*         0x0800394f        0x1 
+ *fill*         0x0800394f        0x1
  .rodata        0x08003950       0x23 ./src/DIO_prog.o
- *fill*         0x08003973        0x1 
+ *fill*         0x08003973        0x1
  .rodata.GSMHANDLER_vidTask.str1.4
                 0x08003974      0x243 ./src/GSMHANDLER_prog.o
- *fill*         0x08003bb7        0x1 
+ *fill*         0x08003bb7        0x1
  .rodata.u32SendPostRequest.str1.4
                 0x08003bb8       0x18 ./src/GSMHANDLER_prog.o
  .rodata.vidSendCommand.str1.4
                 0x08003bd0       0x12 ./src/GSMHANDLER_prog.o
- *fill*         0x08003be2        0x2 
+ *fill*         0x08003be2        0x2
  .rodata.vidSendHTTPData.str1.4
                 0x08003be4       0x23 ./src/GSMHANDLER_prog.o
- *fill*         0x08003c07        0x1 
+ *fill*         0x08003c07        0x1
  .rodata.vidSendVehicleName.str1.4
                 0x08003c08       0x88 ./src/GSMHANDLER_prog.o
                                  0x8d (size before relaxing)
@@ -2822,7 +2822,7 @@ END GROUP
                 0x08003cec       0x11 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-svfprintf.o)
  .rodata._printf_i.str1.1
                 0x08003cfd       0x22 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
- *fill*         0x08003d1f        0x1 
+ *fill*         0x08003d1f        0x1
  .constdata     0x08003d20     0x1798 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
                 0x08003d20                Sbox
                 0x08003e20                InvSbox
@@ -2983,19 +2983,19 @@ i.SHA256_Init   0x080059f4       0x5c
                 0x200001c0        0x4 ./system/src/newlib/_sbrk.o
  .bss.name.4309
                 0x200001c4        0x1 ./system/src/newlib/_syscalls.o
- *fill*         0x200001c5        0x3 
+ *fill*         0x200001c5        0x3
  .bss.buf.5205  0x200001c8       0x80 ./system/src/diag/Trace.o
  .bss.CAN_RxRdy
                 0x20000248        0x1 ./src/CAN.o
                 0x20000248                CAN_RxRdy
- *fill*         0x20000249        0x3 
+ *fill*         0x20000249        0x3
  .bss.CAN_TxRdy
                 0x2000024c        0x3 ./src/CAN.o
                 0x2000024c                CAN_TxRdy
- *fill*         0x2000024f        0x1 
+ *fill*         0x2000024f        0x1
  .bss.CAN_filterIdx.5607
                 0x20000250        0x2 ./src/CAN.o
- *fill*         0x20000252        0x2 
+ *fill*         0x20000252        0x2
  .bss.CANHANDLER_au8DTCs
                 0x20000254        0x8 ./src/CANHANDLER_prog.o
                 0x20000254                CANHANDLER_au8DTCs
@@ -3014,7 +3014,7 @@ i.SHA256_Init   0x080059f4       0x5c
  .bss.CANHANDLER_u8NextMsgRequest
                 0x20000306        0x1 ./src/CANHANDLER_prog.o
                 0x20000306                CANHANDLER_u8NextMsgRequest
- *fill*         0x20000307        0x1 
+ *fill*         0x20000307        0x1
  .bss.CANHANDLER_u8PendingFlag
                 0x20000308        0xa ./src/CANHANDLER_prog.o
                 0x20000308                CANHANDLER_u8PendingFlag
@@ -3045,7 +3045,7 @@ i.SHA256_Init   0x080059f4       0x5c
  .bss.GSM_enuListenFlag
                 0x2000031a        0x1 ./src/GSMHANDLER_prog.o
                 0x2000031a                GSM_enuListenFlag
- *fill*         0x2000031b        0x1 
+ *fill*         0x2000031b        0x1
  .bss.au8Data.3985
                 0x2000031c       0xc8 ./src/GSMHANDLER_prog.o
  .bss.au8ExpectedHash.3986
@@ -3062,12 +3062,12 @@ i.SHA256_Init   0x080059f4       0x5c
                 0x20000430        0x1 ./src/GSMHANDLER_prog.o
  .bss.u8Counter.4119
                 0x20000431        0x1 ./src/GSMHANDLER_prog.o
- *fill*         0x20000432        0x2 
+ *fill*         0x20000432        0x2
  .bss.task_arr  0x20000434       0x10 ./src/SCH_prog.o
  .bss.x         0x20000444        0x4 ./src/Timer_prog.o
                 0x20000444                x
  .bss.x.4020    0x20000448        0x1 ./src/main.o
- *fill*         0x20000449        0x3 
+ *fill*         0x20000449        0x3
  .bss.__malloc_free_list
                 0x2000044c        0x4 e:/arm course/imt_sdk_win_64/winarm/armgcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg_nano.a(lib_a-nano-mallocr.o)
                 0x2000044c                __malloc_free_list
@@ -3090,7 +3090,7 @@ i.SHA256_Init   0x080059f4       0x5c
  COMMON         0x200004e0       0xe5 ./src/GSMHANDLER_prog.o
                 0x200004e0                pu8StatePtr
                 0x200004e4                au8listenBuffer
- *fill*         0x200005c5        0x3 
+ *fill*         0x200005c5        0x3
  COMMON         0x200005c8        0xc ./src/USART_program.o
                 0x200005c8                CallbackFunction2
                 0x200005cc                CallbackFunction1
@@ -3116,7 +3116,7 @@ i.SHA256_Init   0x080059f4       0x5c
 
 ._check_stack   0x200005d8      0x100
                 0x200006d8                . = (. + _Minimum_Stack_Size)
- *fill*         0x200005d8      0x100 
+ *fill*         0x200005d8      0x100
 
 .b1text
  *(.b1text)
