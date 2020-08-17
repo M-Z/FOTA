@@ -377,6 +377,69 @@ Error_Status USART_enumDMAReceive(u8 UART_Channel, u8 DMA_Channel, volatile u32*
 	return OK;
 }
 
+
+
+Error_Status USART_enumDMASend(u8 UART_Channel, u8 DMA_Channel, volatile u8* buffer, u32 Count) {
+	u8 u8count = 0;
+	UART_REG * selectedChannel = USART1;
+
+	switch(UART_Channel) {
+ 		case 1:
+ 			;
+			break;
+ 		case 2:
+			selectedChannel = USART2;
+ 			break;
+ 		case 3:
+			selectedChannel = USART3;
+			break;
+ 		case 4:
+ 			selectedChannel = USART4;
+ 			break;
+ 		case 5:
+ 			selectedChannel = USART5;
+ 			break;
+ 		default:
+ 			return NOK;
+ 	}
+
+	selectedChannel->SR &= ~(1<<6);	//Clear TC bit
+
+	while (buffer[u8count] != '\0')
+	{
+		u8count++;
+	}
+	DMA_Transfer(DMA_Channel, &(selectedChannel->DR),buffer, u8count);
+	return OK;
+}
+
+
+u8 USART_u8CheckTxComplete(u8 UART_Channel)
+{
+	volatile UART_REG * selectedChannel = USART1;
+
+	switch(UART_Channel) {
+		case 1:
+			;
+			break;
+		case 2:
+			selectedChannel = USART2;
+			break;
+		case 3:
+			selectedChannel = USART3;
+			break;
+		case 4:
+			selectedChannel = USART4;
+			break;
+		case 5:
+			selectedChannel = USART5;
+			break;
+	}
+
+	return GET_BIT(selectedChannel->SR, 6);
+}
+
+
 void USART1_IRQHandler(void) {
 	// Received something
 	if (GET_BIT(USART1->SR, 5)) {

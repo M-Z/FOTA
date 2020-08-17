@@ -1,12 +1,14 @@
 /************************************************************************/
 /* Author  : Sondos Aly	                                                */
-/* Date    : 5/10/2019                                                  */
+/* Date    : 13/3/2019                                                  */
 /* Version : V01                                                        */
 /************************************************************************/
 /* Modification Log                                                     */
 /* -----------------                                                    */
 /*     Name     |    Version    |                 Changes               */
 /*  Sondos 		        V01                      First Creation         */
+/*  Sondos				V02						Added Read and Write 	*/
+/*												Data Option Bytes		*/
 /************************************************************************/
 
 
@@ -20,6 +22,13 @@
 #ifndef FLASH_INT_H_
 #define FLASH_INT_H_
 
+/*****************************************/
+/***********Public Definitions************/
+/*****************************************/
+
+/* Option Data Bytes */
+#define FLASH_u8OPTDATA0		0
+#define FLASH_u8OPTDATA1		1
 
 /*****************************************/
 /***********Public Functions**************/
@@ -92,5 +101,29 @@ u32 FLASH_u32ReadWord(u32* pu32address);
 /* Scope      : Public                                                                 	*/
 /****************************************************************************************/
 void FLASH_vidReadArray(u32* pu32address, u32* pu32array, u8 u8arraysize);
+
+
+/****************************************************************************************/
+/* Description: Write Option Byte														*/
+/* Input      : u8 u8DataByte			                                	        	*/
+/*              Description: Data Byte to be programmed				                    */
+/*				Range: FLASH_u8OPTDATA0, FLASH_u8OPTDATA1									*/
+/*				u8 u8Value																*/
+/*              Description: Value to write in the option Byte			                */
+/* Output     : Void                                                                   	*/
+/* Scope      : Public                                                                 	*/
+/****************************************************************************************/
+void FLASH_vidWriteOptionByteData(u8 u8DataByte, u8 u8Value);
+
+
+/****************************************************************************************/
+/* Description: Get Option Byte Data													*/
+/* Input      : u8 u8DataByte			                                	        	*/
+/*              Description: Data Byte to get the value of			                    */
+/*				Range: FLASH_u8OPTDATA0, FLASH_u8OPTDATA1								*/
+/* Output     : Value of Chosen data byte                                               */
+/* Scope      : Public                                                                 	*/
+/****************************************************************************************/
+u8 FLASH_u8GetOptionByteData(u8 u8DataByte);
 
 #endif /* FLASH_INT_H_ */

@@ -4,11 +4,21 @@
 #include <DMA_priv.h>
 #include <DMA_int.h>
 
-void (*DMA_CallbackFunction[6])(void);	// Not stored in memory at startup
 
 static void DMA_Stub (void) {
 	__asm__("NOP");
 }
+
+void (*DMA_CallbackFunction[6])(void) =
+		{
+				&DMA_Stub,
+				&DMA_Stub,
+				&DMA_Stub,
+				&DMA_Stub,
+				&DMA_Stub,
+				&DMA_Stub// Not stored in memory at startup
+		};
+
 
 /**
   * @brief  Initiates the DMA and sets channel configuration
@@ -66,7 +76,7 @@ void DMA_Transfer(volatile u8 Channel, volatile u32* MEM_ADDRESS, volatile u32* 
 void DMA_voidDisable(u8 Channel) {
 	if (Channel >= 1 && Channel < 7) {
 		// Disable DMA to clear buffer
-		*((u32*) (&DMA->CCR1	+ (u32) (Channel - 1) * 5)) &= 0b0;
+		*((u32*) (&DMA->CCR1	+ (u32) (Channel - 1) * 5)) &= ~(0b1);
 	}
 }
 
@@ -122,5 +132,25 @@ void DMA1_Channel5_IRQHandler(void) {
 		}
 
 		SET_BIT(DMA->IFCR, 16);		// Clear Global INT for DMA1 Channel 5
+	}
+}
+
+void DMA1_Channel4_IRQHandler(void)
+{
+	// Channel 5 global interrupt flag
+	if (GET_BIT(DMA->ISR, 12)) {
+
+		if (GET_BIT(DMA->ISR, 13)) {									// Transfer Complete
+			DMA_CallbackFunction[3]();
+			SET_BIT(DMA->IFCR, 13);		// Clear Transfer Complete flag
+		} else if ( GET_BIT(DMA->ISR, 14) ) {							// Half Transfer Complete
+			DMA_CallbackFunction[3]();
+			SET_BIT(DMA->IFCR, 14);		// Clear Half transfer flag
+		} else if (GET_BIT(DMA->ISR, 15)) {								// Error Happened
+			SET_BIT(DMA->IFCR, 15);		// Clear Error flag
+		}
+
+		SET_BIT(DMA->IFCR, 12);		// Clear Global INT for DMA1 Channel 5
+		DMA_voidDisable(DMA_CHANNEL_4);
 	}
 }

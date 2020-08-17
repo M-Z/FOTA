@@ -227,10 +227,10 @@ void FLASH_vidWriteOptionByteData(u8 u8DataByte, u8 u8Value)
 	SET_BIT(FLASH_CR, OPTPG);
 
 	/* Re-set read protection */
-	if (u8ReadProtection == FLASH_u8READUNPROTECTED)
-	{
+//	if (u8ReadProtection == FLASH_u8READUNPROTECTED)
+//	{
 		FLASH_OPTRDPADRR = FLASH_u16READPROTECTKEY;
-	}
+//	}
 	while (GET_BIT(FLASH_SR,BSY) == FLASH_u8BSY);
 
 	/* Write Data in the specified address */

@@ -64,35 +64,35 @@ Update_Status serverResponseHandling(u8 * pu8ServerResponse)
 Update_Status updateVersioncheck(u8* pu8ServerResponse, u8* pu8CurrentECUVersion)
 {
 	/*index [0] -> major, [1]-> minor, [2]->patch*/
-	u16 currentECUversion[3];
+//	u16 currentECUversion[3];
 	u16 serverFileversion[3];
-	vidGetVersion(pu8CurrentECUVersion, &currentECUversion[0], &currentECUversion[1], &currentECUversion[2]);
+//	vidGetVersion(pu8CurrentECUVersion, &currentECUversion[0], &currentECUversion[1], &currentECUversion[2]);
 	vidGetVersion(pu8ServerResponse, &serverFileversion[0], &serverFileversion[1], &serverFileversion[2]);
-	if (serverFileversion[0] == currentECUversion[0] && serverFileversion[1] == currentECUversion[1] && serverFileversion[2] == currentECUversion[2])
+	if (serverFileversion[0] == pu8CurrentECUVersion[0] && serverFileversion[1] == pu8CurrentECUVersion[1] && serverFileversion[2] == pu8CurrentECUVersion[2])
 	{
 		return updateNotExist;
 	}
-	if(serverFileversion[0] > currentECUversion[0])
+	if(serverFileversion[0] > pu8CurrentECUVersion[0])
 	{
 		return updateExist;
 	}
-	else if(serverFileversion[0] < currentECUversion[0])
+	else if(serverFileversion[0] < pu8CurrentECUVersion[0])
 	{
 		return updateRollbackExist;
 	}
-	if(serverFileversion[1] > currentECUversion[1])
+	if(serverFileversion[1] > pu8CurrentECUVersion[1])
 	{
 		return updateExist;
 	}
-	else if(serverFileversion[1] < currentECUversion[1])
+	else if(serverFileversion[1] < pu8CurrentECUVersion[1])
 	{
 		return updateRollbackExist;
 	}
-	if(serverFileversion[2] > currentECUversion[2])
+	if(serverFileversion[2] > pu8CurrentECUVersion[2])
 	{
 		return updateExist;
 	}
-	else if(serverFileversion[2] < currentECUversion[2])
+	else if(serverFileversion[2] < pu8CurrentECUVersion[2])
 	{
 		return updateRollbackExist;
 	}

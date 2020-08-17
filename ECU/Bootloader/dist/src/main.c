@@ -1,5 +1,5 @@
 /*
- * This file is part of the ÂµOS++ distribution.
+ * This file is part of the µOS++ distribution.
  *   (https://github.com/micro-os-plus)
  * Copyright (c) 2014 Liviu Ionescu.
  *
@@ -35,7 +35,12 @@
 #include "RCC_int.h"
 #include "DIO_int.h"
 #include "NVIC_int.h"
+#include "AFIO_init.h"
+#include "AFIO_config.h"
 #include "CAN.h"
+
+#include "Timer_int.h"
+
 #include "CANHANDLER_int.h"
 #include "CANHANDLER_cfg.h"
 #include "FLASH_int.h"
@@ -69,6 +74,7 @@
 int
 main(int argc, char* argv[])
 {
+	u8 au8DTCs[]={20,30};
 	u8 HexArrayLine[261] = {0};
 	u8 u8Counter  = 0;
 	u16 u16Counter = 0;
@@ -77,7 +83,6 @@ main(int argc, char* argv[])
 	u8 HexData[8] = {0};
 	volatile u8 test[48] = {0};
 	u8 countertest = 0;
-//	u8 u8Counter  = 0;
 	u32 i = 0;
 	u8 rxcount = 0;
 	void (*pfunc)(void) = 0;
@@ -86,12 +91,35 @@ main(int argc, char* argv[])
 	u32* pu32BaseAddress = 0;
 	u32* pu32ProgrammingBaseAddresss = 0;
 	volatile u8 u8ResetReason = 0;
-//	pu32BaseAddress = 0x08010000;
 
-	filter_type filters[] = {{CANHANDLER_u8HEXFILEID,DATA_FRAME, STANDARD_FORMAT}};
+	u8 au8version[3] = {0};
+
+	filter_type filters[] =
+	{
+		{CANHANDLER_u8HEXFILEID,DATA_FRAME, STANDARD_FORMAT},
+		{CANHANDLER_u8ECUSWVERSION, REMOTE_FRAME,STANDARD_FORMAT},
+		{CANHANDLER_u8GETFLASHBANK, REMOTE_FRAME,STANDARD_FORMAT},
+		{CANHANDLER_u8ECUDTCs, REMOTE_FRAME,STANDARD_FORMAT},
+
+	};
 	RCC_vidInit();
 	RCC_vidEnablePeripheral(RCC_u8GPIOCCLK);
-	//	RCC_vidEnablePeripheral(RCC_u8GPIOBCLK);
+	RCC_vidEnablePeripheral(RCC_u8CANCLK);
+	RCC_vidEnablePeripheral(RCC_u8AFIOCLK);		// enable clock for Alternate Function
+	RCC_vidEnablePeripheral(RCC_u8GPIOBCLK);			 // enable clock for GPIO B
+
+
+	RCC_vidEnablePeripheral(RCC_u8TIM1CLK);
+	NVIC_vidEnableInterrupt(NVIC_u8TIM1_UP);
+	Timer1_UEV_Interrupt();
+
+	AFIO_vidinit();
+	DIO_vidInit();
+
+	NVIC_vidEnableInterrupt(NVIC_u8USB_HP_CAN_TX);			// enable interrupt
+	NVIC_vidEnableInterrupt(NVIC_u8USB_LP_CAN_RX0);			// enable interrupt
+
+	/* Get the used bank and programming bank */
 	u8UsedBank = FLASH_u8GetOptionByteData(FLASH_u8OPTDATA0);
 	switch (u8UsedBank)
 	{
@@ -112,6 +140,7 @@ main(int argc, char* argv[])
 		break;
 	}
 
+	/* If Soft Reset Occured, Jumo to application if it's present */
 	u8ResetReason = RCC_u8GetResetFlag(RCC_u8SOFTRESET);
 
 	if (u8ResetReason != 1)
@@ -124,13 +153,15 @@ main(int argc, char* argv[])
 	}
 	RCC_vidResetResetFlags();
 
+
 	NVIC_vidInit();
 	CAN_setup ();                                   // setup CAN interface
 	CAN_vid_filter_list(filters,CANHANDLER_u8MAXFILTERNUMBERS);
-	CAN_testmode(0);      // Normal, By Salma
+	CAN_testmode(0);
 	CAN_start ();                                   // leave init mode
 	CAN_waitReady ();                               // wait til mbx is empty
-	//	CANHANDLER_vidSend(35, DATA_FRAME, HexData,1);
+
+	/* Erase Application Bank */
 	for ( u8Counter = 0; u8Counter < 59; u8Counter++)
 	{
 		FLASH_vidErasePage(u8Counter + 10 + 59*u8ProgrammingBank);
@@ -156,9 +187,21 @@ main(int argc, char* argv[])
 							{
 								HexArrayLine[countertest] = CAN_RxMsg[rxcount].data[u8Counter];
 								countertest++;
-								CANHANDLER_vidSend(CANHANDLER_u8NEXTMSGREQUEST,CAN_u8REMOTEFRAME,(void*)0,0);
 							}
+							CANHANDLER_vidSend(CANHANDLER_u8NEXTMSGREQUEST,CAN_u8REMOTEFRAME,(void*)0,0);
+
 							break;
+						case CANHANDLER_u8ECUSWVERSION:
+							CANHANDLER_vidSend(CANHANDLER_u8ECUSWVERSION,CAN_u8DATAFRAME,au8version,3);
+							break;
+
+						case CANHANDLER_u8GETFLASHBANK:
+							CANHANDLER_vidSend(CANHANDLER_u8GETFLASHBANK,CAN_u8DATAFRAME,&u8UsedBank,1);
+							break;
+						case CANHANDLER_u8ECUDTCs:
+							CANHANDLER_vidSend(CANHANDLER_u8ECUDTCs,CAN_u8DATAFRAME,au8DTCs,1);
+							break;
+
 						}
 						CAN_RxMsg[rxcount].u8ActiveFlag = 0;
 						rxcount++;
@@ -169,32 +212,13 @@ main(int argc, char* argv[])
 					}
 				}
 			}while ( HexArrayLine[countertest-1] != '\r');
-			//				}while (u8Received != '\n');
-			//			USART_voidSendChar(USART_CHANNEL_1,u8CharCount);
-			//			u8CharCount  = 0;
-			//				HexDataProcessor_vidGetHexData(HexArrayLine, &(strHexData[u8Counter]));
-			//				SET_BIT(PORTA_BASEADDRESS->GPIO_ODR, 0);
 			countertest = 0;
+			Timer1_vidStartCount();
 			err = HexDataProcessor_u32StoreHexInFlash(HexArrayLine);
-			//				CLR_BIT(PORTA_BASEADDRESS->GPIO_ODR, 0);
-//			u8Counter++;
-			//				if (u8Counter != 55)
-			//				{
-			//					USART_voidSendChar(USART_CHANNEL_1,u8CharCount);
-			//				}
-			//			}while ( (u8Counter != 55) && (strHexData[u8Counter - 1].enuDataRecord != EndOfLine) );
-			//			}while ( (u8Counter != 55) && (address == 0) );
-
-			//			address = HexDataProcessor_u32StoreHexInFlash(strHexData,55);
-			//			USART_voidSendChar(USART_CHANNEL_1,'a');
 		} while (err != limitReached);
 		pfunc = *(u32*)(pu32ProgrammingBaseAddresss + 1);
 
 		FLASH_vidWriteOptionByteData(FLASH_u8OPTDATA0 , u8ProgrammingBank);
-//		SCB_vidSetInterruptVectorTable(0x08010000);
-//		__set_MSP(*(u32*)(0x08010000));
-//		__asm__ volatile ("MSR msp, %0\n" : : "r" (*(u32*)(0x08010000)) : "sp");
-//		SCB_vidPerformSoftReset();
 		pfunc();
 
 	}

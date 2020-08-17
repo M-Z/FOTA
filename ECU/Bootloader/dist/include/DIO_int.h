@@ -9,20 +9,6 @@
 #define DIO_INT_H_
 
 
-//extern AFIO* AFIO_REG;
-#define AFIO_BASEADDRESS    (( strAFIO*)  0x40010000)
-
-
-/******** AFIO Registers Structure ************/
-typedef struct
-{
-  u32 EVCR;
-  u32 MAPR;
-  u32 EXTICR[4];
-  u32 RESERVED0;
-  u32 MAPR2;
-} strAFIO;
-
 
 /*****************************************/
 /*********Public Definitions*************/

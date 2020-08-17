@@ -174,3 +174,118 @@ void FLASH_vidReadArray(u32* pu32address, u32* pu32array, u8 u8arraysize)
 	}
 }
 
+
+
+/****************************************************************************************/
+/* Description: Write Option Byte														*/
+/* Input      : u8 u8DataByte			                                	        	*/
+/*              Description: Data Byte to be programmed				                    */
+/*				Range: FLASH_u8OPTDATA0, FLASH_u8OPTDATA1								*/
+/*				u8 u8Value																*/
+/*              Description: Value to write in the option Byte			                */
+/* Output     : Void                                                                   	*/
+/* Scope      : Public                                                                 	*/
+/****************************************************************************************/
+void FLASH_vidWriteOptionByteData(u8 u8DataByte, u8 u8Value)
+{
+	u8 u8ReadProtection = FLASH_u8READUNPROTECTED;
+	u8 au8Data[2] = {0};
+	/* Check data byte is valid */
+	if (u8DataByte > FLASH_u8OPTDATA1)
+	{
+		return;
+	}
+
+	/* Store current status */
+	u8ReadProtection = GET_BIT(FLASH_OBR,RDPRT);
+	au8Data[0] = (u8) (FLASH_OPTDATA0ADDR & BYTEMASK);
+	au8Data[1] = (u8) (FLASH_OPTDATA1ADDR & BYTEMASK);
+
+	/* Perform Flash Unlock Sequence */
+	if (GET_BIT(FLASH_CR,LOCK) == FLASH_u8LOCKED)
+	{
+		FLASH_KEYR = FLASH_u32KEY1;
+		FLASH_KEYR = FLASH_u32KEY2;
+	}
+
+	/* Unlock Option Byte Programming */
+	FLASH_OPTKEYR = FLASH_u32KEY1;
+	FLASH_OPTKEYR = FLASH_u32KEY2;
+
+	/* Perform Erase Sequence */
+	SET_BIT(FLASH_CR,OPTWRE);
+	SET_BIT(FLASH_CR,OPTER);
+	SET_BIT(FLASH_CR,STRT);
+
+	/* Wait for Erase to be performed */
+	while (GET_BIT(FLASH_SR,BSY) == FLASH_u8BSY);
+
+	/* Clear OPTER Bit */
+	CLR_BIT(FLASH_CR,OPTER);
+
+	/* Start Option Byte Programming */
+	SET_BIT(FLASH_CR, OPTPG);
+
+	/* Re-set read protection */
+	if (u8ReadProtection == FLASH_u8READUNPROTECTED)
+	{
+		FLASH_OPTRDPADRR = FLASH_u16READPROTECTKEY;
+	}
+	while (GET_BIT(FLASH_SR,BSY) == FLASH_u8BSY);
+
+	/* Write Data in the specified address */
+	switch (u8DataByte)
+	{
+	case FLASH_u8OPTDATA0:
+		FLASH_OPTDATA0ADDR = u8Value;
+		while (GET_BIT(FLASH_SR,BSY) == FLASH_u8BSY);
+		FLASH_OPTDATA1ADDR = au8Data[1];
+		while (GET_BIT(FLASH_SR,BSY) == FLASH_u8BSY);
+		break;
+
+	case FLASH_u8OPTDATA1:
+		FLASH_OPTDATA0ADDR = au8Data[0];
+		while (GET_BIT(FLASH_SR,BSY) == FLASH_u8BSY);
+		FLASH_OPTDATA1ADDR = u8Value;
+		while (GET_BIT(FLASH_SR,BSY) == FLASH_u8BSY);
+		break;
+
+	default:
+		break;
+	}
+
+	/* Clear Option Byte Programming bit and write protection */
+	CLR_BIT(FLASH_CR, OPTPG);
+	CLR_BIT(FLASH_CR, OPTWRE);
+
+}
+
+
+/****************************************************************************************/
+/* Description: Get Option Byte Data													*/
+/* Input      : u8 u8DataByte			                                	        	*/
+/*              Description: Data Byte to get the value of			                    */
+/*				Range: FLASH_u8OPTDATA0, FLASH_u8OPTDATA1								*/
+/* Output     : Value of Chosen data byte                                               */
+/* Scope      : Public                                                                 	*/
+/****************************************************************************************/
+u8 FLASH_u8GetOptionByteData(u8 u8DataByte)
+{
+	u8 u8Data = 0;
+	switch (u8DataByte)
+	{
+	case FLASH_u8OPTDATA0:
+		u8Data = (u8) (FLASH_OPTDATA0ADDR & BYTEMASK);
+		break;
+
+	case FLASH_u8OPTDATA1:
+		u8Data = (u8) (FLASH_OPTDATA1ADDR & BYTEMASK);
+		break;
+
+	default :
+		break;
+	}
+	return u8Data;
+}
+
+

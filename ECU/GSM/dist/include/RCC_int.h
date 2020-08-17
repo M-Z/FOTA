@@ -90,6 +90,16 @@ void RCC_vidInit(void);
 
 
 /****************************************************************************************/
+/* Description: Enable RTC Clock														*/
+/* Input      : Void				                                	               	*/
+/* Output     : Void                                                                   	*/
+/* Scope      : Public                                                                 	*/
+/****************************************************************************************/
+void RCC_vidInitRTCCLK(void);
+
+
+
+/****************************************************************************************/
 /* Description: Enable CLock input for the corresponding peripheral						*/
 /* Input      : u8 u8PeripheralIndex                                	               	*/
 /*              Description: Peripheral to enable the clock for                         */

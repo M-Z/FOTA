@@ -25,6 +25,10 @@
 #define RCC_CSR			(*((volatile u32*)  0x40021024))
 
 
+/* Power Control Register */
+#define PWR_CR			(*((volatile u32*)  0x40007000))
+#define DBP 			8
+
 /*********** RCC_CR Register Bits *******************/
 #define HSION			0
 #define HSIRDY			1

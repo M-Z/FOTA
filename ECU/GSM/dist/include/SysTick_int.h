@@ -1,32 +1,40 @@
-/*
- * SysTick_int.h
- *
- *  Created on: 21 Aug 2019
- *      Author: Mario
- */
-#ifndef _SysTick_INT_H
-#define _SysTick_INT_H
+#ifndef SYSTICK_INT_H
+#define SYSTICK_INT_H
 
-/**
-  * @brief 		 Initialises the system tick.
-  * @param  	void
-  * @retval 	Error_Status
-  */
-Error_Status SysTick_enumInit(void);
+/*****************************************/
+/***********Public Functions**************/
+/*****************************************/
 
-/**
-  * @brief  			Sets the callback function to execute in the handler.
-  * @param  		void (*x)(void): The callback function which gives and returns a void
-  * @retval 		void
-  */
-void SysTick_SetCallback(void (*x)(void));
+/************************************************************************************************/
+/* Description: Initialize the Systick Peripheral												*/
+/* Input      : u32 u32LoadCpy		                                	        				*/
+/*              Description: 24-bit value loaded to the Load Register to count it down          */
+/* 				Range: 	0 ~ 16777215															*/
+/* Output     : Void                                                                  		 	*/
+/* Scope      : Public                                                                 			*/
+/************************************************************************************************/
+void SYSTICK_vidInit(u32 u32LoadCpy);
 
-/**
-  * @brief  			Delays the system
-  * @note			The delay unit is specified in the config file
-  * @param  		time: the amount of time to delay with
-  * @retval 		void
-  */
-void SysTick_delay( u32 );
 
-#endif	/* _SysTick_INT_H */
+
+/************************************************************************************************/
+/* Description: Delay with ms																	*/
+/* Input      : u32 u32delayCpy		                                	        				*/
+/*              Description: Delay value in milliseconds								        */
+/* 				Range: 	u32																		*/
+/* Output     : Void                                                                  		 	*/
+/* Scope      : Public                                                                 			*/
+/************************************************************************************************/
+void _delay_ms(u32 u32delayCpy);
+
+
+/************************************************************************************************/
+/* Description: Systick Interrupt handler														*/
+/* Input      : void (*phandler)(void)		                                	        		*/
+/*              Description: Pointer to interrupt handler								        */
+/* Output     : Void                                                                  		 	*/
+/* Scope      : Public                                                                 			*/
+/************************************************************************************************/
+void SYSTICK_vidSetCallback(void (*phandler)(void));
+
+#endif

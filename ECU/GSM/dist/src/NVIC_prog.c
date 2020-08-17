@@ -262,7 +262,7 @@ u8 NVIC_u8GetActiveFlag(u8 u8InterruptIndex)
 /*						NVIC_u8TIM6,			NVIC_u8TIM7,			NVIC_u8DMA2_CHANNEL1	*/
 /*						NVIC_u8DMA2_CHANNEL2,	NVIC_u8DMA2_CHANNEL3,	NVIC_u8DMA2_CHANNEL4_5	*/
 /*				u8 u8Priority                                	               					*/
-/*              Description: Peripheral to disable the NVIC for                        			*/
+/*              Description: Priority of Interrupt Handler	                        			*/
 /* 				Range: 0 ~ 255																	*/
 /* Output     : Void                                                                  		 	*/
 /* Scope      : Public                                                                 			*/

@@ -4,6 +4,8 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/ADC_prog.c \
+../src/AFIO_program.c \
 ../src/CAN.c \
 ../src/CANHANDLER_prog.c \
 ../src/DIO_prog.c \
@@ -13,10 +15,13 @@ C_SRCS += \
 ../src/NVIC_prog.c \
 ../src/RCC_prog.c \
 ../src/SCB_prog.c \
+../src/Timer_prog.c \
 ../src/_write.c \
 ../src/main.c 
 
 OBJS += \
+./src/ADC_prog.o \
+./src/AFIO_program.o \
 ./src/CAN.o \
 ./src/CANHANDLER_prog.o \
 ./src/DIO_prog.o \
@@ -26,10 +31,13 @@ OBJS += \
 ./src/NVIC_prog.o \
 ./src/RCC_prog.o \
 ./src/SCB_prog.o \
+./src/Timer_prog.o \
 ./src/_write.o \
 ./src/main.o 
 
 C_DEPS += \
+./src/ADC_prog.d \
+./src/AFIO_program.d \
 ./src/CAN.d \
 ./src/CANHANDLER_prog.d \
 ./src/DIO_prog.d \
@@ -39,6 +47,7 @@ C_DEPS += \
 ./src/NVIC_prog.d \
 ./src/RCC_prog.d \
 ./src/SCB_prog.d \
+./src/Timer_prog.d \
 ./src/_write.d \
 ./src/main.d 
 
