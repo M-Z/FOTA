@@ -25,8 +25,8 @@ static task* task_arr[MAX_TASKS_NUM];
 /****************************************************************************************/
 void SCH_vidStart(void)
 {
-	SYSTICK_vidSetCallback(&Scheduler);
-	SYSTICK_vidInit(OVF_COUNT);
+    SYSTICK_vidSetCallback(&Scheduler);
+    SYSTICK_vidInit(OVF_COUNT);
 }
 
 
@@ -56,7 +56,7 @@ void SCH_vidStart(void)
 /****************************************************************************************/
 void SCH_vidCreateTask(u8 u8index, task* temp_task)
 {
-	task_arr[u8index] = temp_task;
+    task_arr[u8index] = temp_task;
 }
 
 
@@ -70,7 +70,7 @@ void SCH_vidCreateTask(u8 u8index, task* temp_task)
 /****************************************************************************************/
 void SCH_vidDeleteTask(u8 index)
 {
-	task_arr[index]->state = PAUSED;
+    task_arr[index]->state = PAUSED;
 }
 
 
@@ -84,7 +84,7 @@ void SCH_vidDeleteTask(u8 index)
 /****************************************************************************************/
 void SCH_vidStopTask(u8 u8index)
 {
-	task_arr[u8index]->state = PAUSED;
+    task_arr[u8index]->state = PAUSED;
 }
 
 /****************************************************************************************/
@@ -97,7 +97,7 @@ void SCH_vidStopTask(u8 u8index)
 /****************************************************************************************/
 void SCH_vidStartTask(u8 u8index)
 {
-	task_arr[u8index]->state = RUNNING;
+    task_arr[u8index]->state = RUNNING;
 }
 
 
@@ -109,30 +109,30 @@ void SCH_vidStartTask(u8 u8index)
 /***************************************************************************************/
 void Scheduler(void)
 {
-	u8 u8TaskNumber = 0;
-	/* Loop on all tasks */
-	for (u8TaskNumber=0; u8TaskNumber<MAX_TASKS_NUM; u8TaskNumber++)
-	{
-		/* Check the task is enabled */
-		if (task_arr[u8TaskNumber]->state == RUNNING)
-		{
-			/* Check if first delay equals 0 to execute the function */
-			if (task_arr[u8TaskNumber]->first_delay == 0)
-			{
-				/* Call the task */
-				(task_arr[u8TaskNumber]->task_ptr)();
+    u8 u8TaskNumber = 0;
+    /* Loop on all tasks */
+    for (u8TaskNumber=0; u8TaskNumber<MAX_TASKS_NUM; u8TaskNumber++)
+    {
+        /* Check the task is enabled */
+        if (task_arr[u8TaskNumber]->state == RUNNING)
+        {
+            /* Check if first delay equals 0 to execute the function */
+            if (task_arr[u8TaskNumber]->first_delay == 0)
+            {
+                /* Call the task */
+                (task_arr[u8TaskNumber]->task_ptr)();
 
-				/* Reload first delay */
-				task_arr[u8TaskNumber]->first_delay = task_arr[u8TaskNumber]->periodicity -1;
-			}
-			/* If first delay isn't 0 */
-			else
-			{
-				/* Decrement fisr_delay */
-				task_arr[u8TaskNumber]->first_delay --;
-			}
-		}
-	}
+                /* Reload first delay */
+                task_arr[u8TaskNumber]->first_delay = task_arr[u8TaskNumber]->periodicity -1;
+            }
+            /* If first delay isn't 0 */
+            else
+            {
+                /* Decrement fisr_delay */
+                task_arr[u8TaskNumber]->first_delay --;
+            }
+        }
+    }
 }
 
 

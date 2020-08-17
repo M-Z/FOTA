@@ -20,7 +20,7 @@
 void NVIC_vidInit(void)
 {
 #define SCB_AIRCR	(*(volatile u32*)0xE000ED0C)
-	SCB_AIRCR = 0x05FA0500;
+    SCB_AIRCR = 0x05FA0500;
 }
 
 /************************************************************************************************/
@@ -52,15 +52,15 @@ void NVIC_vidInit(void)
 /************************************************************************************************/
 void NVIC_vidEnableInterrupt(u8 u8InterruptIndex)
 {
-	if (u8InterruptIndex <= 31)
-	{
-		NVIC_ISER[0] = 0x01 << u8InterruptIndex;
-	}
-	if (u8InterruptIndex <= 63)
-	{
-		u8InterruptIndex -= 32;
-		NVIC_ISER[1] = 0x01 << u8InterruptIndex;
-	}
+    if (u8InterruptIndex <= 31)
+    {
+        NVIC_ISER[0] = 0x01 << u8InterruptIndex;
+    }
+    if (u8InterruptIndex <= 63)
+    {
+        u8InterruptIndex -= 32;
+        NVIC_ISER[1] = 0x01 << u8InterruptIndex;
+    }
 }
 
 
@@ -94,15 +94,15 @@ void NVIC_vidEnableInterrupt(u8 u8InterruptIndex)
 /************************************************************************************************/
 void NVIC_vidDisableInterrupt(u8 u8InterruptIndex)
 {
-	if (u8InterruptIndex <= 31)
-	{
-		NVIC_ICER[0] = 0x01 << u8InterruptIndex;
-	}
-	if (u8InterruptIndex <= 63)
-	{
-		u8InterruptIndex -= 32;
-		NVIC_ICER[1] = 0x01 << u8InterruptIndex;
-	}
+    if (u8InterruptIndex <= 31)
+    {
+        NVIC_ICER[0] = 0x01 << u8InterruptIndex;
+    }
+    if (u8InterruptIndex <= 63)
+    {
+        u8InterruptIndex -= 32;
+        NVIC_ICER[1] = 0x01 << u8InterruptIndex;
+    }
 }
 
 
@@ -136,15 +136,15 @@ void NVIC_vidDisableInterrupt(u8 u8InterruptIndex)
 /************************************************************************************************/
 void NVIC_vidSetPendingFlag(u8 u8InterruptIndex)
 {
-	if (u8InterruptIndex <= 31)
-	{
-		NVIC_ISPR[0] = 0x01 << u8InterruptIndex;
-	}
-	if (u8InterruptIndex <= 63)
-	{
-		u8InterruptIndex -= 32;
-		NVIC_ISPR[1] = 0x01 << u8InterruptIndex;
-	}
+    if (u8InterruptIndex <= 31)
+    {
+        NVIC_ISPR[0] = 0x01 << u8InterruptIndex;
+    }
+    if (u8InterruptIndex <= 63)
+    {
+        u8InterruptIndex -= 32;
+        NVIC_ISPR[1] = 0x01 << u8InterruptIndex;
+    }
 }
 
 
@@ -177,15 +177,15 @@ void NVIC_vidSetPendingFlag(u8 u8InterruptIndex)
 /************************************************************************************************/
 void NVIC_vidClearPendingFlag(u8 u8InterruptIndex)
 {
-	if (u8InterruptIndex <= 31)
-	{
-		NVIC_ICPR[0] = 0x01 << u8InterruptIndex;
-	}
-	if (u8InterruptIndex <= 63)
-	{
-		u8InterruptIndex -= 32;
-		NVIC_ICPR[1] = 0x01 << u8InterruptIndex;
-	}
+    if (u8InterruptIndex <= 31)
+    {
+        NVIC_ICPR[0] = 0x01 << u8InterruptIndex;
+    }
+    if (u8InterruptIndex <= 63)
+    {
+        u8InterruptIndex -= 32;
+        NVIC_ICPR[1] = 0x01 << u8InterruptIndex;
+    }
 }
 
 
@@ -221,17 +221,17 @@ void NVIC_vidClearPendingFlag(u8 u8InterruptIndex)
 /************************************************************************************************/
 u8 NVIC_u8GetActiveFlag(u8 u8InterruptIndex)
 {
-	u8 u8value = 0;
-	if (u8InterruptIndex <= 31)
-	{
-		u8value = GET_BIT(NVIC_IABR[0], u8InterruptIndex);
-	}
-	if (u8InterruptIndex <= 63)
-	{
-		u8InterruptIndex -= 32;
-		u8value = GET_BIT(NVIC_IABR[1], u8InterruptIndex);
-	}
-	return u8value;
+    u8 u8value = 0;
+    if (u8InterruptIndex <= 31)
+    {
+        u8value = GET_BIT(NVIC_IABR[0], u8InterruptIndex);
+    }
+    if (u8InterruptIndex <= 63)
+    {
+        u8InterruptIndex -= 32;
+        u8value = GET_BIT(NVIC_IABR[1], u8InterruptIndex);
+    }
+    return u8value;
 }
 
 
@@ -269,6 +269,6 @@ u8 NVIC_u8GetActiveFlag(u8 u8InterruptIndex)
 /************************************************************************************************/
 void NVIC_vidSetPriority(u8 u8InterruptIndex, u8 u8Priority)
 {
-	NVIC_IPR[u8InterruptIndex] = u8Priority<<4;
+    NVIC_IPR[u8InterruptIndex] = u8Priority<<4;
 }
 

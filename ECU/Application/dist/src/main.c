@@ -84,120 +84,120 @@ void check (void);
 int
 main(int argc, char* argv[])
 {
-	volatile f32 channel_reading[2]={0};
-	u8 Error_array[10]={0};
-	volatile u8 IR=0;
+    volatile f32 channel_reading[2]= {0};
+    u8 Error_array[10]= {0};
+    volatile u8 IR=0;
 
-	u8 rxcount = 0;
-	u8 au8version[3] = {0};
-	u8 u8UsedBank = 0;
-	filter_type filters[] =
-	{
-			{CANHANDLER_u8UPDATEREQUESTID,REMOTE_FRAME, STANDARD_FORMAT},
-			{CANHANDLER_u8ECUSWVERSION,REMOTE_FRAME, STANDARD_FORMAT},
-			{CANHANDLER_u8GETFLASHBANK, REMOTE_FRAME, STANDARD_FORMAT},
-			{CANHANDLER_u8ECUDTCs, REMOTE_FRAME, STANDARD_FORMAT}
-	};
+    u8 rxcount = 0;
+    u8 au8version[3] = {0};
+    u8 u8UsedBank = 0;
+    filter_type filters[] =
+    {
+        {CANHANDLER_u8UPDATEREQUESTID,REMOTE_FRAME, STANDARD_FORMAT},
+        {CANHANDLER_u8ECUSWVERSION,REMOTE_FRAME, STANDARD_FORMAT},
+        {CANHANDLER_u8GETFLASHBANK, REMOTE_FRAME, STANDARD_FORMAT},
+        {CANHANDLER_u8ECUDTCs, REMOTE_FRAME, STANDARD_FORMAT}
+    };
 
-	// Infinite loop
-	RCC_vidInit();
-	RCC_vidEnablePeripheral(RCC_u8GPIOACLK);
-	RCC_vidEnablePeripheral(RCC_u8AFIOCLK);
+    // Infinite loop
+    RCC_vidInit();
+    RCC_vidEnablePeripheral(RCC_u8GPIOACLK);
+    RCC_vidEnablePeripheral(RCC_u8AFIOCLK);
 
-	RCC_vidEnablePeripheral(RCC_u8GPIOCCLK);
-	RCC_vidEnablePeripheral(RCC_u8ADC1CLK);
-	RCC_vidEnablePeripheral(RCC_u8DMA1CLK);
-	RCC_vidEnablePeripheral(RCC_u8TIM1CLK);
+    RCC_vidEnablePeripheral(RCC_u8GPIOCCLK);
+    RCC_vidEnablePeripheral(RCC_u8ADC1CLK);
+    RCC_vidEnablePeripheral(RCC_u8DMA1CLK);
+    RCC_vidEnablePeripheral(RCC_u8TIM1CLK);
 
-	DIO_vidInit();
-	NVIC_vidInit();
-	NVIC_vidEnableInterrupt(NVIC_u8ADC1_2);
+    DIO_vidInit();
+    NVIC_vidInit();
+    NVIC_vidEnableInterrupt(NVIC_u8ADC1_2);
 
-	AFIO_voidinit();
-
-
-	CAN_setup ();                                   // setup CAN interface
-	CAN_vid_filter_list(filters,CANHANDLER_u8MAXFILTERNUMBERS);
-	CAN_testmode(0);      // Normal, By Salma
-	CAN_start ();                                   // leave init mode
-	CAN_waitReady ();                               // wait til mbx is empty
+    AFIO_voidinit();
 
 
-	ADC_Init();
+    CAN_setup ();                                   // setup CAN interface
+    CAN_vid_filter_list(filters,CANHANDLER_u8MAXFILTERNUMBERS);
+    CAN_testmode(0);      // Normal, By Salma
+    CAN_start ();                                   // leave init mode
+    CAN_waitReady ();                               // wait til mbx is empty
 
-	while (1)
-	{
+
+    ADC_Init();
+
+    while (1)
+    {
 
 
-		Reading_Channels(channel_reading);
+        Reading_Channels(channel_reading);
 
 
 #if temp_sensor_state == not_updated
-		Error_array[0]=Error_TempSensor;
+        Error_array[0]=Error_TempSensor;
 
 #elif temp_sensor_state == updated
 
-		if (channel_reading[0]>0.0 && channel_reading[0]<30.0)
-		{
-			DIO_vidSetPinValue(DIO_u8PORTA,4,DIO_u8LOW);		// for motor
-		}
-		if (channel_reading[0]>=30.0 && channel_reading[0]<60.0)
-		{
-			DIO_vidSetPinValue(DIO_u8PORTA,4,DIO_u8HIGH);		// for motor
-		}
-		else
-		{
-			DIO_vidSetPinValue(DIO_u8PORTA,4,DIO_u8HIGH);		// for motor
-			Error_array[0]=Error_TempSensor;
-		}
+        if (channel_reading[0]>0.0 && channel_reading[0]<30.0)
+        {
+            DIO_vidSetPinValue(DIO_u8PORTA,4,DIO_u8LOW);		// for motor
+        }
+        if (channel_reading[0]>=30.0 && channel_reading[0]<60.0)
+        {
+            DIO_vidSetPinValue(DIO_u8PORTA,4,DIO_u8HIGH);		// for motor
+        }
+        else
+        {
+            DIO_vidSetPinValue(DIO_u8PORTA,4,DIO_u8HIGH);		// for motor
+            Error_array[0]=Error_TempSensor;
+        }
 
 #endif
 #if IR_sensor_state == updated
 
-		IR=DIO_u8GetPinValue(DIO_u8PORTA,2);
-		if(IR==1)
-		{
-			DIO_vidSetPinValue(DIO_u8PORTA,3,DIO_u8LOW);		// for buzzer
-		}
-		else if(IR==0)
-		{
-			DIO_vidSetPinValue(DIO_u8PORTA,3,DIO_u8HIGH);		//for buzzer
-		}
+        IR=DIO_u8GetPinValue(DIO_u8PORTA,2);
+        if(IR==1)
+        {
+            DIO_vidSetPinValue(DIO_u8PORTA,3,DIO_u8LOW);		// for buzzer
+        }
+        else if(IR==0)
+        {
+            DIO_vidSetPinValue(DIO_u8PORTA,3,DIO_u8HIGH);		//for buzzer
+        }
 
 #elif IR_sensor_state == not_updated
-		asm("NOP");
+        asm("NOP");
 
 #endif
 
-		if (CAN_RxRdy)
-		{
-			CAN_RxRdy = 0;
-			if (CAN_RxMsg[rxcount].u8ActiveFlag == 1)
-				switch (CAN_RxMsg[rxcount].id)
-				{
-				case CANHANDLER_u8UPDATEREQUESTID:
-					RCC_vidResetResetFlags();
-					SCB_vidPerformSoftReset();
-					break;
-				case CANHANDLER_u8ECUSWVERSION:
-					CANHANDLER_vidSend(CANHANDLER_u8ECUSWVERSION,CAN_u8DATAFRAME,au8version,3);
-					break;
-				case CANHANDLER_u8GETFLASHBANK:
- 					u8UsedBank = FLASH_u8GetOptionByteData(FLASH_u8OPTDATA0);
- 					CANHANDLER_vidSend(CANHANDLER_u8GETFLASHBANK,CAN_u8DATAFRAME,&u8UsedBank,1);
-					break;
-				case CANHANDLER_u8ECUDTCs:
-					CANHANDLER_vidSend(CANHANDLER_u8ECUDTCs,CAN_u8DATAFRAME,Error_array,1);
-					break;
-				}
-			CAN_RxMsg[rxcount].u8ActiveFlag = 0;
-			rxcount++;
-			if (rxcount == 3)
-			{
-				rxcount = 0;
-			}
-		}
-	}
+        if (CAN_RxRdy)
+        {
+            CAN_RxRdy = 0;
+            if (CAN_RxMsg[rxcount].u8ActiveFlag == 1)
+                switch (CAN_RxMsg[rxcount].id)
+                {
+                case CANHANDLER_u8UPDATEREQUESTID:
+                    RCC_vidResetResetFlags();
+                    SCB_vidPerformSoftReset();
+                    break;
+                case CANHANDLER_u8ECUSWVERSION:
+                    CANHANDLER_vidSend(CANHANDLER_u8ECUSWVERSION,CAN_u8DATAFRAME,au8version,3);
+                    break;
+                case CANHANDLER_u8GETFLASHBANK:
+                    u8UsedBank = FLASH_u8GetOptionByteData(FLASH_u8OPTDATA0);
+                    CANHANDLER_vidSend(CANHANDLER_u8GETFLASHBANK,CAN_u8DATAFRAME,&u8UsedBank,1);
+                    break;
+                case CANHANDLER_u8ECUDTCs:
+                    CANHANDLER_vidSend(CANHANDLER_u8ECUDTCs,CAN_u8DATAFRAME,Error_array,1);
+                    break;
+                }
+            CAN_RxMsg[rxcount].u8ActiveFlag = 0;
+            rxcount++;
+            if (rxcount == 3)
+            {
+                rxcount = 0;
+            }
+        }
+    }
 }
 
 #pragma GCC diagnostic pop

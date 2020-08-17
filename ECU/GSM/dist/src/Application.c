@@ -26,22 +26,22 @@
 /********************************************************************************************************************/
 Update_Status serverResponseHandling(u8 * pu8ServerResponse)
 {
-	u8 au8UpdateStatus1[]={"Vehicle not found"};
-	u8 au8UpdateStatus2[]={"Incorrect password"};
-	Error_Status enuCmpStatus = OK;
+    u8 au8UpdateStatus1[]= {"Vehicle not found"};
+    u8 au8UpdateStatus2[]= {"Incorrect password"};
+    Error_Status enuCmpStatus = OK;
 
-	enuCmpStatus = enuFindString2(pu8ServerResponse, au8UpdateStatus1, 100);
-	if(enuCmpStatus == OK)
-	{
-		return VehicleNotFound;
-	}
-	enuCmpStatus = enuFindString2(pu8ServerResponse, au8UpdateStatus2, 100);
-	if(enuCmpStatus == OK)
-	{
-		return IncorrectPassword;
-	}
+    enuCmpStatus = enuFindString2(pu8ServerResponse, au8UpdateStatus1, 100);
+    if(enuCmpStatus == OK)
+    {
+        return VehicleNotFound;
+    }
+    enuCmpStatus = enuFindString2(pu8ServerResponse, au8UpdateStatus2, 100);
+    if(enuCmpStatus == OK)
+    {
+        return IncorrectPassword;
+    }
 
-	return checkupdate;
+    return checkupdate;
 
 }
 
@@ -63,39 +63,39 @@ Update_Status serverResponseHandling(u8 * pu8ServerResponse)
 /********************************************************************************************************************/
 Update_Status updateVersioncheck(u8* pu8ServerResponse, u8* pu8CurrentECUVersion)
 {
-	/*index [0] -> major, [1]-> minor, [2]->patch*/
+    /*index [0] -> major, [1]-> minor, [2]->patch*/
 //	u16 currentECUversion[3];
-	u16 serverFileversion[3];
+    u16 serverFileversion[3];
 //	vidGetVersion(pu8CurrentECUVersion, &currentECUversion[0], &currentECUversion[1], &currentECUversion[2]);
-	vidGetVersion(pu8ServerResponse, &serverFileversion[0], &serverFileversion[1], &serverFileversion[2]);
-	if (serverFileversion[0] == pu8CurrentECUVersion[0] && serverFileversion[1] == pu8CurrentECUVersion[1] && serverFileversion[2] == pu8CurrentECUVersion[2])
-	{
-		return updateNotExist;
-	}
-	if(serverFileversion[0] > pu8CurrentECUVersion[0])
-	{
-		return updateExist;
-	}
-	else if(serverFileversion[0] < pu8CurrentECUVersion[0])
-	{
-		return updateRollbackExist;
-	}
-	if(serverFileversion[1] > pu8CurrentECUVersion[1])
-	{
-		return updateExist;
-	}
-	else if(serverFileversion[1] < pu8CurrentECUVersion[1])
-	{
-		return updateRollbackExist;
-	}
-	if(serverFileversion[2] > pu8CurrentECUVersion[2])
-	{
-		return updateExist;
-	}
-	else if(serverFileversion[2] < pu8CurrentECUVersion[2])
-	{
-		return updateRollbackExist;
-	}
+    vidGetVersion(pu8ServerResponse, &serverFileversion[0], &serverFileversion[1], &serverFileversion[2]);
+    if (serverFileversion[0] == pu8CurrentECUVersion[0] && serverFileversion[1] == pu8CurrentECUVersion[1] && serverFileversion[2] == pu8CurrentECUVersion[2])
+    {
+        return updateNotExist;
+    }
+    if(serverFileversion[0] > pu8CurrentECUVersion[0])
+    {
+        return updateExist;
+    }
+    else if(serverFileversion[0] < pu8CurrentECUVersion[0])
+    {
+        return updateRollbackExist;
+    }
+    if(serverFileversion[1] > pu8CurrentECUVersion[1])
+    {
+        return updateExist;
+    }
+    else if(serverFileversion[1] < pu8CurrentECUVersion[1])
+    {
+        return updateRollbackExist;
+    }
+    if(serverFileversion[2] > pu8CurrentECUVersion[2])
+    {
+        return updateExist;
+    }
+    else if(serverFileversion[2] < pu8CurrentECUVersion[2])
+    {
+        return updateRollbackExist;
+    }
 }
 
 
@@ -118,31 +118,31 @@ Update_Status updateVersioncheck(u8* pu8ServerResponse, u8* pu8CurrentECUVersion
 /******************************************************************************************************************/
 s32 STM32_SHA256_HASH_DigestCompute(u8* InputMessage, u32 InputMessageLength, u32 *MessageDigest, s32* MessageDigestLength)
 {
-  SHA256ctx_stt P_pSHA256ctx;
-  s32 error_status  = HASH_SUCCESS;
+    SHA256ctx_stt P_pSHA256ctx;
+    s32 error_status  = HASH_SUCCESS;
 
-  /* Set the size of the desired hash digest */
-  P_pSHA256ctx.mTagSize = CRL_SHA256_SIZE;
+    /* Set the size of the desired hash digest */
+    P_pSHA256ctx.mTagSize = CRL_SHA256_SIZE;
 
-  /* Set flag field to default value */
-  P_pSHA256ctx.mFlags = E_HASH_DEFAULT;
+    /* Set flag field to default value */
+    P_pSHA256ctx.mFlags = E_HASH_DEFAULT;
 
-  error_status = SHA256_Init(&P_pSHA256ctx);
+    error_status = SHA256_Init(&P_pSHA256ctx);
 
-  /* check for initialization errors */
-  if (error_status == HASH_SUCCESS) {
-    /* Add data to be hashed */
-    error_status = SHA256_Append(&P_pSHA256ctx,
-                                 InputMessage,
-                                 InputMessageLength);
-
-    /* retrieve */
+    /* check for initialization errors */
     if (error_status == HASH_SUCCESS) {
-      error_status = SHA256_Finish(&P_pSHA256ctx, MessageDigest, MessageDigestLength);
-    }
-  }
+        /* Add data to be hashed */
+        error_status = SHA256_Append(&P_pSHA256ctx,
+                                     InputMessage,
+                                     InputMessageLength);
 
-  return error_status;
+        /* retrieve */
+        if (error_status == HASH_SUCCESS) {
+            error_status = SHA256_Finish(&P_pSHA256ctx, MessageDigest, MessageDigestLength);
+        }
+    }
+
+    return error_status;
 }
 
 
@@ -164,16 +164,16 @@ s32 STM32_SHA256_HASH_DigestCompute(u8* InputMessage, u32 InputMessageLength, u3
 /**************************************************************************************************************************/
 TestStatus Buffercmp(u8 pBuffer[], u8* pBuffer1 )
 {
-	u8 hex_ptr;
+    u8 hex_ptr;
 
-	for (int i = 1; i < 32; i += 2) {
-		hex_ptr = (pBuffer[i - 1] <= '9') ? ( pBuffer[i - 1] - '0' ) * 16 : (pBuffer[i - 1] - 'a' + 10) * 16;
-		hex_ptr += (pBuffer[i] <= '9') ? ( pBuffer[i] - '0' ) : (pBuffer[i] - 'a' + 10) ;
-		if ( hex_ptr  != *(pBuffer1++) ) {
-			return FAILED;
-		}
-   }
-	return PASSED;
+    for (int i = 1; i < 32; i += 2) {
+        hex_ptr = (pBuffer[i - 1] <= '9') ? ( pBuffer[i - 1] - '0' ) * 16 : (pBuffer[i - 1] - 'a' + 10) * 16;
+        hex_ptr += (pBuffer[i] <= '9') ? ( pBuffer[i] - '0' ) : (pBuffer[i] - 'a' + 10) ;
+        if ( hex_ptr  != *(pBuffer1++) ) {
+            return FAILED;
+        }
+    }
+    return PASSED;
 }
 
 /**************************************************************************************************************************/
@@ -198,39 +198,39 @@ TestStatus Buffercmp(u8 pBuffer[], u8* pBuffer1 )
 /****************************************************************************************/
 static Error_Status enuFindString2(u8* pu8Buffer, const u8* pu8ExpectedString, u32 u32Size)
 {
-	u32 u32MessageCounter = 0;
-	u32 u32StringStartIndex = 0;
-	u32 u32StringCounter = 0;
-	u8 u8FoundFlag = 1;
+    u32 u32MessageCounter = 0;
+    u32 u32StringStartIndex = 0;
+    u32 u32StringCounter = 0;
+    u8 u8FoundFlag = 1;
 
-	// Loop through the pu8Buffer
-	for (u32 u32StringStartIndex = 0; u32StringStartIndex < u32Size; u32StringStartIndex++)
-	{
-		// If match occurred
-		if (pu8Buffer[u32StringStartIndex] == pu8ExpectedString[0])
-		{
-			u32MessageCounter = 1;
-			u8FoundFlag = 1;
-			// Loop through the message
-			for (u32 u32StringCounter = u32StringStartIndex + 1; pu8ExpectedString[u32MessageCounter] != '\0'; u32StringCounter++)
-			{
-				if (pu8ExpectedString[u32MessageCounter] != pu8Buffer[u32StringCounter])
-				{
-					u8FoundFlag = 0;
-					break;
-				}
-				u32MessageCounter++;
-			}
+    // Loop through the pu8Buffer
+    for (u32 u32StringStartIndex = 0; u32StringStartIndex < u32Size; u32StringStartIndex++)
+    {
+        // If match occurred
+        if (pu8Buffer[u32StringStartIndex] == pu8ExpectedString[0])
+        {
+            u32MessageCounter = 1;
+            u8FoundFlag = 1;
+            // Loop through the message
+            for (u32 u32StringCounter = u32StringStartIndex + 1; pu8ExpectedString[u32MessageCounter] != '\0'; u32StringCounter++)
+            {
+                if (pu8ExpectedString[u32MessageCounter] != pu8Buffer[u32StringCounter])
+                {
+                    u8FoundFlag = 0;
+                    break;
+                }
+                u32MessageCounter++;
+            }
 
-			// If all match found and we have checked all the message
-			if ((u8FoundFlag == 1) && (pu8ExpectedString[u32MessageCounter] == '\0'))
-			{
-				return OK;
-			}
-		}
-	}
+            // If all match found and we have checked all the message
+            if ((u8FoundFlag == 1) && (pu8ExpectedString[u32MessageCounter] == '\0'))
+            {
+                return OK;
+            }
+        }
+    }
 
-	return NOK;
+    return NOK;
 }
 /****************************************************************************************/
 /* Description: It convert version ID from string form to major, minor and patch values */
@@ -243,40 +243,40 @@ static Error_Status enuFindString2(u8* pu8Buffer, const u8* pu8ExpectedString, u
 /****************************************************************************************/
 void vidGetVersion(const u8 * au8version, u16 *major, u16 *minor, u16 *patch)
 {
-	int count;
-	char temp=0;
-	char temp2[10];
-	char dotCount=0;
+    int count;
+    char temp=0;
+    char temp2[10];
+    char dotCount=0;
 
-	for(count=0; count<100; count++)
-	{
-	    if(au8version[count+1]=='.' || au8version[count+1]=='\0')
-	    {
-	        temp2[temp]='\0';
-	        dotCount++;
-	        temp=0;
-	        count++;
-	        if(dotCount == 1)
-	        {
-	            *major=u32ACIItoInteger(temp2);
-	        }
-	        else if(dotCount == 2)
-	        {
-	            *minor=u32ACIItoInteger(temp2);
-	        }
-	        else if(dotCount == 3)
-	        {
-	            *patch=u32ACIItoInteger(temp2);
-	        }
-	    }
-	         temp2[temp]=au8version[count+1];
-	         temp++;
-	    if(au8version[count] == '\0')
-	    {
-	        break;
-	    }
+    for(count=0; count<100; count++)
+    {
+        if(au8version[count+1]=='.' || au8version[count+1]=='\0')
+        {
+            temp2[temp]='\0';
+            dotCount++;
+            temp=0;
+            count++;
+            if(dotCount == 1)
+            {
+                *major=u32ACIItoInteger(temp2);
+            }
+            else if(dotCount == 2)
+            {
+                *minor=u32ACIItoInteger(temp2);
+            }
+            else if(dotCount == 3)
+            {
+                *patch=u32ACIItoInteger(temp2);
+            }
+        }
+        temp2[temp]=au8version[count+1];
+        temp++;
+        if(au8version[count] == '\0')
+        {
+            break;
+        }
 
-	}
+    }
 }
 
 /****************************************************************************************/
@@ -291,17 +291,17 @@ u32 u32ACIItoInteger(u8* pu8txt)
 {
     u16 sum,digit,i;
     u8 u8strlength=0;
-	sum=0;
-	while(pu8txt[u8strlength] != '\0')
-	{
-		u8strlength++;
-	}
-	for(i=0; i < u8strlength; i++)
-	{
-		digit=pu8txt[i]-0x30;
-		sum=(sum*10)+digit;
-	}
-	return sum;
+    sum=0;
+    while(pu8txt[u8strlength] != '\0')
+    {
+        u8strlength++;
+    }
+    for(i=0; i < u8strlength; i++)
+    {
+        digit=pu8txt[i]-0x30;
+        sum=(sum*10)+digit;
+    }
+    return sum;
 }
 /****************************************************************************************/
 /* Description: Security Stack function 												*/
@@ -314,5 +314,5 @@ u32 u32ACIItoInteger(u8* pu8txt)
 
 void __aeabi_memcpy (void *dest, const void *src, s32 n)
 {
-	memcpy (dest, src, n);
+    memcpy (dest, src, n);
 }

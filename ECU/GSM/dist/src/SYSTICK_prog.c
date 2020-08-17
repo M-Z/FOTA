@@ -22,12 +22,12 @@ void (*InterruptCallback)(void) = &vidInterruptStub;
 /************************************************************************************************/
 void SYSTICK_vidInit(u32 u32LoadCpy)
 {
-	//load value to load register
-	SYSTICK_LOAD = u32LoadCpy & 0x00FFFFFF;
-	//reset value register, also resetting the count flag
-	SYSTICK_VAL = 0;
-	//Enbale timer, enable interrupt, select HSI as clock source
-	SYSTICK_CTRL = 0x07;
+    //load value to load register
+    SYSTICK_LOAD = u32LoadCpy & 0x00FFFFFF;
+    //reset value register, also resetting the count flag
+    SYSTICK_VAL = 0;
+    //Enbale timer, enable interrupt, select HSI as clock source
+    SYSTICK_CTRL = 0x07;
 }
 
 
@@ -41,8 +41,8 @@ void SYSTICK_vidInit(u32 u32LoadCpy)
 /************************************************************************************************/
 void _delay_ms(u32 u32delayCpy)
 {
-	u32delay = u32delayCpy;
-	while (u32delay != 0);
+    u32delay = u32delayCpy;
+    while (u32delay != 0);
 }
 
 
@@ -56,7 +56,7 @@ void _delay_ms(u32 u32delayCpy)
 /************************************************************************************************/
 void SYSTICK_vidSetCallback(void (*phandler)(void))
 {
-	InterruptCallback = phandler;
+    InterruptCallback = phandler;
 }
 
 
@@ -66,7 +66,7 @@ void SYSTICK_vidSetCallback(void (*phandler)(void))
 /******************************************/
 void vidInterruptStub(void)
 {
-	__asm__("NOP");
+    __asm__("NOP");
 }
 
 
@@ -74,8 +74,8 @@ void vidInterruptStub(void)
 void __attribute__ ((section(".after_vectors"),weak))
 SysTick_Handler (void)
 {
-  // DO NOT loop, just return.
-  // Useful in case someone (like STM HAL) inadvertently enables SysTick.
-	InterruptCallback();
+    // DO NOT loop, just return.
+    // Useful in case someone (like STM HAL) inadvertently enables SysTick.
+    InterruptCallback();
 }
 

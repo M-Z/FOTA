@@ -29,33 +29,33 @@ typedef double 				f64;
 
 
 typedef enum {
-	OK,
-	NOK,
-	wait,
-	indexOutOfRange,
-	nullPointer,
-	numberOutOfRange,
-	elementNotFound,
-	limitReached,
-	hashSuccess,
-	hashErrBadOperation,
-	HashErrBadContext,
-	HashErrBadParameter
+    OK,
+    NOK,
+    wait,
+    indexOutOfRange,
+    nullPointer,
+    numberOutOfRange,
+    elementNotFound,
+    limitReached,
+    hashSuccess,
+    hashErrBadOperation,
+    HashErrBadContext,
+    HashErrBadParameter
 } Error_Status;
 
-typedef enum{
-	updateExist,
-	updateNotExist,
-	updateRollbackExist,
-	VehicleNotFound,
-	IncorrectPassword,
-	checkupdate
+typedef enum {
+    updateExist,
+    updateNotExist,
+    updateRollbackExist,
+    VehicleNotFound,
+    IncorrectPassword,
+    checkupdate
 } Update_Status;
 
 typedef enum
 {
-	FAILED = 0,
-	PASSED = !FAILED
+    FAILED = 0,
+    PASSED = !FAILED
 } TestStatus;
 
 

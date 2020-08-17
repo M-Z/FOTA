@@ -24,14 +24,14 @@
  * STOP_BITS_1, STOP_BITS_1_2, STOP_BITS_2, STOP_BITS_3_2
  */
 #ifndef	USART1_STOP_BITS
-	#define USART1_STOP_BITS					STOP_BITS_1
+#define USART1_STOP_BITS					STOP_BITS_1
 #endif
 // TODO: Removing comments makes an error with the program file
 /*
  * DATA_BITS_8, DATA_BITS_9
  */
 #ifndef USART1_WORD_LENGTH
-	#define USART1_WORD_LENGTH					DATA_BITS_8
+#define USART1_WORD_LENGTH					DATA_BITS_8
 #endif
 
 /*

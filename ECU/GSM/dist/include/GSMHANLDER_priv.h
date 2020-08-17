@@ -15,59 +15,59 @@
 
 typedef enum
 {
-	IDLE,
-	WaitingForMessage,
+    IDLE,
+    WaitingForMessage,
 //	MessageReceived,
-	SendingMessage
-}MessageState;
+    SendingMessage
+} MessageState;
 
 
 typedef enum
 {
-	/* Settings */
-	DisableEcho,
-	SetBearerParameters,
-	OpenBearer,
-	CloseBearer,
+    /* Settings */
+    DisableEcho,
+    SetBearerParameters,
+    OpenBearer,
+    CloseBearer,
 
-	/* Initialize HTTP */
-	InitializeHTTP,
-	TerminateHTTP,
-	EnableSSL,
+    /* Initialize HTTP */
+    InitializeHTTP,
+    TerminateHTTP,
+    EnableSSL,
 
-	/* Set HTTP Parameters */
-	SetCID,
-	EnableREDIR,
+    /* Set HTTP Parameters */
+    SetCID,
+    EnableREDIR,
 
-	/* POST Request */
-	SetContentType,
-	SetURL,
-	SendHTTPData,
-	SendVehicleName,
-	POSTRequest,
+    /* POST Request */
+    SetContentType,
+    SetURL,
+    SendHTTPData,
+    SendVehicleName,
+    POSTRequest,
 
-	/* Read Received Data */
-	GETSWVersion,
+    /* Read Received Data */
+    GETSWVersion,
 
-	/* Compare SW Versions */
-	CompareSWVersion,
+    /* Compare SW Versions */
+    CompareSWVersion,
 
-	/* User Acceptance from GUI */
-	AcceptUpdate,
+    /* User Acceptance from GUI */
+    AcceptUpdate,
 
-	/* Get The Hex File */
-	GETHash,
-	GETHexFile,
-	CheckDecryption,
-	SendFile,
-	ReceiveFeedback,
+    /* Get The Hex File */
+    GETHash,
+    GETHexFile,
+    CheckDecryption,
+    SendFile,
+    ReceiveFeedback,
 
-	/* Diagnostics Session */
-	SendDiag,
+    /* Diagnostics Session */
+    SendDiag,
 
 
-	Done
-}Step;
+    Done
+} Step;
 
 
 /*****************************************/

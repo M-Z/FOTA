@@ -5,9 +5,9 @@
 /**************** FTP Download Configuartions ******************/
 typedef enum
 {
-	Standard,
-	Extended
-}DownloadConfig;
+    Standard,
+    Extended
+} DownloadConfig;
 
 
 

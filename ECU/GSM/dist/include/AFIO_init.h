@@ -31,11 +31,11 @@
 ///////////******************TIM1**********************///////////////
 
 #define   TIM1_NoRemap                    0x00000000		//(ETR/PA12, CH1/PA8, CH2/PA9, CH3/PA10, CH4/PA11, BKIN/PB12,
-															//CH1N/PB13, CH2N/PB14, CH3N/PB15)
+//CH1N/PB13, CH2N/PB14, CH3N/PB15)
 #define   TIM1_PartialRemap               0x00000001		//(ETR/PA12, CH1/PA8, CH2/PA9, CH3/PA10, CH4/PA11, BKIN/PA6,
-															//CH1N/PA7, CH2N/PB0, CH3N/PB1)
+//CH1N/PA7, CH2N/PB0, CH3N/PB1)
 #define   TIM1_FullRemap                  0x00000003		//(ETR/PE7, CH1/PE9, CH2/PE11, CH3/PE13, CH4/PE14, BKIN/PE15,
-															//CH1N/PE8, CH2N/PE10, CH3N/PE12)
+//CH1N/PE8, CH2N/PE10, CH3N/PE12)
 
 ///////////******************TIM2**********************///////////////
 
@@ -140,7 +140,7 @@
 #define   NADV_DISCONNECT              0x00000001
 
 
- void  AFIO_vidinit(void);
+void  AFIO_vidinit(void);
 
 
 #endif

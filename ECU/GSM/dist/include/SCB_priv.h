@@ -23,19 +23,19 @@
 /******** SCB Register Structure ************/
 typedef struct
 {
-	u32 SCB_CPUID;
-	u32 SCB_ICSR;
-	u32 SCB_VTOR;
-	u32 SCB_AIRCR;
-	u32 SCB_SCR;
-	u32 SCB_CCR;
-	u8 SCB_SHPR[12];
-	u32 SCB_SHCRS;
-	u32 SCB_CFSR;
-	u32 SCB_HFSR;
-	u32 SCB_MMAR;
-	u32 SCB_BFAR;
-}SCB;
+    u32 SCB_CPUID;
+    u32 SCB_ICSR;
+    u32 SCB_VTOR;
+    u32 SCB_AIRCR;
+    u32 SCB_SCR;
+    u32 SCB_CCR;
+    u8 SCB_SHPR[12];
+    u32 SCB_SHCRS;
+    u32 SCB_CFSR;
+    u32 SCB_HFSR;
+    u32 SCB_MMAR;
+    u32 SCB_BFAR;
+} SCB;
 
 
 /******** Register Base Addresses ************/

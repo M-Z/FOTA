@@ -27,7 +27,7 @@ SCB* SCB_REG = SCB_BASEADDRESS;
 /****************************************************************************************/
 void SCB_vidSetInterruptVectorTable(u32 u32VTORBaseAddress)
 {
-	SCB_REG->SCB_VTOR = u32VTORBaseAddress;
+    SCB_REG->SCB_VTOR = u32VTORBaseAddress;
 }
 
 
@@ -39,8 +39,8 @@ void SCB_vidSetInterruptVectorTable(u32 u32VTORBaseAddress)
 /****************************************************************************************/
 void SCB_vidPerformSoftReset(void)
 {
-	SCB_REG->SCB_AIRCR = (0x05FA << VECTKEY) | (1 << SYSRESETREQ);
-	while(1);
+    SCB_REG->SCB_AIRCR = (0x05FA << VECTKEY) | (1 << SYSRESETREQ);
+    while(1);
 }
 
 /****************************************************************************************/
@@ -57,7 +57,7 @@ void SCB_vidPerformSoftReset(void)
 /****************************************************************************************/
 void SCB_vidSetInterruptPriority(u8 u8InterruptIndex, u8 u8Priority)
 {
-	SCB_REG->SCB_SHPR[u8InterruptIndex] |= (u8Priority<<4);
+    SCB_REG->SCB_SHPR[u8InterruptIndex] |= (u8Priority<<4);
 }
 
 

@@ -25,78 +25,78 @@
 /****************************************************************************************/
 void RCC_vidInit(void)
 {
-	RCC_CFGR &= 0X00000000;
-	RCC_CR &= 0X00000000;
-	RCC_CIR &= 0X00000000;
-	RCC_APB2RSTR &= 0X00000000;
-	RCC_APB1RSTR &= 0X00000000;
-	RCC_AHBENR &= 0X00000000;
-	RCC_APB2ENR	&= 0X00000000;
-	RCC_APB1ENR	&= 0X00000000;
-	RCC_BDCR	&= 0X00000000;
-	RCC_CSR		&= 0X00000000;
+    RCC_CFGR &= 0X00000000;
+    RCC_CR &= 0X00000000;
+    RCC_CIR &= 0X00000000;
+    RCC_APB2RSTR &= 0X00000000;
+    RCC_APB1RSTR &= 0X00000000;
+    RCC_AHBENR &= 0X00000000;
+    RCC_APB2ENR	&= 0X00000000;
+    RCC_APB1ENR	&= 0X00000000;
+    RCC_BDCR	&= 0X00000000;
+    RCC_CSR		&= 0X00000000;
 
-	//Turn on HSI
-	SET_BIT(RCC_CR, HSION);
-	//Wait for HSI to be ON
-	while (GET_BIT(RCC_CR, HSIRDY) != 1);
+    //Turn on HSI
+    SET_BIT(RCC_CR, HSION);
+    //Wait for HSI to be ON
+    while (GET_BIT(RCC_CR, HSIRDY) != 1);
 
 #if  ( (RCC_u8SYSCLK == RCC_u8SYSCLKHSE) 														\
 		|| ( (RCC_u8SYSCLK == RCC_u8SYSCLKPLL) && (RCC_u8PLLCLK >= RCC_u8PLLHSEX2) ) 			\
 		|| (RCC_u8MCOSRC == RCC_u8MCOHSECLK) 													\
 		|| (RCC_u8RTCCLK == RCC_u8RTCHSEPRESCALER128) )
-	/* If the Clock Source is from PLL using HSE or from HSE Directly or if MCO is using HSE OR RTC is using HSE Clock */
+    /* If the Clock Source is from PLL using HSE or from HSE Directly or if MCO is using HSE OR RTC is using HSE Clock */
 
-	//Choose HSE Bypassing
-	RCC_CR|= ( (RCC_u8HSEBYP & 0x01) << HSEBYP);
-	//Turn on HSE
-	SET_BIT(RCC_CR, HSEON);
-	//Wait for HSE to be Ready
-	while (GET_BIT(RCC_CR, HSERDY) != 1);
+    //Choose HSE Bypassing
+    RCC_CR|= ( (RCC_u8HSEBYP & 0x01) << HSEBYP);
+    //Turn on HSE
+    SET_BIT(RCC_CR, HSEON);
+    //Wait for HSE to be Ready
+    while (GET_BIT(RCC_CR, HSERDY) != 1);
 
 #endif
 
 #if  ( (RCC_u8SYSCLK == RCC_u8SYSCLKPLL) \
 		|| (RCC_u8MCOSRC == RCC_u8MCOPLLPRESCALER2) \
 		|| (RCC_u8USBPRESCALER < RCC_u8USBOFF) )
-	/* If the PLL is the source for the System Clock or USB Peripheral is used or used on MCO Pin */
+    /* If the PLL is the source for the System Clock or USB Peripheral is used or used on MCO Pin */
 
-	/* After enabling HSE or HSI, set the multiplexers' values */
-	//Assign PLLXTPRE Value
-	RCC_CFGR |= (GET_BIT(RCC_u8PLLCLK, 5) << PLLXTPRE);
-	//Assign PLLSRC Value
-	RCC_CFGR |= (GET_BIT(RCC_u8PLLCLK, 4) << PLLSRC);
-	//Assign PLLMUL Values
-	RCC_CFGR |= (GET_LOW_NIB(RCC_u8PLLCLK) << PLLMUL);
+    /* After enabling HSE or HSI, set the multiplexers' values */
+    //Assign PLLXTPRE Value
+    RCC_CFGR |= (GET_BIT(RCC_u8PLLCLK, 5) << PLLXTPRE);
+    //Assign PLLSRC Value
+    RCC_CFGR |= (GET_BIT(RCC_u8PLLCLK, 4) << PLLSRC);
+    //Assign PLLMUL Values
+    RCC_CFGR |= (GET_LOW_NIB(RCC_u8PLLCLK) << PLLMUL);
 
-	//Turn on PLL
-	SET_BIT(RCC_CR, PLLON);
-	//Wait for PLL to be Ready
-	while (GET_BIT(RCC_CR, PLLRDY) != 1);
+    //Turn on PLL
+    SET_BIT(RCC_CR, PLLON);
+    //Wait for PLL to be Ready
+    while (GET_BIT(RCC_CR, PLLRDY) != 1);
 
 #endif
 
 
-	/* At this stage all the clocks we need are enabled and ready, We choose the System Clock */
-	RCC_CFGR |= ((RCC_u8SYSCLK & 0x03) << SW);
+    /* At this stage all the clocks we need are enabled and ready, We choose the System Clock */
+    RCC_CFGR |= ((RCC_u8SYSCLK & 0x03) << SW);
 
-	/* Set Prescalers for APB1, APB2 and AHB */
-	//Set Prescaler for APB2
-	RCC_CFGR |= ((RCC_u8APB2PRESCALER & 0x07) << PPRE2);
-	//Set Prescaler for APB1
-	RCC_CFGR |= ((RCC_u8APB1PRESCALER & 0x07) << PPRE1);
-	//Set Prescaler for AHB
-	RCC_CFGR |= ((RCC_u8APB2PRESCALER & 0x0F) << HPRE);
+    /* Set Prescalers for APB1, APB2 and AHB */
+    //Set Prescaler for APB2
+    RCC_CFGR |= ((RCC_u8APB2PRESCALER & 0x07) << PPRE2);
+    //Set Prescaler for APB1
+    RCC_CFGR |= ((RCC_u8APB1PRESCALER & 0x07) << PPRE1);
+    //Set Prescaler for AHB
+    RCC_CFGR |= ((RCC_u8APB2PRESCALER & 0x0F) << HPRE);
 #if ( RCC_u8ADCPRESCALER < RCC_u8ADCOFF)
-	//Set Prescaler for ADC Peripheral
-	RCC_CFGR |= ((RCC_u8ADCPRESCALER & 0x03) << ADCPRE);
+    //Set Prescaler for ADC Peripheral
+    RCC_CFGR |= ((RCC_u8ADCPRESCALER & 0x03) << ADCPRE);
 #endif
 
-	/* Set MCO Pin Configuration */
-	RCC_CFGR |= ((RCC_u8MCOSRC & 0x07) << MCO);
+    /* Set MCO Pin Configuration */
+    RCC_CFGR |= ((RCC_u8MCOSRC & 0x07) << MCO);
 
-	/* Set CSS On or Off */
-	RCC_CR |= (RCC_u8CSSONOFF << CSSON);
+    /* Set CSS On or Off */
+    RCC_CR |= (RCC_u8CSSONOFF << CSSON);
 }
 
 
@@ -111,35 +111,35 @@ void RCC_vidInit(void)
 void RCC_vidInitRTCCLK(void)
 {
 #if (RCC_u8RTCCLK > RTC_u8RTCOFF)
-	/* If RTC is turned On */
+    /* If RTC is turned On */
 
-	/* Enable access to RTC and Backup domain registers */
-	SET_BIT(PWR_CR,DBP);
+    /* Enable access to RTC and Backup domain registers */
+    SET_BIT(PWR_CR,DBP);
 
 #if ( RCC_u8RTCCLK == RCC_u8RTCLSE )
 
 
-	//Choose LSE Bypassing
-	RCC_BDCR |= (RCC_u8LSEBYP << LSEBYP);
-	//Turn on LSE
-	SET_BIT(RCC_BDCR, LSEON);
-	//Wait for LSE to be Ready
-	while (GET_BIT(RCC_BDCR, LSERDY) != 1);
+    //Choose LSE Bypassing
+    RCC_BDCR |= (RCC_u8LSEBYP << LSEBYP);
+    //Turn on LSE
+    SET_BIT(RCC_BDCR, LSEON);
+    //Wait for LSE to be Ready
+    while (GET_BIT(RCC_BDCR, LSERDY) != 1);
 
 #elif (RCC_u8RTCCLK == RCC_u8RTCLSI)
 
-	//Turn on LSI
-	SET_BIT(RCC_CSR, LSION);
-	//Wait for LSI to be Ready
-	while (GET_BIT(RCC_CSR, LSIRDY) != 1);
+    //Turn on LSI
+    SET_BIT(RCC_CSR, LSION);
+    //Wait for LSI to be Ready
+    while (GET_BIT(RCC_CSR, LSIRDY) != 1);
 
 #endif
 
-	/* Set RTC Clock Source */
-	RCC_BDCR |= ((RCC_u8RTCCLK & 0x03) << RTCSEL);
+    /* Set RTC Clock Source */
+    RCC_BDCR |= ((RCC_u8RTCCLK & 0x03) << RTCSEL);
 
-	/* Enable RTC Peripheral */
-	SET_BIT(RCC_BDCR, RTCEN);
+    /* Enable RTC Peripheral */
+    SET_BIT(RCC_BDCR, RTCEN);
 
 #endif
 
@@ -170,24 +170,24 @@ void RCC_vidInitRTCCLK(void)
 /****************************************************************************************/
 void RCC_vidEnablePeripheral(u8 u8PeripheralIndex)
 {
-	if  (u8PeripheralIndex <= u8APB2_END)
-	{
-		SET_BIT(RCC_APB2ENR, u8PeripheralIndex);
-	}
-	else if  ( (u8PeripheralIndex >= u8APB1_START) && (u8PeripheralIndex <= u8APB1_END) )
-	{
-		u8PeripheralIndex -= u8APB1_START;
-		SET_BIT(RCC_APB1ENR, u8PeripheralIndex);
-	}
-	else if  ( (u8PeripheralIndex >= u8AHB_START) && (u8PeripheralIndex <= u8AHB_END) )
-	{
-		u8PeripheralIndex -= u8AHB_START;
-		SET_BIT(RCC_AHBENR, u8PeripheralIndex);
-	}
-	else
-	{
+    if  (u8PeripheralIndex <= u8APB2_END)
+    {
+        SET_BIT(RCC_APB2ENR, u8PeripheralIndex);
+    }
+    else if  ( (u8PeripheralIndex >= u8APB1_START) && (u8PeripheralIndex <= u8APB1_END) )
+    {
+        u8PeripheralIndex -= u8APB1_START;
+        SET_BIT(RCC_APB1ENR, u8PeripheralIndex);
+    }
+    else if  ( (u8PeripheralIndex >= u8AHB_START) && (u8PeripheralIndex <= u8AHB_END) )
+    {
+        u8PeripheralIndex -= u8AHB_START;
+        SET_BIT(RCC_AHBENR, u8PeripheralIndex);
+    }
+    else
+    {
 
-	}
+    }
 }
 
 
@@ -219,24 +219,24 @@ void RCC_vidEnablePeripheral(u8 u8PeripheralIndex)
 /****************************************************************************************/
 void RCC_vidDisablePeripheral(u8 u8PeripheralIndex)
 {
-	if  (u8PeripheralIndex <= u8APB2_END)
-	{
-		CLR_BIT(RCC_APB2ENR, u8PeripheralIndex);
-	}
-	else if  ( (u8PeripheralIndex >= u8APB1_START) && (u8PeripheralIndex <= u8APB1_END) )
-	{
-		u8PeripheralIndex -= u8APB1_START;
-		CLR_BIT(RCC_AHBENR, u8PeripheralIndex);
-	}
-	else if  ( (u8PeripheralIndex >= u8AHB_START) && (u8PeripheralIndex <= u8AHB_END) )
-	{
-		u8PeripheralIndex -= u8AHB_START;
-		CLR_BIT(RCC_AHBENR, u8PeripheralIndex);
-	}
-	else
-	{
+    if  (u8PeripheralIndex <= u8APB2_END)
+    {
+        CLR_BIT(RCC_APB2ENR, u8PeripheralIndex);
+    }
+    else if  ( (u8PeripheralIndex >= u8APB1_START) && (u8PeripheralIndex <= u8APB1_END) )
+    {
+        u8PeripheralIndex -= u8APB1_START;
+        CLR_BIT(RCC_AHBENR, u8PeripheralIndex);
+    }
+    else if  ( (u8PeripheralIndex >= u8AHB_START) && (u8PeripheralIndex <= u8AHB_END) )
+    {
+        u8PeripheralIndex -= u8AHB_START;
+        CLR_BIT(RCC_AHBENR, u8PeripheralIndex);
+    }
+    else
+    {
 
-	}
+    }
 }
 
 
@@ -249,7 +249,7 @@ void RCC_vidDisablePeripheral(u8 u8PeripheralIndex)
 /****************************************************************************************/
 void RCC_vidResetResetFlags(void)
 {
-	RCC_CSR |= (1 << RMVF);
+    RCC_CSR |= (1 << RMVF);
 }
 
 
@@ -266,20 +266,20 @@ void RCC_vidResetResetFlags(void)
 /****************************************************************************************/
 u8 RCC_u8GetResetFlag(u8 u8ResetFlag)
 {
-	u8 u8Flags = ((RCC_CSR & (0xFFFF << PINRSTF)) >> PINRSTF);
-	u8 u8ReturnValue = 0;
-	if (u8ResetFlag == RCC_u8POWERRESET)
-	{
-		if (u8Flags == 3)
-		{
-			u8ReturnValue = 1;
-		}
-	}
-	else if ( (u8Flags & (1<<u8ResetFlag) ) >>u8ResetFlag == 1)
-	{
-		u8ReturnValue = 1;
-	}
-	return u8ReturnValue;
+    u8 u8Flags = ((RCC_CSR & (0xFFFF << PINRSTF)) >> PINRSTF);
+    u8 u8ReturnValue = 0;
+    if (u8ResetFlag == RCC_u8POWERRESET)
+    {
+        if (u8Flags == 3)
+        {
+            u8ReturnValue = 1;
+        }
+    }
+    else if ( (u8Flags & (1<<u8ResetFlag) ) >>u8ResetFlag == 1)
+    {
+        u8ReturnValue = 1;
+    }
+    return u8ReturnValue;
 }
 
 

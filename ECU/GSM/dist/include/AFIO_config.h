@@ -5,7 +5,7 @@
 
 #define    AFIO_SPI1CFG                         SPI1_NoRemap
 #define    AFIO_I2C1CFG                         I2C1_NoRemap
-#define    AFIO_USART1CFG                       USART1_NoRemap 
+#define    AFIO_USART1CFG                       USART1_NoRemap
 #define    AFIO_USART2CFG                       USART2_NoRemap
 #define    AFIO_USART3CFG                       USART3_NoRemap
 #define    AFIO_TIM1CFG                         TIM1_PartialRemap
@@ -24,25 +24,25 @@
 
 /****************** EXTI ***********************/
 
-#define  AFIO_EXTI0CFG                           AFIO_EXTI_PORTA 
-#define  AFIO_EXTI1CFG                           AFIO_EXTI_PORTA 
-#define  AFIO_EXTI2CFG                           AFIO_EXTI_PORTA 
-#define  AFIO_EXTI3CFG                           AFIO_EXTI_PORTA 
-#define  AFIO_EXTI4CFG                           AFIO_EXTI_PORTA 
-#define  AFIO_EXTI5CFG                           AFIO_EXTI_PORTA 
-#define  AFIO_EXTI6CFG                           AFIO_EXTI_PORTA 
-#define  AFIO_EXTI7CFG                           AFIO_EXTI_PORTA 
-#define  AFIO_EXTI8CFG                           AFIO_EXTI_PORTA 
-#define  AFIO_EXTI9CFG                           AFIO_EXTI_PORTA 
-#define  AFIO_EXTI10CFG                         AFIO_EXTI_PORTA 
-#define  AFIO_EXTI11CFG                         AFIO_EXTI_PORTA 
-#define  AFIO_EXTI12CFG                         AFIO_EXTI_PORTA 
+#define  AFIO_EXTI0CFG                           AFIO_EXTI_PORTA
+#define  AFIO_EXTI1CFG                           AFIO_EXTI_PORTA
+#define  AFIO_EXTI2CFG                           AFIO_EXTI_PORTA
+#define  AFIO_EXTI3CFG                           AFIO_EXTI_PORTA
+#define  AFIO_EXTI4CFG                           AFIO_EXTI_PORTA
+#define  AFIO_EXTI5CFG                           AFIO_EXTI_PORTA
+#define  AFIO_EXTI6CFG                           AFIO_EXTI_PORTA
+#define  AFIO_EXTI7CFG                           AFIO_EXTI_PORTA
+#define  AFIO_EXTI8CFG                           AFIO_EXTI_PORTA
+#define  AFIO_EXTI9CFG                           AFIO_EXTI_PORTA
+#define  AFIO_EXTI10CFG                         AFIO_EXTI_PORTA
+#define  AFIO_EXTI11CFG                         AFIO_EXTI_PORTA
+#define  AFIO_EXTI12CFG                         AFIO_EXTI_PORTA
 #define  AFIO_EXTI13CFG                         AFIO_EXTI_PORTA
-#define  AFIO_EXTI14CFG                         AFIO_EXTI_PORTA 
-#define  AFIO_EXTI15CFG                         AFIO_EXTI_PORTA 
+#define  AFIO_EXTI14CFG                         AFIO_EXTI_PORTA
+#define  AFIO_EXTI15CFG                         AFIO_EXTI_PORTA
 
 /****************** AFIO_REMAP2 **********************/
- 
+
 #define    AFIO_TIM9CFG                              TIM9_NoRemap
 #define    AFIO_TIM10CFG                            TIM10_NoRemap
 #define    AFIO_TIM11CFG                            TIM11_NoRemap

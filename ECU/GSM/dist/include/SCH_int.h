@@ -15,19 +15,19 @@
 /* Task State Enum Definition */
 typedef enum
 {
-	RUNNING,
-	PAUSED
-}task_state;
+    RUNNING,
+    PAUSED
+} task_state;
 
 
 /* Task Struct Definition */
 typedef struct
 {
-	u16 periodicity;
-	u16 first_delay;
-	task_state state;
-	void (*task_ptr)(void);
-}task;
+    u16 periodicity;
+    u16 first_delay;
+    task_state state;
+    void (*task_ptr)(void);
+} task;
 
 
 

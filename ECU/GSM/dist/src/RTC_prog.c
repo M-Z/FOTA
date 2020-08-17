@@ -20,14 +20,14 @@
 /****************************************************************************************/
 void RTC_vidInit(void)
 {
-	SET_BIT(RTC_CRL,RTC_RSF);
-	/* Wait for synchronization flag */
-	while (GET_BIT(RTC_CRL,RTC_RSF) == 0);
-	/* Wait for RTCOFF flag */
-	while (GET_BIT(RTC_CRL,RTC_RTOFF) == 0);
+    SET_BIT(RTC_CRL,RTC_RSF);
+    /* Wait for synchronization flag */
+    while (GET_BIT(RTC_CRL,RTC_RSF) == 0);
+    /* Wait for RTCOFF flag */
+    while (GET_BIT(RTC_CRL,RTC_RTOFF) == 0);
 
-	/* Set the interrupt bits */
-	RTC_CRH |= ((RTC_u8SECIE) | (RTC_u8ALRIE << RTC_ALRIE) | (RTC_u8OWIE << RTC_OWIE));
+    /* Set the interrupt bits */
+    RTC_CRH |= ((RTC_u8SECIE) | (RTC_u8ALRIE << RTC_ALRIE) | (RTC_u8OWIE << RTC_OWIE));
 }
 
 
@@ -41,17 +41,17 @@ void RTC_vidInit(void)
 /****************************************************************************************/
 void RTC_vidSetPrescaler(u32 u32Prescaler)
 {
-	/* Wait for RTCOFF flag */
-	while (GET_BIT(RTC_CRL,RTC_RTOFF) == 0);
+    /* Wait for RTCOFF flag */
+    while (GET_BIT(RTC_CRL,RTC_RTOFF) == 0);
 
-	/* Enter Configuration Mode */
-	SET_BIT(RTC_CRL, RTC_CNF);
+    /* Enter Configuration Mode */
+    SET_BIT(RTC_CRL, RTC_CNF);
 
-	/* Set prescaler value */
-	RTC_PRLL = (u32Prescaler & 0x00000000FFFFFFFF);
-	RTC_PRLH = ((u32Prescaler >> 16) & 0x000000000000000F);
+    /* Set prescaler value */
+    RTC_PRLL = (u32Prescaler & 0x00000000FFFFFFFF);
+    RTC_PRLH = ((u32Prescaler >> 16) & 0x000000000000000F);
 
-	CLR_BIT(RTC_CRL, RTC_CNF);
+    CLR_BIT(RTC_CRL, RTC_CNF);
 }
 
 
@@ -66,17 +66,17 @@ void RTC_vidSetPrescaler(u32 u32Prescaler)
 /****************************************************************************************/
 void RTC_vidSetCounter(u32 u32Count)
 {
-	/* Wait for RTCOFF flag */
-	while (GET_BIT(RTC_CRL,RTC_RTOFF) == 0);
+    /* Wait for RTCOFF flag */
+    while (GET_BIT(RTC_CRL,RTC_RTOFF) == 0);
 
-	/* Enter Configuration Mode */
-	SET_BIT(RTC_CRL, RTC_CNF);
+    /* Enter Configuration Mode */
+    SET_BIT(RTC_CRL, RTC_CNF);
 
-	/* Set prescaler value */
-	RTC_CNTL = (u32Count & 0x00000000FFFFFFFF);
-	RTC_CNTH = ((u32Count >> 16) & 0x00000000FFFFFFFF);
+    /* Set prescaler value */
+    RTC_CNTL = (u32Count & 0x00000000FFFFFFFF);
+    RTC_CNTH = ((u32Count >> 16) & 0x00000000FFFFFFFF);
 
-	CLR_BIT(RTC_CRL, RTC_CNF);
+    CLR_BIT(RTC_CRL, RTC_CNF);
 
 }
 
@@ -90,12 +90,12 @@ void RTC_vidSetCounter(u32 u32Count)
 /****************************************************************************************/
 u32 RTC_vidGetCounter(void)
 {
-	u32 u32temp = 0;
+    u32 u32temp = 0;
 
-	/* Get counter value */
-	u32temp = (RTC_CNTL | (RTC_CNTH << 16));
+    /* Get counter value */
+    u32temp = (RTC_CNTL | (RTC_CNTH << 16));
 
-	return u32temp;
+    return u32temp;
 }
 
 
@@ -109,16 +109,16 @@ u32 RTC_vidGetCounter(void)
 /****************************************************************************************/
 void RTC_vidSetAlarm(u32 u32Alarm)
 {
-	/* Wait for RTCOFF flag */
-	while (GET_BIT(RTC_CRL,RTC_RTOFF) == 0);
+    /* Wait for RTCOFF flag */
+    while (GET_BIT(RTC_CRL,RTC_RTOFF) == 0);
 
-	/* Enter Configuration Mode */
-	SET_BIT(RTC_CRL, RTC_CNF);
+    /* Enter Configuration Mode */
+    SET_BIT(RTC_CRL, RTC_CNF);
 
-	/* Set prescaler value */
-	RTC_ALRL = (u32Alarm & 0x00000000FFFFFFFF);
-	RTC_ALRH = ((u32Alarm >> 16) & 0x00000000FFFFFFFF);
+    /* Set prescaler value */
+    RTC_ALRL = (u32Alarm & 0x00000000FFFFFFFF);
+    RTC_ALRH = ((u32Alarm >> 16) & 0x00000000FFFFFFFF);
 
-	CLR_BIT(RTC_CRL, RTC_CNF);
+    CLR_BIT(RTC_CRL, RTC_CNF);
 
 }
