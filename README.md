@@ -15,7 +15,13 @@
 
 ## Install
 
+** Configuration **
+
+* General configuration of mongoose and vehicles settings [here](https://github.com/M-Z/FOTA/tree/master/cloud/Server/config)
+* Public and private keys should be placed [here](https://github.com/M-Z/FOTA/tree/master/cloud/Server/Car%20keys)
+
 ```sh
+npm install
 npm run start
 ```
 
@@ -35,7 +41,7 @@ npm run serve
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/mariomed7at/FOTA/issues).
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/M-Z/FOTA/issues).
 
 ## Show your support
 
@@ -43,7 +49,7 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2020 [EECE-2020 FOTA team](https://github.com/MarioMed7at).<br />
+Copyright © 2020 [EECE-2020 FOTA team](https://github.com/M-Z).<br />
 This project is [ISC](https://opensource.org/licenses/ISC) licensed.
 
 ***
