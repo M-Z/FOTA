@@ -1,18 +1,14 @@
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-
-import RPi.GPIO as GPIO
-import spidev
-import time
 import sys
+import time
 
 import can
 import mcp2515
-
-
+import RPi.GPIO as GPIO
+import spidev
 from gp import Ui_MainWindow
-
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(24, GPIO.IN)

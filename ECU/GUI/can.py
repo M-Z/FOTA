@@ -1,6 +1,6 @@
 import mcp2515
-import spidev
 import RPi.GPIO as GPIO
+import spidev
 
 RX_msg = []
 spi = spidev.SpiDev()
