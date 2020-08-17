@@ -29,8 +29,9 @@ npm run serve
 
 👤 **EECE-2020 FOTA team**
 
-* Github: [@Mario-Medhat](https://github.com/Mario-Medhat)
+* Github: [@M-Z](https://github.com/M-Z)
 * Github: [@Michael-Adel96](https://github.com/Michael-Adel96)
+* Github: [@Sondos-Aly](https://github.com/Sondos-Aly)
 
 ## 🤝 Contributing
 
