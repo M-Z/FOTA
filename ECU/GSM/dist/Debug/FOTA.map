@@ -147,7 +147,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x35 ./system/src/stm32f1-stdperiph/misc.o
  .debug_macro   0x00000000       0x85 ./system/src/stm32f1-stdperiph/misc.o
  .debug_line    0x00000000      0x408 ./system/src/stm32f1-stdperiph/misc.o
- .debug_str     0x00000000    0x4e9d2 ./system/src/stm32f1-stdperiph/misc.o
+ .debug_str     0x00000000    0x4e9cd ./system/src/stm32f1-stdperiph/misc.o
  .comment       0x00000000       0x7f ./system/src/stm32f1-stdperiph/misc.o
  .debug_frame   0x00000000       0x90 ./system/src/stm32f1-stdperiph/misc.o
  .ARM.attributes
@@ -261,7 +261,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x35 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
  .debug_macro   0x00000000      0x2a6 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
  .debug_line    0x00000000      0x8f0 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
- .debug_str     0x00000000    0x4ed50 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
+ .debug_str     0x00000000    0x4ed4b ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
  .comment       0x00000000       0x7f ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
  .debug_frame   0x00000000      0x1e8 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
  .ARM.attributes
@@ -488,7 +488,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x35 ./system/src/newlib/_cxx.o
  .debug_macro   0x00000000      0x51a ./system/src/newlib/_cxx.o
  .debug_line    0x00000000      0x47f ./system/src/newlib/_cxx.o
- .debug_str     0x00000000     0x9b7c ./system/src/newlib/_cxx.o
+ .debug_str     0x00000000     0x9b77 ./system/src/newlib/_cxx.o
  .comment       0x00000000       0x7f ./system/src/newlib/_cxx.o
  .debug_frame   0x00000000       0x40 ./system/src/newlib/_cxx.o
  .ARM.attributes
@@ -1138,7 +1138,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x8b ./system/src/cortexm/_reset_hardware.o
  .debug_macro   0x00000000       0x35 ./system/src/cortexm/_reset_hardware.o
  .debug_line    0x00000000      0x363 ./system/src/cortexm/_reset_hardware.o
- .debug_str     0x00000000    0x4e800 ./system/src/cortexm/_reset_hardware.o
+ .debug_str     0x00000000    0x4e7fb ./system/src/cortexm/_reset_hardware.o
  .comment       0x00000000       0x7f ./system/src/cortexm/_reset_hardware.o
  .debug_frame   0x00000000       0x20 ./system/src/cortexm/_reset_hardware.o
  .ARM.attributes
@@ -1593,7 +1593,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x11 ./src/_write.o
  .debug_macro   0x00000000      0xa6c ./src/_write.o
  .debug_line    0x00000000       0x30 ./src/_write.o
- .debug_str     0x00000000     0x2d35 ./src/_write.o
+ .debug_str     0x00000000     0x2d30 ./src/_write.o
  .comment       0x00000000       0x7f ./src/_write.o
  .ARM.attributes
                 0x00000000       0x33 ./src/_write.o
@@ -3359,52 +3359,52 @@ i.SHA256_Init   0x08004e20       0x5c
  .debug_frame   0x00005ccc       0x60 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
  .debug_frame   0x00005d2c       0x44 ../ldscripts\M3_CryptoFW_2_0_6.lib(crypto.o)
 
-.debug_str      0x00000000    0x5adc8
+.debug_str      0x00000000    0x5adc3
  *(.debug_str)
- .debug_str     0x00000000    0x4f168 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
-                              0x4f31f (size before relaxing)
- .debug_str     0x0004f168     0x4ffb ./system/src/newlib/_exit.o
-                               0x7eeb (size before relaxing)
- .debug_str     0x00054163      0x4f5 ./system/src/newlib/_sbrk.o
-                               0x729d (size before relaxing)
- .debug_str     0x00054658      0x260 ./system/src/newlib/_startup.o
-                               0x69d8 (size before relaxing)
- .debug_str     0x000548b8      0xe8b ./system/src/newlib/_syscalls.o
-                               0x8178 (size before relaxing)
- .debug_str     0x00055743       0xd0 ./system/src/newlib/assert.o
-                               0x89f0 (size before relaxing)
- .debug_str     0x00055813      0x819 ./system/src/diag/Trace.o
-                               0x8663 (size before relaxing)
- .debug_str     0x0005602c      0x37b ./system/src/diag/trace_impl.o
-                              0x52a49 (size before relaxing)
- .debug_str     0x000563a7       0xbc ./system/src/cortexm/_initialize_hardware.o
-                              0x4e83a (size before relaxing)
- .debug_str     0x00056463      0x19d ./system/src/cortexm/exception_handlers.o
-                              0x53c6e (size before relaxing)
- .debug_str     0x00056600       0x96 ./system/src/cmsis/system_stm32f10x.o
-                              0x4e8d4 (size before relaxing)
- .debug_str     0x00056696       0x57 ./system/src/cmsis/vectors_stm32f10x.o
-                               0x3879 (size before relaxing)
- .debug_str     0x000566ed      0x92c ./src/Application.o
-                               0x36ce (size before relaxing)
- .debug_str     0x00057019     0x1bc9 ./src/CAN.o
-                               0xa208 (size before relaxing)
- .debug_str     0x00058be2       0xa3 ./src/CANHANDLER_prog.o
-                               0x32bf (size before relaxing)
- .debug_str     0x00058c85      0x438 ./src/DIO_prog.o
-                               0x3d5e (size before relaxing)
- .debug_str     0x000590bd      0x339 ./src/DMA_program.o
-                               0x3591 (size before relaxing)
- .debug_str     0x000593f6      0x4a0 ./src/GSM_program.o
-                               0x4049 (size before relaxing)
- .debug_str     0x00059896      0x1cd ./src/NVIC_prog.o
-                               0x375a (size before relaxing)
- .debug_str     0x00059a63      0xcf0 ./src/RCC_prog.o
-                               0x4342 (size before relaxing)
- .debug_str     0x0005a753      0x4ca ./src/USART_program.o
-                               0x38bd (size before relaxing)
- .debug_str     0x0005ac1d      0x1ab ./src/main.o
-                               0x4217 (size before relaxing)
+ .debug_str     0x00000000    0x4f163 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+                              0x4f31a (size before relaxing)
+ .debug_str     0x0004f163     0x4ffb ./system/src/newlib/_exit.o
+                               0x7ee6 (size before relaxing)
+ .debug_str     0x0005415e      0x4f5 ./system/src/newlib/_sbrk.o
+                               0x7298 (size before relaxing)
+ .debug_str     0x00054653      0x260 ./system/src/newlib/_startup.o
+                               0x69d3 (size before relaxing)
+ .debug_str     0x000548b3      0xe8b ./system/src/newlib/_syscalls.o
+                               0x8173 (size before relaxing)
+ .debug_str     0x0005573e       0xd0 ./system/src/newlib/assert.o
+                               0x89eb (size before relaxing)
+ .debug_str     0x0005580e      0x819 ./system/src/diag/Trace.o
+                               0x865e (size before relaxing)
+ .debug_str     0x00056027      0x37b ./system/src/diag/trace_impl.o
+                              0x52a44 (size before relaxing)
+ .debug_str     0x000563a2       0xbc ./system/src/cortexm/_initialize_hardware.o
+                              0x4e835 (size before relaxing)
+ .debug_str     0x0005645e      0x19d ./system/src/cortexm/exception_handlers.o
+                              0x53c69 (size before relaxing)
+ .debug_str     0x000565fb       0x96 ./system/src/cmsis/system_stm32f10x.o
+                              0x4e8cf (size before relaxing)
+ .debug_str     0x00056691       0x57 ./system/src/cmsis/vectors_stm32f10x.o
+                               0x3874 (size before relaxing)
+ .debug_str     0x000566e8      0x92c ./src/Application.o
+                               0x36c9 (size before relaxing)
+ .debug_str     0x00057014     0x1bc9 ./src/CAN.o
+                               0xa203 (size before relaxing)
+ .debug_str     0x00058bdd       0xa3 ./src/CANHANDLER_prog.o
+                               0x32ba (size before relaxing)
+ .debug_str     0x00058c80      0x438 ./src/DIO_prog.o
+                               0x3d59 (size before relaxing)
+ .debug_str     0x000590b8      0x339 ./src/DMA_program.o
+                               0x358c (size before relaxing)
+ .debug_str     0x000593f1      0x4a0 ./src/GSM_program.o
+                               0x4044 (size before relaxing)
+ .debug_str     0x00059891      0x1cd ./src/NVIC_prog.o
+                               0x3755 (size before relaxing)
+ .debug_str     0x00059a5e      0xcf0 ./src/RCC_prog.o
+                               0x433d (size before relaxing)
+ .debug_str     0x0005a74e      0x4ca ./src/USART_program.o
+                               0x38b8 (size before relaxing)
+ .debug_str     0x0005ac18      0x1ab ./src/main.o
+                               0x4212 (size before relaxing)
 
 .debug_loc      0x00000000     0x33af
  *(.debug_loc)
