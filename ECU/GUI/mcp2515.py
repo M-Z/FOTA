@@ -94,7 +94,7 @@ RXF3EID0 = 0x13
 RXF4EID0 = 0x17
 RXF5EID0 = 0x1B
 
-#Mask Registers
+# Mask Registers
 
 RXM0SIDH = 0x20
 RXM1SIDH = 0x24
