@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-
 # Resource object code
 #
 # Created by: The Resource Compiler for PyQt5 (Qt v5.5.0)
 #
 # WARNING! All changes made in this file will be lost!
-
 from PyQt5 import QtCore
 
 qt_resource_data = b"\
