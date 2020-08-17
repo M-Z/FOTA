@@ -8,13 +8,11 @@
 #ifndef ADC_INT_H_
 #define ADC_INT_H_
 
-
-
 void ADC_Init();
-//void Reading_Channels(u32 * ptr);
-void Reading_Channels(f32*ptr);
-void WaitingStartConversion (void);
-void WaitingEndofConversion (void);
+// void Reading_Channels(u32 * ptr);
+void Reading_Channels(f32 *ptr);
+void WaitingStartConversion(void);
+void WaitingEndofConversion(void);
 void EndofConversionReset(void);
 void SequenceRegistersInit(void);
 #endif /* ADC_INT_H_ */
