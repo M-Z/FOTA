@@ -9,6 +9,7 @@
 *.hex
 *.pem
 *.ppk
+*.o
 .env
 
 # compiled output
