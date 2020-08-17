@@ -1,4 +1,5 @@
 from __future__ import absolute_import
+
 # For backwards compatibility, provide imports that used to be here.
 from .connection import is_connection_dropped
 from .request import make_headers
@@ -25,30 +26,27 @@ from .url import (
     split_first,
     Url,
 )
-from .wait import (
-    wait_for_read,
-    wait_for_write
-)
+from .wait import wait_for_read, wait_for_write
 
 __all__ = (
-    'HAS_SNI',
-    'IS_PYOPENSSL',
-    'IS_SECURETRANSPORT',
-    'SSLContext',
-    'Retry',
-    'Timeout',
-    'Url',
-    'assert_fingerprint',
-    'current_time',
-    'is_connection_dropped',
-    'is_fp_closed',
-    'get_host',
-    'parse_url',
-    'make_headers',
-    'resolve_cert_reqs',
-    'resolve_ssl_version',
-    'split_first',
-    'ssl_wrap_socket',
-    'wait_for_read',
-    'wait_for_write'
+    "HAS_SNI",
+    "IS_PYOPENSSL",
+    "IS_SECURETRANSPORT",
+    "SSLContext",
+    "Retry",
+    "Timeout",
+    "Url",
+    "assert_fingerprint",
+    "current_time",
+    "is_connection_dropped",
+    "is_fp_closed",
+    "get_host",
+    "parse_url",
+    "make_headers",
+    "resolve_cert_reqs",
+    "resolve_ssl_version",
+    "split_first",
+    "ssl_wrap_socket",
+    "wait_for_read",
+    "wait_for_write",
 )

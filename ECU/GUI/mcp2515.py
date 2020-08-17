@@ -1,4 +1,3 @@
-
 # Transmission registers
 TXB0CTRL = 0x30
 TXB1CTRL = 0x40

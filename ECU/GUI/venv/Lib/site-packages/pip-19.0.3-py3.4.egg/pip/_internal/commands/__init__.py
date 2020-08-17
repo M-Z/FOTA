@@ -74,6 +74,6 @@ def _sort_commands(cmddict, order):
             return order.index(key[1])
         except ValueError:
             # unordered items should come last
-            return 0xff
+            return 0xFF
 
     return sorted(cmddict.items(), key=keyfn)

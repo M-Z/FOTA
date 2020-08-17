@@ -19,19 +19,21 @@ from pip._vendor import six
 from pip._vendor.six.moves import configparser
 
 from pip._internal.exceptions import (
-    ConfigurationError, ConfigurationFileCouldNotBeLoaded,
+    ConfigurationError,
+    ConfigurationFileCouldNotBeLoaded,
 )
 from pip._internal.locations import (
-    legacy_config_file, new_config_file, running_under_virtualenv,
-    site_config_files, venv_config_file,
+    legacy_config_file,
+    new_config_file,
+    running_under_virtualenv,
+    site_config_files,
+    venv_config_file,
 )
 from pip._internal.utils.misc import ensure_dir, enum
 from pip._internal.utils.typing import MYPY_CHECK_RUNNING
 
 if MYPY_CHECK_RUNNING:
-    from typing import (  # noqa: F401
-        Any, Dict, Iterable, List, NewType, Optional, Tuple
-    )
+    from typing import Any, Dict, Iterable, List, NewType, Optional, Tuple  # noqa: F401
 
     RawConfigParser = configparser.RawConfigParser  # Shorthand
     Kind = NewType("Kind", str)
@@ -44,8 +46,8 @@ def _normalize_name(name):
     # type: (str) -> str
     """Make a name consistent regardless of source (environment or file)
     """
-    name = name.lower().replace('_', '-')
-    if name.startswith('--'):
+    name = name.lower().replace("_", "-")
+    if name.startswith("--"):
         name = name[2:]  # only prefer long opts
     return name
 
@@ -57,10 +59,10 @@ def _disassemble_key(name):
 
 # The kinds of configurations there are.
 kinds = enum(
-    USER="user",        # User Specific
-    GLOBAL="global",    # System Wide
-    VENV="venv",        # Virtual Environment Specific
-    ENV="env",          # from PIP_CONFIG_FILE
+    USER="user",  # User Specific
+    GLOBAL="global",  # System Wide
+    VENV="venv",  # Virtual Environment Specific
+    ENV="env",  # from PIP_CONFIG_FILE
     ENV_VAR="env-var",  # from Environment Variables
 )
 
@@ -95,7 +97,11 @@ class Configuration(object):
 
         # The order here determines the override order.
         self._override_order = [
-            kinds.GLOBAL, kinds.USER, kinds.VENV, kinds.ENV, kinds.ENV_VAR
+            kinds.GLOBAL,
+            kinds.USER,
+            kinds.VENV,
+            kinds.ENV,
+            kinds.ENV_VAR,
         ]
 
         self._ignore_env_names = ["version", "help"]
@@ -121,8 +127,7 @@ class Configuration(object):
         # type: () -> Optional[str]
         """Returns the file with highest priority in configuration
         """
-        assert self.load_only is not None, \
-            "Need to be specified a file to be editing"
+        assert self.load_only is not None, "Need to be specified a file to be editing"
 
         try:
             return self._get_parser_to_modify()[0]
@@ -259,9 +264,7 @@ class Configuration(object):
                 # If there's specific variant set in `load_only`, load only
                 # that variant, not the others.
                 if self.load_only is not None and variant != self.load_only:
-                    logger.debug(
-                        "Skipping file '%s' (variant: %s)", fname, variant
-                    )
+                    logger.debug("Skipping file '%s' (variant: %s)", fname, variant)
                     continue
 
                 parser = self._load_file(variant, fname)
@@ -329,8 +332,7 @@ class Configuration(object):
         """Returns a generator with all environmental vars with prefix PIP_"""
         for key, val in os.environ.items():
             should_be_yielded = (
-                key.startswith("PIP_") and
-                key[4:].lower() not in self._ignore_env_names
+                key.startswith("PIP_") and key[4:].lower() not in self._ignore_env_names
             )
             if should_be_yielded:
                 yield key[4:].lower(), val
@@ -345,7 +347,7 @@ class Configuration(object):
         # SMELL: Move the conditions out of this function
 
         # environment variables have the lowest priority
-        config_file = os.environ.get('PIP_CONFIG_FILE', None)
+        config_file = os.environ.get("PIP_CONFIG_FILE", None)
         if config_file is not None:
             yield kinds.ENV, [config_file]
         else:

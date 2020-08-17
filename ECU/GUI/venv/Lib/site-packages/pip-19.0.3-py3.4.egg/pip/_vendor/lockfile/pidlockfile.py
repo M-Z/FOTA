@@ -18,10 +18,9 @@ import errno
 import os
 import time
 
-from . import (LockBase, AlreadyLocked, LockFailed, NotLocked, NotMyLock,
-               LockTimeout)
+from . import LockBase, AlreadyLocked, LockFailed, NotLocked, NotMyLock, LockTimeout
 
-
+
 class PIDLockFile(LockBase):
     """ Lockfile implemented as a Unix PID file.
 
@@ -80,12 +79,11 @@ class PIDLockFile(LockBase):
                     # The lock creation failed.  Maybe sleep a bit.
                     if time.time() > end_time:
                         if timeout is not None and timeout > 0:
-                            raise LockTimeout("Timeout waiting to acquire"
-                                              " lock for %s" %
-                                              self.path)
+                            raise LockTimeout(
+                                "Timeout waiting to acquire" " lock for %s" % self.path
+                            )
                         else:
-                            raise AlreadyLocked("%s is already locked" %
-                                                self.path)
+                            raise AlreadyLocked("%s is already locked" % self.path)
                     time.sleep(timeout is not None and timeout / 10 or 0.1)
                 else:
                     raise LockFailed("failed to create %s" % self.path)
@@ -125,7 +123,7 @@ def read_pid_from_pidfile(pidfile_path):
         """
     pid = None
     try:
-        pidfile = open(pidfile_path, 'r')
+        pidfile = open(pidfile_path, "r")
     except IOError:
         pass
     else:
@@ -156,10 +154,10 @@ def write_pid_to_pidfile(pidfile_path):
         and write it to the named file as a line of text.
 
         """
-    open_flags = (os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+    open_flags = os.O_CREAT | os.O_EXCL | os.O_WRONLY
     open_mode = 0o644
     pidfile_fd = os.open(pidfile_path, open_flags, open_mode)
-    pidfile = os.fdopen(pidfile_fd, 'w')
+    pidfile = os.fdopen(pidfile_fd, "w")
 
     # According to the FHS 2.3 section on PID files in /var/run:
     #

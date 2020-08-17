@@ -21,12 +21,12 @@ from sys import stderr
 from time import time
 
 
-__version__ = '1.4'
+__version__ = "1.4"
 
 
 class Infinite(object):
     file = stderr
-    sma_window = 10         # Simple Moving Average window
+    sma_window = 10  # Simple Moving Average window
 
     def __init__(self, *args, **kwargs):
         self.index = 0
@@ -38,7 +38,7 @@ class Infinite(object):
             setattr(self, key, val)
 
     def __getitem__(self, key):
-        if key.startswith('_'):
+        if key.startswith("_"):
             return None
         return getattr(self, key, None)
 
@@ -84,7 +84,7 @@ class Infinite(object):
 class Progress(Infinite):
     def __init__(self, *args, **kwargs):
         super(Progress, self).__init__(*args, **kwargs)
-        self.max = kwargs.get('max', 100)
+        self.max = kwargs.get("max", 100)
 
     @property
     def eta(self):

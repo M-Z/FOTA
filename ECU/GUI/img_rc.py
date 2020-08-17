@@ -38756,12 +38756,14 @@ qt_resource_struct = b"\
 
 def qInitResources():
     QtCore.qRegisterResourceData(
-        0x01, qt_resource_struct, qt_resource_name, qt_resource_data)
+        0x01, qt_resource_struct, qt_resource_name, qt_resource_data
+    )
 
 
 def qCleanupResources():
     QtCore.qUnregisterResourceData(
-        0x01, qt_resource_struct, qt_resource_name, qt_resource_data)
+        0x01, qt_resource_struct, qt_resource_name, qt_resource_data
+    )
 
 
 qInitResources()
