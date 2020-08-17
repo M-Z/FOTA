@@ -36,7 +36,8 @@ class RX(QThread):
                     self.progressbar_update.emit(updateprogress)
                 elif can.RX_msg[0]["ID"] == 20:
                     # Display GSM Busy on Text Browser
-                    self.textBrowser_2.setText("GSM Busy, Cannnot complete action")
+                    self.textBrowser_2.setText(
+                        "GSM Busy, Cannnot complete action")
 
                 del can.RX_msg[0]
 
@@ -136,20 +137,15 @@ class Main(QMainWindow, Ui_MainWindow):
 
 ###############################################################################
 
-
 ## message_box = self.textBrowser.text()
-
 
 # pass
 
-
 #######################################################
-
 
 # def Handel_UPdate_Button(self):
 # Handel UPdateButton Updates
 # pass
-
 
 #######################################################################################
 
@@ -157,11 +153,11 @@ class Main(QMainWindow, Ui_MainWindow):
 # Handel LaterButton Updates
 # pass
 
-
 #######################################################################################
 # def Handel_Progress_bar(self):
 # Handel Progressbar Updates
 # pass
+
 
 #######################################################################################
 def main():

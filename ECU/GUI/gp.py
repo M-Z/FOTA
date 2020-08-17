@@ -2118,8 +2118,7 @@ class Ui_MainWindow(object):
             "PlotWidget {\n"
             "  /* Fix cut labels in plots #134 */\n"
             "  padding: 0px;\n"
-            "}"
-        )
+            "}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
@@ -2149,9 +2148,8 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_14.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(
-            QtGui.QPixmap(":/img/brakes.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off
-        )
+        icon.addPixmap(QtGui.QPixmap(":/img/brakes.png"), QtGui.QIcon.Normal,
+                       QtGui.QIcon.Off)
         self.pushButton_14.setIcon(icon)
         self.pushButton_14.setIconSize(QtCore.QSize(61, 61))
         self.pushButton_14.setFlat(True)
@@ -2165,9 +2163,8 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_15.setFont(font)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(
-            QtGui.QPixmap(":/img/water-pump.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off
-        )
+        icon1.addPixmap(QtGui.QPixmap(":/img/water-pump.png"),
+                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_15.setIcon(icon1)
         self.pushButton_15.setIconSize(QtCore.QSize(61, 61))
         self.pushButton_15.setFlat(True)
@@ -2181,9 +2178,8 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_16.setFont(font)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(
-            QtGui.QPixmap(":/img/ignition-cap.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off
-        )
+        icon2.addPixmap(QtGui.QPixmap(":/img/ignition-cap.png"),
+                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_16.setIcon(icon2)
         self.pushButton_16.setIconSize(QtCore.QSize(61, 61))
         self.pushButton_16.setFlat(True)
@@ -2197,9 +2193,8 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_17.setFont(font)
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(
-            QtGui.QPixmap(":/img/airbag.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off
-        )
+        icon3.addPixmap(QtGui.QPixmap(":/img/airbag.png"), QtGui.QIcon.Normal,
+                        QtGui.QIcon.Off)
         self.pushButton_17.setIcon(icon3)
         self.pushButton_17.setIconSize(QtCore.QSize(61, 61))
         self.pushButton_17.setFlat(True)
@@ -2478,9 +2473,8 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton.setFont(font)
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(
-            QtGui.QPixmap(":/img/camera.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off
-        )
+        icon4.addPixmap(QtGui.QPixmap(":/img/camera.png"), QtGui.QIcon.Normal,
+                        QtGui.QIcon.Off)
         self.pushButton.setIcon(icon4)
         self.pushButton.setIconSize(QtCore.QSize(61, 61))
         self.pushButton.setFlat(True)
@@ -2494,9 +2488,8 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_2.setFont(font)
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(
-            QtGui.QPixmap(":/img/updates.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off
-        )
+        icon5.addPixmap(QtGui.QPixmap(":/img/updates.png"), QtGui.QIcon.Normal,
+                        QtGui.QIcon.Off)
         self.pushButton_2.setIcon(icon5)
         self.pushButton_2.setIconSize(QtCore.QSize(61, 61))
         self.pushButton_2.setFlat(True)
@@ -2510,9 +2503,8 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_3.setFont(font)
         icon6 = QtGui.QIcon()
-        icon6.addPixmap(
-            QtGui.QPixmap(":/img/ga.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off
-        )
+        icon6.addPixmap(QtGui.QPixmap(":/img/ga.png"), QtGui.QIcon.Normal,
+                        QtGui.QIcon.Off)
         self.pushButton_3.setIcon(icon6)
         self.pushButton_3.setIconSize(QtCore.QSize(61, 61))
         self.pushButton_3.setFlat(True)
@@ -2526,9 +2518,8 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_5.setFont(font)
         icon7 = QtGui.QIcon()
-        icon7.addPixmap(
-            QtGui.QPixmap(":/img/head1.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off
-        )
+        icon7.addPixmap(QtGui.QPixmap(":/img/head1.png"), QtGui.QIcon.Normal,
+                        QtGui.QIcon.Off)
         self.pushButton_5.setIcon(icon7)
         self.pushButton_5.setIconSize(QtCore.QSize(61, 61))
         self.pushButton_5.setFlat(True)
@@ -2542,9 +2533,8 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_7.setFont(font)
         icon8 = QtGui.QIcon()
-        icon8.addPixmap(
-            QtGui.QPixmap(":/img/login.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off
-        )
+        icon8.addPixmap(QtGui.QPixmap(":/img/login.png"), QtGui.QIcon.Normal,
+                        QtGui.QIcon.Off)
         self.pushButton_7.setIcon(icon8)
         self.pushButton_7.setIconSize(QtCore.QSize(61, 61))
         self.pushButton_7.setFlat(True)
@@ -2558,9 +2548,8 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_20.setFont(font)
         icon9 = QtGui.QIcon()
-        icon9.addPixmap(
-            QtGui.QPixmap(":/img/diag.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off
-        )
+        icon9.addPixmap(QtGui.QPixmap(":/img/diag.png"), QtGui.QIcon.Normal,
+                        QtGui.QIcon.Off)
         self.pushButton_20.setIcon(icon9)
         self.pushButton_20.setIconSize(QtCore.QSize(61, 61))
         self.pushButton_20.setFlat(True)
@@ -2574,9 +2563,8 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_6.setFont(font)
         icon10 = QtGui.QIcon()
-        icon10.addPixmap(
-            QtGui.QPixmap(":/img/not1.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off
-        )
+        icon10.addPixmap(QtGui.QPixmap(":/img/not1.png"), QtGui.QIcon.Normal,
+                         QtGui.QIcon.Off)
         self.pushButton_6.setIcon(icon10)
         self.pushButton_6.setIconSize(QtCore.QSize(61, 61))
         self.pushButton_6.setFlat(True)
@@ -2590,9 +2578,8 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_4.setFont(font)
         icon11 = QtGui.QIcon()
-        icon11.addPixmap(
-            QtGui.QPixmap(":/img/schedule.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off
-        )
+        icon11.addPixmap(QtGui.QPixmap(":/img/schedule.png"),
+                         QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_4.setIcon(icon11)
         self.pushButton_4.setIconSize(QtCore.QSize(61, 61))
         self.pushButton_4.setFlat(True)
@@ -2622,23 +2609,20 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.tabWidget.setTabText(
-            self.tabWidget.indexOf(self.tab_6), _translate("MainWindow", "Page")
-        )
-        self.tabWidget.setTabText(
-            self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "page")
-        )
-        self.tabWidget.setTabText(
-            self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Page")
-        )
-        self.tabWidget.setTabText(
-            self.tabWidget.indexOf(self.tab_4), _translate("MainWindow", "Page")
-        )
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_6),
+                                  _translate("MainWindow", "Page"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2),
+                                  _translate("MainWindow", "page"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab),
+                                  _translate("MainWindow", "Page"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4),
+                                  _translate("MainWindow", "Page"))
         self.pushButton_14.setText(_translate("MainWindow", "Brakes"))
         self.pushButton_15.setText(_translate("MainWindow", "Engine"))
         self.pushButton_16.setText(_translate("MainWindow", "Ignition"))
         self.pushButton_17.setText(_translate("MainWindow", "Airbags"))
-        self.label_3.setText(_translate("MainWindow", "Do you want to update it now ?"))
+        self.label_3.setText(
+            _translate("MainWindow", "Do you want to update it now ?"))
         self.pushButton_18.setText(_translate("MainWindow", "Update"))
         self.pushButton_19.setText(_translate("MainWindow", "Later"))
         self.label_4.setText(_translate("MainWindow", "Update Progress"))
@@ -2673,9 +2657,8 @@ class Ui_MainWindow(object):
             self.tabWidget_4.indexOf(self.tab_16),
             _translate("MainWindow", "Updates History"),
         )
-        self.tabWidget_3.setTabText(
-            self.tabWidget_3.indexOf(self.tab_3), _translate("MainWindow", "Page")
-        )
+        self.tabWidget_3.setTabText(self.tabWidget_3.indexOf(self.tab_3),
+                                    _translate("MainWindow", "Page"))
         self.tabWidget_5.setTabText(
             self.tabWidget_5.indexOf(self.tab_17),
             _translate("MainWindow", "Notifications"),
@@ -2684,9 +2667,8 @@ class Ui_MainWindow(object):
             self.tabWidget_5.indexOf(self.tab_18),
             _translate("MainWindow", "Updates History"),
         )
-        self.tabWidget_3.setTabText(
-            self.tabWidget_3.indexOf(self.tab_13), _translate("MainWindow", "Page")
-        )
+        self.tabWidget_3.setTabText(self.tabWidget_3.indexOf(self.tab_13),
+                                    _translate("MainWindow", "Page"))
         self.tabWidget_6.setTabText(
             self.tabWidget_6.indexOf(self.tab_19),
             _translate("MainWindow", "Notifications"),
@@ -2695,9 +2677,8 @@ class Ui_MainWindow(object):
             self.tabWidget_6.indexOf(self.tab_20),
             _translate("MainWindow", "Updates History"),
         )
-        self.tabWidget_3.setTabText(
-            self.tabWidget_3.indexOf(self.tab_14), _translate("MainWindow", "Page")
-        )
+        self.tabWidget_3.setTabText(self.tabWidget_3.indexOf(self.tab_14),
+                                    _translate("MainWindow", "Page"))
         self.tabWidget_7.setTabText(
             self.tabWidget_7.indexOf(self.tab_21),
             _translate("MainWindow", "Notifications"),
@@ -2706,61 +2687,52 @@ class Ui_MainWindow(object):
             self.tabWidget_7.indexOf(self.tab_22),
             _translate("MainWindow", "Updates History"),
         )
-        self.tabWidget_3.setTabText(
-            self.tabWidget_3.indexOf(self.tab_12), _translate("MainWindow", "Page")
-        )
-        self.tabWidget.setTabText(
-            self.tabWidget.indexOf(self.tab_5), _translate("MainWindow", "Page")
-        )
-        self.pushButton_21.setText(_translate("MainWindow", "Send Diagnostics"))
-        self.tabWidget.setTabText(
-            self.tabWidget.indexOf(self.tab_8), _translate("MainWindow", "Page")
-        )
+        self.tabWidget_3.setTabText(self.tabWidget_3.indexOf(self.tab_12),
+                                    _translate("MainWindow", "Page"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5),
+                                  _translate("MainWindow", "Page"))
+        self.pushButton_21.setText(_translate("MainWindow",
+                                              "Send Diagnostics"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_8),
+                                  _translate("MainWindow", "Page"))
         self.lineEdit.setPlaceholderText(
-            _translate("MainWindow", "Enter Your Username")
-        )
+            _translate("MainWindow", "Enter Your Username"))
         self.lineEdit_2.setPlaceholderText(
-            _translate("MainWindow", "Enter Your Password")
-        )
+            _translate("MainWindow", "Enter Your Password"))
         self.pushButton_8.setText(_translate("MainWindow", "Login"))
         self.label.setText(
             _translate(
                 "MainWindow",
                 "Your Password is Incorrect, click resend if you forgot your pssword",
-            )
-        )
+            ))
         self.pushButton_10.setText(_translate("MainWindow", "Resend Password"))
-        self.tabWidget_2.setTabText(
-            self.tabWidget_2.indexOf(self.tab_9), _translate("MainWindow", "Login")
-        )
+        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_9),
+                                    _translate("MainWindow", "Login"))
         self.lineEdit_3.setPlaceholderText(
-            _translate("MainWindow", "Enter Your Username")
-        )
-        self.lineEdit_4.setPlaceholderText(_translate("MainWindow", "Enter Your Email"))
+            _translate("MainWindow", "Enter Your Username"))
+        self.lineEdit_4.setPlaceholderText(
+            _translate("MainWindow", "Enter Your Email"))
         self.lineEdit_5.setPlaceholderText(
-            _translate("MainWindow", "Enter Your Password")
-        )
+            _translate("MainWindow", "Enter Your Password"))
         self.lineEdit_6.setPlaceholderText(
-            _translate("MainWindow", "Confirm Your Password")
-        )
+            _translate("MainWindow", "Confirm Your Password"))
         self.pushButton_9.setText(_translate("MainWindow", "Sign up"))
-        self.tabWidget_2.setTabText(
-            self.tabWidget_2.indexOf(self.tab_10), _translate("MainWindow", "Sign up")
-        )
-        self.lineEdit_7.setPlaceholderText(_translate("MainWindow", "Enter Your Email"))
-        self.label_2.setText(_translate("MainWindow", "You can login from here"))
+        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_10),
+                                    _translate("MainWindow", "Sign up"))
+        self.lineEdit_7.setPlaceholderText(
+            _translate("MainWindow", "Enter Your Email"))
+        self.label_2.setText(
+            _translate("MainWindow", "You can login from here"))
         self.pushButton_11.setText(_translate("MainWindow", "Login"))
         self.pushButton_13.setText(_translate("MainWindow", "Resend Password"))
-        self.pushButton_12.setText(_translate("MainWindow", "Send me on Email"))
-        self.tabWidget_2.setTabText(
-            self.tabWidget_2.indexOf(self.tab_11), _translate("MainWindow", "Resend")
-        )
-        self.tabWidget.setTabText(
-            self.tabWidget.indexOf(self.tab_7), _translate("MainWindow", "Page")
-        )
-        self.tabWidget.setTabText(
-            self.tabWidget.indexOf(self.tab_23), _translate("MainWindow", "Page")
-        )
+        self.pushButton_12.setText(_translate("MainWindow",
+                                              "Send me on Email"))
+        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_11),
+                                    _translate("MainWindow", "Resend"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_7),
+                                  _translate("MainWindow", "Page"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_23),
+                                  _translate("MainWindow", "Page"))
         self.pushButton.setText(_translate("MainWindow", "Gallery"))
         self.pushButton_2.setText(_translate("MainWindow", "FOTA"))
         self.pushButton_3.setText(_translate("MainWindow", "Games"))
