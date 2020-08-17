@@ -15,7 +15,7 @@
 
 ## Install
 
-** Configuration **
+**Configuration**
 
 * General configuration of mongoose and vehicles settings [here](https://github.com/M-Z/FOTA/tree/master/cloud/Server/config)
 * Public and private keys should be placed [here](https://github.com/M-Z/FOTA/tree/master/cloud/Server/Car%20keys)
