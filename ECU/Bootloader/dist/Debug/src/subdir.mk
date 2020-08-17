@@ -5,6 +5,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../src/AFIO_program.c \
+../src/BOOTLOADER_prog.c \
 ../src/CAN.c \
 ../src/CANHANDLER_prog.c \
 ../src/DIO_prog.c \
@@ -19,6 +20,7 @@ C_SRCS += \
 
 OBJS += \
 ./src/AFIO_program.o \
+./src/BOOTLOADER_prog.o \
 ./src/CAN.o \
 ./src/CANHANDLER_prog.o \
 ./src/DIO_prog.o \
@@ -33,6 +35,7 @@ OBJS += \
 
 C_DEPS += \
 ./src/AFIO_program.d \
+./src/BOOTLOADER_prog.d \
 ./src/CAN.d \
 ./src/CANHANDLER_prog.d \
 ./src/DIO_prog.d \

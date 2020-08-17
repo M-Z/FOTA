@@ -38,9 +38,9 @@ class RX(QThread):
                     updateprogress = can.RX_msg[0]['data'][0]
                     print('update progress  = ',updateprogress)
                     self.progressbar_update.emit(updateprogress)
- #               elif can.RX_msg[0]['ID'] == 20:
+                elif can.RX_msg[0]['ID'] == 20:
                     #Display GSM Busy on Text Browser
-#                    self.textBrowser.setText("GSM Busy, Cannnot complete action")
+                    self.textBrowser_2.setText("GSM Busy, Cannnot complete action")
                     
                 del can.RX_msg[0]
     
@@ -124,7 +124,7 @@ class Main(QMainWindow, Ui_MainWindow):
             self.textBrowser.setText("Update Completed")
             
     def Send_diagnostics_click(self):
-#        self.textBrowser.setText("Sending Diag in Progress")
+        self.textBrowser_2.setText("Sending Diag in Progress")
         msg = {'ID':25, 'format':'standard_format', 'type':'remote_frame', 'length':0, 'data':[0,0,0,0,0,0,0,0]}
         can.transmit_buffer0(msg)
 
