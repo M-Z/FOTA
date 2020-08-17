@@ -1,11 +1,20 @@
 # NPM Server Modules
 */node_modules
+<<<<<<< HEAD
 !*/firmwares/.empty
 */dist/*
 */public/img/teams/*
 !*/public/img/teams/.empty
 */public/img/users/*
 !*/public/img/users/newUser.svg
+=======
+!/cloud/firmwares/.empty
+/cloud/dist/*
+/cloud/public/img/teams/*
+!/cloud/public/img/teams/.empty
+/cloud/public/img/users/*
+!/cloud/public/img/users/newUser.svg
+>>>>>>> master
 *.hex
 *.pem
 *.ppk
