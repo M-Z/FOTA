@@ -61,7 +61,7 @@
     "handlebars": "^4.7.6",
     "helmet": "^3.22.0",
     "hi-base32": "^0.5.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mmmagic": "^0.5.3",
     "mongoose": "^5.9.9",
     "multer": "^1.4.2",
